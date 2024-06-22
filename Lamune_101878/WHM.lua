@@ -7,66 +7,68 @@ local rdmSJMaxMP = nil -- The Max MP you have when /rdm in your idle set
 local blmSJMaxMP = nil -- The Max MP you have when /blm in your idle set
 
 local sets = {
-    Idle = {},
-    IdleALT = {},
-    IdleMaxMP = {},
-    Resting = {},
-    Town = {},
-    Movement = {},
-
-    DT = {},
-    DTNight = {},
-    MDT = { -- Shell IV provides 23% MDT
+	Idle = {
+		Body = "Seer\'s Tunic",
+		Hands = "Devotee's Mitts",
+		Legs = "Custom Pants",
+		Head = "Seer\'s Crown",
+		Feet = "Seer\'s Pumps",
+		Neck = "Justic Badge",
+		Waist = "Force Belt",
+		Ear1 = "Magician\'s Earring",
+		Ear2 = "Opal Earring",
+		Ring1 = "Ether Ring",
+		Ring2 = "Electrum Ring",
+		Back = "White Cape"
+	},
+	IdleALT = {},
+	IdleMaxMP = {
+	},
+	Resting = {
     },
-    FireRes = {},
-    IceRes = {},
-    LightningRes = {},
-    EarthRes = {},
-    WindRes = {},
-    WaterRes = {},
-    Evasion = {},
-
-    Precast = {},
-    Casting = { -- Default Casting Equipment when using Idle sets
-    },
-    SIRD = { -- 102% to Cap, used on Stoneskin, Blink, Aquaveil and Utsusemi casts
-    },
-    Haste = { -- Used only on Haste, Refresh, Blink and Utsusemi casts
-    },
-    ConserveMP = {},
-
-    Cure = {},
-    Cure5 = {},
-    Regen = {
-        Body = 'Cleric\'s Bliaut',
-    },
-    Cursna = {},
-
-    Enhancing = {},
-    Stoneskin = {},
-    Spikes = {},
-
-    Enfeebling = {},
-    EnfeeblingMND = {},
-    EnfeeblingINT = {},
-    EnfeeblingACC = {},
-
-    Divine = {},
-    Banish = {},
-    Dark = {},
-
-    Nuke = {},
-    NukeACC = {},
-    NukeDOT = {},
-
-    LockSet1 = {},
-    LockSet2 = {},
-    LockSet3 = {},
-
-    TP = {},
-    TP_NIN = {},
-    WS = {},
-}
+	Town = {},
+	Movement = {},
+	DT = {},
+	DTNight = {},
+	MDT = {},
+	FireRes = {},
+	IceRes = {},
+	LightningRes = {},
+	EarthRes = {},
+	WindRes = {},
+	WaterRes = {},
+	Evasion = {},
+	Precast = {},
+	Casting = {},
+	SIRD = {},
+	Haste = {},
+	ConserveMP = {},
+	Cure = {},
+	Cure5 = {},
+	Regen = {
+		Body = "Cleric\'s Bliaut"
+	},
+	Cursna = {},
+	Enhancing = {},
+	Stoneskin = {},
+	Spikes = {},
+	Enfeebling = {},
+	EnfeeblingMND = {},
+	EnfeeblingINT = {},
+	EnfeeblingACC = {},
+	Divine = {},
+	Banish = {},
+	Dark = {},
+	Nuke = {},
+	NukeACC = {},
+	NukeDOT = {},
+	LockSet1 = {},
+	LockSet2 = {},
+	LockSet3 = {},
+	TP = {},
+	TP_NIN = {},
+	WS = {}
+};
 profile.Sets = sets
 
 profile.SetMacroBook = function()
