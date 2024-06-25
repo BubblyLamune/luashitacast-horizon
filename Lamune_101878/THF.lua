@@ -61,6 +61,13 @@ profile.Sets = sets
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Viper Bite" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Bully" <t>')
 end
 
 --[[
@@ -102,7 +109,13 @@ end
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Ranged)
 
-    local ammo = ((gData.GetEquipment())['Ammo'])['Name']
+    local equipment = gData.GetEquipment()
+    local ammo = 'None'
+
+    if (equipment.Ammo ~= nil ) then
+        ammo = equipment.Ammo.Name
+    end
+
     if (ammo == 'Bloody Bolt') then
         gFunc.EquipSet(sets.Ranged_INT)
     end

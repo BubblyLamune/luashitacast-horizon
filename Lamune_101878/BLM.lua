@@ -1,15 +1,15 @@
 local profile = {}
 
-local fastCastValue = 0.04 -- 4% from gear listed in Precast set
+local fastCastValue = 0 -- 4% from gear listed in Precast set
 
 local ninSJNukeMaxMP = 709 -- The Max MP you have when /nin in your nuking set
 local whmSJNukeMaxMP = 787 -- The Max MP you have when /whm in your nuking set
 local rdmSJNukeMaxMP = 768 -- The Max MP you have when /rdm in your nuking set
 
-local warlocks_mantle = true -- Don't add 2% to fastCastValue to this as it is SJ dependant
+local warlocks_mantle = false -- Don't add 2% to fastCastValue to this as it is SJ dependant
 local republic_circlet = false
 
-local opuntia_hoop = true
+local opuntia_hoop = false
 local opuntia_hoop_slot = 'Ring1'
 
 local sets = {
@@ -274,7 +274,6 @@ local sets = {
         Ring2 = 'Omniscient Ring',
         Back = 'Merciful Cape',
         Waist = 'Penitent\'s Rope',
-        Waist = 'Sorcerer\'s Belt',
         Legs = 'Mahatma Slops',
         Feet = 'Src. Sabots +1',
     },
@@ -331,7 +330,6 @@ local sets = {
         Head = 'Nashira Turban',
         Neck = 'Dark Torque',
         Ear1 = 'Abyssal Earring',
-        Ear1 = 'Loquac. Earring',
         Body = 'Nashira Manteel',
         Hands = 'Nashira Gages',
         Ring1 = 'Snow Ring',

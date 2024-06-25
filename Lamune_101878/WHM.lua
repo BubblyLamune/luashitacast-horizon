@@ -8,6 +8,7 @@ local blmSJMaxMP = nil -- The Max MP you have when /blm in your idle set
 
 local sets = {
 	Idle = {
+		Main = "Light Staff",
 		Body = "Seer\'s Tunic",
 		Hands = "Devotee's Mitts",
 		Legs = "Custom Pants",
@@ -21,10 +22,26 @@ local sets = {
 		Ring2 = "Electrum Ring",
 		Back = "White Cape"
 	},
-	IdleALT = {},
+	IdleALT = {
+		Main = "Blessed Hammer",
+		Sub = "Light Buckler",
+		Body = "Holy Breastplate",
+		Hands = "Devotee's Mitts",
+		Legs = "Custom Pants",
+		Head = "Seer\'s Crown",
+		Feet = "Seer\'s Pumps",
+		Neck = "Justic Badge",
+		Waist = "Force Belt",
+		Ear1 = "Magician\'s Earring",
+		Ear2 = "Opal Earring",
+		Ring1 = "Ether Ring",
+		Ring2 = "Electrum Ring",
+		Back = "White Cape"
+	},
 	IdleMaxMP = {
 	},
 	Resting = {
+		Main = "Dark Staff"
     },
 	Town = {},
 	Movement = {},
@@ -43,8 +60,12 @@ local sets = {
 	SIRD = {},
 	Haste = {},
 	ConserveMP = {},
-	Cure = {},
-	Cure5 = {},
+	Cure = {
+		Main = "Light Staff"
+	},
+	Cure5 = {
+		Main = "Light Staff"
+	},
 	Regen = {
 		Body = "Cleric\'s Bliaut"
 	},
@@ -74,6 +95,13 @@ profile.Sets = sets
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ma "Cure II" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ma "Cure III" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Cure IV" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ma "Regen" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ma "Haste" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ma "Regen II" <t>')
 end
 
 --[[
