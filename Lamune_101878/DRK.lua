@@ -6,20 +6,18 @@ local fastCastValue = 0.00 -- 0% from gear
 
 local sets = {
     Idle = {
-        Main = 'Horror Voulge',
-        Ammo = 'Orphic Egg',
-        Head = 'Alumine Salade',
+        Head = 'Luisant Salade',
         Neck = 'Peacock Amulet',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Alumine Haubert',
-        Hands = 'Alumine Moufles',
-        Ring1 = 'Sniper\'s Ring',
-        Ring2 = 'Sniper\'s Ring',
-        Back = 'Ram Mantle +1',
-        Waist = 'Tilt Belt',
-        Legs = 'Alumine Brayettes',
-        Feet = 'Alumine Sollerets',
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Merman\'s Earring',
+        Body = 'Haubergeon +1',
+        Hands = 'Custom M Gloves',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Back = 'Amemet Mantle +1',
+        Waist = 'Swift Belt',
+        Legs = 'Ryl.Kgt. Breeches',
+        Feet = 'Luisant Sollerets',
     },
     IdleALT = {},
     Resting = {},
@@ -48,38 +46,24 @@ local sets = {
     LockSet3 = {},
 
     TP_LowAcc = {
-        Main = 'Horror Voulge',
-        Ammo = 'Orphic Egg',
-        Head = 'Alumine Salade',
+        Head = 'Luisant Salade',
         Neck = 'Peacock Amulet',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Alumine Haubert',
-        Hands = 'Alumine Moufles',
-        Ring1 = 'Sniper\'s Ring',
-        Ring2 = 'Sniper\'s Ring',
-        Back = 'Ram Mantle +1',
-        Waist = 'Tilt Belt',
-        Legs = 'Alumine Brayettes',
-        Feet = 'Alumine Sollerets',
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Merman\'s Earring',
+        Body = 'Haubergeon +1',
+        Hands = 'Custom M Gloves',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Back = 'Amemet Mantle +1',
+        Waist = 'Swift Belt',
+        Legs = 'Ryl.Kgt. Breeches',
+        Feet = 'Luisant Sollerets',
     },
     TP_HighAcc = {},
 
     WS = {
-        Main = 'Horror Voulge',
-        Ammo = 'Orphic Egg',
-        Head = 'Alumine Salade',
-        Neck = 'Spike Necklace',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Alumine Haubert',
-        Hands = 'Alumine Moufles',
-        Ring1 = 'Puissance Ring',
-        Ring2 = 'Puissance Ring',
-        Back = 'Ram Mantle +1',
-        Waist = 'Swordbelt +1',
-        Legs = 'Alumine Brayettes',
-        Feet = 'Alumine Sollerets',
+        Ring1 = 'Victory Ring',
+        Waist = 'Life Belt',
     },
     WS_Guillotine = {},
     WS_SpinningSlash = {},
@@ -96,7 +80,7 @@ local sets = {
 profile.Sets = sets
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 4')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 end
 

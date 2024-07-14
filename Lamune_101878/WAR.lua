@@ -1,7 +1,3 @@
---[[
-    This is provided purely as an example template. Only very basic sanity testing has been done.
-]]
-
 local profile = {}
 
 local fastCastValue = 0.00 -- 0% from gear
@@ -37,12 +33,17 @@ local sets = {
     TP_LowAcc = {},
     TP_HighAcc = {},
 
+    TP_Aggressor = {},
+
     WS = {},
     Warcry = {},
     Provoke = {},
 
     DW = {
         Ear1 = 'Stealth Earring',
+    },
+    SAM = {
+        Ear1 = 'Attila\'s Earring',
     },
 }
 profile.Sets = sets
@@ -115,8 +116,16 @@ profile.HandleDefault = function()
     gcmelee.DoDefault()
 
     local player = gData.GetPlayer()
+    if (player.SubJob == 'SAM') then
+        gFunc.EquipSet(sets.SAM)
+    end
     if (gcdisplay.GetToggle('DW') and player.Status == 'Engaged') then
         gFunc.EquipSet(sets.DW)
+    end
+
+    local aggressor = gData.GetBuffCount('Aggressor')
+    if (aggressor == 1 and gcdisplay.IdleSet == 'LowAcc') then
+        gFunc.EquipSet(sets.TP_Aggressor)
     end
 
     gcmelee.DoDefaultOverride()

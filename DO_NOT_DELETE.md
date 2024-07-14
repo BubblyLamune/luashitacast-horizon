@@ -158,3 +158,9 @@
 ### v1.3.13
 - Update HP thresholds on max mp sets
 - PLD - Add Arco de Velocidad logic
+- BLM - Remove flooring on Yellow set logic (i.e. makes it slightly more accurate)
+- Alter Melee Job SIRD priority order to prioritize MDT and Elemental Resist sets
+- BST / MNK - Fix Muscle Belt logic
+- WAR - Add SAM set for Attila's Earring
+- NIN - Tidy up Tables
+- MNK - Add regen gear

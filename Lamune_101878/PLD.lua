@@ -1,6 +1,6 @@
 local profile = {}
 
-local fastCastValue = 0.07 -- 0% from gear
+local fastCastValue = 0.07 -- 7% from gear
 
 local parade_gorget = true
 
@@ -284,11 +284,11 @@ local sets = {
         Ear1 = 'Loquac. Earring', -- FC
         Ear2 = 'Magnetic Earring',
         Body = 'Dst. Harness +1',
-        Hands = 'Homam Manopolas', -- 3
+        Hands = 'Dusk Gloves +1', -- 4
         Ring1 = 'Blitz Ring', -- 1
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
         Back = 'Boxer\'s Mantle',
-        Waist = 'Swift Belt', -- 4
+        Waist = 'Sonic Belt', -- 6
         Legs = 'Homam Cosciales', -- 3
         Feet = 'Homam Gambieras', -- 3
     },
@@ -321,12 +321,12 @@ local sets = {
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Hades Earring +1',
         Body = 'Vlr. Surcoat +1',
-        Hands = 'Homam Manopolas',
         -- Body = { Name = 'Hydra Haubert', Priority = -100 },
+        Hands = 'Dusk Gloves +1',
         Ring1 = 'Hercules\' Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
         Back = { Name = 'Valor Cape', Priority = 100 },
-        Waist = 'Swift Belt',
+        Waist = 'Sonic Belt',
         Legs = 'Homam Cosciales',
         Feet = 'Homam Gambieras',
     },
@@ -432,11 +432,11 @@ local sets = {
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Haubergeon',
-        Hands = 'Homam Manopolas',
+        Hands = 'Dusk Gloves +1',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
-        Waist = 'Swift Belt',
+        Waist = 'Sonic Belt',
         Legs = 'Homam Cosciales',
         Feet = 'Homam Gambieras',
     },
@@ -452,7 +452,7 @@ local sets = {
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
-        Waist = 'Swift Belt',
+        Waist = 'Sonic Belt',
         Legs = 'Vlr. Breeches +1',
         Feet = 'Rutter Sabatons',
     },
@@ -611,7 +611,7 @@ profile.HandleDefault = function()
 
     if (arco_de_velocidad) then
         local environment = gData.GetEnvironment()
-        if (environment.Time >= 6 and environment.Time < 18) then
+        if (environment.Time >= 6 and environment.Time < 18 and player.HPP < 100) then
             gFunc.Equip('Range', 'Arco de Velocidad')
         end
     end
