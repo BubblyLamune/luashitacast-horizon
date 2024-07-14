@@ -3,14 +3,47 @@ local profile = {}
 local fastCastValue = 0.00 -- 0% from gear
 
 local ta_rogue_armlets = false
+local player = gData.GetPlayer()
 
 local sets = {
-    Idle = {},
-    IdleALT = {},
-    Resting = {},
+    Idle = {		
+    Main = "Bone knife +1",
+    Sub = "Bone knife +1",
+    Body = "Brigandine armor",
+    Hands = "Custom F gloves",
+    Legs = "Republic subligar",
+    Head = "Walkure mask",
+    Feet = "Leaping Boots",
+    Neck = "Spike necklace",
+    Waist = "Life belt",
+    Ear1 = "Drone earring",
+    Ear2 = "Drone earring",
+    Ring1 = "Balance ring",
+    Ring2 = "Balance ring",
+    Back = "Nomad\'s mantle"
+    },
+    IdleALT = {
+        Main = "Bone knife +1",
+        Sub = "Light Buckler",
+        Body = "Brigandine armor",
+        Hands = "Custom F gloves",
+        Legs = "Republic subligar",
+        Head = "Walkure mask",
+        Feet = "Leaping Boots",
+        Neck = "Spike necklace",
+        Waist = "Life belt",
+        Ear1 = "Drone earring",
+        Ear2 = "Drone earring",
+        Ring1 = "Balance ring",
+        Ring2 = "Balance ring",
+        Back = "Nomad\'s mantle"
+    },
+    Resting = {
+        Main = "Dark Staff",
+        Sub = ""
+    },
     Town = {},
     Movement = {},
-
     DT = {},
     MDT = { -- Shell IV provides 23% MDT
     },
@@ -56,6 +89,10 @@ local sets = {
     },
     Ranged_INT = {},
 }
+
+if player.SubJob == 'NIN' then
+    sets.Idle.Sub = "Bone knife +1"
+end
 profile.Sets = sets
 
 profile.SetMacroBook = function()
@@ -64,7 +101,7 @@ profile.SetMacroBook = function()
 
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Viper Bite" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Bully" <t>')
