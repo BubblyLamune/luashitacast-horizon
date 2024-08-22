@@ -6,15 +6,16 @@ local blmSJMaxMP = nil;
 local sets = {
 	Idle = {
 		Main = "Light Staff",
-		Body = "Healer\'s Bliaut",
-		Hands = "Devotee's Mitts",
+		-- Body = "Healer's bliaut",
+		Body = "Noble's tunic",
+		Hands = "Healer's Mitts",
 		Legs = "Healer's Pantaln.",
 		Head = "Healer\'s Cap",
 		Feet = "Healer\'s duckbills",
 		Neck = "Justice Badge",
 		Waist = "Force Belt",
-		Ear1 = "Magician's Earring",
-		Ear2 = "Opal Earring",
+		Ear1 = "Geist Earring",
+		Ear2 = "Geist Earring",
 		Ring1 = "Ether Ring",
 		Ring2 = "Electrum Ring",
 		Back = "White Cape"
@@ -39,7 +40,8 @@ local sets = {
 	Resting = {
 		Main = "Dark Staff",
 		Sub = "",
-		Body = "Seer\'s Tunic",
+		Body = "Noble's tunic",
+		-- Body = "Seer's tunic",
 		Legs = "Baron's Slops"
 	},
 	Town = {},
@@ -99,6 +101,9 @@ profile.SetMacroBook = function()
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Regen\" <t>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Haste\" <t>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Regen II\" <t>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 7 down /ma \"Dia II\" <t>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Paralyze\" <t>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Slow\" <t>");
 end;
 gcmage = gFunc.LoadFile("common\\gcmage.lua");
 profile.HandleAbility = function()

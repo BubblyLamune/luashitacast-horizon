@@ -7,12 +7,12 @@ local player = gData.GetPlayer()
 
 local sets = {
     Idle = {		
-    Main = "Bone knife +1",
-    Sub = "Bone knife +1",
-    Body = "Brigandine armor",
+    Main = "Corsair\'s knife",
+    Sub = "Hornetneedle",
+    Body = "Scorpion Harness",
     Hands = "Custom F gloves",
-    Legs = "Republic subligar",
-    Head = "Walkure mask",
+    Legs = "Republic Subligar",
+    Head = "Emperor Hairpin",
     Feet = "Leaping Boots",
     Neck = "Spike necklace",
     Waist = "Life belt",
@@ -25,10 +25,10 @@ local sets = {
     IdleALT = {
         Main = "Bone knife +1",
         Sub = "Light Buckler",
-        Body = "Brigandine armor",
+        Body = "Brigandine",
         Hands = "Custom F gloves",
-        Legs = "Republic subligar",
-        Head = "Walkure mask",
+        Legs = "Rogue's Culottes",
+        Head = "Rogue's Bonnet",
         Feet = "Leaping Boots",
         Neck = "Spike necklace",
         Waist = "Life belt",
@@ -39,8 +39,8 @@ local sets = {
         Back = "Nomad\'s mantle"
     },
     Resting = {
-        Main = "Dark Staff",
-        Sub = ""
+       -- Main = "Dark Staff",
+        -- Sub = ""
     },
     Town = {},
     Movement = {},
@@ -73,13 +73,24 @@ local sets = {
     WS_Evisceration = {},
     WS_SharkBite = {},
 
-    SA = {},
-    TA = {},
-    SATA = {},
+    SA = {
+        Body = "Brigandine",
+    },
+    TA = {
+        Body = "Brigandine",
+    },
+    SATA = {
+        Body = "Brigandine",
+
+    },
 
     Flee = {},
     Hide = {},
-    Steal = {},
+    Steal = {
+        Legs = "Rogue's Culottes",
+        Head = "Rogue's Bonnet",
+        Hands= "Rogue's Armlets"
+    },
     Mug = {},
 
     TH = {},
@@ -91,7 +102,7 @@ local sets = {
 }
 
 if player.SubJob == 'NIN' then
-    sets.Idle.Sub = "Bone knife +1"
+    sets.Idle.Sub = "Hornetneedle"
 end
 profile.Sets = sets
 
@@ -99,7 +110,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Viper Bite" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Dancing Edge" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
