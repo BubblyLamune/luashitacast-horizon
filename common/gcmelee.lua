@@ -30,6 +30,13 @@ local AliasList = T{
     'tpset','tp','mode','dps','lag',
 }
 
+local utsuBuffs = T{
+    [66] = 1,
+    [444] = 2,
+    [445] = 3,
+    [446] = 4,
+}
+
 function gcmelee.SetIsDPS(isDPSVal)
     isDPS = isDPSVal
 end
@@ -86,6 +93,10 @@ function gcmelee.DoDefault()
                     gcinclude.ToggleIdleSet(TpVariantTable[tp_variant])
                 end
 
+                if gData.GetBuffCount(580) > 0 then -- Horizon Mjollnir Haste Buff
+                    gFunc.EquipSet('TP_Mjollnir_Haste')
+                end
+
                 if (player.MainJob ~= 'RNG') then
                     if (fenrirs_earring and (environment.Time >= 6 and environment.Time < 18)) then
                         gFunc.Equip(fenrirs_earring_slot, 'Fenrir\'s Earring')
@@ -95,6 +106,24 @@ function gcmelee.DoDefault()
             if (player.Status == 'Idle' and lastIdleSetBeforeEngaged ~= '') then
                 gcinclude.ToggleIdleSet(lastIdleSetBeforeEngaged)
                 lastIdleSetBeforeEngaged = ''
+            end
+        end
+    end
+
+    if (player.MainJob == 'PLD' or player.MainJob == 'NIN' or gcdisplay.GetToggle('Hate')) then
+        if (player.SubJob == 'NIN' or player.MainJob == 'NIN') then
+            local function GetShadowCount()
+                for buffId, shadowCount in pairs(utsuBuffs) do
+                    if (gData.GetBuffCount(buffId) > 0) then
+                        return shadowCount
+                    end
+                end
+
+                return 0
+            end
+            if (GetShadowCount() == 0) then
+                gFunc.EquipSet('IdleDT')
+                if (gcdisplay.IdleSet == 'Alternate') then gFunc.EquipSet('IdleALTDT') end
             end
         end
     end
@@ -119,25 +148,42 @@ end
 
 function gcmelee.DoPrecast(fastCastValue)
     if (not lag) then
-        gcmelee.SetupMidcastDelay(fastCastValue)
+        return gcmelee.SetupMidcastDelay(fastCastValue)
     end
     gFunc.EquipSet('Precast')
+
+    return 0
 end
 
 function gcmelee.SetupMidcastDelay(fastCastValue)
     local player = gData.GetPlayer()
     local action = gData.GetAction()
+    local castTime = action.CastTime
+
+    local hasso = gData.GetBuffCount('Hasso')
+    local seigan = gData.GetBuffCount('Seigan')
+    local castTimeMod = 1
+    if (hasso == 1 or seigan == 1) then
+        castTimeMod = 1.5
+    end
+
+    if (action.Skill == 'Divine Magic' and action.Name == 'Banish III') then
+        castTime = 3000
+    end
+
     if (player.SubJob == "RDM") then
          fastCastValue = fastCastValue + 0.15 -- Fast Cast Trait
     end
     local minimumBuffer = 0.25 -- Can be lowered to 0.1 if you want
     local packetDelay = 0.25 -- Change this to 0.4 if you do not use PacketFlow
-    local castDelay = ((action.CastTime * (1 - fastCastValue)) / 1000) - minimumBuffer
+    local castDelay = ((castTime * castTimeMod * (1 - fastCastValue)) / 1000) - minimumBuffer
     if (castDelay >= packetDelay) then
         gFunc.SetMidDelay(castDelay)
     end
 
     -- print(chat.header('DEBUG'):append(chat.message('Cast delay is ' .. castDelay)))
+
+    return castDelay - 1
 end
 
 function gcmelee.DoMidcast(sets)
@@ -161,6 +207,19 @@ function gcmelee.SetupInterimEquipSet(sets)
     if (gcdisplay.IdleSet == 'IceRes') then gFunc.InterimEquipSet(sets.IceRes) end
     if (gcdisplay.IdleSet == 'LightningRes') then gFunc.InterimEquipSet(sets.LightningRes) end
     if (gcdisplay.IdleSet == 'EarthRes') then gFunc.InterimEquipSet(sets.EarthRes) end
+end
+
+function gcmelee.DoWS()
+    gFunc.EquipSet('WS')
+    if (TpVariantTable[tp_variant] == 'HighAcc') then
+        gFunc.EquipSet('WS_HighAcc')
+    end
+
+    gcmelee.DoFenrirsEarring()
+end
+
+function gcmelee.GetAccuracyMode()
+    return TpVariantTable[tp_variant]
 end
 
 return gcmelee

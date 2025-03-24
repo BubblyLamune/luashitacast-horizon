@@ -5,7 +5,7 @@ local fastCastValue = 0.00 -- 0% from gear
 local gaudy_harness = true
 
 -- Replace these with '' if you do not have them
-local muscle_belt = 'Muscle Belt +1'
+local muscle_belt = ''
 
 local sets = {
     Idle = {},
@@ -26,7 +26,7 @@ local sets = {
     Evasion = {},
 
     Precast = {},
-    SIRD = { -- 102% to Cap
+    SIRD = {
     },
     Haste = { -- Used for Utsusemi cooldown
     },
@@ -38,8 +38,10 @@ local sets = {
     TP_LowAcc = {},
     TP_HighAcc = {},
     TP_NIN = {},
+    TP_Mjollnir_Haste = {},
 
     WS = {},
+    WS_HighAcc = {},
 
     Charm = {},
     Reward = {},
@@ -50,8 +52,8 @@ local sets = {
 profile.Sets = sets
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 6')
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 5')
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 2')
 end
 
 --[[
@@ -169,27 +171,20 @@ profile.HandleItem = function()
 end
 
 profile.HandlePreshot = function()
-    -- You may add logic here
 end
 
 profile.HandleMidshot = function()
-    -- You may add logic here
 end
 
 profile.HandleWeaponskill = function()
-    gFunc.EquipSet(sets.WS)
-    gcmelee.DoFenrirsEarring()
+    gcmelee.DoWS()
 end
 
 profile.OnLoad = function()
+    gcinclude.SetAlias(pets)
+    gcdisplay.CreateCycle('Pet', PetTable1)
     gcmelee.Load()
     profile.SetMacroBook()
-
-    gcinclude.SetAlias(pets)
-    local function createCycle()
-        gcdisplay.CreateCycle('Pet', PetTable1)
-    end
-    createCycle:once(2)
 end
 
 profile.OnUnload = function()

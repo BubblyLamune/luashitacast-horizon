@@ -105,47 +105,84 @@ profile.SetMacroBook = function()
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Paralyze\" <t>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Slow\" <t>");
 end;
-gcmage = gFunc.LoadFile("common\\gcmage.lua");
+--[[
+--------------------------------
+Everything below can be ignored.
+--------------------------------
+]]
+
+gcmage = gFunc.LoadFile('common\\gcmage.lua')
+
 profile.HandleAbility = function()
-end;
+end
+
 profile.HandleItem = function()
-	gcinclude.DoItem();
-end;
+    gcinclude.DoItem()
+end
+
 profile.HandlePreshot = function()
-end;
+end
+
 profile.HandleMidshot = function()
-end;
+end
+
 profile.HandleWeaponskill = function()
-	gFunc.EquipSet(sets.WS);
-end;
+    gFunc.EquipSet(sets.WS)
+    if (gcdisplay.GetCycle('TP') == 'HighAcc') then
+        gFunc.EquipSet('WS_HighAcc')
+    end
+
+    local action = gData.GetAction()
+    if (action.Name == 'Randgrith') then
+        gFunc.EquipSet(sets.WS_Randgrith)
+    end
+
+    gcmage.DoFenrirsEarring()
+end
+
 profile.OnLoad = function()
-	gcmage.Load();
-	profile.SetMacroBook();
-end;
+    gcmage.Load()
+    profile.SetMacroBook()
+end
+
 profile.OnUnload = function()
-	gcmage.Unload();
-end;
+    gcmage.Unload()
+end
+
 profile.HandleCommand = function(args)
-	gcmage.DoCommands(args);
-	if args[1] == "horizonmode" then
-		profile.HandleDefault();
-	end;
-end;
+    gcmage.DoCommands(args)
+
+    if (args[1] == 'horizonmode') then
+        profile.HandleDefault()
+    end
+end
+
 profile.HandleDefault = function()
-	gcmage.DoDefault(ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP);
-	gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()));
-end;
+    gcmage.DoDefault(ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP, nil)
+
+    gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
+end
+
 profile.HandlePrecast = function()
-	gcmage.DoPrecast(fastCastValue);
-end;
+    gcmage.DoPrecast(fastCastValue)
+end
+
 profile.HandleMidcast = function()
-	gcmage.DoMidcast(sets, ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP);
-	local action = gData.GetAction();
-	if string.match(action.Name, "Regen") then
-		gFunc.EquipSet("Regen");
-	end;
-	if string.match(action.Name, "Banish") then
-		gFunc.EquipSet("Banish");
-	end;
-end;
-return profile;
+    gcmage.DoMidcast(sets, ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP, nil)
+
+    local action = gData.GetAction()
+    if (action.Skill == 'Enhancing Magic') then
+        if (string.match(action.Name, 'Regen')) then
+            gFunc.EquipSet('Regen')
+        elseif (string.match(action.Name, 'Bar')) then
+            gFunc.EquipSet('Barspell')
+        end
+    elseif (string.match(action.Name, 'Banish')) then
+        gFunc.EquipSet('Banish')
+    elseif virology_ring and (string.match(action.Name, '.*na$') or (action.Name == 'Erase')) then
+        gFunc.Equip(virology_ring_slot, 'Virology Ring')
+    end
+end
+
+return profile
+

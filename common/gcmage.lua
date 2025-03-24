@@ -10,7 +10,7 @@ local light_staff = 'Light Staff'
 local dark_staff = 'Dark Staff'
 
 -- Set to true if you have the obi
-local karin_obi = false
+local karin_obi = true
 local dorin_obi = false
 local suirin_obi = false
 local furin_obi = false
@@ -27,7 +27,7 @@ local dream_boots = false
 local dream_mittens = false
 local skulkers_cape = false
 local wizards_mantle = false
-local republic_gold_medal = false
+local republic_gold_medal = true -- Note: Disabled for BRD
 
 local diabolos_earring = false
 local diabolos_earring_slot = 'Ear2'
@@ -45,8 +45,6 @@ local healers_earring = false
 local healers_earring_slot = 'Ear2'
 
 -- RDM Specific
-local tp_diabolos_earring = false
-local tp_diabolos_earring_slot = 'Ear2'
 local tp_fencers_ring = false
 local tp_fencers_ring_slot = 'Ring1'
 
@@ -71,9 +69,17 @@ local cure_clogs = false
 local ruckes_rung = false
 local medicine_ring = false
 local medicine_ring_slot = 'Ring1'
+local mjollnir = false
+local asklepios = false -- used for cures with mjollnir when /nin
 
 -- Set to true if you have both Dark Earring and Abyssal earring to turn off Diabolos's Earring override for Dark Magic sets
-local dark_and_diabolos_earrings = false
+local dark_and_abyssal_earrings = false
+
+-- For Meleeing on WHM, BRD or RDM. Fenrir's Earring will be prioritised over Diabolos's Earring if using the same slot
+local fenrirs_earring = false
+local fenrirs_earring_slot = 'Ear2'
+local tp_diabolos_earring = false
+local tp_diabolos_earring_slot = 'Ear2'
 
 -- Set to true if you want messages every time Mst.Cst. Bracelets are used.
 local log_conquest = false
@@ -91,9 +97,11 @@ local gcmage = {}
 
 local AliasList = T{
     'addmp','setmp','resetmp',
-    'mode', -- RDM / BLM
-    'csstun','hate','vert','fight', -- RDM
-    'yellow','mb','hnm', -- BLM
+    'mode', -- RDM / WHM / BLM
+    'csstun','hate','vert', -- RDM
+    'fight','tp', -- RDM / WHM / BRD
+    'yellow', -- BLM / WHM
+    'mb','hnm', -- BLM
     'lag',
 }
 
@@ -109,14 +117,14 @@ local NoMods = T{
     'Raise','Reraise','Reraise II','Reraise III',
     'Poisona','Paralyna','Silena','Blindna','Viruna','Erase',
     'Teleport-Holla','Teleport-Dem','Teleport-Mea',
-    'Dia','Dia II',
+    'Dia','Dia II','Dia III',
     'Utsusemi: Ichi','Utsusemi: Ni','Tonko: Ichi','Tonko: Ni','Monomi: Ichi'
 }
 
 local ElementalDebuffs = T{ 'Burn','Rasp','Drown','Choke','Frost','Shock' }
-local EnfeebMNDSpells = T{ 'Paralyze','Slow' }
+local EnfeebMNDSpells = T{ 'Paralyze','Slow','Paralyze II','Slow II' }
 local EnfeebMNDACCSpells = T{ 'Silence' }
-local EnfeebINTSpells = T{ 'Blind','Poison','Poison II','Poisonga' }
+local EnfeebINTSpells = T{ 'Blind','Poison','Poison II','Poisonga','Blind II' }
 local EnfeebINTACCSpells = T{ 'Gravity','Bind','Dispel','Sleep','Sleep II','Sleepga','Sleepga II' }
 local HateSpells = T{ 'Sleep','Sleep II','Blind','Dispel','Bind' }
 local DiabolosPoleSpells = T{ 'Aspir','Drain' }
@@ -142,6 +150,8 @@ local NukeObiTable = {
     ['Wind'] = 'Furin Obi',
     ['Ice'] = 'Hyorin Obi',
     ['Thunder'] = 'Rairin Obi',
+    ['Light'] = 'Korin Obi',
+    ['Dark'] = 'Anrin obi'
 }
 
 local NukeObiOwnedTable = {
@@ -151,6 +161,8 @@ local NukeObiOwnedTable = {
     ['Wind'] = furin_obi,
     ['Ice'] = hyorin_obi,
     ['Thunder'] = rairin_obi,
+    ['Light'] = korin_obi,
+    ['Dark'] = anrin_obi
 }
 
 local WeakElementTable = {
@@ -173,7 +185,13 @@ local restingMaxMP = false
 local lag = false
 
 function gcmage.Load()
-    gcmage.SetVariables:once(2)
+    local player = gData.GetPlayer()
+    if (player.MainJob ~= 'NON') then
+        gcmage.SetVariables()
+    else
+        gcmage.SetVariables:once(2)
+    end
+
     gcinclude.SetAlias(AliasList)
     gcinclude.Load()
 end
@@ -186,8 +204,11 @@ end
 function gcmage.SetVariables()
     local player = gData.GetPlayer()
 
-    if (player.MainJob ~= 'BRD') then
+    if (player.MainJob ~= 'BRD' and player.MainJob ~= 'SMN') then
         gcdisplay.CreateCycle('Mode', {[1] = 'Potency', [2] = 'Accuracy',})
+    end
+    if (player.MainJob ~= 'BLM' and player.MainJob ~= 'SMN') then
+        gcdisplay.CreateCycle('TP', {[1] = 'LowAcc', [2] = 'HighAcc',})
     end
     if (player.MainJob == 'RDM') then
         gcdisplay.CreateToggle('Hate', false)
@@ -196,6 +217,9 @@ function gcmage.SetVariables()
         gcdisplay.CreateToggle('Yellow', true)
         gcdisplay.CreateToggle('MB', false)
         gcdisplay.CreateToggle('HNM', false)
+    end
+    if (player.MainJob == 'WHM') then
+        gcdisplay.CreateToggle('Yellow', false)
     end
 end
 
@@ -228,6 +252,9 @@ function gcmage.DoCommands(args)
     elseif (args[1] == 'mode') then
         gcdisplay.AdvanceCycle('Mode')
         gcinclude.Message('Magic Mode', gcdisplay.GetCycle('Mode'))
+    elseif (args[1] == 'tp') then
+        gcdisplay.AdvanceCycle('TP')
+        gcinclude.Message('TP Mode', gcdisplay.GetCycle('TP'))
     elseif (args[1] == 'lag') then
         lag =  not lag
         gcinclude.Message('[Note: Midcast Delays are disabled if Lag is true] Lag', lag)
@@ -269,13 +296,17 @@ function gcmage.DoCommands(args)
         end
     end
 
+    if (player.MainJob == 'BLM' or player.MainJob == 'WHM') then
+        if (args[1] == 'yellow') then
+            gcdisplay.AdvanceToggle('Yellow')
+            gcinclude.Message('Yellow', gcdisplay.GetToggle('Yellow'))
+        end
+    end
+
     if (player.MainJob == 'BLM') then
         if (args[1] == 'mb') then
             gcdisplay.AdvanceToggle('MB')
             gcinclude.Message('MB', gcdisplay.GetToggle('MB'))
-        elseif (args[1] == 'yellow') then
-            gcdisplay.AdvanceToggle('Yellow')
-            gcinclude.Message('Yellow', gcdisplay.GetToggle('Yellow'))
         elseif (args[1] == 'hnm') then
             gcdisplay.AdvanceToggle('HNM')
             gcinclude.Message('HNM', gcdisplay.GetToggle('HNM'))
@@ -283,7 +314,15 @@ function gcmage.DoCommands(args)
     end
 end
 
-function gcmage.DoDefault(ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP)
+function gcmage.DoFenrirsEarring()
+    local environment = gData.GetEnvironment()
+
+    if (fenrirs_earring and (environment.Time >= 6 and environment.Time < 18)) then
+        gFunc.Equip(fenrirs_earring_slot, 'Fenrir\'s Earring')
+    end
+end
+
+function gcmage.DoDefault(ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP)
     local player = gData.GetPlayer()
     local environment = gData.GetEnvironment()
 
@@ -292,16 +331,18 @@ function gcmage.DoDefault(ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP)
     local equipMaxMP = false
     if (gcdisplay.IdleSet == 'Normal' or gcdisplay.IdleSet == 'Alternate') then
         if (setMP > 0) then
-            if (player.MP >= setMP + addMP - 50) then
+            if (player.MP >= setMP + addMP) then
                 equipMaxMP = true
             end
-        elseif (player.SubJob == "NIN") and ninSJMMP ~= nil and player.MP >= ninSJMMP + addMP - 25 then
+        elseif (player.SubJob == "NIN") and ninSJMMP ~= nil and player.MP >= ninSJMMP + addMP then
             equipMaxMP = true
-        elseif (player.SubJob == "WHM") and whmSJMMP ~= nil and player.MP >= whmSJMMP + addMP - 25 then
+        elseif (player.SubJob == "WHM") and whmSJMMP ~= nil and player.MP >= whmSJMMP + addMP then
             equipMaxMP = true
-        elseif (player.SubJob == "BLM") and blmSJMMP ~= nil and player.MP >= blmSJMMP + addMP - 25 then
+        elseif (player.SubJob == "BLM") and blmSJMMP ~= nil and player.MP >= blmSJMMP + addMP then
             equipMaxMP = true
-        elseif (player.SubJob == "RDM") and rdmSJMMP ~= nil and player.MP >= rdmSJMMP + addMP - 25 then
+        elseif (player.SubJob == "RDM") and rdmSJMMP ~= nil and player.MP >= rdmSJMMP + addMP then
+            equipMaxMP = true
+        elseif (player.SubJob == "DRK") and drkSJMMP ~= nil and player.MP >= drkSJMMP + addMP then
             equipMaxMP = true
         end
     end
@@ -309,35 +350,45 @@ function gcmage.DoDefault(ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP)
     if (equipMaxMP) then
         gFunc.EquipSet('IdleMaxMP')
         if (conquest:GetOutsideControl()) then
-            if (republic_gold_medal) then
+            if (republic_gold_medal and player.MainJob ~= 'BRD') then
                 gFunc.Equip('Neck', 'Rep.Gold Medal')
             end
         end
     end
 
     if (player.MainJob == 'RDM' or player.MainJob == 'WHM' or player.MainJob == 'BRD') then
-        if (player.Status == 'Engaged' and (gcdisplay.IdleSet == 'Normal' or gcdisplay.IdleSet == 'Alternate')) then
-            lastIdleSetBeforeEngaged = gcdisplay.IdleSet
-            gcinclude.ToggleIdleSet('Fight')
-            gcinclude.LockWeapon:once(1)
+        if (player.Status == 'Engaged') then
+            if (gcdisplay.IdleSet == 'Normal' or gcdisplay.IdleSet == 'Alternate') then
+                lastIdleSetBeforeEngaged = gcdisplay.IdleSet
+                gcinclude.ToggleIdleSet('Fight')
+                gcinclude.LockWeapon:once(1)
+            elseif (gcdisplay.IdleSet == 'Fight') then
+                gFunc.EquipSet('TP')
+                if (gcdisplay.GetCycle('TP') == 'HighAcc') then
+                    gFunc.EquipSet('TP_HighAcc')
+                end
+                if (environment.WeatherElement ~= 'Dark') and tp_diabolos_earring then
+                    gFunc.Equip(tp_diabolos_earring_slot, 'Diabolos\'s Earring')
+                end
+                if (fenrirs_earring and (environment.Time >= 6 and environment.Time < 18)) then
+                    gFunc.Equip(fenrirs_earring_slot, 'Fenrir\'s Earring')
+                end
+                if (player.SubJob == 'NIN') then
+                    gFunc.EquipSet('TP_NIN')
+                end
+                if gData.GetBuffCount(580) > 0 then -- Horizon Mjollnir Haste Buff
+                    gFunc.EquipSet('TP_Mjollnir_Haste')
+                end
+                if (player.MainJob == 'RDM' and tp_fencers_ring and player.HPP <= 75 and player.TP <= 1000) then
+                    gFunc.Equip(tp_fencers_ring_slot, 'Fencer\'s Ring')
+                end
+            end
         end
         if (player.Status == 'Idle' and lastIdleSetBeforeEngaged ~= '') then
             if (player.TP == 0) then
                 gcinclude.ToggleIdleSet(lastIdleSetBeforeEngaged)
                 lastIdleSetBeforeEngaged = ''
                 gcinclude.UnlockWeapon:once(1)
-            end
-        end
-        if (gcdisplay.IdleSet == 'Fight') then
-            gFunc.EquipSet('TP')
-            if (player.SubJob == 'NIN') then
-                gFunc.EquipSet('TP_NIN')
-            end
-            if (environment.WeatherElement ~= 'Dark') and tp_diabolos_earring then
-                gFunc.Equip(tp_diabolos_earring_slot, 'Diabolos\'s Earring')
-            end
-            if (player.MainJob == 'RDM' and tp_fencers_ring and player.HPP <= 75 and player.TP <= 1000) then
-                gFunc.Equip(tp_fencers_ring_slot, 'Fencer\'s Ring')
             end
         end
     end
@@ -383,6 +434,11 @@ function gcmage.DoDefault(ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP)
             restingMaxMP = true
             gcinclude.DoDefaultIdle()
             gFunc.EquipSet('IdleMaxMP')
+            if (conquest:GetOutsideControl()) then
+                if (republic_gold_medal) then
+                    gFunc.Equip('Neck', 'Rep.Gold Medal')
+                end
+            end
             if (dark_staff ~= '') then
                 gFunc.Equip('Main', dark_staff)
             end
@@ -413,19 +469,23 @@ function gcmage.DoPrecast(fastCastValue)
             end
         end
     elseif (not lag) then
-        gcmage.SetupMidcastDelay(fastCastValue)
         gFunc.EquipSet('Precast')
+        gcmage.SetupMidcastDelay(fastCastValue)
     else
         gFunc.EquipSet('Precast')
 
-        local weakened = gData.GetBuffCount('Weakened');
+        local weakened = gData.GetBuffCount('Weakness')
         if (weakened >= 1) then
             do return end
         end
 
-        if (action.Skill == 'Elemental Magic' and player.MainJob == 'BLM' and gcdisplay.GetToggle('Yellow') == true) then
-            if (not ElementalDebuffs:contains(action.Name)) then
-                gFunc.EquipSet('Yellow')
+        local blmYellow = action.Skill == 'Elemental Magic' and player.MainJob == 'BLM' and gcdisplay.GetToggle('Yellow') == true and not ElementalDebuffs:contains(action.Name)
+        local whmYellow = action.Skill == 'Healing Magic' and player.MainJob == 'WHM' and gcdisplay.GetToggle('Yellow') == true and CureSpells:contains(action.Name)
+
+        if (blmYellow or whmYellow) then
+            gFunc.EquipSet('Yellow')
+            if (gcdisplay.GetToggle('HNM') == true) then
+                gFunc.EquipSet('YellowHNM')
             end
         end
     end
@@ -441,7 +501,7 @@ function gcmage.SetupMidcastDelay(fastCastValue)
     if (player.MainJob == "WHM") then
         if (string.match(action.Name, 'Cure') or string.match(action.Name, 'Curaga')) then
             if (cure_clogs) then
-                fastCastValue = fastCastValue + 0.15
+                fastCastValue = fastCastValue + 0.15 -- Note, this should actually be 0.13 if you own both Rostrum Pumps and Cure Clogs but whatever, close enough.
                 gFunc.Equip('Feet', 'Cure Clogs')
             end
             if (ruckes_rung) then
@@ -451,7 +511,7 @@ function gcmage.SetupMidcastDelay(fastCastValue)
         end
     end
     if (action.Type == 'Bard Song' and string.match(action.Name, 'Prelude')) then
-        castTime = 8000
+        castTime = 4000
     end
     if (action.Skill == 'Divine Magic' and action.Name == 'Banish III') then
         castTime = 3000
@@ -463,28 +523,35 @@ function gcmage.SetupMidcastDelay(fastCastValue)
         gFunc.SetMidDelay(castDelay)
     end
 
-    local weakened = gData.GetBuffCount('Weakened');
+    local weakened = gData.GetBuffCount('Weakness')
     if (weakened >= 1) then
         do return end
     end
 
-    if (action.Skill == 'Elemental Magic' and player.MainJob == 'BLM' and gcdisplay.GetToggle('Yellow') == true) then
-        if (not ElementalDebuffs:contains(action.Name)) then
-            local function delayYellow()
-                gFunc.ForceEquipSet('Yellow')
+    local blmYellow = action.Skill == 'Elemental Magic' and player.MainJob == 'BLM' and gcdisplay.GetToggle('Yellow') == true and not ElementalDebuffs:contains(action.Name)
+    local whmYellow = action.Skill == 'Healing Magic' and player.MainJob == 'WHM' and gcdisplay.GetToggle('Yellow') == true and CureSpells:contains(action.Name)
+
+    if (blmYellow or whmYellow) then
+        local function delayYellow()
+            gFunc.ForceEquipSet('Yellow')
+            if (gcdisplay.GetToggle('HNM') == true) then
+                gFunc.ForceEquipSet('YellowHNM')
             end
-            local yellowDelay = castDelay - 1
-            if (yellowDelay <= 0) then
-                gFunc.EquipSet('Yellow')
-            else
-                delayYellow:once(yellowDelay)
+        end
+        local yellowDelay = castDelay - 1
+        if (yellowDelay <= 0) then
+            gFunc.EquipSet('Yellow')
+            if (gcdisplay.GetToggle('HNM') == true) then
+                gFunc.EquipSet('YellowHNM')
             end
+        else
+            delayYellow:once(yellowDelay)
         end
     end
     -- print(chat.header('DEBUG'):append(chat.message('Cast delay is ' .. castDelay)))
 end
 
-function gcmage.DoMidcast(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP)
+function gcmage.DoMidcast(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP)
     local player = gData.GetPlayer()
     local environment = gData.GetEnvironment()
     local action = gData.GetAction()
@@ -502,6 +569,8 @@ function gcmage.DoMidcast(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP)
         maxMP = blmSJMMP + addMP
     elseif (player.SubJob == "RDM" and rdmSJMMP ~= nil) then
         maxMP = rdmSJMMP + addMP
+    elseif (player.SubJob == "DRK" and drkSJMMP ~= nil) then
+        maxMP = drkSJMMP + addMP
     end
 
     if (gcmage.ShouldSkipCast(maxMP, isNoModSpell)) then
@@ -509,7 +578,9 @@ function gcmage.DoMidcast(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP)
     end
 
     if (chainspell == 0 and not lag) then
-        gcmage.SetupInterimEquipSet(sets)
+        if not (player.MainJob == 'BLM' and gcdisplay.GetToggle('Extra') and player.MP >= blmSJMMP) then
+            gcmage.SetupInterimEquipSet(sets)
+        end
     end
 
     if (action.Skill == 'Enhancing Magic') then
@@ -517,7 +588,7 @@ function gcmage.DoMidcast(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP)
     elseif (action.Skill == 'Healing Magic') then
         gcmage.EquipHealing(maxMP, sets, chainspell)
     elseif (action.Skill == 'Elemental Magic') then
-        gcmage.EquipElemental(maxMP)
+        gcmage.EquipElemental(maxMP, blmSJMMP)
     elseif (action.Skill == 'Enfeebling Magic') then
         gcmage.EquipEnfeebling()
     elseif (action.Skill == 'Dark Magic') then
@@ -565,6 +636,10 @@ function gcmage.ShouldSkipCast(maxMP, isNoModSpell)
             skipCast_Spell = true
             gcmage.EquipStaff()
         end
+    end
+
+    if (action.Skill ~= 'Ninjutsu' and player.MPP <= 95) then
+        gFunc.EquipSet('ConserveMP')
     end
 
     return skipCast_MP and skipCast_Spell
@@ -652,20 +727,22 @@ function gcmage.EquipHealing(maxMP, sets, chainspell)
             gFunc.Equip(water_ring_slot, 'Water Ring')
         end
     end
-    if (player.MainJob == 'WHM' and medicine_ring and player.HPP <= 75 and player.TP <= 1000) then
-        gFunc.Equip(medicine_ring_slot, 'Medicine Ring')
+    if (player.MainJob == 'WHM' and medicine_ring and CureSpells:contains(action.Name) and player.TP <= 1000) then
+        if (player.HPP <= 75 or gcdisplay.GetToggle('Yellow') == true) then
+            gFunc.Equip(medicine_ring_slot, 'Medicine Ring')
+        end
     end
     if (gcdisplay.GetToggle('Hate') == true) then
         gFunc.EquipSet('Hate')
         if (target.Name == me) then
             if (action.Name == 'Cure III') then
                 if (chainspell == 0) then
-                    gFunc.InterimEquipSet(sets.Cheat_C3HPDown)
+                    gFunc.ForceEquipSet(sets.Cheat_C3HPDown)
                 end
                 gFunc.EquipSet('Cheat_HPUp')
             elseif (action.Name == 'Cure IV') then
                 if (chainspell == 0) then
-                    gFunc.InterimEquipSet(sets.Cheat_C4HPDown)
+                    gFunc.ForceEquipSet(sets.Cheat_C4HPDown)
                 end
                 gFunc.EquipSet('Cheat_HPUp')
             end
@@ -676,7 +753,7 @@ function gcmage.EquipHealing(maxMP, sets, chainspell)
     end
 end
 
-function gcmage.EquipElemental(maxMP)
+function gcmage.EquipElemental(maxMP, blmNukeExtra)
     local action = gData.GetAction()
     local player = gData.GetPlayer()
     local environment = gData.GetEnvironment()
@@ -685,6 +762,10 @@ function gcmage.EquipElemental(maxMP)
     if (gcdisplay.GetToggle('HNM') == true) then
         gFunc.EquipSet('NukeHNM')
     end
+    if (player.MainJob == 'BLM' and gcdisplay.GetToggle('Extra') and player.MP >= blmNukeExtra) then
+        gFunc.EquipSet('NukeExtra')
+    end
+
     if (ElementalDebuffs:contains(action.Name)) then
         gFunc.EquipSet('NukeDOT')
         if (player.SubJob == "BLM" and wizards_earring) then
@@ -693,7 +774,7 @@ function gcmage.EquipElemental(maxMP)
     else
         if (gcdisplay.GetCycle('Mode') == 'Accuracy') then
             gFunc.EquipSet('NukeACC')
-            if (conquest:GetOutsideControl()) and (player.MainJob == 'RDM') and master_casters_bracelets then
+            if ((player.MainJob == 'RDM') and conquest:GetOutsideControl()) and master_casters_bracelets then
                 if (log_conquest) then print(chat.header('GCMage'):append(chat.message('Out of Region - Using Mst.Cst. Bracelets'))) end
                 gFunc.Equip('Hands', 'Mst.Cst. Bracelets')
             end
@@ -748,9 +829,10 @@ end
 function gcmage.EquipEnfeebling()
     local environment = gData.GetEnvironment()
     local action = gData.GetAction()
+    local player = gData.GetPlayer()
 
     gFunc.EquipSet('Enfeebling')
-    if (conquest:GetOutsideControl()) and master_casters_bracelets then
+    if ((player.MainJob ~= 'WHM') and conquest:GetOutsideControl()) and master_casters_bracelets then
         if (log_conquest) then print(chat.header('GCMage'):append(chat.message('Out of Region - Using Mst.Cst. Bracelets'))) end
         gFunc.Equip('Hands', 'Mst.Cst. Bracelets')
     end
@@ -763,26 +845,33 @@ function gcmage.EquipEnfeebling()
         gFunc.EquipSet('EnfeeblingINT')
     elseif (EnfeebINTACCSpells:contains(action.Name)) then
         gFunc.EquipSet('EnfeeblingINT')
-        gFunc.EquipSet('EnfeeblingACC')
-        if (conquest:GetOutsideControl()) and master_casters_bracelets then
-            gFunc.Equip('Hands', 'Mst.Cst. Bracelets')
-        end
+        gcmage.EquipEnfeeblingACC(action)
     elseif (EnfeebMNDACCSpells:contains(action.Name)) then
         gFunc.EquipSet('EnfeeblingMND')
-        gFunc.EquipSet('EnfeeblingACC')
-        if (conquest:GetOutsideControl()) and master_casters_bracelets then
-            gFunc.Equip('Hands', 'Mst.Cst. Bracelets')
-        end
+        gcmage.EquipEnfeeblingACC(action)
     end
     if (gcdisplay.GetCycle('Mode') == 'Accuracy') then
-        gFunc.EquipSet('EnfeeblingACC')
-        if (conquest:GetOutsideControl()) and master_casters_bracelets then
-            gFunc.Equip('Hands', 'Mst.Cst. Bracelets')
-        end
+        gcmage.EquipEnfeeblingACC(action)
     end
     if (gcdisplay.GetToggle('Hate') == true) then
         if (HateSpells:contains(action.Name)) then
             gFunc.EquipSet('Hate')
+        end
+    end
+end
+
+function gcmage.EquipEnfeeblingACC(action)
+    local player = gData.GetPlayer()
+
+    gFunc.EquipSet('EnfeeblingACC')
+    if ((player.MainJob ~= 'WHM') and conquest:GetOutsideControl()) and master_casters_bracelets then
+        gFunc.Equip('Hands', 'Mst.Cst. Bracelets')
+    end
+    if (ObiCheck(action)) then
+        local obi = NukeObiTable[action.Element]
+        local obiOwned = NukeObiOwnedTable[action.Element]
+        if (obiOwned) then
+            gFunc.Equip('Waist', obi)
         end
     end
 end
@@ -815,12 +904,15 @@ function gcmage.EquipDark(maxMP)
     if (DiabolosPoleSpells:contains(action.Name) and overlords_ring) then
         gFunc.Equip(overlords_ring_slot, 'Overlord\'s Ring')
     end
-    if (environment.WeatherElement == 'Dark') and diabolos_earring and (not dark_and_diabolos_earrings) then
+    if (environment.WeatherElement == 'Dark') and diabolos_earring and (not dark_and_abyssal_earrings) then
         gFunc.Equip(diabolos_earring_slot, 'Diabolos\'s Earring')
     end
-    if (action.Element == environment.WeatherElement) or (action.Element == environment.DayElement) then
-        if (action.Element == 'Dark') and anrin_obi then
-            gFunc.Equip('Waist', 'Anrin Obi')
+
+    if (ObiCheck(action)) then
+        local obi = NukeObiTable[action.Element]
+        local obiOwned = NukeObiOwnedTable[action.Element]
+        if (obiOwned) then
+            gFunc.Equip('Waist', obi)
         end
     end
 end
@@ -828,6 +920,7 @@ end
 function gcmage.EquipStaff()
     local action = gData.GetAction()
     local environment = gData.GetEnvironment()
+    local player = gData.GetPlayer()
 
     if (action.Skill ~= 'Enhancing Magic' and not ElementalDebuffs:contains(action.Name) and not string.match(action.Name, 'Utsusemi')) then
         local staff = ElementalStaffTable[action.Element]
@@ -837,6 +930,12 @@ function gcmage.EquipStaff()
 
         if (DiabolosPoleSpells:contains(action.Name)) then
             if (environment.WeatherElement == 'Dark' and diabolos_pole) then gFunc.Equip('Main', 'Diabolos\'s Pole') end
+        end
+        if (player.MainJob == 'WHM' and mjollnir and CureSpells:contains(action.Name)) then
+            gFunc.Equip('Main', 'Mjollnir')
+            if (player.SubJob == 'NIN' and asklepios) then
+                gFunc.Equip('Sub', 'Asklepios')
+            end
         end
     end
 end

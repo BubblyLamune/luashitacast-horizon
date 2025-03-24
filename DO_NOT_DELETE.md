@@ -164,3 +164,115 @@
 - WAR - Add SAM set for Attila's Earring
 - NIN - Tidy up Tables
 - MNK - Add regen gear
+
+### v1.3.14
+- WAR - Adds Aggressor logic
+- BRD - Fixes the bug with BRD always using singing gear on all spells
+
+### v1.3.15
+- PLD - Add warlock cape handling if /rdm
+- NIN - Add elemental obis, basic ranged set, some additional night time evasion item handling
+- NIN - Added Dark Magic for NIN. Changes NIN to always swap to staves if possible
+- BLM - Added YellowHNM set for BLM
+
+### v1.3.16
+- BRD - Fix fight disabling Range slot
+- Mages - Use obis when in accuracy mode when appropriate
+- NIN - Use obis for spells
+
+### v1.3.17
+- BLM - Remove elemental resist sets equipping opuntia ring
+- DRG - Use DT set when below Healing Breath HP threshold when /mage and fix pdt/mdt/resist set priority
+- DRK - Fix 2H Zerg set logic
+- MNK - Fix default gear priority logic
+- PLD - Fix Parade and Hercules Ring logic
+
+### v1.3.18
+- Mages - Add Fenrir's Earring to WHM, BRD and RDM
+- BRD - Fix broken file that was broken in 1.3.17 due to merge
+- MNK - Fix spam flickering between equips when using regen gear with +hp idle gear
+
+### v1.3.19
+- DRG - Fix weakened check on DRG DT
+
+### v1.3.20
+- RDM - Add Evisceration WS set
+- Mages - Allow max mp sets to be used when in /fight mode if not engaged
+- Mages - Remove max mp buffer values (better accuracy on swapping to max mp gear)
+- Mages - Add Rep.Gold Medal to resting max mp logic
+- THF - Make TH only override while engaged. Make TH equip on ability use
+
+### v1.3.21
+- Melee - Allow switching to Kite set when moving and engaged
+- All Jobs - Allow switching to Kite set when moving and engaged with Evasion set
+- DRK - Fix missing obi tables for spellcasting
+- RDM - Add HQ Blue Cotehardie behaviour
+- Removes background from UI Display, Switches Font and Colour to better match HXUI
+- RDM - Add a DRK SJ MP constant for convenience
+
+### v1.3.22
+- BRD - Add a set for HP Down that equips before Precast for songs
+- DRK - Add tanking logic
+- WHM - Fix order on precast to fix cure clogs
+- THF - Add TH set to magic
+
+### v1.3.23
+- DRK - Fix Dark Magic Obi usage
+- Mages - Fix Dark and Light Obi usage
+- NIN - Re-Add tp lock to NIN (will still lock range and ammo slots)
+- NIN - Add DT set behaviour to idle sets
+- Renamed dark_and_abyssal_earrings variable
+- Add Group 2 Merit Spells
+
+### v1.3.24
+- Add Handling for Nil player.MainJob() on initial load
+- Mages - Add ConserveMP set usage to MaxMP sets when below 95% MP
+
+### v1.3.25
+- Fix Faulty Logic for IdleDT set for NIN that was causing spam on DD jobs
+- PLD - Add Shadow Mantle for Rampart
+
+### v1.3.26
+- PLD/RDM - Switch Cure Cheats to ForceEquipSet for marginally better performance
+- RNG - Fix Unlimited Shot logic
+
+### v1.3.27
+- NIN - Fixes idle set usage
+- WHM - Prevents usage of Master Caster Brc. as WHM have relic hands
+
+### v1.3.28
+- PLD - Adds a delay to cure cheating to minimize the cure window. This comes at the expense of 1 second of SIRD gear.
+- BLM - Fixes weakness check when nuking with yellow set and disables sorc ring automatically if weakened
+- WHM - Adds Barspell set for Cleric's Pantaloons etc.
+
+### v1.3.29
+- DRG - Adds a non-mage breath set
+- Melee - Adds cast delay handling for Hasso and Seigan
+- DRK - Adds fenrir's stone
+
+### v1.3.30
+- BLM - Implements /extra command toggle, NukeExtra and StoneskinExtra sets to be able to nuke with a max mp-ish set.
+
+### v1.3.31
+- WHM - Add Virology Ring
+
+### v1.4.0
+- WHM - Implements a Yellow toggle for Medicine Ring
+- WHM - Implements Mjollnir / Asklepios
+- WHM/RDM/BRD - Implements TP LowAcc and HighAcc sets
+- All Jobs - Implements a Mjollnir Haste Buff set
+- RNG - Changes Ranged_ATK set to EagleEyeShot and actually implements Ranged_ATK as a toggle to change midshot equipment
+- NIN - Adds Nuke Accuracy modes
+- PLD - Add Divine Magic set
+- All Melee - Adds WS_HighAcc set
+- DRG - Implements accuracy modes for jumps
+
+### v1.4.1
+- WHM - Fixed Virology Ring typo
+
+### v1.4.2
+- BRD - Updated Preludes to 4000 because Horizon can't get their client DATs right still...
+- SMN - Remove pointless toggles from SMN
+
+### v1.4.3
+- PLD - Make Enfeebling and Enhancing spells not equip enmity set

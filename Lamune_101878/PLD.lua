@@ -13,22 +13,25 @@ local valor_leggings = 'Vlr. Leggings +1'
 
 local arco_de_velocidad = true
 
+local warlocks_mantle = true -- Don't add 2% to fastCastValue to this as it is SJ dependant
+
+local shadow_mantle = true
+
 local sets = {
     Idle = {
         Main = 'Durandal',
-        -- Sub = 'Master Shield',
         Sub = 'Palmerin\'s Shield',
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'displaced',
         Body = 'Royal Cloak',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Bloodbead Earring', Priority = 100 },
-        Hands = 'Dst. Mittens +1',
+        Hands = 'Heavy Gauntlets',
         Ring1 = 'Merman\'s Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
-        Back = 'Boxer\'s Mantle',
+        Back = 'Shadow Mantle',
         Waist = 'Warwolf Belt',
         Legs = { Name = 'Dst. Subligar +1', Priority = 10 },
         Feet = 'Dst. Leggings +1',
@@ -40,10 +43,10 @@ local sets = {
         Ammo = '',
         Head = 'displaced',
         Body = 'Royal Cloak',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
-        Hands = 'Dst. Mittens +1',
+        Hands = 'Heavy Gauntlets',
         Ring1 = 'Merman\'s Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
         Back = { Name = 'Valor Cape', Priority = 100 },
@@ -62,10 +65,10 @@ local sets = {
         Neck = { Name = 'Shield Torque', Priority = 100 },
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Bloodbead Earring', Priority = 100 },
-        Hands = 'Dst. Mittens +1', -- 2
+        Hands = 'Heavy Gauntlets', -- 3
         Ring1 = 'Jelly Ring', -- 5
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
-        Back = 'Boxer\'s Mantle',
+        Back = 'Shadow Mantle',
         Waist = 'Warwolf Belt',
         Legs = { Name = 'Dst. Subligar +1', Priority = 10 }, -- 3
         Feet = { Name = 'Glt. Leggings +1', Priority = 90 },
@@ -77,10 +80,10 @@ local sets = {
         Ammo = '',
         Head = 'Darksteel Cap +1', -- 2
         Body = 'Dst. Harness +1', -- 4
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
-        Hands = 'Dst. Mittens +1', -- 2
+        Hands = 'Heavy Gauntlets', -- 3
         Ring1 = 'Jelly Ring', -- 5
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
         Back = { Name = 'Valor Cape', Priority = 100 },
@@ -114,10 +117,10 @@ local sets = {
         Ammo = '',
         Head = 'Darksteel Cap +1', -- 2
         Body = 'Dst. Harness +1', -- 4
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Bloodbead Earring', Priority = 100 },
-        Hands = 'Dst. Mittens +1', -- 2
+        Hands = 'Heavy Gauntlets', -- 2
         Ring1 = 'Jelly Ring', -- 5
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
         Back = { Name = 'Valor Cape', Priority = 100 },
@@ -127,12 +130,11 @@ local sets = {
     },
     MDT = { -- Shell IV provides 23% MDT
         Main = 'Durandal',
-        -- Sub = 'Master Shield',
         Sub = 'Palmerin\'s Shield', -- 2
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Darksteel Cap +1',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = 'Merman\'s Earring', -- 2
         Body = 'Cor. Scale Mail +1', -- 4
@@ -146,11 +148,11 @@ local sets = {
     },
     FireRes = { -- 150
         Main = 'Durandal',
-        Sub = 'Nms. Shields +1', -- 15
+        Sub = 'Nms. Shield +1', -- 15
         Range = 'Rosenbogen',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -162,15 +164,15 @@ local sets = {
         Legs = 'Blood Cuisses', -- 21
         Feet = 'Power Sandals', -- 7
     },
-    IceRes = { -- 152
+    IceRes = { -- 153
         Main = 'Vulcan\'s Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Diamond Earring', -- 10
-        Ear2 = 'Diamond Earring', -- 10
+        Ear2 = 'Omn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
         Hands = 'Feral Gloves', -- 4
         Ring1 = 'Omniscient Ring', -- 10
@@ -182,15 +184,15 @@ local sets = {
     },
     LightningRes = { -- 151
         Main = 'Durandal',
-        Sub = 'Nms. Shields +1', -- 15
+        Sub = 'Nms. Shield +1', -- 15
         Range = 'Lightning Bow +1', -- 7
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Assault Brstplate', -- 15
-        Hands = 'Dst. Mittens +1',
+        Hands = 'Heavy Gauntlets',
         Ring1 = 'Spinel Ring', -- 9
         Ring2 = 'Malflash Ring', -- 10
         Back = 'Gaia Mantle +1', -- 12
@@ -203,8 +205,8 @@ local sets = {
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -216,15 +218,15 @@ local sets = {
         Legs = 'Beak Trousers +1', -- 7
         Feet = 'Blood Greaves', -- 21
     },
-    WindRes = { -- 135
+    WindRes = { -- 136
         Main = 'Aquilo\'s Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Diamond Earring', -- 10
-        Ear2 = 'Diamond Earring', -- 10
+        Ear2 = 'Omn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
         Hands = 'Coral Fng. Gnt. +1',
         Ring1 = 'Emerald Ring', -- 9
@@ -239,8 +241,8 @@ local sets = {
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -252,14 +254,20 @@ local sets = {
         Legs = 'Blood Cuisses', -- 21
         Feet = 'Coral Greaves +1', -- 4
     },
-    Evasion = {},
+    Evasion = {
+        Head = 'Bahamut\'s Mask',
+        -- Hrotti
+        -- Crimson Scale Mail
+        Legs = 'Bahamut\'s Hose',
+        Ring2 = { Name = 'Sattva Ring', Priority = 100 },
+    },
 
     Precast = {
         Ear1 = 'Loquac. Earring',
         Ear2 = { Name = 'Bloodbead Earring', Priority = 100 },
         Legs = 'Homam Cosciales',
     },
-    SIRD = { -- 102% to Cap
+    SIRD = {
         Main = 'Durandal',
         -- Sub = 'Master Shield',
         Sub = 'Palmerin\'s Shield',
@@ -268,10 +276,10 @@ local sets = {
         Ear1 = 'Magnetic Earring', -- 8
         Ear2 = 'Knightly Earring', -- 9
         Body = 'Dst. Harness +1',
-        Hands = 'Dst. Mittens +1',
+        Hands = 'Heavy Gauntlets',
         Ring1 = 'Merman\'s Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
-        Back = 'Boxer\'s Mantle',
+        Back = 'Shadow Mantle',
         Waist = 'Silver Obi +1', -- 8
         Legs = 'Vlr. Breeches +1', -- 10
         Feet = 'Mountain Gaiters', -- 5
@@ -285,9 +293,9 @@ local sets = {
         Ear2 = 'Magnetic Earring',
         Body = 'Dst. Harness +1',
         Hands = 'Dusk Gloves +1', -- 4
-        Ring1 = 'Blitz Ring', -- 1
+        Ring1 = 'Merman\'s Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
-        Back = 'Boxer\'s Mantle',
+        Back = 'Shadow Mantle',
         Waist = 'Sonic Belt', -- 6
         Legs = 'Homam Cosciales', -- 3
         Feet = 'Homam Gambieras', -- 3
@@ -298,13 +306,11 @@ local sets = {
     Hate = {
         Main = 'Durandal',
         Sub = 'Koenig Shield',
-        Head = 'Aegishjalmr',
-        -- Head = 'Bahamut\'s Mask',
+        Head = 'Bahamut\'s Mask',
         Neck = 'Harmonia\'s Torque',
         Ear1 = 'Hades Earring +1',
         Ear2 = { Name = 'Bloodbead Earring', Priority = 100 },
-        Body = 'Vlr. Surcoat +1',
-        -- Body = { Name = 'Hydra Haubert', Priority = -100 },
+        Body = { Name = 'Hydra Haubert', Priority = -100 },
         Hands = { Name = 'Hydra Moufles', Priority = -100 },
         Ring1 = 'Hercules\' Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
@@ -314,14 +320,13 @@ local sets = {
         Feet = 'Vlr. Leggings +1',
     },
     Hate_Flash = { -- Optional, provided here only if you wish to mix in haste or other stats over max +enmity
-        Main = 'Durandal',
-        Sub = 'Koenig Shield',
+        Main = 'Capricorn Staff',
+        Sub = 'remove',
         Head = 'Homam Zucchetto',
         Neck = 'Harmonia\'s Torque',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Hades Earring +1',
-        Body = 'Vlr. Surcoat +1',
-        -- Body = { Name = 'Hydra Haubert', Priority = -100 },
+        Body = { Name = 'Hydra Haubert', Priority = -100 },
         Hands = 'Dusk Gloves +1',
         Ring1 = 'Hercules\' Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
@@ -336,17 +341,15 @@ local sets = {
         Sub = 'Palmerin\'s Shield',
         Range = 'Lightning Bow +1',
         Ammo = '',
-        Head = 'Darksteel Cap +1',
-        -- Head = 'Faerie Hairpin', -- Add w/ Hydra Haubert
+        Head = 'Faerie Hairpin',
         Neck = 'Willpower Torque', -- 5
         Ear1 = 'Magnetic Earring', -- 8
         Ear2 = 'Knightly Earring', -- 9
-        Body = 'Dst. Harness +1',
-        Hands = 'Dst. Mittens +1',
-        -- Hands = 'Hydra Moufles', -- Add w/ Hydra Haubert
+        Body = 'Hydra Haubert',
+        Hands = 'Hydra Moufles',
         Ring1 = 'Ether Ring',
         Ring2 = 'Serket Ring',
-        Back = 'Boxer\'s Mantle',
+        Back = 'Shadow Mantle',
         Waist = 'Silver Obi +1', -- 8
         Legs = 'Vlr. Breeches +1', -- 10
         Feet = 'Mountain Gaiters', -- 5
@@ -356,12 +359,11 @@ local sets = {
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
-        Head = 'Aegishjalmr',
+        Head = 'Bahamut\'s Mask',
         Neck = 'Harmonia\'s Torque',
         Ear1 = 'Hospitaler Earring',
         Ear2 = 'Hades Earring +1',
-        Body = 'Vlr. Surcoat +1',
-        -- Body = { Name = 'Hydra Haubert', Priority = -100 },
+        Body = { Name = 'Hydra Haubert', Priority = -100 },
         Hands = { Name = 'Hydra Moufles', Priority = -100 },
         Ring1 = 'Bomb Queen Ring',
         Ring2 = 'Sattva Ring',
@@ -377,26 +379,24 @@ local sets = {
         Range = 'Lightning Bow +1',
         Ammo = '',
         Head = 'Faerie Hairpin',
-        Neck = 'Willpower Torque', -- 5
-        -- Neck = 'Star Necklace', -- Add w/ Hydra Haubert
+        Neck = 'Willpower Torque',
         Ear1 = 'Magnetic Earring', -- 8
         Ear2 = 'Knightly Earring', -- 9
-        Body = 'Dst. Harness +1',
-        -- Body = 'Hydra Haubert',
+        Body = 'Hydra Haubert',
         Hands = 'Hydra Moufles',
         Ring1 = 'Ether Ring',
         Ring2 = 'Serket Ring',
-        Back = 'Settler\'s Cape', -- Remove w/ Hydra Haubert
+        Back = 'Shadow Mantle',
         Waist = 'Silver Obi +1', -- 8
         Legs = 'Hydra Brayettes',
-        Feet = 'Mountain Gaiters', -- 5
+        Feet = 'Hydra Sollerets',
     },
     Cheat_C4HPUp = {
         Main = 'Apollo\'s Staff',
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
-        Head = 'Aegishjalmr',
+        Head = 'Bahamut\'s Mask',
         Neck = 'Harmonia\'s Torque',
         Ear1 = 'Hospitaler Earring',
         Ear2 = 'Hades Earring +1',
@@ -441,6 +441,7 @@ local sets = {
         Feet = 'Homam Gambieras',
     },
     TP_HighAcc = {},
+    TP_Mjollnir_Haste = {},
 
     WS = {
         Head = 'Optical Hat',
@@ -448,7 +449,8 @@ local sets = {
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Haubergeon',
-        Hands = 'Alkyoneus\'s Brc.',
+        -- Hands = 'Alkyoneus\'s Brc.',
+        Hands = 'Tarasque Mitts +1',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
@@ -456,16 +458,19 @@ local sets = {
         Legs = 'Vlr. Breeches +1',
         Feet = 'Rutter Sabatons',
     },
+    WS_HighAcc = {},
+
     WS_Spirits = {},
 
     Cover = {
-        Head = 'Gallant Coronet',
+        -- Head = 'Gallant Coronet', -- This doesn't work on ASB anyway...
         Body = 'Vlr. Surcoat +1',
     },
     Cure = {
         Main = 'Apollo\'s Staff',
         Ear1 = 'Hospitaler Earring',
     },
+    Divine = {},
     Rampart = { -- Rampart gives VIT x2 damage shield in era
         Main = 'Durandal',
         Sub = 'Koenig Shield',
@@ -475,19 +480,20 @@ local sets = {
         Neck = 'Fortitude Torque',
         Ear1 = 'Robust Earring',
         Ear2 = 'Robust Earring',
-        Body = 'Gaia Doublet',
+        Body = 'Gallant Surcoat',
         Hands = 'Kng. Handschuhs',
         Ring1 = 'Robust Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
         Back = { Name = 'Valor Cape', Priority = 100 },
         Waist = 'Warwolf Belt',
-        Legs = 'Beak Trousers +1',
+        Legs = 'Adaman Cuisses',
         Feet = 'Power Sandals',
     },
     ShieldBash = {
         Ear2 = 'Knightly Earring',
         Hands = 'Vlr. Gauntlets +1',
     },
+    Enhancing = {},
 }
 profile.Sets = sets
 
@@ -495,8 +501,8 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 3')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 //shieldbash')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 //holy')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 //flash')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 //shieldbash')
 end
 
 --[[
@@ -509,6 +515,7 @@ gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 
 profile.HandleAbility = function()
     local action = gData.GetAction()
+
     if (action.Name == 'Chivalry') then
         return
     end
@@ -519,6 +526,10 @@ profile.HandleAbility = function()
         gFunc.Equip('Legs', gallant_leggings)
     elseif (action.Name == 'Rampart') then
         gFunc.EquipSet(sets.Rampart)
+        local environment = gData.GetEnvironment()
+        if (shadow_mantle and environment.DayElement == 'Dark') then
+            gFunc.Equip('Back', 'Shadow Mantle')
+        end
     elseif (action.Name == 'Shield Bash' and valor_gauntlets ~= '') then
         gFunc.EquipSet(sets.ShieldBash)
     elseif (action.Name == 'Sentinel' and valor_leggings ~= '') then
@@ -533,17 +544,13 @@ profile.HandleItem = function()
 end
 
 profile.HandlePreshot = function()
-    -- You may add logic here
 end
 
 profile.HandleMidshot = function()
-    -- You may add logic here
 end
 
 profile.HandleWeaponskill = function()
-    gFunc.EquipSet(sets.WS)
-
-    gcmelee.DoFenrirsEarring()
+    gcmelee.DoWS()
 
     local action = gData.GetAction()
     if (action.Name == 'Spirits Within') then
@@ -569,42 +576,12 @@ profile.HandleCommand = function(args)
     end
 end
 
-local utsuBuffs = T{
-    [66] = 1,
-    [444] = 2,
-    [445] = 3,
-    [446] = 4,
-}
-
 profile.HandleDefault = function()
     gcmelee.DoDefault()
 
     local player = gData.GetPlayer()
-    if (parade_gorget and player.HPP >= 85) then
-        gFunc.Equip('Neck', 'Parade Gorget')
-    end
-
-    if (hercules_ring and player.HPP <= 50) then
-        gFunc.Equip(hercules_ring_slot, 'Hercules\' Ring')
-    end
-
-    if (player.SubJob == 'NIN') then
-        local function GetShadowCount()
-            for buffId, shadowCount in pairs(utsuBuffs) do
-                if (gData.GetBuffCount(buffId) > 0) then
-                    return shadowCount
-                end
-            end
-
-            return 0
-        end
-        if (GetShadowCount() == 0) then
-            gFunc.EquipSet('IdleDT')
-            if (gcdisplay.IdleSet == 'Alternate') then gFunc.EquipSet('IdleALTDT') end
-        end
-    end
-
     local cover = gData.GetBuffCount('Cover')
+
     if (cover >= 1) then
         gFunc.EquipSet(sets.Cover)
     end
@@ -616,12 +593,46 @@ profile.HandleDefault = function()
         end
     end
 
+    if (parade_gorget and player.HPP >= 85) then
+        gFunc.Equip('Neck', 'Parade Gorget')
+    end
+
+    if (hercules_ring and player.HPP <= 50) then
+        gFunc.Equip(hercules_ring_slot, 'Hercules\' Ring')
+    end
+
     gcmelee.DoDefaultOverride()
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
 end
 
 profile.HandlePrecast = function()
-    gcmelee.DoPrecast(fastCastValue)
+    local player = gData.GetPlayer()
+    local target = gData.GetActionTarget()
+    local action = gData.GetAction()
+    local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0)
+
+    local cheatDelay = 0
+    if (player.SubJob == "RDM" and warlocks_mantle) then
+        cheatDelay = gcmelee.DoPrecast(fastCastValue + 0.02)
+        gFunc.Equip('Back', 'Warlock\'s Mantle')
+    else
+        cheatDelay = gcmelee.DoPrecast(fastCastValue)
+    end
+
+    if (cheatDelay < 0) then
+        cheatDelay = 0
+    end
+    local function delayCheat()
+        if (target.Name == me) then
+            if (action.Name == 'Cure III') then
+                gFunc.ForceEquipSet(sets.Cheat_C3HPDown)
+            elseif (action.Name == 'Cure IV') then
+                gFunc.ForceEquipSet(sets.Cheat_C4HPDown)
+            end
+        end
+    end
+
+    delayCheat:once(cheatDelay)
 end
 
 profile.HandleMidcast = function()
@@ -631,7 +642,7 @@ profile.HandleMidcast = function()
     local action = gData.GetAction()
     local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0)
 
-    if (action.Skill ~= 'Ninjutsu') then
+    if (action.Skill ~= 'Ninjutsu' and action.Skill ~= 'Enfeebling' and action.Skill ~= 'Enhancing') then
         local sentinel = gData.GetBuffCount('Sentinel')
         if (sentinel >= 1) then
             gFunc.EquipSet(sets.Haste)
@@ -644,19 +655,21 @@ profile.HandleMidcast = function()
 
         if (action.Skill == 'Healing Magic') then
             gFunc.EquipSet(sets.Cure)
+        elseif (action.Skill == 'Divine Magic') then
+            gFunc.EquipSet(sets.Divine)
         end
     else
         if (action.Name == 'Utusemi: Ichi') then
             gFunc.EquipSet(sets.Haste_Ichi)
+        elseif (action.Name == 'Stoneskin' or action.Name == 'Phalanx') then
+            gFunc.EquipSet(sets.Enhancing)
         end
     end
 
     if (target.Name == me) then
         if (action.Name == 'Cure III') then
-            gFunc.InterimEquipSet(sets.Cheat_C3HPDown)
             gFunc.EquipSet(sets.Cheat_C3HPUp)
         elseif (action.Name == 'Cure IV') then
-            gFunc.InterimEquipSet(sets.Cheat_C4HPDown)
             gFunc.EquipSet(sets.Cheat_C4HPUp)
         end
     end

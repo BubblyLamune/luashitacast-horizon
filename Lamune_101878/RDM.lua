@@ -5,8 +5,10 @@ local fastCastValue = 0.42 -- 20% from traits 22% from gear listed in Precast se
 local ninSJMaxMP = 535 -- The Max MP you have when /nin in your idle set
 local whmSJMaxMP = 613 -- The Max MP you have when /whm in your idle set
 local blmSJMaxMP = 632 -- The Max MP you have when /blm in your idle set
+local drkSJMaxMP = 556 -- The Max MP you have when /drk in your idle set
 
-local blue_cotehardie = true
+local blue_cotehardie = false
+local blue_cotehardie_plus_one = true
 local dilation_ring = true
 local dilation_ring_slot = 'Ring2'
 
@@ -16,12 +18,12 @@ local sets = {
         Range = 'Arco de Velocidad',
         Ammo = '',
         Head = 'Dls. Chapeau +1',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Dst. Harness +1',
         Hands = 'Dst. Mittens +1',
-        Ring1 = 'Merman\'s Ring',
+        Ring1 = 'Shadow Ring',
         Ring2 = 'Sattva Ring',
         Back = 'Umbra Cape',
         Waist = 'Warwolf Belt',
@@ -33,7 +35,7 @@ local sets = {
         Range = 'Arco de Velocidad',
         Ammo = '',
         Head = 'Dls. Chapeau +1',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Dst. Harness +1',
@@ -67,15 +69,14 @@ local sets = {
         Range = 'Arco de Velocidad',
         Ammo = '',
         Head = 'Dls. Chapeau +1',
-        Neck = 'Checkered Scarf',
+        Neck = 'Pch. Collar',
         Ear1 = 'Relaxing Earring',
         Ear2 = 'Magnetic Earring',
         Body = 'Mahatma Hpl.',
         Hands = 'Hydra Gloves',
         Back = 'Errant Cape',
         Waist = 'Duelist\'s Belt',
-        Legs = 'Baron\'s Slops',
-        -- Legs = 'Hydra Brais',
+        Legs = 'Hydra Brais',
         Feet = 'Hydra Gaiters',
     },
     Town = {},
@@ -89,7 +90,7 @@ local sets = {
         Range = 'Arco de Velocidad',
         Ammo = '',
         Head = 'Dls. Chapeau +1',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Dst. Harness +1', -- 4
@@ -106,7 +107,7 @@ local sets = {
         Range = 'Arco de Velocidad',
         Ammo = '',
         Head = 'Dls. Chapeau +1',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Dst. Harness +1', -- 4
@@ -123,15 +124,15 @@ local sets = {
         Range = 'Arco de Velocidad',
         Ammo = '',
         Head = 'Dls. Chapeau +1',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = 'Merman\'s Earring', -- 2
         Body = 'Cor. Scale Mail +1', -- 4
         Hands = 'Coral Fng. Gnt. +1', -- 2
-        Ring1 = 'Merman\'s Ring', -- 4
+        Ring1 = 'Shadow Ring',
         Ring2 = 'Sattva Ring', -- 5
         Back = 'Hexerei Cape', -- 3
-        Waist = 'Warwolf Belt',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Coral Cuisses +1', -- 3
         Feet = 'Coral Greaves +1', -- 2
     },
@@ -139,8 +140,8 @@ local sets = {
         Main = 'Neptune\'s Staff', -- 20
         Range = 'Arco de Velocidad',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Scp. Breastplate', -- 9
@@ -152,14 +153,14 @@ local sets = {
         Legs = 'Blood Cuisses', -- 21
         Feet = 'Power Sandals', -- 7
     },
-    IceRes = { -- 144
+    IceRes = { -- 145
         Main = 'Vulcan\'s Staff', -- 20
         Range = 'Arco de Velocidad',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Diamond Earring', -- 10
-        Ear2 = 'Diamond Earring', -- 10
+        Ear2 = 'Omn. Earring', -- 11
         Body = 'Northern Jerkin', -- 6
         Hands = 'Feral Gloves', -- 4
         Ring1 = 'Omniscient Ring', -- 10
@@ -173,8 +174,8 @@ local sets = {
         Main = 'Terra\'s Staff', -- 20
         Range = 'Lightning Bow +1', -- 7
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Dst. Harness +1',
@@ -190,8 +191,8 @@ local sets = {
         Main = 'Auster\'s Staff', -- 20
         Range = 'Arco de Velocidad',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Gaia Doublet', -- 10
@@ -203,14 +204,14 @@ local sets = {
         Legs = 'Beak Trousers +1', -- 7
         Feet = 'Blood Greaves', -- 21
     },
-    WindRes = { -- 138
+    WindRes = { -- 139
         Main = 'Aquilo\'s Staff', -- 20
         Range = 'Arco de Velocidad',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Diamond Earring', -- 10
-        Ear2 = 'Diamond Earring', -- 10
+        Ear2 = 'Omn. Earring', -- 11
         Body = 'Northern Jerkin', -- 6
         Hands = 'Mage\'s Cuffs', -- 5
         Ring1 = 'Emerald Ring', -- 9
@@ -224,8 +225,8 @@ local sets = {
         Main = 'Jupiter\'s Staff', -- 20
         Range = 'Arco de Velocidad',
         Ammo = '',
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Cor. Scale Mail +1', -- 6
@@ -261,7 +262,7 @@ local sets = {
         Legs = 'Dst. Subligar +1',
         Feet = 'Mountain Gaiters', -- 5
     },
-    SIRD = { -- 102% to Cap, used on Stoneskin, Blink, Aquaveil and Utsusemi casts
+    SIRD = { -- Used on Stoneskin, Blink, Aquaveil and Utsusemi casts
         Main = 'Hermit\'s Wand', -- 25
         Sub = 'Hermit\'s Wand', -- 25
         Ammo = 'Hedgehog Bomb',
@@ -285,15 +286,16 @@ local sets = {
         Hands = 'Dusk Gloves +1',
         Waist = 'Sonic Belt',
         Legs = 'Nashira Seraweels',
-        Feet = 'Dusk Ledelsens',
+        Feet = 'Dusk Ledelsens +1',
     },
     ConserveMP = {
+        Ammo = 'Dream Sand',
         Ear2 = 'Magnetic Earring',
     },
 
     Hate = { -- Switches to this set when casting Sleep, Blind, Dispel and Bind if /hate is toggled on
         Ammo = 'Phtm. Tathlum',
-        Head = 'Baron\'s Chapeau', -- 2
+        Head = 'Rival Ribbon', -- 2
         Neck = 'Harmonia\'s Torque', -- 3
         Ear1 = 'Eris\' Earring', -- 2
         Ear2 = 'Hades Earring +1', -- 2
@@ -327,7 +329,7 @@ local sets = {
         Main = 'Hermit\'s Wand', -- 25
         Sub = 'Hermit\'s Wand', -- 25
         Ammo = 'Tiphia Sting',
-        Head = 'Zenith Crown',
+        Head = 'Zenith Crown +1',
         Neck = 'Willpower Torque', -- 5
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Magnetic Earring', -- 8
@@ -342,7 +344,7 @@ local sets = {
     },
     Cheat_HPUp = {
         Ammo = 'Happy Egg',
-        Head = 'Baron\'s Chapeau', -- 2
+        Head = 'Rival Ribbon', -- 2
         Neck = 'Harmonia\'s Torque', -- 3
         Ear1 = 'Eris\' Earring', -- 2
         Ear2 = 'Hades Earring +1', -- 2
@@ -368,8 +370,7 @@ local sets = {
         Ring2 = 'Communion Ring',
         Back = 'Errant Cape', -- 5
         Waist = 'Penitent\'s Rope', -- 3
-        Legs = 'Raven Hose', -- 6
-        -- Legs = 'Hydra Brais', -- 6
+        Legs = 'Hydra Brais', -- 6
         Feet = 'Hydra Gaiters', -- 5
     },
     Cursna = {
@@ -385,21 +386,20 @@ local sets = {
         Neck = 'Enhancing Torque',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Magnetic Earring',
-        Body = 'Mahatma Hpl.',
+        Body = 'Glamor Jupon',
         Hands = 'Dls. Gloves +1',
         Ring1 = 'Aqua Ring',
         Ring2 = 'Communion Ring',
         Back = 'Merciful Cape',
         Waist = 'Sonic Belt',
         Legs = 'Warlock\'s Tights',
-        Feet = 'Dusk Ledelsens',
+        Feet = 'Dusk Ledelsens +1',
     },
     Stoneskin = {
         Neck = 'Stone Gorget',
+        Body = 'Mahatma Hpl.',
         Hands = 'Dusk Gloves +1',
         Back = 'Prism Cape',
-        Ear1 = 'Cmn. Earring',
-        Ear2 = 'Cmn. Earring',
     },
     Spikes = {
         Main = 'Aquilo\'s Staff',
@@ -420,7 +420,6 @@ local sets = {
 
     Enfeebling = {
         Head = 'Dls. Chapeau +1',
-        Neck = 'Faith Torque',
         Body = 'Mahatma Hpl.',
         Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
@@ -428,6 +427,7 @@ local sets = {
     },
     EnfeeblingMND = {
         Ammo = 'Hedgehog Bomb',
+        Neck = 'Faith Torque',
         Ear1 = 'Cmn. Earring',
         Ear2 = 'Cmn. Earring',
         Hands = 'Dvt. Mitts +1',
@@ -437,12 +437,13 @@ local sets = {
     },
     EnfeeblingINT = {
         Ammo = 'Phtm. Tathlum',
+        Neck = 'Prudence Torque',
         Ear1 = 'Abyssal Earring',
-        Ear2 = 'Morion Earring +1',
+        Ear2 = 'Omn. Earring',
         Hands = 'Mahatma Cuffs',
         Ring1 = 'Snow Ring',
         Ring2 = 'Omniscient Ring',
-        Feet = 'Wise Pigaches',
+        Feet = 'Wise Pigaches +1',
     },
     EnfeeblingACC = {
         Neck = 'Enfeebling Torque',
@@ -454,7 +455,7 @@ local sets = {
 
     Divine = { -- Just using my Hate set here for Flash
         Ammo = 'Phtm. Tathlum',
-        Head = 'Baron\'s Chapeau', -- 2
+        Head = 'Rival Ribbon', -- 2
         Neck = 'Harmonia\'s Torque', -- 3
         Ear1 = 'Eris\' Earring', -- 2
         Ear2 = 'Hades Earring +1', -- 2
@@ -505,7 +506,7 @@ local sets = {
     },
     NukeDOT = {
         Ear1 = 'Abyssal Earring',
-        Ear2 = 'Morion Earring +1',
+        Ear2 = 'Omn. Earring',
         Hands = 'Mahatma Cuffs',
         Back = 'Merciful Cape',
         Legs = 'Dls. Tights +1',
@@ -519,7 +520,7 @@ local sets = {
         Neck = 'Uggalepih Pendant',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Magnetic Earring',
-        Body = 'Blue Cotehardie',
+        Body = 'Blue Cotehard. +1',
         Hands = 'Zenith Mitts +1',
         Ring1 = 'Ether Ring',
         Ring2 = 'Serket Ring',
@@ -559,7 +560,7 @@ local sets = {
         Back = 'Merciful Cape',
         Waist = 'Sonic Belt',
         Legs = 'Nashira Seraweels',
-        Feet = 'Dusk Ledelsens',
+        Feet = 'Dusk Ledelsens +1',
     },
     StunACC = { -- You can also type /csstun to equip this set and /lock your gear at the same time if you have a tinfoil hat.
         Main = 'Jupiter\'s Staff',
@@ -581,9 +582,25 @@ local sets = {
     TP = {
         Main = 'Joyeuse',
         Sub = 'Genbu\'s Shield',
-        Range = '',
-        Ammo = 'Tiphia Sting',
+        Range = 'Lightning Bow +1',
+        Ammo = '',
         Head = 'Dls. Chapeau +1',
+        Neck = 'Peacock Amulet',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Merman\'s Earring',
+        Body = 'Hydra Doublet',
+        Hands = 'Dusk Gloves +1',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Back = 'Forager\'s Mantle',
+        Waist = 'Sonic Belt',
+        Legs = 'Nashira Seraweels',
+        Feet = 'Dusk Ledelsens +1',
+    },
+    TP_HighAcc = {
+        Range = 'Lightning Bow +1',
+        Ammo = '',
+        Head = 'Optical Hat',
         Neck = 'Peacock Amulet',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
@@ -591,38 +608,48 @@ local sets = {
         Hands = 'Hydra Gloves',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
-        Back = 'Forager\'s Mantle',
-        Waist = 'Sonic Belt',
-        Legs = 'Nashira Seraweels',
-        -- Legs = 'Hydra Brais',
+        Back = 'Commander\'s Cape',
+        Waist = 'Life Belt',
+        Legs = 'Hydra Brais',
         Feet = 'Hydra Gaiters',
     },
     TP_NIN = {
         Main = 'Martial Knife',
-        Sub = 'Joyeuse',
+        -- Main = 'Joyeuse',
         -- Main = 'Justice Sword',
-        -- Sub = 'Justice Sword',
-        -- Ear2 = 'Stealth Earring',
-        Range = '',
-        Ammo = 'Tiphia Sting',
+        -- Main = 'Blau Dolch',
+        Sub = 'Octave Club',
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Stealth Earring',
+        Range = 'Lightning Bow +1',
+        Ammo = '',
         -- Ammo = 'Virtue Stone',
     },
+    TP_Mjollnir_Haste = {},
     WS = {
         Head = 'Optical Hat',
         Ear2 = 'Merman\'s Earring',
-        Body = 'Hydra Doublet',
+        Body = 'Assault Jerkin',
         Hands = 'Tarasque Mitts +1',
         Waist = 'Warwolf Belt',
-        Legs = 'Feral Trousers',
-        -- Legs = 'Hydra Brais',
+        Legs = 'Hydra Brais',
         Feet = 'Rutter Sabatons',
+    },
+    WS_HighAcc = {
+        Body = 'Hydra Doublet',
+        Hands = 'Hydra Gloves',
+        Waist = 'Life Belt',
+        Feet = 'Hydra Gaiters',
     },
     WS_Soil = {
         Neck = 'Soil Gorget',
     },
+    WS_Evisceration = {
+        Hands = 'Custom M Gloves',
+    },
     WS_Spirits = {},
     WS_Energy = {
-        Head = 'Zenith Crown',
+        Head = 'Zenith Crown +1',
         Ear1 = 'Cmn. Earring',
         Ear2 = 'Cmn. Earring',
         Neck = 'Faith Torque',
@@ -647,7 +674,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 //dia')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 //dia')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 //stun')
 end
 
 --[[
@@ -659,7 +686,6 @@ Everything below can be ignored.
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
-    -- You may add logic here
 end
 
 profile.HandleItem = function()
@@ -667,20 +693,27 @@ profile.HandleItem = function()
 end
 
 profile.HandlePreshot = function()
-    -- You may add logic here
 end
 
 profile.HandleMidshot = function()
-    -- You may add logic here
 end
 
 profile.HandleWeaponskill = function()
     local action = gData.GetAction()
 
     gFunc.EquipSet(sets.WS)
+    if (gcdisplay.GetCycle('TP') == 'HighAcc') then
+        gFunc.EquipSet('WS_HighAcc')
+    end
+    gcmage.DoFenrirsEarring()
 
-    if (action.Name == 'Savage Blade') or (action.Name == 'Vorpal Blade') or (action.Name == 'Swift Blade') or (action.Name == 'Evisceration') then
+    if (action.Name == 'Savage Blade') or (action.Name == 'Vorpal Blade') or (action.Name == 'Swift Blade') then
         gFunc.EquipSet(sets.WS_Soil)
+    end
+
+    if (action.Name == 'Evisceration') then
+        gFunc.EquipSet(sets.WS_Soil)
+        gFunc.EquipSet(sets.Evisceration)
     end
 
     if (action.Name == 'Energy Drain') or (action.Name == 'Energy Steal') then
@@ -710,11 +743,14 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmage.DoDefault(ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, nil)
+    gcmage.DoDefault(ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, nil, drkSJMaxMP)
 
     local player = gData.GetPlayer()
     if (blue_cotehardie and player.MP <= 40) then
         gFunc.Equip('Body', 'Blue Cotehardie')
+    end
+    if (blue_cotehardie_plus_one and player.MP <= 50) then
+        gFunc.Equip('Body', 'Blue Cotehard. +1')
     end
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
@@ -725,7 +761,7 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
-    gcmage.DoMidcast(sets, ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, nil)
+    gcmage.DoMidcast(sets, ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, nil, drkSJMaxMP)
 
     local action = gData.GetAction()
     if (dilation_ring) then -- Haste is technically MP inefficient but I prefer to just always use it anyway

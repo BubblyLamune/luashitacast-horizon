@@ -56,7 +56,7 @@ local sets = {
     Evasion = {},
 
     Precast = {},
-    SIRD = { -- 102% to Cap
+    SIRD = {
     },
     Haste = { -- Used for Utsusemi cooldown
     },
@@ -68,8 +68,11 @@ local sets = {
     TP_LowAcc = {},
     TP_HighAcc = {},
     TP_NIN = {},
+    TP_Mjollnir_Haste = {},
 
     WS = {},
+    WS_HighAcc = {},
+
     WS_Evisceration = {},
     WS_SharkBite = {},
 
@@ -144,6 +147,10 @@ profile.HandleAbility = function()
     elseif (action.Name == 'Trick Attack') then
         taOverride = os.clock() + 2
     end
+
+    if (gcdisplay.GetToggle('TH')) then
+        gFunc.EquipSet(sets.TH)
+    end
 end
 
 profile.HandleItem = function()
@@ -151,7 +158,6 @@ profile.HandleItem = function()
 end
 
 profile.HandlePreshot = function()
-    -- You may add logic here
 end
 
 profile.HandleMidshot = function()
@@ -174,7 +180,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    gFunc.EquipSet(sets.WS)
+    gcmelee.DoWS()
 
     local action = gData.GetAction()
     if (action.Name == 'Evisceration') then
@@ -189,19 +195,13 @@ profile.HandleWeaponskill = function()
             gFunc.Equip('Hands', 'Rogue\'s Armlets +1')
         end
     end
-
-    gcmelee.DoFenrirsEarring()
 end
 
 profile.OnLoad = function()
+    gcinclude.SetAlias(T{'th'})
+    gcdisplay.CreateToggle('TH', false)
     gcmelee.Load()
     profile.SetMacroBook()
-
-    gcinclude.SetAlias(T{'th'})
-    local function createToggle()
-        gcdisplay.CreateToggle('TH', false)
-    end
-    createToggle:once(2)
 end
 
 profile.OnUnload = function()
@@ -232,10 +232,6 @@ profile.HandleDefault = function()
 
     gcmelee.DoDefaultOverride()
 
-    if (gcdisplay.GetToggle('TH')) then
-        gFunc.EquipSet(sets.TH)
-    end
-
     local sa = gData.GetBuffCount('Sneak Attack')
     local ta = gData.GetBuffCount('Trick Attack')
 
@@ -248,6 +244,10 @@ profile.HandleDefault = function()
     end
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
+
+    if (player.Status == 'Engaged' and gcdisplay.GetToggle('TH')) then
+        gFunc.EquipSet(sets.TH)
+    end
 end
 
 profile.HandlePrecast = function()
@@ -256,6 +256,11 @@ end
 
 profile.HandleMidcast = function()
     gcmelee.DoMidcast(sets)
+
+    local action = gData.GetAction()
+    if (action.Skill ~= 'Ninjutsu' and gcdisplay.GetToggle('TH')) then
+        gFunc.EquipSet(sets.TH)
+    end
 end
 
 return profile

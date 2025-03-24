@@ -1,5 +1,6 @@
 local profile = {}
 
+local max_hp_in_idle_with_regen_gear_equipped = 1632
 local fastCastValue = 0.02 -- 2% from gear
 
 -- Replace these with '' if you do not have them
@@ -13,8 +14,8 @@ local melee_gloves = 'Mel. Gloves +1'
 
 local muscle_belt = ''
 local garden_bangles = ''
-local presidential_hairpin = true
-local dream_ribbon = false
+local presidential_hairpin = false
+local dream_ribbon = true
 
 local kampfer_ring = true
 local kampfer_ring_slot = 'Ring2'
@@ -32,7 +33,7 @@ local sets = {
         Hands = 'Dst. Mittens +1',
         Ring1 = 'Merman\'s Ring',
         Ring2 = 'Sattva Ring',
-        Back = 'Boxer\'s Mantle',
+        Back = 'Shadow Mantle',
         Waist = 'Warwolf Belt',
         Legs = 'Byakko\'s Haidate',
         Feet = 'Dst. Leggings +1',
@@ -46,24 +47,32 @@ local sets = {
         Back = 'Melee Cape',
         Feet = 'Dst. Leggings +1',
     },
-    Town = {},
+    Town = {
+        Head = 'Tpl. Crown +1',
+        Body = 'Kirin\'s Osode',
+        Hands = 'Mel. Gloves +1',
+        Legs = 'Byakko\'s Haidate',
+        Feet = 'Melee Gaiters',
+    },
     Movement = {
         Feet = 'Herald\'s Gaiters',
     },
 
     DT = {
-        -- Main = 'Cross-Counters',
+        -- Main = 'Cross-Counters', -- 5
         -- Head = 'Arh. Jinpachi +1',
         Neck = 'Evasion Torque',
-        -- Ear1 = 'Avenger\'s Earring',
-        -- Ear2 = 'Avenger\'s Earring',
+        -- Neck = 'Peacock Amulet',
+        -- Ear1 = 'Avenger\'s Earring', -- 1
+        -- Ear2 = 'Avenger\'s Earring', -- 1
         -- Body = 'Arhat\'s Gi +1',
-        -- Hands = 'Rasetsu Tekko +1',
+        -- Hands = 'Rasetsu Tekko +1', -- 1
+        -- Hands = 'Noritsune Kote',
         Ring2 = 'Sattva Ring',
-        Back = 'Boxer\'s Mantle',
-        Legs = 'Tpl. Hose +1',
+        Back = 'Shadow Mantle',
+        Legs = 'Tpl. Hose +1', -- 3
         Feet = 'Melee Gaiters',
-        -- Feet = 'Rasetsu Sune-Ate +1',
+        -- Feet = 'Rasetsu Sune-Ate +1', -- 1
     },
     MDT = { -- Shell IV provides 23% MDT
     },
@@ -99,7 +108,7 @@ local sets = {
         Hands = 'Dst. Mittens +1',
         Ring1 = 'Jelly Ring',
         Ring2 = 'Sattva Ring',
-        Back = 'Boxer\'s Mantle',
+        Back = 'Shadow Mantle',
         Waist = 'Silver Obi +1', -- 8
         Legs = 'Dst. Subligar +1',
         Feet = 'Mountain Gaiters', -- 5
@@ -122,7 +131,7 @@ local sets = {
         Ear2 = 'Merman\'s Earring',
         Body = 'Kirin\'s Osode',
         Hands = 'Mel. Gloves +1',
-        Ring1 = 'Toreador\'s Ring',
+        Ring1 = 'Begrudging Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
         Waist = 'Black Belt',
@@ -143,6 +152,7 @@ local sets = {
         Legs = 'Byakko\'s Haidate',
         Feet = 'Fuma Sune-Ate',
     },
+    TP_Mjollnir_Haste = {},
 
     TP_Focus = {
         Ring1 = 'Flame Ring',
@@ -166,14 +176,14 @@ local sets = {
         Legs = 'Shura Haidate',
         Feet = 'Shura Sune-Ate',
     },
+    WS_HighAcc = {
+        Ring1 = 'Begrudging Ring',
+        Ring2 = 'Toreador\'s Ring',
+    },
+
     WS_AsuranFists = {
         Neck = 'Faith Torque',
         Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Merman\'s Earring',
-    },
-    WS_AsuranFists_HighAcc = {
-        Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Toreador\'s Ring',
     },
     WS_DragonKick = {
         Legs = 'Byakko\'s Haidate',
@@ -218,7 +228,7 @@ local sets = {
         Ring2 = 'Communion Ring',
         Back = 'Melee Cape',
         Legs = 'Tpl. Hose +1',
-        -- Waist = 'Reverend Sash',
+        Waist = 'Reverend Sash',
         Feet = 'Suzaku\'s Sune-Ate',
     },
 
@@ -291,24 +301,19 @@ profile.HandleItem = function()
 end
 
 profile.HandlePreshot = function()
-    -- You may add logic here
 end
 
 profile.HandleMidshot = function()
-    -- You may add logic here
 end
 
 profile.HandleWeaponskill = function()
-    gFunc.EquipSet(sets.WS)
+    gcmelee.DoWS()
 
     local action = gData.GetAction()
     local player = gData.GetPlayer()
 
     if (action.Name == 'Asuran Fists') then
         gFunc.EquipSet(sets.WS_AsuranFists)
-        if (gcdisplay.IdleSet == 'HighAcc') then
-            gFunc.EquipSet(sets.WS_AsuranFists_HighAcc)
-        end
     elseif (action.Name == 'Dragon Kick') then
         gFunc.EquipSet(sets.WS_DragonKick)
     elseif (action.Name == 'Howling Fist') then
@@ -318,8 +323,6 @@ profile.HandleWeaponskill = function()
     if (player.SubJob == 'THF') then
         gFunc.EquipSet(sets.SJ_THF)
     end
-
-    gcmelee.DoFenrirsEarring()
 end
 
 profile.OnLoad = function()
@@ -354,25 +357,11 @@ profile.HandleDefault = function()
         gFunc.EquipSet(sets.TP_Focus)
     end
 
-    if (player.Status == 'Idle') then
-        if (player.HPP < 50 and muscle_belt ~= '') then
-            gFunc.Equip('Waist', muscle_belt)
-        end
-        if (player.HPP < 100) then
-            local environment = gData.GetEnvironment()
-
-            if (muscle_belt ~= '') then
-                gFunc.Equip('Waist', muscle_belt)
-            end
-            if (garden_bangles ~= '' and environment.Time >= 6 and environment.Time < 18) then
-                gFunc.Equip('hands', garden_bangles);
-            end
-            if (presidential_hairpin and conquest:GetOutsideControl()) then
-                gFunc.Equip('Head', 'President. Hairpin')
-            end
-            if (dream_ribbon) then
-                gFunc.Equip('Head', 'Dream Ribbon')
-            end
+    if (player.Status == 'Engaged') then
+        if (player.SubJob == 'DRG') then
+            gFunc.EquipSet(sets.SJ_DRG)
+        elseif (player.SubJob == 'THF') then
+            gFunc.EquipSet(sets.SJ_THF)
         end
     end
 
@@ -394,10 +383,26 @@ profile.HandleDefault = function()
         end
     end
 
-    if (player.SubJob == 'DRG') then
-        gFunc.EquipSet(sets.SJ_DRG)
-    elseif (player.SubJob == 'THF') then
-        gFunc.EquipSet(sets.SJ_THF)
+    if (player.Status == 'Idle') then
+        if (player.HPP < 50 and muscle_belt ~= '') then
+            gFunc.Equip('Waist', muscle_belt)
+        end
+        if (player.HP < max_hp_in_idle_with_regen_gear_equipped) then
+            local environment = gData.GetEnvironment()
+
+            if (muscle_belt ~= '') then
+                gFunc.Equip('Waist', muscle_belt)
+            end
+            if (garden_bangles ~= '' and environment.Time >= 6 and environment.Time < 18) then
+                gFunc.Equip('hands', garden_bangles)
+            end
+            if (presidential_hairpin and conquest:GetOutsideControl()) then
+                gFunc.Equip('Head', 'President. Hairpin')
+            end
+            if (dream_ribbon) then
+                gFunc.Equip('Head', 'Dream Ribbon')
+            end
+        end
     end
 
     gcmelee.DoDefaultOverride()

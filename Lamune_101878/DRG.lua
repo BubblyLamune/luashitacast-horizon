@@ -7,6 +7,9 @@ local ethereal_earring_slot = 'Ear2'
 
 local warlocks_mantle = false -- Don't add 2% to fastCastValue to this as it is SJ dependant
 
+local heal_hp_threshold_whm = 859
+local heal_hp_threshold_rdm = 869
+
 local sets = {
     Idle = {},
     IdleALT = {},
@@ -26,7 +29,7 @@ local sets = {
     Evasion = {},
 
     Precast = {},
-    SIRD = { -- 102% to Cap
+    SIRD = {
     },
     Haste = { -- Used for Utsusemi cooldown
     },
@@ -37,19 +40,25 @@ local sets = {
 
     TP_LowAcc = {},
     TP_HighAcc = {},
+    TP_Mjollnir_Haste = {},
 
     MaxHP = {},
     BreathBonus = {},
+    BreathBonus_NonMage = {},
     Stoneskin = {},
 
     ['Ancient Circle'] = {},
     ['Jump'] = {},
+    ['Jump Accuracy'] = {},
     ['High Jump'] = {},
+    ['High Jump Accuracy'] = {},
     ['Super Jump'] = {},
     ['Call Wyvern'] = {},
     ['Spirit Link'] = {},
 
     WS = {},
+    WS_HighAcc = {},
+
     ['Penta Thrust'] = {},
     ['Wheeling Thrust'] = {},
     ['Impulse Drive'] = {},
@@ -90,10 +99,18 @@ local WeaponSkills = T{
 
 profile.HandleAbility = function()
     local action = gData.GetAction()
-    if (action.Name == "Steady Wing") then
+    if (action.Name == 'Steady Wing') then
         gFunc.EquipSet(sets.BreathBonus)
     elseif (JobAbilities:contains(action.Name)) then
         gFunc.EquipSet(sets[action.Name])
+    end
+
+    if (gcmelee.GetAccuracyMode() == 'HighAcc') then
+        if (action.Name == 'Jump') then
+            gFunc.EquipSet('Jump Accuracy')
+        elseif (action.Name == 'High Jump') then
+            gFunc.EquipSet('High Jump Accuracy')
+        end
     end
 end
 
@@ -102,22 +119,18 @@ profile.HandleItem = function()
 end
 
 profile.HandlePreshot = function()
-    -- You may add logic here
 end
 
 profile.HandleMidshot = function()
-    -- You may add logic here
 end
 
 profile.HandleWeaponskill = function()
-    gFunc.EquipSet(sets.WS)
+    gcmelee.DoWS()
 
     local action = gData.GetAction()
     if (WeaponSkills:contains(action.Name)) then
       gFunc.EquipSet(sets[action.Name])
     end
-
-    gcmelee.DoFenrirsEarring()
 end
 
 profile.OnLoad = function()
@@ -139,17 +152,34 @@ end
 
 profile.HandleDefault = function()
     gcmelee.DoDefault()
+
+    local player = gData.GetPlayer()
+    local isWHM = player.SubJob == 'WHM'
+    local isRDM = player.SubJob == 'RDM'
+    local isMage = isWHM or isRDM
+    local weakened = gData.GetBuffCount('Weakness')
+
+    if (isWHM and player.HP <= heal_hp_threshold_whm and weakened < 1) then
+        gFunc.EquipSet(sets.DT)
+    end
+    if (isRDM and player.HP <= heal_hp_threshold_rdm and weakened < 1) then
+        gFunc.EquipSet(sets.DT)
+    end
+
+    if (ethereal_earring == true and isMage) then
+        gFunc.Equip(ethereal_earring_slot, 'Ethereal Earring')
+    end
+
     gcmelee.DoDefaultOverride()
 
     local petAction = gData.GetPetAction()
     if (petAction ~= nil) then
-        gFunc.EquipSet(sets.BreathBonus)
+        if (isMage) then
+            gFunc.EquipSet(sets.BreathBonus)
+        else
+            gFunc.EquipSet(sets.BreathBonus_NonMage)
+        end
         return
-    end
-
-    local player = gData.GetPlayer()
-    if (ethereal_earring == true and (player.SubJob == 'WHM' or player.SubJob == 'RDM')) then
-        gFunc.Equip(ethereal_earring_slot, 'Ethereal Earring')
     end
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
@@ -157,7 +187,7 @@ end
 
 profile.HandlePrecast = function()
     local player = gData.GetPlayer()
-    if (player.SubJob == "RDM" and warlocks_mantle) then
+    if (player.SubJob == 'RDM' and warlocks_mantle) then
         gcmelee.DoPrecast(fastCastValue + 0.02)
         gFunc.Equip('Back', 'Warlock\'s Mantle')
     else
