@@ -31,6 +31,26 @@ local LockableEquipment = {
     ['Feet'] = T{'Powder Boots'}
 }
 
+
+local LockableCraftingEquipment = {
+    ['Main'] = T{'Caduceus'},
+    ['Sub'] = T{},
+    ['Range'] = T{},
+    ['Ammo'] = T{},
+    ['Head'] = T{'Protective Spectacles', 'Magnifying Spectacles', 'Chef\'s Hat', 'Shaded Spectacles'},
+    ['Neck'] = T{},
+    ['Ear1'] = T{},
+    ['Ear2'] = T{},
+    ['Body'] = T{'Fsh. Tunica', 'Angler\'s Tunica', 'Fisherman\'s Smock', 'Chocobo Jack Coat', 'Rider\'s Jack Coat', 'Alchemist\'s Apron', 'Boneworker\'s Apron', 'Weaver\'s Apron', 'Blacksmith\'s Apron', 'Carpenter\'s Apron', 'Culinarian\'s Apron', 'Goldsmith\'s Apron', 'Tanner\'s Apron'},
+    ['Hands'] = T{'Fsh. Gloves', 'Angler\'s Gloves', 'Tanner\'s Gloves', 'Smithy\'s Mitts', 'Carpenter\'s Gloves', 'Chocobo Gloves', 'Rider\'s Gloves'},
+    ['Ring1'] = T{},
+    ['Ring2'] = T{},
+    ['Back'] = T{},
+    ['Waist'] = T{'Alchemist\'s Belt', 'Boneworker\'s Belt', 'Weaver\'s Belt', 'Culinarian\'s Belt', 'Goldsmith\'s Belt', 'Tanner\'s Belt', 'Blacksmith\'s Belt', 'Carpenter\'s Belt'},
+    ['Legs'] = T{'Fisherman\'s Hose', 'Angler\'s Hose', 'Chocobo Hose', 'Rider\'s Hose'},
+    ['Feet'] = T{'Fisherman\'s Boots', 'Angler\'s Boots', 'Waders', 'Chocobo Boots', 'Rider\'s Boots'}
+}
+
 --[[
 --------------------------------
 Everything below can be ignored.
@@ -354,7 +374,9 @@ function gcinclude.BuildLockableSet(equipment)
     local lockableSet = {}
 
     for slot, item in pairs(equipment) do
-        if (LockableEquipment[slot]:contains(item.Name)) then
+        if (LockableEquipment[slot]:contains(item.Name) 
+        or LockableCraftingEquipment[slot]:contains(item.name)) 
+        then
             lockableSet[slot] = item
             if (
                 item.Name == 'Custom Gilet +1'
@@ -374,7 +396,6 @@ function gcinclude.BuildLockableSet(equipment)
             end
         end
     end
-
     return lockableSet
 end
 

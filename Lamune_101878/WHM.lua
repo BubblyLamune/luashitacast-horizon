@@ -5,7 +5,7 @@ local rdmSJMaxMP = nil;
 local blmSJMaxMP = nil;
 local sets = {
 	Idle = {
-		Main = "Light Staff",
+		Main = "Earth Staff",
 		-- Body = "Healer's bliaut",
 		Body = "Noble's tunic",
 		Hands = "Healer's Mitts",
@@ -21,10 +21,11 @@ local sets = {
 		Back = "White Cape"
 	},
 	IdleALT = {
-		Main = "Darksteel Maul",
+		Main = "Purgatory Mace",
 		Sub = "Numinous shield",
 		-- Body = "Holy Breastplate",
-		Hands = "Devotee\'s Mitts",
+		Body = "Noble's tunic",
+		Hands = "Healer's Mitts",
 		Legs = "Healer\'s pantaloons",
 		Head = "Healer\'s Cap",
 		Feet = "Healer\'s duckbills",
@@ -78,10 +79,16 @@ local sets = {
 	EnfeeblingMND = {},
 	EnfeeblingINT = {},
 	EnfeeblingACC = {},
-	Divine = {},
+	Divine = {	
+		Main = "Water Staff",
+		Hands = "Devotee\'s Mitts",
+		Feet = "Seer\'s pumps",
+	},
 	Banish = {},
 	Dark = {},
-	Nuke = {},
+	Nuke = {
+
+	},
 	NukeACC = {},
 	NukeDOT = {},
 	LockSet1 = {},
