@@ -27,9 +27,9 @@ local sets = {
         Ring1 = 'Eremite\'s Ring',
         Ring2 = 'Eremite\'s Ring',
         Back = 'White Cape',
-        Waist = 'Force Belt',
+        Waist = 'Mrc.Cpt. Belt',
         Legs = 'Seer\'s Slacks',
-        Feet = 'Seer\'s Pumps',
+        Feet = 'Custom F boots',
     },
     IdleALT = {},
     IdleMaxMP = {

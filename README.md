@@ -1,5 +1,7 @@
 # ~~Rag's~~ Lamune's LuAshitacast
 
+A fork from Rag's LuAshitacast
+
 A combined LuAshitacast for HorizonXI (Lvl 75 era) that was originally based off of https://github.com/GetAwayCoxn/Luashitacast-Profiles
 
 All jobs are fully implemented.
