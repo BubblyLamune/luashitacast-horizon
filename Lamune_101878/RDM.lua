@@ -1,6 +1,6 @@
 local profile = {}
 
-local fastCastValue = 1 -- 20% from traits 22% from gear listed in Precast set
+local fastCastValue = 0.42 -- 20% from traits 22% from gear listed in Precast set
 
 local ninSJMaxMP = 383 -- The Max MP you have when /nin in your idle set
 local whmSJMaxMP = 383 -- The Max MP you have when /whm in your idle set

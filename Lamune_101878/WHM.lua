@@ -1,8 +1,14 @@
-local profile = {};
-local fastCastValue = 0;
-local ninSJMaxMP = nil;
-local rdmSJMaxMP = nil;
-local blmSJMaxMP = nil;
+local profile = {}
+
+local fastCastValue = 0.00 -- 0% from gear listed in Precast set. Note: Do NOT include cure clogs / ruckes rung here.
+
+local ninSJMaxMP = nil -- The Max MP you have when /nin in your idle set
+local rdmSJMaxMP = nil -- The Max MP you have when /rdm in your idle set
+local blmSJMaxMP = 790 -- The Max MP you have when /blm in your idle set
+
+local virology_ring = true
+local virology_ring_slot = 'Ring2'
+
 local sets = {
 	Idle = {
 		Main = "Earth Staff",
@@ -112,6 +118,7 @@ profile.SetMacroBook = function()
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Paralyze\" <t>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Slow\" <t>");
 end;
+
 --[[
 --------------------------------
 Everything below can be ignored.
@@ -192,4 +199,3 @@ profile.HandleMidcast = function()
 end
 
 return profile
-
