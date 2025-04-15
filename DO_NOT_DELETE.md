@@ -276,3 +276,16 @@
 
 ### v1.4.3
 - PLD - Make Enfeebling and Enhancing spells not equip enmity set
+
+### v1.4.4
+- THF - Implements auto TH tracking
+
+### v1.4.5
+- Melee - Fixed broken Precast
+
+### v1.4.6
+- NIN - Add Warlock Mantle
+- NIN - Use Shinobi Ring on casts by default (primarily for Utsusemi)
+- SMN - Fix Light Spirit using carbuncle gear
+- SMN - Implements TP modes for SMN
+- SMN - Implements an optional Perpetuation set for Penance Robe
