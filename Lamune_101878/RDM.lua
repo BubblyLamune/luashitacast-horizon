@@ -3,7 +3,7 @@ local profile = {}
 local fastCastValue = 0.42 -- 20% from traits 22% from gear listed in Precast set
 
 local ninSJMaxMP = 383 -- The Max MP you have when /nin in your idle set
-local whmSJMaxMP = 383 -- The Max MP you have when /whm in your idle set
+local whmSJMaxMP = 538 -- The Max MP you have when /whm in your idle set
 local blmSJMaxMP = 383 -- The Max MP you have when /blm in your idle set
 local drkSJMaxMP = 383 -- The Max MP you have when /drk in your idle set
 
@@ -21,7 +21,7 @@ local sets = {
       --  Neck = 'Jeweled Collar +1',
       --  Ear1 = 'Merman\'s Earring',
       --  Ear2 = 'Merman\'s Earring',
-      --  Body = 'Dst. Harness +1',
+      Body = 'Warlock\'s Tabard',
       Hands = 'Warlock\'s Gloves',
       --  Ring1 = 'Shadow Ring',
       --  Ring2 = 'Sattva Ring',

@@ -8,20 +8,21 @@ local whmSJMaxMP = nil -- The Max MP you have when /whm in your idle set
 local rdmSJMaxMP = nil -- The Max MP you have when /rdm in your idle set
 local blmSJMaxMP = nil -- The Max MP you have when /blm in your idle set
 
-local minstrels_earring = true
+local minstrels_earring = false
 local minstrels_earring_slot = 'Ear2'
 
 local sets = {
     Idle = {
        -- Main = 'Terra\'s Staff',
-       Range = 'Royal Spearman\'s horn',
-       -- Neck = 'Jeweled Collar',
+       Head = 'Emperor Hairpin',
+       Range = 'Ryl.Spr. Horn',
+        Neck = 'Justice Badge',
        -- Ear1 = 'Merman\'s Earring',
        -- Ear2 = 'Merman\'s Earring',
        -- Body = 'Royal Cloak',
        -- Hands = 'Dst. Mittens +1',
-       -- Ring1 = 'Merman\'s Ring',
-       -- Ring2 = 'Sattva Ring',
+       Ring1 = 'Balance Ring',
+       Ring2 = 'Balance Ring',
        -- Back = 'Umbra Cape',
        -- Waist = 'Scouter\'s Rope',
        -- Legs = 'Dst. Subligar +1',
@@ -146,9 +147,10 @@ local sets = {
     --    Body = 'Minstrel\'s Coat',
     },
     Sing_Debuff = {
-    --    Body = 'Kirin\'s Osode',
-    --    Ring1 = 'Heavens Ring',
-    --    Ring2 = 'Heavens Ring',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
+        Neck = 'Flower Necklace'
     --    Waist = 'Corsette +1',
     --    Feet = 'Sha\'ir Crackows',
     },
@@ -169,7 +171,7 @@ local sets = {
         Range = 'Cornette +1',
     },
     Sing_March = {
-        Range = 'Royal Spearman\'s horn',
+        Range = 'Ryl.Spr. Horn',
     },
     Sing_Madrigal = {
      --   Range = 'Traversiere +2',
@@ -178,20 +180,22 @@ local sets = {
         Range = "Horn +1",
     },
     Sing_Lullaby = {
-        Range = "Mary\'s horn",
-        Neck = "Justice Badge"
+        Head = 'Noble\'s Ribbon',
+        Neck = "Flower Necklace",
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     Sing_HordeLullaby_Large = {
-    --   Range = 'Nursemaid\'s Harp',
-    --   Main = 'Apollo\'s Staff',
-    --   Neck = 'String Torque',
-    --   Legs = 'Mahatma Slops',
+        Head = 'Noble\'s Ribbon',
+        Neck = "Flower Necklace",
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     Sing_HordeLullaby_Small = {
-    --   Range = 'Nursemaid\'s Harp',
-    --   Main = 'Apollo\'s Staff',
-    --   Neck = 'String Torque',
-    --   Legs = 'Mahatma Slops',
+        Head = 'Noble\'s Ribbon',
+        Neck = "Flower Necklace",
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     Sing_SleepRecast = {
     },
@@ -282,6 +286,14 @@ profile.Sets = sets
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 9')
+
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ma "Foe Lullaby"')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ma "Wind Threnody" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ma "Sword Madrigal" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ma "Advancing March" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ma "Valor Minuet II" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 7 down /ma "Mage\'s Ballad" <me>')
 end
 
 --[[

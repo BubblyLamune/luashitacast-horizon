@@ -1,12 +1,12 @@
 local display_messages = true -- set to true if you want chat log messages to appear on any /gc command used such as DT, or KITE gear toggles
 
 local kingdom_aketon = false
-local republic_aketon = false
+local republic_aketon = true
 local federation_aketon = false
 local ducal_aketon = false
 
-local dream_boots = false
-local dream_mittens = false
+local dream_boots = true
+local dream_mittens = true
 local skulkers_cape = false
 
 local load_stylist = true -- set to true to just load stylist on game start. this is purely for convenience since putting it in scripts doesn't work.
@@ -103,12 +103,28 @@ local OverrideNameTable = {
     ['wres'] = 'WaterRes',
     ['wares'] = 'WaterRes',
     ['evasion'] = 'Evasion',
-    ['eva'] = 'Evasion'
+    ['eva'] = 'Evasion',
+    ['fishies'] = 'Fishing',
+    ['fieldies'] = 'FieldCraft'
 }
 
 local isMage = T{ 'RDM','BLM','WHM','SMN','BRD' }
 
 local lastIdleSet = 'Normal'
+
+ local Fishing = { -- this set is meant as a default set for fishing, equip using /fishies
+     ['Body'] = 'Fsh. Tunica',
+     ['Hands'] = 'Fsh. Gloves',
+     ['Legs'] = 'Fisherman\'s Hose',
+     ['Feet'] = 'Fisherman\'s Boots',
+ }
+ 
+ local Fieldcraft = { -- this set is meant as a default set for fieldcraft, equip using /fieldies
+     ['Body'] = 'Field Tunica',
+     ['Hands'] = 'Field Gloves',
+     ['Legs'] = 'Field Hose',
+     ['Feet'] = 'Field Boots',
+ }
 
 function gcinclude.Load()
     gSettings.AllowAddSet = true
