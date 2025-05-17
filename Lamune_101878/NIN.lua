@@ -108,6 +108,9 @@ local sets = {
     NinElemental_Accuracy = {},
     DrkDarkMagic = {},
 
+    Enhancing = {},
+    Cure = {},
+
     LockSet1 = {},
     LockSet2 = {},
     LockSet3 = {},
@@ -316,8 +319,13 @@ profile.HandleMidcast = function()
     gcmelee.DoMidcast(sets)
 
     local player = gData.GetPlayer()
+    local environment = gData.GetEnvironment()
+
     if (shinobi_ring and player.HPP <= 75 and player.TP <= 1000) then
         gFunc.Equip(shinobi_ring_slot, 'Shinobi Ring')
+    end
+    if (koga_tekko_plus_one and (environment.Time < 7 or environment.Time >= 17)) then
+        gFunc.Equip('Hands', 'Kog. Tekko +1') -- You can comment this out if you have Dusk Gloves +1 and would prefer +22 HP over Ninja Tool Expertise.
     end
 
     local action = gData.GetAction()
@@ -348,6 +356,10 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.DrkDarkMagic)
         end
         EquipStaffAndObi(action)
+    elseif (action.Skill == 'Enhancing Magic') then
+        gFunc.EquipSet(sets.Enhancing)
+    elseif (action.Skill == 'Healing Magic') then
+        gFunc.EquipSet(sets.Cure)
     end
 end
 
