@@ -77,14 +77,19 @@ local sets = {
     WS_SharkBite = {},
 
     SA = {
+        Head = "Rogue's Bonnet",
         Body = "Brigandine",
+        Legs = "Rogue's Culottes",
     },
     TA = {
+        Head = "Rogue's Bonnet",
         Body = "Brigandine",
+        Legs = "Rogue's Culottes",
     },
     SATA = {
+        Head = "Rogue's Bonnet",
         Body = "Brigandine",
-
+        Legs = "Rogue's Culottes",
     },
 
     Flee = {},
@@ -165,8 +170,13 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Ranged)
+    local equipment = gData.GetEquipment()
+    local ammo = 'None'
 
-    local ammo = ((gData.GetEquipment())['Ammo'])['Name']
+    if (equipment.Ammo ~= nil ) then
+        ammo = equipment.Ammo.Name
+    end
+
     if (ammo == 'Bloody Bolt') then
         gFunc.EquipSet(sets.Ranged_INT)
     end

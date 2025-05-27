@@ -16,60 +16,39 @@ local opuntia_hoop_slot = 'Ring1'
 
 local sets = {
     Idle = {
-        Main = 'Solid Wand +1',
-        Ammo = '',
-        Head = 'Seer\'s Tiara',
+        Main = 'Solid Wand',
+        Sub = 'Casting Wand',
+        Ammo = 'Fortune Egg',
+        Head = "Seer's Tiara",
 		Neck = "Black Neckerchief",
 		Ear1 = "Morion earring",
 		Ear2 = "Morion earring",
         Body = 'Ryl.Sqr. Robe +1',
-        Hands = 'Seer\'s Mitts',
-        Ring1 = 'Eremite\'s Ring',
-        Ring2 = 'Eremite\'s Ring',
+        Hands = "Seer's Mitts",
+        Ring1 = "Eremite's Ring",
+        Ring2 = "Eremite's Ring",
         Back = 'Black Cape',
         Waist = 'Mrc.Cpt. Belt',
-        Legs = 'Seer\'s Slacks',
+        Legs = "Seer's Slacks",
         Feet = 'Custom F boots',
     },
-    IdleALT = {},
-    IdleMaxMP = {
-        Ammo = { Name = 'Hedgehog Bomb', Priority = 100 },
-        Neck = { Name = 'Uggalepih Pendant', Priority = 100 },
-        Ear1 = { Name = 'Loquac. Earring', Priority = 100 },
-        Ear2 = { Name = 'Magnetic Earring', Priority = 100 },
-        Hands = { Name = 'Zenith Mitts +1', Priority = 100 },
-        Waist = { Name = 'Hierarch Belt', Priority = 100 },
-        Legs = { Name = 'Src. Tonban +1', Priority = 100 },
-        Back = { Name = 'Merciful Cape', Priority = 100 },
-    },
     Resting = {
-        Main = 'Pluto\'s Staff',
-        Head = 'Hydra Beret',
-        Neck = 'Pch. Collar',
-        Ear1 = 'Relaxing Earring',
-        Ear2 = 'Magnetic Earring',
-        Body = 'Seer\'s Tunic',
-        Hands = 'Hydra Gloves',
-        Ring1 = 'Serket Ring',
-        Back = 'Errant Cape',
-        Waist = 'Hierarch Belt',
-        Legs = 'Baron\'s Slops',
-        Feet = 'Hydra Gaiters',
+        Main = 'Dark Staff',
+        Body = "Seer's Tunic",
+        Legs = 'Baron\'s Slops'
     },
     Town = {
-        Main = 'Terra\'s Staff',
-        Head = 'Src. Petasos +1',
-        Body = 'Src. Coat +1',
-        Hands = 'Zenith Mitts +1',
-        Legs = 'Src. Tonban +1',
-        Feet = 'Herald\'s Gaiters',
+        -- Main = 'Dark Staff',
     },
     Movement = {
         Feet = 'Herald\'s Gaiters',
     },
+    IdleALT = {},
+    IdleMaxMP = {
+    },
 
     DT = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Head = 'Genie Tiara',
         Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
@@ -84,7 +63,7 @@ local sets = {
         Feet = 'Mountain Gaiters',
     },
     DTNight = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Head = 'Genie Tiara',
         Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
@@ -99,7 +78,7 @@ local sets = {
         Feet = 'Mountain Gaiters',
     },
     MDT = { -- Shell IV provides 23% MDT
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Head = 'Black Ribbon',
         Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring', -- 2
@@ -114,7 +93,7 @@ local sets = {
         Feet = 'Mountain Gaiters',
     },
     FireRes = {
-        Main = 'Neptune\'s Staff', -- 20
+        Main = 'Water Staff', -- 20
         Head = 'Black Ribbon', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Cmn. Earring', -- 11
@@ -128,7 +107,7 @@ local sets = {
         Feet = 'Power Sandals', -- 7
     },
     IceRes = {
-        Main = 'Vulcan\'s Staff', -- 20
+        Main = 'Fire Staff', -- 20
         Head = 'Black Ribbon', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Diamond Earring', -- 10
@@ -142,7 +121,7 @@ local sets = {
         Feet = 'Mountain Gaiters',
     },
     LightningRes = {
-        Main = 'Terra\'s Staff', -- 20
+        Main = 'Earth Staff', -- 20
         Head = 'Black Ribbon', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Robust Earring', -- 11
@@ -156,7 +135,7 @@ local sets = {
         Feet = 'Mountain Gaiters',
     },
     EarthRes = {
-        Main = 'Auster\'s Staff', -- 20
+        Main = 'Wind Staff', -- 20
         Head = 'Black Ribbon', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Robust Earring', -- 11
@@ -170,7 +149,7 @@ local sets = {
         Feet = 'Mountain Gaiters',
     },
     WindRes = {
-        Main = 'Aquilo\'s Staff', -- 20
+        Main = 'Ice Staff', -- 20
         Head = 'Black Ribbon', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Diamond Earring', -- 10
@@ -184,7 +163,7 @@ local sets = {
         Feet = 'Mountain Gaiters',
     },
     WaterRes = {
-        Main = 'Jupiter\'s Staff', -- 20
+        Main = 'Thunder Staff', -- 20
         Head = 'Black Ribbon', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Cmn. Earring', -- 11
@@ -204,8 +183,8 @@ local sets = {
         Feet = 'Rostrum Pumps',
     },
     Casting = {
-        Main = 'Eremite\'s Wand', -- 25
-        Sub = 'Eremite\'s Wand', -- 25
+        Main = 'Solid Wand',
+        Sub = 'Casting Wand',
         Head = 'Nashira Turban', -- 10
         Neck = 'Willpower Torque', -- 5
         Ear1 = 'Merman\'s Earring',

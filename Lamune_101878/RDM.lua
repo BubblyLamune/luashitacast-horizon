@@ -194,7 +194,7 @@ local sets = {
        -- Feet = 'Blood Greaves', -- 21
     },
     WindRes = { -- 139
-        Main = 'Ice Staff', -- 20
+        Main = 'Ice Staff'', -- 20
        -- Range = 'Arco de Velocidad',
        -- Ammo = '',
        -- Head = 'Black Ribbon', -- 10
@@ -392,7 +392,7 @@ local sets = {
     --    Back = 'Prism Cape',
     },
     Spikes = {
-    --    Main = 'Ice Staff',
+    --    Main = 'Ice Staff'',
     --    Ammo = 'Phtm. Tathlum',
     --    Head = 'Wlk. Chapeau +1',
     --    Neck = 'Enhancing Torque',

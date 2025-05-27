@@ -9,7 +9,7 @@ local cureMP = 895 -- Cure set max MP
 
 local sets = {
     Idle = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Magnetic Earring',
         Ammo = 'Hedgehog Bomb',
@@ -50,7 +50,7 @@ local sets = {
     },
 
     DT = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
@@ -60,7 +60,7 @@ local sets = {
         Back = 'Umbra Cape',
     },
     DTNight = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
@@ -70,7 +70,7 @@ local sets = {
         Back = 'Umbra Cape',
     },
     MDT = { -- Shell IV provides 23% MDT
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Head = 'Green Ribbon +1',
         Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring', -- 2
@@ -81,7 +81,7 @@ local sets = {
         Back = 'Hexerei Cape', -- 3
     },
     FireRes = {
-        Main = 'Neptune\'s Staff', -- 20
+        Main = 'Water Staff', -- 20
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Head = 'Green Ribbon +1', -- 10
@@ -94,7 +94,7 @@ local sets = {
         Ring2 = 'Malflame Ring', -- 10
     },
     IceRes = {
-        Main = 'Vulcan\'s Staff', -- 20
+        Main = 'Fire Staff', -- 20
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
         Head = 'Green Ribbon +1', -- 10
@@ -106,7 +106,7 @@ local sets = {
         Ring2 = 'Malfrost Ring', -- 10
     },
     LightningRes = {
-        Main = 'Terra\'s Staff', -- 20
+        Main = 'Earth Staff', -- 20
         Head = 'Green Ribbon +1', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Back = 'Hexerei Cape',
@@ -119,7 +119,7 @@ local sets = {
     },
     EarthRes = {
         Ring2 = 'Maldust Ring', -- 10
-        Main = 'Auster\'s Staff', -- 20
+        Main = 'Wind Staff', -- 20
         Head = 'Green Ribbon +1', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Hands = 'Merman\'s Bangles',
@@ -131,7 +131,7 @@ local sets = {
     },
     WindRes = {
         Ring2 = 'Malgust Ring', -- 10
-        Main = 'Aquilo\'s Staff', -- 20
+        Main = 'Ice Staff', -- 20
         Head = 'Green Ribbon +1', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Back = 'Aurora Mantle', -- 7
@@ -142,7 +142,7 @@ local sets = {
         Ring1 = 'Emerald Ring', -- 9
     },
     WaterRes = {
-        Main = 'Jupiter\'s Staff', -- 20
+        Main = 'Thunder Staff', -- 20
         Head = 'Green Ribbon +1', -- 10
         Neck = 'Jeweled Collar +1', -- 10
         Hands = 'Merman\'s Bangles',

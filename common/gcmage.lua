@@ -46,13 +46,13 @@ local healers_earring_slot = 'Ear2'
 
 -- RDM Specific
 local tp_fencers_ring = true
-local tp_fencers_ring_slot = 'Ring1'
+local tp_fencers_ring_slot = ''
 
 -- BLM Specific
 local sorcerers_ring = false
-local sorcerers_ring_slot = 'Ring1' -- This is Ring1 instead of Ring2 to allow Ice Ring override to work
+local sorcerers_ring_slot = '' -- This is Ring1 instead of Ring2 to allow Ice Ring override to work
 -- Leave as '' if you do not have them.
-local sorcerers_tonban = 'Src. Tonban +1'
+local sorcerers_tonban = ''
 
 -- SMN Specific
 local carbuncle_mitts = false

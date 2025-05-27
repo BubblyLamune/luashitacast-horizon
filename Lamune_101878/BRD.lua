@@ -13,7 +13,7 @@ local minstrels_earring_slot = 'Ear2'
 
 local sets = {
     Idle = {
-       -- Main = 'Terra\'s Staff',
+       -- Main = 'Earth Staff',
        Head = 'Emperor Hairpin',
        Range = 'Ryl.Spr. Horn',
         Neck = 'Justice Badge',
@@ -29,7 +29,7 @@ local sets = {
        -- Feet = 'Dst. Leggings +1',
     },
     IdleALT = {
-       -- Main = 'Terra\'s Staff',
+       -- Main = 'Earth Staff',
        -- Range = 'Mythic Harp +1',
        -- Neck = 'Checkered Scarf',
        -- Ear1 = 'Merman\'s Earring',
@@ -63,7 +63,7 @@ local sets = {
     MDT = { -- Shell IV provides 23% MDT
     },
     FireRes = {
-     --   Main = 'Neptune\'s Staff',
+     --   Main = 'Water Staff',
      --   Head = 'Green Ribbon +1',
      --   Neck = 'Enfeebling Torque',
      --   Body = 'Dst. Harness +1',
@@ -104,7 +104,7 @@ local sets = {
     --    Feet = 'Rostrum Pumps',
     },
     Casting = { -- Default Casting Equipment when using Idle sets
-     --   Main = 'Terra\'s Staff',
+     --   Main = 'Earth Staff',
      --   Range = 'Mythic Harp +1',
      --   Neck = 'Evasion Torque',
      --   Ear1 = 'Merman\'s Earring',

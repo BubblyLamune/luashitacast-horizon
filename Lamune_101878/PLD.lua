@@ -37,7 +37,7 @@ local sets = {
         Feet = 'Dst. Leggings +1',
     },
     IdleALT = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -73,7 +73,7 @@ local sets = {
         Feet = { Name = 'Glt. Leggings +1', Priority = 90 },
     },
     IdleALTDT = {
-        Main = 'Terra\'s Staff', -- 20
+        Main = 'Earth Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -110,7 +110,7 @@ local sets = {
     },
 
     DT = {
-        Main = 'Terra\'s Staff', -- 20
+        Main = 'Earth Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -164,7 +164,7 @@ local sets = {
         Feet = 'Power Sandals', -- 7
     },
     IceRes = { -- 153
-        Main = 'Vulcan\'s Staff', -- 20
+        Main = 'Fire Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -200,7 +200,7 @@ local sets = {
         Feet = 'Dst. Leggings +1',
     },
     EarthRes = { -- 156
-        Main = 'Auster\'s Staff', -- 20
+        Main = 'Wind Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -218,7 +218,7 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     WindRes = { -- 136
-        Main = 'Aquilo\'s Staff', -- 20
+        Main = 'Ice Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -236,7 +236,7 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     WaterRes = { -- 146
-        Main = 'Jupiter\'s Staff', -- 20
+        Main = 'Thunder Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',

@@ -22,12 +22,12 @@ local night_time_eva_pants = ''
 local dusk_to_dawn_eva_pants = 'Koga Hakama +1'
 
 -- Leave as '' if you do not have the staff.
-local fire_staff = 'Vulcan\'s Staff'
-local earth_staff = 'Terra\'s Staff'
-local water_staff = 'Neptune\'s Staff'
-local wind_staff = 'Auster\'s Staff'
-local ice_staff = 'Aquilo\'s Staff'
-local thunder_staff = 'Jupiter\'s Staff'
+local fire_staff = 'Fire Staff'
+local earth_staff = 'Earth Staff'
+local water_staff = 'Water Staff'
+local wind_staff = 'Wind Staff'
+local ice_staff = 'Ice Staff'
+local thunder_staff = 'Thunder Staff'
 local light_staff = 'Apollo\'s Staff'
 local dark_staff = 'Pluto\'s Staff'
 

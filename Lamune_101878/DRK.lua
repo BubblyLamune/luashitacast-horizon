@@ -34,7 +34,7 @@ local sets = {
         Feet = 'Dst. Leggings +1',
     },
     IdleALT = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -125,7 +125,7 @@ local sets = {
         Feet = 'Coral Greaves +1', -- 2
     },
     FireRes = {
-        Main = 'Neptune\'s Staff', -- 20
+        Main = 'Water Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -143,7 +143,7 @@ local sets = {
         Feet = 'Power Sandals', -- 7
     },
     IceRes = {
-        Main = 'Vulcan\'s Staff', -- 20
+        Main = 'Fire Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -161,7 +161,7 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     LightningRes = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Sub = '',
         Range = 'Lightning Bow +1', -- 7
         Ammo = '',
@@ -179,7 +179,7 @@ local sets = {
         Feet = 'Dst. Leggings +1',
     },
     EarthRes = {
-        Main = 'Auster\'s Staff', -- 20
+        Main = 'Wind Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -197,7 +197,7 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     WindRes = {
-        Main = 'Aquilo\'s Staff', -- 20
+        Main = 'Ice Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -215,7 +215,7 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     WaterRes = {
-        Main = 'Jupiter\'s Staff', -- 20
+        Main = 'Thunder Staff', -- 20
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -284,7 +284,6 @@ local sets = {
         Back = { Name = 'Gigant Mantle', Priority = 100 },
         Waist = 'Warwolf Belt', -- 3
         Legs = { Name = 'Hydra Brayettes', Priority = -100 }, -- 6
-        Legs = { Name = 'Hydra Sollerets', Priority = -100 }, -- 4
     },
 
     LockSet1 = {},
