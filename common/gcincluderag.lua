@@ -62,7 +62,7 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplayrag.lua')
 local gcinclude = {}
 
 local Overrides = T{ 'idle','dt','pdt','mdt','fireres','fres','iceres','ires','bres','lightningres','lres','tres','earthres','eres','sres','windres','wires','ares','waterres','wares','wres','evasion','eva' }
-local Commands = T{ 'kite','lock','locktp','lockset','warpme','horizonmode' }
+local Commands = T{ 'kite','lock','locktp','lockset','warpme','horizonmode', 'fishing', 'helm' }
 
 local Towns = T{
     'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau',
@@ -104,27 +104,28 @@ local OverrideNameTable = {
     ['wares'] = 'WaterRes',
     ['evasion'] = 'Evasion',
     ['eva'] = 'Evasion',
-    ['fishies'] = 'Fishing',
-    ['fieldies'] = 'FieldCraft'
+    ['fishing'] = 'Fishing',
+    ['helm'] = 'FieldCraft'
 }
 
 local isMage = T{ 'RDM','BLM','WHM','SMN','BRD' }
 
 local lastIdleSet = 'Normal'
 
- local Fishing = { -- this set is meant as a default set for fishing, equip using /fishies
-     ['Body'] = 'Fsh. Tunica',
-     ['Hands'] = 'Fsh. Gloves',
-     ['Legs'] = 'Fisherman\'s Hose',
-     ['Feet'] = 'Fisherman\'s Boots',
- }
- 
- local Fieldcraft = { -- this set is meant as a default set for fieldcraft, equip using /fieldies
-     ['Body'] = 'Field Tunica',
-     ['Hands'] = 'Field Gloves',
-     ['Legs'] = 'Field Hose',
-     ['Feet'] = 'Field Boots',
- }
+ local sharedSets = {
+    Fishing = { -- this set is meant as a default set for fishing, equip using /fishing
+        Body = 'Fsh. Tunica',
+        Hands = 'Fsh. Gloves',
+        Legs = 'Fisherman\'s Hose',
+        Feet = 'Fisherman\'s Boots',
+    },
+    Fieldcraft = { -- this set is meant as a default set for fieldcraft, equip using /helm
+        Body = 'Field Tunica',
+        Hands = 'Field Gloves',
+        Legs = 'Field Hose',
+        Feet = 'Field Boots',
+    }
+}
 
 function gcinclude.Load()
     gSettings.AllowAddSet = true
@@ -132,6 +133,8 @@ function gcinclude.Load()
     gcinclude.SetAlias(Commands)
 
     gcdisplay.CreateToggle('Kite', false)
+    gcdisplay.CreateToggle('Fishing', false)
+    gcdisplay.CreateToggle('HELM', false)
     gcdisplay.CreateToggle('Lock', false)
 
     local function delayLoad()
@@ -227,6 +230,12 @@ function gcinclude.DoCommands(args)
         gcinclude.Message('Kite', gcdisplay.GetToggle('Kite'))
     elseif (args[1] == 'warpme') then
         gcinclude.RunWarpCudgel()
+    elseif (args[1] == 'helm') then
+        gcdisplay.AdvanceToggle('HELM')
+        gcinclude.Message('HELM', gcdisplay.GetToggle('HELM'))
+    elseif (args[1] == 'fishing') then
+        gcdisplay.AdvanceToggle('Fishing')
+        gcinclude.Message('Fishing', gcdisplay.GetToggle('Fishing'))
     elseif (args[1] == 'lockset') then
         if (tonumber(args[2]) ~= nil) then
             AshitaCore:GetChatManager():QueueCommand(-1, '/lac set LockSet' .. args[2])
@@ -338,6 +347,8 @@ function gcinclude.DoDefaultOverride(isMelee)
     if (gcdisplay.IdleSet == 'WaterRes') then gFunc.EquipSet('WaterRes') end
     if (gcdisplay.IdleSet == 'Evasion') then gFunc.EquipSet('Evasion') end
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet('Movement') end
+    if (gcdisplay.GetToggle('Fishing') == true) then gFunc.EquipSet(sharedSets.Fishing) end
+    if (gcdisplay.GetToggle('HELM') == true) then gFunc.EquipSet(sharedSets.Fieldcraft) end
 
     if (player.Status == 'Resting') then
         if (not restTimestampRecorded) then
@@ -389,12 +400,17 @@ function gcinclude.DoItem()
     end
 end
 
+function gcinclude.IsCraftingEquip(slot, itemName)
+    local isCraftingMode = gcdisplay.GetToggle('Fishing') or gcdisplay.GetToggle('HELM')
+    return isCraftingMode and LockableCraftingEquipment[slot] and LockableCraftingEquipment[slot]:contains(itemName) or false
+end
+
 function gcinclude.BuildLockableSet(equipment)
     local lockableSet = {}
 
     for slot, item in pairs(equipment) do
         if (LockableEquipment[slot]:contains(item.Name) 
-        or LockableCraftingEquipment[slot]:contains(item.name)) 
+        or gcinclude.IsCraftingEquip(slot, item.Name)) 
         then
             lockableSet[slot] = item
             if (

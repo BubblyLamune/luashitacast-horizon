@@ -174,28 +174,21 @@ local sets = {
         Range = 'Ryl.Spr. Horn',
     },
     Sing_Madrigal = {
-     --   Range = 'Traversiere +2',
+        Range = 'Traversiere +1',
     },
     Sing_Elegy = {
         Range = "Horn +1",
     },
     Sing_Lullaby = {
-        Head = 'Noble\'s Ribbon',
-        Neck = "Flower Necklace",
-        Ring1 = 'Hope Ring',
-        Ring2 = 'Hope Ring',
+        Range = 'Mary\'s Horn',
     },
     Sing_HordeLullaby_Large = {
-        Head = 'Noble\'s Ribbon',
-        Neck = "Flower Necklace",
-        Ring1 = 'Hope Ring',
-        Ring2 = 'Hope Ring',
+
+        Range = 'Mary\'s Horn',
     },
     Sing_HordeLullaby_Small = {
-        Head = 'Noble\'s Ribbon',
-        Neck = "Flower Necklace",
-        Ring1 = 'Hope Ring',
-        Ring2 = 'Hope Ring',
+
+        Range = 'Mary\'s Horn',
     },
     Sing_SleepRecast = {
     },
@@ -216,6 +209,7 @@ local sets = {
     --    Range = 'Sorrowful Harp',
     --    Neck = 'String Torque',
     --    Legs = 'Mahatma Slops',
+        Range = 'Piccolo',
     },
     Sing_Hymnus = {
     --    Range = 'Angel Lyre',
@@ -288,12 +282,20 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 9')
 
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ma "Foe Lullaby"')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ma "Wind Threnody" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ma "Light Threnody" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ma "Sword Madrigal" <me>')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ma "Advancing March" <me>')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ma "Valor Minuet II" <me>')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 7 down /ma "Mage\'s Ballad" <me>')
+end
+
+profile.LoadJobAddons = function () 
+    AshitaCore:GetChatManager():QueueCommand(-1, '/addon load songcast')
+end
+
+profile.UnloadJobAddons = function ()
+    AshitaCore:GetChatManager():QueueCommand(-1, '/addon unload songcast')
 end
 
 --[[
@@ -332,11 +334,13 @@ profile.OnLoad = function()
     gcdisplay.CreateToggle('SleepRecast', false)
     gcmage.Load()
     profile.SetMacroBook()
+    profile.LoadJobAddons()
 end
 
 profile.OnUnload = function()
     gcmage.Unload()
     gcinclude.ClearAlias(T{'sballad','shorde','srecast'})
+    profile.UnloadJobAddons()
 end
 
 profile.HandleCommand = function(args)
