@@ -4,118 +4,86 @@ local fastCastValue = 0.00 -- 0% from gear listed in Precast set. Note: Do NOT i
 
 local ninSJMaxMP = nil -- The Max MP you have when /nin in your idle set
 local rdmSJMaxMP = nil -- The Max MP you have when /rdm in your idle set
-local blmSJMaxMP = 790 -- The Max MP you have when /blm in your idle set
+local blmSJMaxMP = nil -- The Max MP you have when /blm in your idle set
 
 local virology_ring = true
 local virology_ring_slot = 'Ring2'
 
-local sets = {
-	Idle = {
-		Main = "Earth Staff",
-		Hands = "Blessed Mitts",
-		Head = "Healer\'s Cap",
-		Body = "Noble's tunic",
-		Legs = "Blessed Trousers",
-		Feet = "Errant Pigaches",
-		Neck = "Ajari Necklace",
-		Waist = "Hierarch Belt",
-		Ear1 = "Geist Earring",
-		Ear2 = "Geist Earring",
-		Ring1 = "Ether Ring",
-		Ring2 = "Electrum Ring",
-		Back = "White Cape"
-	},
-	IdleALT = {
-		Main = "Purgatory Mace",
-		Sub = "Numinous shield",
-		Hands = "Blessed Mitts",
-		Head = "Healer\'s Cap",
-		Body = "Noble's tunic",
-		Legs = "Blessed Trousers",
-		Feet = "Errant Pigaches",
-		Neck = "Ajari Necklace",
-		Waist = "Hierarch Belt",
-		Ear1 = "Geist Earring",
-		Ear2 = "Geist Earring",
-		Ring1 = "Ether Ring",
-		Ring2 = "Electrum Ring",
-		Back = "White Cape"
-	},
-	IdleMaxMP = {},
-	Resting = {
-		Main = "Dark Staff",
-		Sub = "",
-		Body = "Noble's tunic",
-		-- Body = "Seer's tunic",
-		Legs = "Baron's Slops"
-	},
-	Town = {},
-	Movement = {},
-	DT = {},
-	DTNight = {},
-	MDT = {},
-	FireRes = {},
-	IceRes = {},
-	LightningRes = {},
-	EarthRes = {},
-	WindRes = {},
-	WaterRes = {},
-	Evasion = {},
-	Precast = {},
-	Casting = {},
-	SIRD = {},
-	Haste = {},
-	ConserveMP = {},
-	Cure = {
-		Main = "Light Staff"
-	},
-	Cure5 = {
-		Main = "Light Staff"
-	},
-	Regen = {
-		Body = "Cleric\'s Bliaut"
-	},
-	Cursna = {},
-	Enhancing = {},
-	Stoneskin = {},
-	Spikes = {},
-	Enfeebling = {},
-	EnfeeblingMND = {},
-	EnfeeblingINT = {},
-	EnfeeblingACC = {},
-	Divine = {	
-		Main = "Water Staff",
-		Hands = "Devotee\'s Mitts",
-		Feet = "Seer\'s pumps",
-	},
-	Banish = {},
-	Dark = {},
-	Nuke = {
+local displayheadOnAbility = true
 
-	},
-	NukeACC = {},
-	NukeDOT = {},
-	LockSet1 = {},
-	LockSet2 = {},
-	LockSet3 = {},
-	TP = {},
-	TP_NIN = {},
-	WS = {}
-};
-profile.Sets = sets;
+local sets = {
+    Idle = {},
+    IdleALT = {},
+    IdleMaxMP = {},
+    Resting = {},
+    Town = {},
+    Movement = {},
+
+    DT = {},
+    DTNight = {},
+    MDT = { -- Shell IV provides 23% MDT
+    },
+    FireRes = {},
+    IceRes = {},
+    LightningRes = {},
+    EarthRes = {},
+    WindRes = {},
+    WaterRes = {},
+    Evasion = {},
+
+    Precast = {},
+    Casting = { -- Default Casting Equipment when using Idle sets
+    },
+    SIRD = { -- Used on Stoneskin, Blink, Aquaveil and Utsusemi casts
+    },
+    Haste = { -- Used only on Haste, Refresh, Blink and Utsusemi casts
+    },
+    ConserveMP = {},
+
+    Yellow = {},
+    Cure = {},
+    Cure5 = {},
+    Regen = {
+        Body = 'Cleric\'s Bliaut',
+    },
+    Barspell = {},
+    Cursna = {},
+
+    Enhancing = {},
+    Stoneskin = {},
+    Spikes = {},
+
+    Enfeebling = {},
+    EnfeeblingMND = {},
+    EnfeeblingINT = {},
+    EnfeeblingACC = {},
+
+    Divine = {},
+    Banish = {},
+    Dark = {},
+
+    Nuke = {},
+    NukeACC = {},
+    NukeDOT = {},
+
+    LockSet1 = {},
+    LockSet2 = {},
+    LockSet3 = {},
+
+    TP = {},
+    TP_HighAcc = {},
+    TP_NIN = {},
+    TP_Mjollnir_Haste = {},
+    WS = {},
+    WS_HighAcc = {},
+    WS_Randgrith = {},
+}
+profile.Sets = sets
+
 profile.SetMacroBook = function()
-	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro book 1");
-	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro set 1");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 1 down /ma \"Cure II\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 2 down /ma \"Cure III\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 3 down /ma \"Cure IV\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Regen\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Haste\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Regen II\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 7 down /ma \"Dia II\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Paralyze\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Slow\" <t>");
-end;
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+end
 
 --[[
 --------------------------------
@@ -126,6 +94,9 @@ Everything below can be ignored.
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
+    if (displayheadOnAbility) then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
+    end
 end
 
 profile.HandleItem = function()

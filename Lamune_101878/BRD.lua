@@ -1,12 +1,14 @@
-local profile = {};
-local fastCastValue = 0.04;
-local fastCastValueSong = 0.37;
-local ninSJMaxMP = nil;
-local whmSJMaxMP = nil;
-local rdmSJMaxMP = nil;
-local blmSJMaxMP = nil;
-local minstrels_earring = false;
-local minstrels_earring_slot = "Ear2";
+local profile = {}
+
+local fastCastValue = 0.04 -- Only include Fast Cast e.g. Loquacious Earring, Rostrum Pumps
+local fastCastValueSong = 0.37 -- Only include Song Spellcasting Time e.g. Minstrel's Ring, Sha'ir Manteel
+
+local ninSJMaxMP = nil -- The Max MP you have when /nin in your idle set
+local whmSJMaxMP = 188 -- The Max MP you have when /whm in your idle set
+local rdmSJMaxMP = nil -- The Max MP you have when /rdm in your idle set
+local blmSJMaxMP = nil -- The Max MP you have when /blm in your idle set
+
+local displayheadOnAbility = true
 local minstrels_ring = true;
 local minstrels_ring_slot = "Ring1";
 local sets = {
@@ -151,153 +153,158 @@ end;
 profile.UnloadJobAddons = function()
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/addon unload songcast");
 end;
-gcmage = gFunc.LoadFile("common\\gcmage.lua");
+--[[
+--------------------------------
+Everything below can be ignored.
+--------------------------------
+]]
+
+gcmage = gFunc.LoadFile('common\\gcmage.lua')
+
 profile.HandleAbility = function()
-end;
+    if (displayheadOnAbility) then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
+    end
+end
+
 profile.HandleItem = function()
-	gcinclude.DoItem();
-end;
+    gcinclude.DoItem()
+end
+
 profile.HandlePreshot = function()
-end;
+end
+
 profile.HandleMidshot = function()
-end;
+end
+
 profile.HandleWeaponskill = function()
-	gFunc.EquipSet(sets.WS);
-	if gcdisplay.GetCycle("TP") == "HighAcc" then
-		gFunc.EquipSet("WS_HighAcc");
-	end;
-	gcmage.DoFenrirsEarring();
-end;
+    gFunc.EquipSet(sets.WS)
+    if (gcdisplay.GetCycle('TP') == 'HighAcc') then
+        gFunc.EquipSet('WS_HighAcc')
+    end
+    gcmage.DoFenrirsEarring()
+end
+
 profile.OnLoad = function()
-	gcinclude.SetAlias(T({
-		"sballad",
-		"shorde",
-		"srecast"
-	}));
-	gcdisplay.CreateToggle("SmallBallad", false);
-	gcdisplay.CreateToggle("SmallHorde", false);
-	gcdisplay.CreateToggle("SleepRecast", false);
-	gcmage.Load();
-	profile.SetMacroBook();
-	profile.LoadJobAddons();
-end;
+    gcinclude.SetAlias(T{'sballad','shorde','srecast'})
+    gcdisplay.CreateToggle('SmallBallad', false)
+    gcdisplay.CreateToggle('SmallHorde', false)
+    gcdisplay.CreateToggle('SleepRecast', false)
+    gcmage.Load()
+    profile.SetMacroBook()
+end
+
 profile.OnUnload = function()
-	gcmage.Unload();
-	gcinclude.ClearAlias(T({
-		"sballad",
-		"shorde",
-		"srecast"
-	}));
-	profile.UnloadJobAddons();
-end;
+    gcmage.Unload()
+    gcinclude.ClearAlias(T{'sballad','shorde','srecast'})
+end
+
 profile.HandleCommand = function(args)
-	if args[1] == "sballad" then
-		gcdisplay.AdvanceToggle("SmallBallad");
-		gcinclude.Message("SmallBallad", gcdisplay.GetToggle("SmallBallad"));
-	elseif args[1] == "shorde" then
-		gcdisplay.AdvanceToggle("SmallHorde");
-		gcinclude.Message("SmallHorde", gcdisplay.GetToggle("SmallHorde"));
-	elseif args[1] == "srecast" then
-		gcdisplay.AdvanceToggle("SleepRecast");
-		gcinclude.Message("SleepRecast", gcdisplay.GetToggle("SleepRecast"));
-	else
-		gcmage.DoCommands(args);
-	end;
-	if args[1] == "horizonmode" then
-		profile.HandleDefault();
-	end;
-end;
+    if (args[1] == 'sballad') then
+        gcdisplay.AdvanceToggle('SmallBallad')
+        gcinclude.Message('SmallBallad', gcdisplay.GetToggle('SmallBallad'))
+    elseif (args[1] == 'shorde') then
+        gcdisplay.AdvanceToggle('SmallHorde')
+        gcinclude.Message('SmallHorde', gcdisplay.GetToggle('SmallHorde'))
+    elseif (args[1] == 'srecast') then
+        gcdisplay.AdvanceToggle('SleepRecast')
+        gcinclude.Message('SleepRecast', gcdisplay.GetToggle('SleepRecast'))
+    else
+        gcmage.DoCommands(args)
+    end
+
+    if (args[1] == 'horizonmode') then
+        profile.HandleDefault()
+    end
+end
+
 profile.HandleDefault = function()
-	local player = gData.GetPlayer();
-	if (player.SubJob == "NIN") then
-		sets.Idle.Main = 'ShellBuster'
-		sets.Idle.Sub = 'Paper Knife'
-	end
-	gcmage.DoDefault(ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, rdmSJMaxMP, nil);
-
-	if minstrels_earring and player.HPP <= 25 then
-		gFunc.Equip(minstrels_earring_slot, "Minstrel's Earring");
-	end;
-
-	if minstrels_ring and player.HPP <= 75 then
+    gcmage.DoDefault(ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, rdmSJMaxMP, nil)
+    if minstrels_ring and player.HPP <= 75 then
 		gFunc.Equip(minstrels_ring_slot, "Minstrel's Ring");
 	end;
-	gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()));
-end;
+
+    gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
+end
+
 profile.HandlePrecast = function()
-	local action = gData.GetAction();
-	if action.Type == "Bard Song" then
-		gFunc.ForceEquipSet("Precast_Songs_HPDown");
-		gFunc.EquipSet(sets.Precast_Songs);
-		local totalFastCast = 1 - (1 - fastCastValueSong) * (1 - fastCastValue);
-		gcmage.DoPrecast(totalFastCast);
-	else
-		gcmage.DoPrecast(fastCastValue);
-	end;
-end;
+    local action = gData.GetAction()
+    if (action.Type == 'Bard Song') then
+        gFunc.ForceEquipSet('Precast_Songs_HPDown')
+        gFunc.EquipSet(sets.Precast_Songs)
+        local totalFastCast = 1 - (1 - fastCastValueSong) * (1 - fastCastValue)
+        gcmage.DoPrecast(totalFastCast)
+    else
+        gcmage.DoPrecast(fastCastValue)
+    end
+end
+
 profile.HandleMidcast = function()
-	gcmage.DoMidcast(sets, ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, rdmSJMaxMP, nil);
-	local action = gData.GetAction();
-	if action.Type == "Bard Song" then
-		gFunc.EquipSet(sets.Sing_Default);
-		if string.match(action.Name, "Threnody") then
-			gFunc.EquipSet(sets.Sing_Debuff);
-			gFunc.EquipSet(sets.Sing_Threnody);
-		elseif string.match(action.Name, "Elegy") then
-			gFunc.EquipSet(sets.Sing_Debuff);
-			gFunc.EquipSet(sets.Sing_Elegy);
-		elseif string.match(action.Name, "Foe Lullaby") then
-			gFunc.EquipSet(sets.Sing_Debuff);
-			gFunc.EquipSet(sets.Sing_Lullaby);
-			if gcdisplay.GetToggle("SleepRecast") then
-				gFunc.EquipSet(sets.Sing_SleepRecast);
-			end;
-		elseif string.match(action.Name, "Horde Lullaby") then
-			gFunc.EquipSet(sets.Sing_Debuff);
-			gFunc.EquipSet(sets.Sing_HordeLullaby_Large);
-			if gcdisplay.GetToggle("SmallHorde") then
-				gFunc.EquipSet(sets.Sing_HordeLullaby_Small);
-			end;
-			if gcdisplay.GetToggle("SleepRecast") then
-				gFunc.EquipSet(sets.Sing_SleepRecast);
-			end;
-		elseif action.Name == "Magic Finale" or string.match(action.Name, "Requiem") then
-			gFunc.EquipSet(sets.Sing_Debuff);
-			gFunc.EquipSet(sets.Sing_FinaleRequiem);
-		elseif string.match(action.Name, "Carol") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Carol);
-		elseif string.match(action.Name, "Ballad") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Ballad_Large);
-			if gcdisplay.GetToggle("SmallBallad") then
-				gFunc.EquipSet(sets.Sing_Ballad_Small);
-			end;
-		elseif string.match(action.Name, "Minuet") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Minuet);
-		elseif string.match(action.Name, "March") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_March);
-		elseif string.match(action.Name, "Madrigal") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Madrigal);
-		elseif string.match(action.Name, "Mambo") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Mambo);
-		elseif string.match(action.Name, "Prelude") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Prelude);
-		elseif string.match(action.Name, "Hymnus") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Hymnus);
-		elseif action.Name == "Chocobo Mazurka" then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Mazurka);
-		elseif string.match(action.Name, "Paeon") then
-			gFunc.EquipSet(sets.Sing_Buff);
-			gFunc.EquipSet(sets.Sing_Paeon);
-		end;
-	end;
-end;
-return profile;
+    gcmage.DoMidcast(sets, ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, rdmSJMaxMP, nil)
+
+    local action = gData.GetAction()
+    if (action.Type == 'Bard Song') then
+        gFunc.EquipSet(sets.Sing_Default)
+
+        if string.match(action.Name, 'Threnody') then
+            gFunc.EquipSet(sets.Sing_Debuff)
+            gFunc.EquipSet(sets.Sing_Threnody)
+        elseif string.match(action.Name, 'Elegy') then
+            gFunc.EquipSet(sets.Sing_Debuff)
+            gFunc.EquipSet(sets.Sing_Elegy)
+        elseif string.match(action.Name, 'Foe Lullaby') then
+            gFunc.EquipSet(sets.Sing_Debuff)
+            gFunc.EquipSet(sets.Sing_Lullaby)
+            if (gcdisplay.GetToggle('SleepRecast')) then
+                gFunc.EquipSet(sets.Sing_SleepRecast)
+            end
+        elseif string.match(action.Name, 'Horde Lullaby') then
+            gFunc.EquipSet(sets.Sing_Debuff)
+            gFunc.EquipSet(sets.Sing_HordeLullaby_Large)
+            if (gcdisplay.GetToggle('SmallHorde')) then
+                gFunc.EquipSet(sets.Sing_HordeLullaby_Small)
+            end
+            if (gcdisplay.GetToggle('SleepRecast')) then
+                gFunc.EquipSet(sets.Sing_SleepRecast)
+            end
+        elseif (action.Name == 'Magic Finale') or string.match(action.Name, 'Requiem') then
+            gFunc.EquipSet(sets.Sing_Debuff)
+            gFunc.EquipSet(sets.Sing_FinaleRequiem)
+        elseif string.match(action.Name, 'Carol') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Carol)
+        elseif string.match(action.Name, 'Ballad') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Ballad_Large)
+            if (gcdisplay.GetToggle('SmallBallad')) then
+                gFunc.EquipSet(sets.Sing_Ballad_Small)
+            end
+        elseif string.match(action.Name, 'Minuet') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Minuet)
+        elseif string.match(action.Name, 'March') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_March)
+        elseif string.match(action.Name, 'Madrigal') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Madrigal)
+        elseif string.match(action.Name, 'Mambo') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Mambo)
+        elseif string.match(action.Name, 'Prelude') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Prelude)
+        elseif string.match(action.Name, 'Hymnus') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Hymnus)
+        elseif (action.Name == 'Chocobo Mazurka') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Mazurka)
+        elseif string.match(action.Name, 'Paeon') then
+            gFunc.EquipSet(sets.Sing_Buff)
+            gFunc.EquipSet(sets.Sing_Paeon)
+        end
+    end
+end
+
+return profile

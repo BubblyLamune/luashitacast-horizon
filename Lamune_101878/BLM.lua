@@ -14,6 +14,8 @@ local republic_circlet = false
 local opuntia_hoop = false
 local opuntia_hoop_slot = 'Ring1'
 
+local displayheadOnAbility = true
+
 local sets = {
     Idle = {
         Main = 'Solid Wand',
@@ -450,8 +452,8 @@ local sets = {
     },
     MB = {
         Ammo = 'Dream Sand',
-        Hands = 'Src. Gloves +1',
-        Back = 'Maledictor\'s Shawl',
+        -- Hands = 'Src. Gloves +1',
+        -- Back = 'Maledictor\'s Shawl',
     },
 
     LockSet1 = { -- 40 Cap
@@ -492,6 +494,9 @@ Everything below can be ignored.
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
+    if (displayheadOnAbility) then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
+    end
 end
 
 profile.HandleItem = function()
