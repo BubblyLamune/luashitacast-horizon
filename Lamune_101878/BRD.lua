@@ -220,6 +220,13 @@ end
 
 profile.HandleDefault = function()
     gcmage.DoDefault(ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, rdmSJMaxMP, nil)
+	local player = gData.GetPlayer();
+	
+	if (player.SubJob == "NIN") then
+		sets.Idle.Main = 'ShellBuster'
+		sets.Idle.Sub = 'Paper Knife'
+	end
+
     if minstrels_ring and player.HPP <= 75 then
 		gFunc.Equip(minstrels_ring_slot, "Minstrel's Ring");
 	end;
