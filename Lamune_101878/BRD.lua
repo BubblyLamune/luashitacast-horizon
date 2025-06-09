@@ -1,7 +1,7 @@
 local profile = {}
 
 local fastCastValue = 0.04 -- Only include Fast Cast e.g. Loquacious Earring, Rostrum Pumps
-local fastCastValueSong = 0.37 -- Only include Song Spellcasting Time e.g. Minstrel's Ring, Sha'ir Manteel
+local fastCastValueSong = 0.25 -- Only include Song Spellcasting Time e.g. Minstrel's Ring, Sha'ir Manteel
 
 local ninSJMaxMP = nil -- The Max MP you have when /nin in your idle set
 local whmSJMaxMP = 188 -- The Max MP you have when /whm in your idle set
@@ -9,6 +9,7 @@ local rdmSJMaxMP = nil -- The Max MP you have when /rdm in your idle set
 local blmSJMaxMP = nil -- The Max MP you have when /blm in your idle set
 
 local displayheadOnAbility = true
+
 local minstrels_ring = true;
 local minstrels_ring_slot = "Ring1";
 local sets = {
@@ -163,7 +164,7 @@ gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
     if (displayheadOnAbility) then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
+        AshitaCore:GetChatManager():QueueCommand(1, '/displayhead')
     end
 end
 
@@ -192,11 +193,13 @@ profile.OnLoad = function()
     gcdisplay.CreateToggle('SleepRecast', false)
     gcmage.Load()
     profile.SetMacroBook()
+	profile.LoadJobAddons();
 end
 
 profile.OnUnload = function()
     gcmage.Unload()
     gcinclude.ClearAlias(T{'sballad','shorde','srecast'})
+	profile.UnloadJobAddons();
 end
 
 profile.HandleCommand = function(args)
@@ -221,7 +224,7 @@ end
 profile.HandleDefault = function()
     gcmage.DoDefault(ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, rdmSJMaxMP, nil)
 	local player = gData.GetPlayer();
-	
+
 	if (player.SubJob == "NIN") then
 		sets.Idle.Main = 'ShellBuster'
 		sets.Idle.Sub = 'Paper Knife'
