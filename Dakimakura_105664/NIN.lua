@@ -32,14 +32,14 @@ local light_staff = 'Apollo\'s Staff'
 local dark_staff = 'Pluto\'s Staff'
 
 -- Set to true if you have the obi
-local karin_obi = true
+local karin_obi = false
 local dorin_obi = false
 local suirin_obi = false
 local furin_obi = false
-local hyorin_obi = true
-local rairin_obi = true
-local korin_obi = true
-local anrin_obi = true
+local hyorin_obi = false
+local rairin_obi = false
+local korin_obi = false
+local anrin_obi = false
 
 local sets = {
     Idle = {
@@ -148,6 +148,9 @@ profile.Sets = sets
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Provoke" <t>;/party Provoke <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 end
 
 --[[

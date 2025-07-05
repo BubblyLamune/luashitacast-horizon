@@ -18,18 +18,20 @@ local sets = {
 		Head = "Choral roundlet",
 		Range = "Ryl.Spr. Horn",
 		Neck = "Justice Badge",
-		Waist = "Corsette +1",
+		Waist = "Gleeman\'s Belt",
         Body = "Choral Jstcorps",
-		Hands = "Custom F Gloves",
+		Hands = "Choral Cuffs",
 		Ring1 = "Minstrel\'s Ring",
 		Ring2 = "Balance Ring",
-		Back = "lucent cape",
+		--Ring2 = "Ether Ring",
+		Back = "Jester\'s cape +1",
 		Legs = "Choral Cannions",
 		Feet = "Choral Slippers"
 	},
 	IdleALT = {},
 	IdleMaxMP = {},
 	Resting = {
+		Main = "Dark Staff",
 		Legs = "Baron's Slops"
 	},
 	Town = {},
@@ -69,7 +71,7 @@ local sets = {
 		Range = "Cornette +1"
 	},
 	Sing_Mazurka = {
-		Range = "Cornette +1"
+		Range = "Harlequin's Horn"
 	},
 	Sing_Minuet = {
 		Range = "Cornette +1"
@@ -102,9 +104,15 @@ local sets = {
 	Sing_Threnody = {
 		Range = "Piccolo"
 	},
-	Sing_Hymnus = {},
+	Sing_Hymnus = {
+		Range = "Angel Lyre"
+	},
 	Cure = {
-		Neck = "Justice Badge"
+		Neck = "Justice Badge",
+		Hands = "Devotee's Mitts",
+		Back = "White Cape",
+		Ear1 = "Geist Earring",
+		Ear2 = "Geist Earring",
 	},
 	Cursna = {},
 	Enhancing = {},
@@ -136,16 +144,20 @@ profile.Sets = sets;
 profile.SetMacroBook = function()
 	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro book 1");
 	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro set 9");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 0 down /ma \"Horde Lullaby\"");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 2 down /ma \"Light Threnody\" <t>");
+	-- Sleeps
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 0 down /ma \"Horde Lullaby\" <t>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 1 down /ma \"Foe Lullaby\" <t>");
+	-- Songs
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 2 down /ma \"Ice Threnody\" <t>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 3 down /ma \"Utsusemi: Ichi\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Blade Madrigal\" <me>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Advancing March\" <me>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Valor Minuet III\" <me>");
+	--(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Advancing March\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Victory March\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Valor Minuet IV\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 7 down /ma \"Mage's Ballad\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Mage's Ballad II\" <me>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Learned Etude\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 1 down /ma \"Foe Lullaby\"");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Carnage Elegy\" <t>");
+
 
 end;
 profile.LoadJobAddons = function()

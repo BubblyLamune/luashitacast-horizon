@@ -4,18 +4,18 @@ local max_hp_in_idle_with_regen_gear_equipped = 1632
 local fastCastValue = 0.02 -- 2% from gear
 
 -- Replace these with '' if you do not have them
-local temple_gaiters = 'Temple Gaiters'
-local temple_gloves = 'Temple Gloves'
-local temple_cyclas = 'Tpl. Cyclas +1'
-local temple_crown = 'Tpl. Crown +1'
+local temple_gaiters = ''
+local temple_gloves = ''
+local temple_cyclas = ''
+local temple_crown = ''
 
-local melee_gaiters = 'Melee Gaiters'
-local melee_gloves = 'Mel. Gloves +1'
+local melee_gaiters = ''
+local melee_gloves = ''
 
 local muscle_belt = ''
 local garden_bangles = ''
 local presidential_hairpin = false
-local dream_ribbon = true
+local dream_ribbon = false
 
 local kampfer_ring = false
 local kampfer_ring_slot = 'Ring2'
@@ -26,7 +26,7 @@ local sets = {
     Idle = {
         Ammo = 'Tiphia Sting',
         Head = 'Genbu\'s Kabuto',
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Mel. Cyclas +1',
@@ -42,7 +42,7 @@ local sets = {
         Main = 'Destroyers',
         Ammo = 'Tiphia Sting',
         Head = 'Dream Ribbon',
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Wyvern Earring',
         Body = 'Kirin\'s Osode',
