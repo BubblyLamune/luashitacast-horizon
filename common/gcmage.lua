@@ -10,7 +10,7 @@ local light_staff = 'Light Staff'
 local dark_staff = 'Dark Staff'
 
 -- Set to true if you have the obi
-local karin_obi = true
+local karin_obi = false
 local dorin_obi = false
 local suirin_obi = false
 local furin_obi = false
@@ -27,7 +27,7 @@ local dream_boots = true
 local dream_mittens = true
 local skulkers_cape = false
 local wizards_mantle = false
-local republic_gold_medal = true -- Note: Disabled for BRD
+local republic_gold_medal = false -- Note: Disabled for BRD
 
 local diabolos_earring = false
 local diabolos_earring_slot = 'Ear2'
@@ -45,7 +45,7 @@ local healers_earring = false
 local healers_earring_slot = 'Ear2'
 
 -- RDM Specific
-local tp_fencers_ring = true
+local tp_fencers_ring = false
 local tp_fencers_ring_slot = ''
 
 -- BLM Specific

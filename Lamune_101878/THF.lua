@@ -11,7 +11,7 @@ local sets = {
     Sub = "Hornetneedle",
     Body = "Scorpion Harness",
     Hands = "Custom F gloves",
-    Legs = "Republic Subligar",
+    Legs = "Rogue\'s Culottes",
     Head = "Emperor Hairpin",
     Feet = "Leaping Boots",
     Neck = "Spike necklace",
@@ -92,7 +92,9 @@ local sets = {
         Legs = "Rogue's Culottes",
     },
 
-    Flee = {},
+    Flee = {
+        Feet = "Rogue\'s Poulaines",
+    },
     Hide = {},
     Steal = {
         Legs = "Rogue's Culottes",

@@ -17,22 +17,22 @@ local opuntia_hoop_slot = 'Ring1'
 local displayheadOnAbility = true
 
 local sets = {
-    Idle = {
-        Main = 'Solid Wand',
-        Sub = 'Casting Wand',
-        Ammo = 'Fortune Egg',
-        Head = "Seer's Tiara",
-		Neck = "Black Neckerchief",
-		Ear1 = "Morion earring",
-		Ear2 = "Morion earring",
-        Body = 'Ryl.Sqr. Robe +1',
-        Hands = "Seer's Mitts",
-        Ring1 = "Eremite's Ring",
-        Ring2 = "Eremite's Ring",
+    ['Idle'] = {
+        Main = 'Earth Staff',
+       -- Sub = 'Casting Wand',
+       -- Ammo = 'Fortune Egg',
+        Head = 'Wizard\'s Petasos',
+        Neck = 'Black Neckerchief',
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Morion Earring',
+        Body = 'Wizard\'s Coat',
+        Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Zircon Ring',
+        Ring2 = 'Zircon Ring',
         Back = 'Black Cape',
         Waist = 'Mrc.Cpt. Belt',
-        Legs = "Seer's Slacks",
-        Feet = 'Custom F boots',
+        Legs = 'Wizard\'s Tonban',
+        Feet = 'Wizard\'s Sabots',
     },
     Resting = {
         Main = 'Dark Staff',
@@ -185,8 +185,8 @@ local sets = {
         Feet = 'Rostrum Pumps',
     },
     Casting = {
-        Main = 'Solid Wand',
-        Sub = 'Casting Wand',
+      --  Main = 'Solid Wand',
+      --  Sub = 'Casting Wand',
         Head = 'Nashira Turban', -- 10
         Neck = 'Willpower Torque', -- 5
         Ear1 = 'Merman\'s Earring',
@@ -196,7 +196,7 @@ local sets = {
     },
     SIRD = { -- Used on Stoneskin, Blink, Aquaveil and Utsusemi casts
         Main = 'Eremite\'s Wand', -- 25
-        Sub = 'Eremite\'s Wand', -- 25
+       -- Sub = 'Eremite\'s Wand', -- 25
         Head = 'Nashira Turban', -- 10
         Neck = 'Willpower Torque', -- 5
         Ear1 = 'Merman\'s Earring',
@@ -474,6 +474,7 @@ local sets = {
     },
     LockSet2 = {},
     LockSet3 = {},
+
 }
 profile.Sets = sets
 
