@@ -7,7 +7,23 @@ local myochin_kabuto = 'Myochin Kabuto'
 local saotome_kote = 'Saotome Kote'
 
 local sets = {
-    Idle = {},
+    ['Idle'] = {
+        Main = 'Ashura +1',
+        Range = 'Composite Bow +1',
+        Ammo = 'Horn Arrow',
+        Head = 'Emperor Hairpin',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Drone Earring',
+        Ear2 = 'Drone Earring',
+        Body = 'Custom Vest',
+        Hands = 'Custom F Gloves',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Balance Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Wyvern Belt',
+        Legs = 'Republic Subligar',
+        Feet = 'Leaping Boots',
+    },
     IdleALT = {},
     Resting = {},
     Town = {},
@@ -48,6 +64,13 @@ profile.Sets = sets
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Tachi:Enpi" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ja "Jump" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Meditate" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Third Eye" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Hasso" <me>')
 end
 
 --[[

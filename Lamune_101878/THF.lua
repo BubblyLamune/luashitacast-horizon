@@ -109,6 +109,22 @@ local sets = {
         
     },
     Ranged_INT = {},
+    ['bcnmfourty'] = {
+        Main = 'Marauder\'s Knife',
+        Sub = 'Kingdom Dagger',
+        Head = 'Emperor Hairpin',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Drone Earring',
+        Ear2 = 'Drone Earring',
+        Body = 'Mrc.Cpt. Doublet',
+        Hands = 'Custom F Gloves',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Balance Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Tilt Belt',
+        Legs = 'Republic Subligar',
+        Feet = 'Leaping Boots',
+    },
 }
 
 if player.SubJob == 'NIN' then

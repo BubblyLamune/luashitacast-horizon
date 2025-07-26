@@ -382,7 +382,7 @@ end
 
 function gcinclude.DoItem()
     local item = gData.GetAction()
-
+    gcinclude.CheckCancels()
     if (item.Name == 'Silent Oil') then
         if (dream_boots) then
             gFunc.Equip('Feet', 'Dream Boots +1')
@@ -432,6 +432,33 @@ function gcinclude.BuildLockableSet(equipment)
         end
     end
     return lockableSet
+end
+
+--[[ Referenced / Copied from Avogadro-war on GHUB ]]
+function gcinclude.CheckCancels(action, target, me)
+	local action = action or gData.GetAction();
+	local sneak = gData.GetBuffCount('Sneak');
+	local stoneskin = gData.GetBuffCount('Stoneskin');
+	local target = target or gData.GetActionTarget();
+	local me = me or AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
+	-- print(chat.header('debug'):append(chat.message(tostring(action.Name) + ' is passed')))
+
+	local function do_jig()
+		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Spectral Jig" <me>');
+	end
+	local function do_sneak()
+		AshitaCore:GetChatManager():QueueCommand(1, '/ma "Sneak" <me>');
+	end
+
+	if (action.Name == 'Spectral Jig' and sneak ~=0) then
+		gFunc.CancelAction();
+		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
+		do_jig:once(2);
+	elseif (action.Name == 'Sneak' and sneak ~= 0 and target.Name == me) then
+		gFunc.CancelAction();
+		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
+		do_sneak:once(1);
+	end
 end
 
 return gcinclude

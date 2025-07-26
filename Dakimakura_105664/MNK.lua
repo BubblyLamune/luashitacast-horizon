@@ -23,20 +23,20 @@ local kampfer_earring = false
 local kampfer_earring_slot = 'Ear2'
 
 local sets = {
-    Idle = {
-        Ammo = 'Tiphia Sting',
-        Head = 'Genbu\'s Kabuto',
-        Neck = 'Jeweled Collar',
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Merman\'s Earring',
-        Body = 'Mel. Cyclas +1',
-        Hands = 'Dst. Mittens +1',
-        Ring1 = 'Shadow Ring',
-        Ring2 = 'Sattva Ring',
-        Back = 'Shadow Mantle',
-        Waist = 'Warwolf Belt',
-        Legs = 'Dst. Subligar +1',
-        Feet = 'Dst. Leggings +1',
+    ['Idle'] = {
+        Main = 'Torama cesti',
+        Head = 'Mrc.Cpt. Headgear',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Beetle Earring +1',
+        Ear2 = 'Beetle Earring +1',
+        Body = 'Jujitsu Gi',
+        Hands = 'Temple Gloves',
+        Ring1 = 'Sun Ring',
+        Ring2 = 'Sun Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Purple Belt',
+        Legs = 'Bastokan Subligar',
+        Feet = 'Temple Gaiters',
     },
     IdleALT = {
         Main = 'Destroyers',
@@ -264,6 +264,21 @@ local sets = {
         Waist = 'Black Belt',
         Legs = 'Shura Haidate',
         Feet = 'Dune Boots',
+    },
+    ['eco'] = {
+        Main = 'Lgn. Knuckles',
+        Head = 'Mrc.Cpt. Headgear',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Beetle Earring +1',
+        Ear2 = 'Beetle Earring +1',
+        Body = 'Bone Harness +1',
+        Hands = 'Bone Mittens +1',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Courage Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Purple Belt',
+        Legs = 'Bone Subligar +1',
+        Feet = 'Bone Leggings +1',
     },
 }
 profile.Sets = sets

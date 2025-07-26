@@ -1,5 +1,4 @@
 local profile = {}
-
 local fastCastValue = 0.42 -- 20% from traits 22% from gear listed in Precast set
 
 local ninSJMaxMP = 535 -- The Max MP you have when /nin in your idle set
@@ -416,7 +415,7 @@ local sets = {
 
     Enfeebling = {
     --    Head = 'Dls. Chapeau +1',
-        Body = 'Errant Hpl.',
+        Body = 'Warlock\'s Tabard',
         Back = 'Rainbow Cape',
    --     Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
@@ -576,7 +575,7 @@ local sets = {
     },
 
     ['TP'] = {
-        Main = 'Martial Anelace',
+        Main = 'Joyeuse',
         Sub = 'Numinous Shield',
         Head = 'Warlock\'s Chapeau',
         Neck = 'Jeweled Collar',
@@ -708,6 +707,7 @@ Everything below can be ignored.
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
+
     if (displayheadOnAbility) then
         AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
     end

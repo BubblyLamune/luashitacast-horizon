@@ -6,21 +6,18 @@ local ta_rogue_armlets = false
 local player = gData.GetPlayer()
 
 local sets = {
-    Idle = {		
-    Main = "Corsair\'s knife",
-    Sub = "Hornetneedle",
-    Body = "Scorpion Harness",
-    Hands = "Custom F gloves",
-    Legs = "Republic Subligar",
-    Head = "Emperor Hairpin",
-    Feet = "Leaping Boots",
-    Neck = "Spike necklace",
-    Waist = "Life belt",
-    Ear1 = "Drone earring",
-    Ear2 = "Drone earring",
-    Ring1 = "Balance ring",
-    Ring2 = "Balance ring",
-    Back = "Nomad\'s mantle"
+    ['Idle'] = {
+        Main = 'Mercenary\'s Knife',
+        Sub = 'Decurion\'s Dagger',
+        Range = 'Lgn. Crossbow',
+        Ammo = 'Acid Bolt',
+        Head = 'San. Bandana',
+        Body = 'Bone Harness +1',
+        Hands = 'Bone Mittens +1',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Courage Ring',
+        Legs = 'Bone Subligar +1',
+        Feet = 'Bone Leggings +1',
     },
     IdleALT = {
         Main = "Bone knife +1",
@@ -118,7 +115,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Dancing Edge" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Wasp Sting" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')

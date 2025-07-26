@@ -21,11 +21,11 @@ local sets = {
 		Feet = "Errant Pigaches",
 		Neck = "Ajari Necklace",
 		Waist = "Hierarch Belt",
-		Ear1 = "Geist Earring",
-		Ear2 = "Geist Earring",
+		Ear1 = "Morion Earring",
+		Ear2 = "Morion Earring",
 		Ring1 = "Ether Ring",
 		Ring2 = "Electrum Ring",
-		Back = "White Cape"
+		Back = "Rainbow Cape"
 	},
 	IdleALT = {
 		Main = "Purgatory Mace",

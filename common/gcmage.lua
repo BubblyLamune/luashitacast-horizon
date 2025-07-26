@@ -654,9 +654,10 @@ function gcmage.EquipSneakInvisGear()
     local action = gData.GetAction()
     local target = gData.GetActionTarget()
     local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0)
-
+    gcinclude.CheckCancels(action, target, me)
     if (target.Name == me) then
         if (action.Name == 'Sneak' or string.match(action.Name, 'Monomi')) then
+
             if (dream_boots) then
                 gFunc.Equip('Feet', 'Dream Boots +1')
             end
@@ -699,10 +700,13 @@ end
 
 function gcmage.EquipEnhancing()
     local action = gData.GetAction()
-
     gFunc.EquipSet('Enhancing')
     if (action.Name == 'Stoneskin') then
+        local stoneskin = gData.GetBuffCount('Stoneskin');
         gFunc.EquipSet('Stoneskin')
+        if (stoneskin ~= 0) then
+		    AshitaCore:GetChatManager():QueueCommand(1, '/cancel Stoneskin');
+	    end
     elseif (SpikeSpells:contains(action.Name)) then
         gFunc.EquipSet('Spikes')
     end
@@ -947,6 +951,7 @@ end
 
 function gcmage.DoAbility()
     local action = gData.GetAction()
+    
     if (action.Name == 'Release') then
         lastSummoningElement = ''
     end
