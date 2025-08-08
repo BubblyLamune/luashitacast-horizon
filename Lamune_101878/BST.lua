@@ -8,7 +8,23 @@ local gaudy_harness = false
 local muscle_belt = ''
 
 local sets = {
-    Idle = {},
+    ['Idle'] = {
+        Main = 'Mythril Pick',
+        Sub = 'Barbaroi Axe',
+        Ammo = 'S. Herbal Broth',
+        Head = 'Emperor Hairpin',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Drone Earring',
+        Ear2 = 'Drone Earring',
+        Body = 'Brigandine',
+        Hands = 'Custom F Gloves',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Balance Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Life Belt',
+        Legs = 'Republic Subligar',
+        Feet = 'Leaping Boots',
+    },
     IdleALT = {},
     Resting = {},
     Town = {},

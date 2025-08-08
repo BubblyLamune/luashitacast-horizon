@@ -2,31 +2,35 @@ local profile = {}
 
 local fastCastValue = 0.04 -- 4% from gear not including carbuncles cuffs or evokers boots
 
-local carbuncles_cuffs = false
+local carbuncles_cuffs = true
 local evokers_boots = false
 
 local cureMP = 895 -- Cure set max MP
 
 local sets = {
-    Idle = {
-        Main = 'Earth Staff',
-        Ear1 = 'Loquac. Earring',
-        Ear2 = 'Magnetic Earring',
-        Ammo = 'Hedgehog Bomb',
-        Head = 'Summoner\'s Horn',
-        Neck = 'Jeweled Collar',
-        Body = 'Yinyang Robe',
-        Hands = 'Nashira Gages',
-        Ring1 = 'Sattva Ring',
-        Ring2 = 'Evoker\'s Ring',
-        Back = 'Umbra Cape',
-        Waist = 'Hierarch Belt',
-        Legs = 'Evk. Spats +1',
-        Feet = 'Evk. Pigaches +1',
+    ['Idle'] = {
+        Main = 'Solid Wand',
+        Head = 'Seer\'s Crown',
+        Neck = 'Black Neckerchief',
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Morion Earring',
+        Body = 'Seer\'s Tunic',
+        Hands = 'Carbuncle Mitts',
+        Ring1 = 'San d\'Orian Ring',
+        Ring2 = 'Balance Ring',
+        Back = 'Black Cape',
+        Waist = 'Mrc.Cpt. Belt',
+        Legs = 'Seer\'s Slacks',
+        Feet = 'Custom F Boots',
     },
     IdleALT = {},
     IdleMaxMP = {},
     Resting = {
+       -- Main = 'Dark Staff',
+        Body = "Seer's Tunic",
+        Legs = 'Baron\'s Slops'
+    },
+    --[[ Resting = {
         Main = 'Pluto\'s Staff',
         Head = 'Hydra Beret',
         Neck = 'Pch. Collar',
@@ -40,7 +44,7 @@ local sets = {
         Waist = 'Hierarch Belt',
         Legs = 'Hydra Brais',
         Feet = 'Hydra Gaiters',
-    },
+    },]]
     Town = {},
     Movement = {
         Feet = 'Herald\'s Gaiters',
@@ -340,6 +344,11 @@ profile.SetMacroBook = function()
 
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 //dia')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 //dia')
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ja \"Assault\" <t>");
+	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ja \"Retreat\" <me>");
+	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 3 down /ja \"Release\" <me>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /party Burning Strike <t> <call21>;/pet \"Burning Strike\" <t>");
+
 end
 
 --[[

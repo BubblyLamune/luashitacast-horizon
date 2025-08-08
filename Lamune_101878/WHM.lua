@@ -15,14 +15,14 @@ local sets = {
 	Idle = {
 		Main = "Earth Staff",
 		Hands = "Blessed Mitts",
-		Head = "Healer\'s Cap",
+		Head = "Cleric\'s Cap",
 		Body = "Noble's tunic",
 		Legs = "Blessed Trousers",
-		Feet = "Errant Pigaches",
+		Feet = "Rostrum Pumps",
 		Neck = "Ajari Necklace",
 		Waist = "Hierarch Belt",
-		Ear1 = "Morion Earring",
-		Ear2 = "Morion Earring",
+        Ear1 = 'Geist Earring',
+        Ear2 = 'Geist Earring',
 		Ring1 = "Ether Ring",
 		Ring2 = "Electrum Ring",
 		Back = "Rainbow Cape"
@@ -70,12 +70,16 @@ local sets = {
 	Haste = {},
 	ConserveMP = {},
 	Cure = {
-		Main = "Light Staff"
+		Main = "Light Staff",
+		Feet = "Errant Pigaches",
 	},
 	Cure5 = {
-		Main = "Light Staff"
+		Main = "Light Staff",
+		Feet = "Errant Pigaches",
 	},
 	Regen = {
+		Sub = '',
+		Main = 'Rucke\'s Rung',
 		Body = "Cleric\'s Bliaut"
 	},
 	Cursna = {},

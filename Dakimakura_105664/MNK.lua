@@ -24,7 +24,7 @@ local kampfer_earring_slot = 'Ear2'
 
 local sets = {
     ['Idle'] = {
-        Main = 'Torama cesti',
+        Main = 'Torama Cesti',
         Head = 'Mrc.Cpt. Headgear',
         Neck = 'Spike Necklace',
         Ear1 = 'Beetle Earring +1',
