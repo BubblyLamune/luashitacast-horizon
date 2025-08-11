@@ -128,6 +128,22 @@ local sets = {
         Waist = 'Mrc.Cpt. Belt',
         Legs = 'Custom Pants',
         Feet = 'Custom F Boots',
+    },
+    ['sixty'] = {
+        Main = 'Earth Staff',
+        Ammo = 'Fortune Egg',
+        Head = 'Healer\'s Cap',
+        Neck = 'Ajari Necklace',
+        Ear1 = 'Geist Earring',
+        Ear2 = 'Geist Earring',
+        Body = 'Healer\'s Bliaut',
+        Hands = 'Healer\'s Mitts',
+        Ring1 = 'Ether Ring',
+        Ring2 = 'Electrum Ring',
+        Back = 'Black Cape',
+        Waist = 'Mrc.Cpt. Belt',
+        Legs = 'Healer\'s Pantaln.',
+        Feet = 'Healer\'s Duckbills',
     }};
 profile.Sets = sets
 
