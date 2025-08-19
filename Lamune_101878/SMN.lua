@@ -9,24 +9,24 @@ local cureMP = 895 -- Cure set max MP
 
 local sets = {
     ['Idle'] = {
-        Main = 'Kukulcan\'s Staff',
-        Head = 'Seer\'s Crown',
+        Main = 'Earth Staff',
+        Head = 'Austere Hat',
         Neck = 'Black Neckerchief',
         Ear1 = 'Morion Earring',
         Ear2 = 'Morion Earring',
-        Body = 'Ryl.Sqr. Robe +1',
-        Hands = 'Carbuncle Mitts',
+        Body = 'Austere Robe',
+        Hands = 'Evoker\'s Bracers',
 		Ring1 = "Ether Ring",
-		Ring2 = "Electrum Ring",
+		Ring2 = "Tamas Ring",
         Back = 'Black Cape',
         Waist = 'Mrc.Cpt. Belt',
-        Legs = 'Seer\'s Slacks',
+        Legs = 'Evoker\'s Spats',
         Feet = 'Custom F Boots',
     },
     IdleALT = {},
     IdleMaxMP = {},
     Resting = {
-       -- Main = 'Dark Staff',
+        Main = 'Dark Staff',
         Body = "Seer's Tunic",
         Legs = 'Baron\'s Slops'
     },
@@ -347,7 +347,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ja \"Assault\" <t>");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ja \"Retreat\" <me>");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 3 down /ja \"Release\" <me>");
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /party Axe Kick <t> <call21>;/pet \"Axe Kick\" <t>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /party Burning Strike >> <t> <call21>;/pet \"Burning Strike\" <t>");
 
 end
 

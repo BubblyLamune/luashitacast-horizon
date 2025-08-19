@@ -30,7 +30,7 @@ local sets = {
 		Ear1 = "Geist Earring",
 		Ear2 = "Geist Earring",
 		Ring1 = "Ether Ring",
-		Ring2 = "Electrum Ring",
+		Ring2 = "Tamas Ring",
 		Back = "White Cape"
 	},
 	IdleALT = {
@@ -46,7 +46,7 @@ local sets = {
 		Ear1 = "Geist Earring",
 		Ear2 = "Geist Earring",
 		Ring1 = "Ether Ring",
-		Ring2 = "Electrum Ring",
+		Ring2 = "Tamas Ring",
 		Back = "White Cape"
 	},
     IdleDT = { -- 1415

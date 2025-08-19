@@ -4,10 +4,10 @@ local max_hp_in_idle_with_regen_gear_equipped = 1632
 local fastCastValue = 0.02 -- 2% from gear
 
 -- Replace these with '' if you do not have them
-local temple_gaiters = ''
-local temple_gloves = ''
+local temple_gaiters = 'Temple Gaiters'
+local temple_gloves = 'Temple Gloves'
 local temple_cyclas = ''
-local temple_crown = ''
+local temple_crown = 'Temple Crown'
 
 local melee_gaiters = ''
 local melee_gloves = ''

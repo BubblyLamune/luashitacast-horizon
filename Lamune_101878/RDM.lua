@@ -8,7 +8,8 @@ local drkSJMaxMP = 556 -- The Max MP you have when /drk in your idle set
 
 local blue_cotehardie = false
 local blue_cotehardie_plus_one = false
-local dilation_ring = false
+local verm_cloak = true
+local dilation_ring = true
 local dilation_ring_slot = 'Ring2'
 
 local displayheadOnAbility = true
@@ -22,10 +23,10 @@ local sets = {
         Ear2 = 'Geist Earring',
         Body = 'Errant Hpl.',
         Hands = 'Errant Cuffs',
-        Ring1 = 'Electrum Ring',
+        Ring1 = 'Tamas Ring',
         Ring2 = 'Ether Ring',
         Back = 'Rainbow Cape',
-        Waist = 'Hierarch belt',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
         Feet = 'Errant Pigaches',
     },
@@ -37,10 +38,10 @@ local sets = {
         Ear2 = 'Geist Earring',
         Body = 'Vermillion Cloak',
         Hands = 'Errant Cuffs',
-        Ring1 = 'Electrum Ring',
+        Ring1 = 'Tamas Ring',
         Ring2 = 'Ether Ring',
         Back = 'Rainbow Cape',
-        Waist = 'Hierarch belt',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
         Feet = 'Errant Pigaches',
     },
@@ -65,6 +66,7 @@ local sets = {
 		Main = "Dark Staff",
 		Sub = "",
 		Body = "Errant Hpl.",
+        Waist = 'Hierarch belt',
 		-- Body = "Noble's tunic",
 		-- Body = "Seer's tunic",
 		Legs = "Baron's Slops"
@@ -242,11 +244,11 @@ local sets = {
         Ammo = '',
         Head = 'Nashira Turban', -- 10
        -- Neck = 'Philomath stole', -- 5
-        --Ear1 = 'Morion Earring',
-        --Ear2 = 'Morion Earring', -- 8
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Morion Earring', -- 8
         Body = 'Wlk. Tabard +1', -- 12
         Hands = 'Errant Cuffs',
-        Ring1 = 'Jelly Ring',
+        Ring1 = 'Tamas Ring',
         Ring2 = 'Sattva Ring',
         Back = 'Umbra Cape',
         Waist = 'Druid\'s Rope', -- 10
@@ -362,7 +364,7 @@ local sets = {
   --      Ring1 = 'Aqua Ring',
    --     Ring2 = 'Communion Ring',
 --       Back = 'Errant Cape', -- 5
- --       Waist = 'Penitent\'s Rope', -- 3
+          Waist = 'Penitent\'s Rope', -- 3
    --     Legs = 'Hydra Brais', -- 6
    --     Feet = 'Hydra Gaiters', -- 5
     },
@@ -406,7 +408,7 @@ local sets = {
    --     Ring1 = 'Snow Ring',
    --     Ring2 = 'Omniscient Ring',
    --     Back = 'Merciful Cape',
-   --     Waist = 'Penitent\'s Rope',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Warlock\'s Tights',
    --     Feet = 'Dls. Boots +1',
     },
@@ -415,7 +417,7 @@ local sets = {
     --    Head = 'Dls. Chapeau +1',
         Body = 'Warlock\'s Tabard',
         Back = 'Rainbow Cape',
-   --     Waist = 'Penitent\'s Rope',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
     },
     EnfeeblingMND = {
@@ -469,11 +471,11 @@ local sets = {
     --    Ear2 = 'Dark Earring',
     --    Body = 'Nashira Manteel',
     --    Hands = 'Blood Fng. Gnt.',
-    --    Ring1 = 'Snow Ring',
-    --    Ring2 = 'Omniscient Ring',
+          Ring1 = 'Zircon Ring',
+          Ring2 = 'Tamas Ring',
     --    Back = 'Merciful Cape',
-    --    Waist = 'Penitent\'s Rope',
-        Legs = 'Errant Slops',
+          Waist = 'Penitent\'s Rope',
+          Legs = 'Errant Slops',
     --    Feet = 'Nashira Crackows',
     },
 
@@ -485,10 +487,10 @@ local sets = {
    --     Ear2 = 'Moldavite Earring',
         Body = 'Errant Hpl.',
    --     Hands = 'Zenith Mitts +1',
-   --     Ring1 = 'Snow Ring',
-   --     Ring2 = 'Omniscient Ring',
+        Ring1 = 'Zircon Ring',
+        Ring2 = 'Tamas Ring',
         Back = 'Rainbow Cape',
-     --   Waist = 'Penitent\'s Rope',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
    --     Feet = 'Dls. Boots +1',
     },
@@ -567,7 +569,7 @@ local sets = {
     --    Ring1 = 'Snow Ring',
     --    Ring2 = 'Omniscient Ring',
     --    Back = 'Merciful Cape',
-    --    Waist = 'Penitent\'s Rope',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
     --    Feet = 'Nashira Crackows',
     },
@@ -650,7 +652,7 @@ local sets = {
     --   Ring1 = 'Aqua Ring',
     --   Ring2 = 'Communion Ring',
     --   Back = 'Rainbow Cape',
-    --   Waist = 'Penitent\'s Rope',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
         Feet = 'Errant Pigaches',
     },
@@ -665,7 +667,7 @@ local sets = {
         Ear2 = 'Geist Earring',
         Body = 'Errant Hpl.',
         Hands = 'Errant Cuffs',
-        Ring1 = 'Electrum Ring',
+        Ring1 = 'Tamas Ring',
         Ring2 = 'Ether Ring',
         Back = 'Rainbow Cape',
         Waist = 'Hierarch Belt',
@@ -686,7 +688,7 @@ local sets = {
         Ear2 = 'Morion Earring',
         Body = 'Warlock\'s Tabard',
         Hands = 'Warlock\'s Gloves',
-        Ring1 = 'Electrum Ring',
+        Ring1 = 'Tamas Ring',
         Ring2 = 'Ether Ring',
         Back = 'Black Cape',
         Waist = 'Mrc.Cpt. Belt',
@@ -791,6 +793,10 @@ profile.HandleDefault = function()
     end
     if (blue_cotehardie_plus_one and player.MP <= 50) then
         gFunc.Equip('Body', 'Blue Cotehard. +1')
+    end
+    if (verm_cloak and player.MP <= 50) then
+        gFunc.Equip('Head', '')
+        gFunc.Equip('Body', 'Vermillion Cloak')
     end
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))

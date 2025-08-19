@@ -25,12 +25,12 @@ local sets = {
         Neck = 'Black Neckerchief',
         Ear1 = 'Morion Earring',
         Ear2 = 'Morion Earring',
-        Body = 'Wizard\'s Coat',
+        Body = 'Justaucorps +1',
         Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Zircon Ring',
+        Ring1 = 'Tamas Ring',
         Ring2 = 'Zircon Ring',
         Back = 'Black Cape',
-        Waist = 'Mrc.Cpt. Belt',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Wizard\'s Tonban',
         Feet = 'Wizard\'s Sabots',
     },
@@ -45,7 +45,10 @@ local sets = {
     Movement = {
         Feet = 'Herald\'s Gaiters',
     },
-    IdleALT = {},
+    IdleALT = {
+        Head = '',
+        Body = 'Vermillion Cloak',
+    },
     IdleMaxMP = {
     },
 

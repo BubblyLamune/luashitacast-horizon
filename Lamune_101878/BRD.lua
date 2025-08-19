@@ -150,8 +150,8 @@ profile.SetMacroBook = function()
 	-- Songs
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 2 down /ma \"Ice Threnody\" <t>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 3 down /ma \"Utsusemi: Ichi\" <me>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Blade Madrigal\" <me>");
-	--(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Advancing March\" <me>");
+	--(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Blade Madrigal\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Advancing March\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Victory March\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Valor Minuet IV\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 7 down /ma \"Mage's Ballad\" <me>");
