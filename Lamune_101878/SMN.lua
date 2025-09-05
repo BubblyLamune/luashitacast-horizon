@@ -2,7 +2,8 @@ local profile = {}
 
 local fastCastValue = 0.04 -- 4% from gear not including carbuncles cuffs or evokers boots
 
-local carbuncles_cuffs = true
+local carbuncles_cuffs = false
+local carbuncles_mitts = true
 local evokers_boots = false
 
 local cureMP = 895 -- Cure set max MP
@@ -10,20 +11,22 @@ local cureMP = 895 -- Cure set max MP
 local sets = {
     ['Idle'] = {
         Main = 'Earth Staff',
-        Head = 'Austere Hat',
+        Head = 'Evoker\'s Horn',
         Neck = 'Black Neckerchief',
         Ear1 = 'Morion Earring',
         Ear2 = 'Morion Earring',
-        Body = 'Austere Robe',
+        Body = 'Evoker\'s Doublet',
         Hands = 'Evoker\'s Bracers',
 		Ring1 = "Ether Ring",
 		Ring2 = "Tamas Ring",
         Back = 'Black Cape',
-        Waist = 'Mrc.Cpt. Belt',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Evoker\'s Spats',
-        Feet = 'Custom F Boots',
+        Feet = 'Evoker\'s Pigaches',
     },
-    IdleALT = {},
+    IdleALT = {
+        Body = 'Vermillion Cloak',
+    },
     IdleMaxMP = {},
     Resting = {
         Main = 'Dark Staff',
@@ -304,19 +307,22 @@ local sets = {
     },
 
     BP = {
-        Head = 'Evk. Horn +1',
-        Legs = 'Evk. Spats +1',
-        Ring1 = { Name = 'Sattva Ring', Priority = 100 },
-        Ring2 = 'Evoker\'s Ring',
-        Ear1 = 'Loquac. Earring',
-        Ear2 = 'Magnetic Earring',
-        Back = 'Astute Cape',
-        Body = 'Smn. Doublet +1',
-        Hands = 'Smn. Bracers +1',
-        Feet = 'Nashira Crackows',
-        Ammo = 'Hedgehog Bomb',
+        Head = 'Austere Hat',
+        -- Head = 'Evk. Horn +1',
+        --Legs = 'Evk. Spats +1',
+        --Ring1 = { Name = 'Sattva Ring', Priority = 100 },
+       -- Ring2 = 'Evoker\'s Ring',
+       -- Ear1 = 'Loquac. Earring',
+       -- Ear2 = 'Magnetic Earring',
+       -- Back = 'Astute Cape',
+        Body = 'Austere Robe',
+        -- Body = 'Smn. Doublet +1',
+        -- Hands = 'Smn. Bracers +1',
+        Hands = 'Austere Cuffs',
+      --  Feet = 'Nashira Crackows',
+      --  Ammo = 'Hedgehog Bomb',
         Waist = { Name = 'Hierarch Belt', Priority = 100 },
-        Neck = 'Smn. Torque',
+        -- Neck = 'Smn. Torque',
     },
     BP_Magical = {
     },
@@ -347,7 +353,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ja \"Assault\" <t>");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ja \"Retreat\" <me>");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 3 down /ja \"Release\" <me>");
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /party Burning Strike >> <t> <call21>;/pet \"Burning Strike\" <t>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /party Panchi >> <t> <call21>;/pet \"Punch\" <t>");
 
 end
 
@@ -440,6 +446,9 @@ profile.HandlePrecast = function()
         else
             if (carbuncles_cuffs) then
                 gFunc.Equip('Hands', 'Carbuncle\'s Cuffs')
+            end
+            if(carbuncles_mitts and string.match(action.Name, 'Carbuncle')) then
+                gFunc.Equip('Hands', 'Carbuncle Mitts')
             end
             if (evokers_boots) then
                 gFunc.Equip('Feet', 'Evoker\'s Boots')

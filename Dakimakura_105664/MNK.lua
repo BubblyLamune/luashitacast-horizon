@@ -24,18 +24,19 @@ local kampfer_earring_slot = 'Ear2'
 
 local sets = {
     ['Idle'] = {
-        Main = 'Torama Cesti',
-        Head = 'Mrc.Cpt. Headgear',
+        Main = 'Spartan Cesti',
+        Ammo = 'Crossbow Bolt',
+        Head = 'Temple Crown',
         Neck = 'Spike Necklace',
         Ear1 = 'Beetle Earring +1',
         Ear2 = 'Beetle Earring +1',
-        Body = 'Jujitsu Gi',
+        Body = 'Temple Cyclas',
         Hands = 'Temple Gloves',
         Ring1 = 'Sun Ring',
         Ring2 = 'Sun Ring',
         Back = 'Nomad\'s Mantle',
         Waist = 'Purple Belt',
-        Legs = 'Bastokan Subligar',
+        Legs = 'Temple Hose',
         Feet = 'Temple Gaiters',
     },
     IdleALT = {

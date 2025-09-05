@@ -66,6 +66,7 @@ local sets = {
 		Main = "Dark Staff",
 		Sub = "",
 		Body = "Errant Hpl.",
+        Neck = 'Checkered Scarf',
         Waist = 'Hierarch belt',
 		-- Body = "Noble's tunic",
 		-- Body = "Seer's tunic",
@@ -382,7 +383,7 @@ local sets = {
   --      Ear1 = 'Loquac. Earring',
   --      Ear2 = 'Magnetic Earring',
   --      Body = 'Glamor Jupon',
-          Hands = 'Dls. Gloves',
+          Hands = 'Duelist\'s Gloves',
   --      Ring1 = 'Aqua Ring',
   --      Ring2 = 'Communion Ring',
   --      Back = 'Merciful Cape',
@@ -410,7 +411,7 @@ local sets = {
    --     Back = 'Merciful Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Warlock\'s Tights',
-   --     Feet = 'Dls. Boots +1',
+        Feet = 'Duelst\'s Boots',
     },
 
     Enfeebling = {
@@ -428,14 +429,14 @@ local sets = {
  --       Hands = 'Dvt. Mitts +1',
  --       Ring1 = 'Aqua Ring',
 --        Ring2 = 'Communion Ring',
-        Feet = 'Errant Pigaches',
+          Feet = 'Errant Pigaches',
     },
     EnfeeblingINT = {
      --   Ammo = 'Phtm. Tathlum',
      --   Neck = 'Prudence Torque',
      --   Ear1 = 'Abyssal Earring',
  --      Ear2 = 'Omn. Earring',
-        Hands = 'Errant Cuffs',
+        Hands = 'Duelist\'s Gloves',
    --     Ring1 = 'Snow Ring',
   --      Ring2 = 'Omniscient Ring',
     --    Feet = 'Wise Pigaches +1',
@@ -492,7 +493,7 @@ local sets = {
         Back = 'Rainbow Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
-   --     Feet = 'Dls. Boots +1',
+        Feet = 'Duelst\'s Boots',
     },
     NukeACC = {
      --   Back = 'Merciful Cape',
@@ -502,7 +503,7 @@ local sets = {
     NukeDOT = {
     --    Ear1 = 'Abyssal Earring',
     --    Ear2 = 'Omn. Earring',
-    --    Hands = 'Errant Cuffs',
+          Hands = 'Errant Cuffs',
     --    Back = 'Merciful Cape',
     --    Legs = 'Dls. Tights +1',
     --    Feet = 'Nashira Crackows',
@@ -584,7 +585,7 @@ local sets = {
         Body = 'Scorpion Harness',
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Eremite\'s Ring',
+        Ring2 = 'Tamas Ring',
         Back = 'Rainbow Cape',
         Waist = 'Life Belt',
         Legs = 'Warlock\'s Tights',
@@ -794,7 +795,7 @@ profile.HandleDefault = function()
     if (blue_cotehardie_plus_one and player.MP <= 50) then
         gFunc.Equip('Body', 'Blue Cotehard. +1')
     end
-    if (verm_cloak and player.MP <= 50) then
+    if (verm_cloak and player.MP <= 75) then
         gFunc.Equip('Head', '')
         gFunc.Equip('Body', 'Vermillion Cloak')
     end

@@ -9,7 +9,7 @@ local blmSJMaxMP = nil -- The Max MP you have when /blm in your idle set
 local virology_ring = false
 local virology_ring_slot = 'Ring2'
 
-local displayheadOnAbility = true
+local displayheadOnAbility = false
 
 local sets = {
 	Idle = {
@@ -20,7 +20,7 @@ local sets = {
 		Legs = "Blessed Trousers",
 		Feet = "Rostrum Pumps",
 		Neck = "Ajari Necklace",
-		Waist = "Hierarch Belt",
+		Waist = "Cleric\'s Belt",
         Ear1 = 'Geist Earring',
         Ear2 = 'Geist Earring',
 		Ring1 = "Ether Ring",
@@ -36,7 +36,8 @@ local sets = {
 		Legs = "Blessed Trousers",
 		Feet = "Errant Pigaches",
 		Neck = "Ajari Necklace",
-		Waist = "Hierarch Belt",
+		Waist = "Cleric\'s Belt",
+		
 		Ear1 = "Geist Earring",
 		Ear2 = "Geist Earring",
 		Ring1 = "Ether Ring",
@@ -47,7 +48,9 @@ local sets = {
 	Resting = {
 		Main = "Dark Staff",
 		Sub = "",
+		Waist = "Cleric\'s Belt",
 		Body = "Errant Hpl.",
+		Neck = 'Checkered Scarf',
 		-- Body = "Noble's tunic",
 		-- Body = "Seer's tunic",
 		Legs = "Baron's Slops"
@@ -83,7 +86,10 @@ local sets = {
 		Body = "Cleric\'s Bliaut"
 	},
 	Cursna = {},
-	Enhancing = {},
+	Enhancing = {
+		Feet = "Cleric\'s Duckbills",
+
+	},
 	Stoneskin = {},
 	Spikes = {},
 	Enfeebling = {},

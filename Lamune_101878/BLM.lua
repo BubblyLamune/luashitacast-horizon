@@ -17,26 +17,46 @@ local opuntia_hoop_slot = 'Ring1'
 local displayheadOnAbility = true
 
 local sets = {
-    ['Idle'] = {
-        Main = 'Earth Staff',
-       -- Sub = 'Casting Wand',
-       -- Ammo = 'Fortune Egg',
+    ['Idle2'] = {
+        Main = 'Ice Staff',
+        Ammo = 'Morion Tathlum',
         Head = 'Wizard\'s Petasos',
-        Neck = 'Black Neckerchief',
+        Neck = 'Philomath Stole',
         Ear1 = 'Morion Earring',
-        Ear2 = 'Morion Earring',
+        Ear2 = 'Moldavite Earring',
+        Body = 'Errant Hpl.',
+        Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Genius Ring',
+        Back = 'Red Cape +1',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Sorcerer\'s Tonban',
+        Feet = 'Sorcerer\'s Sabots',
+    },
+        ['Idle'] = {
+        Main = 'Ice Staff',
+       -- Sub = 'Casting Wand',
+        Ammo = 'Morion Tathlum',
+        Head = 'Wizard\'s Petasos',
+        Neck = 'Philomath Stole',
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Moldavite Earring',
         Body = 'Justaucorps +1',
         Hands = 'Wizard\'s Gloves',
         Ring1 = 'Tamas Ring',
-        Ring2 = 'Zircon Ring',
-        Back = 'Black Cape',
+        Ring2 = 'Genius Ring',
+        Back = 'Red Cape +1',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Wizard\'s Tonban',
-        Feet = 'Wizard\'s Sabots',
+        Legs = 'Seer\'s Slacks',
+        Feet = 'Custom F Boots',
     },
     Resting = {
         Main = 'Dark Staff',
-        Body = "Seer's Tunic",
+        Neck = 'Checkered Scarf',
+        Head = '',
+        Body = 'Vermillion Cloak',
+        --Waist = 'Hierarch belt',
+        --Body = 'Errant Hpl.',
         Legs = 'Baron\'s Slops'
     },
     Town = {
@@ -190,12 +210,12 @@ local sets = {
     Casting = {
       --  Main = 'Solid Wand',
       --  Sub = 'Casting Wand',
-        Head = 'Nashira Turban', -- 10
-        Neck = 'Willpower Torque', -- 5
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Magnetic Earring', -- 8
-        Waist = 'Druid\'s Rope', -- 10
-        Feet = 'Wizard\'s Sabots', -- 20
+       -- Head = 'Nashira Turban', -- 10
+        --Neck = 'Willpower Torque', -- 5
+       -- Ear1 = 'Merman\'s Earring',
+       -- Ear2 = 'Magnetic Earring', -- 8
+        --Waist = 'Druid\'s Rope', -- 10
+        -- Feet = 'Wizard\'s Sabots', -- 20
     },
     SIRD = { -- Used on Stoneskin, Blink, Aquaveil and Utsusemi casts
         Main = 'Eremite\'s Wand', -- 25
@@ -208,16 +228,16 @@ local sets = {
         Feet = 'Wizard\'s Sabots', -- 20
     },
     Yellow = { -- This will override Precast if /lag is turned on or the spell casting time is too short. e.g. Tier 1: "Stone"
-        Head = 'Zenith Crown +1',
-        Ammo = 'Tiphia Sting',
-        Ear1 = 'Loquac. Earring',
-        Ear2 = 'Magnetic Earring',
-        Body = { Name = 'Src. Coat +1', Priority = 100 },
-        Hands = 'Zenith Mitts +1',
-        Ring1 = 'Ether Ring',
-        Ring2 = 'Serket Ring',
-        Waist = { Name = 'Penitent\'s Rope', Priority = -100 },
-        Feet = 'Rostrum Pumps',
+     --   Head = 'Zenith Crown +1',
+     --   Ammo = 'Tiphia Sting',
+     --   Ear1 = 'Loquac. Earring',
+     --   Ear2 = 'Magnetic Earring',
+     --   Body = { Name = 'Src. Coat +1', Priority = 100 },
+      --  Hands = 'Zenith Mitts +1',
+        -- Ring1 = 'Ether Ring',
+       -- Ring2 = 'Ether Ring',
+       -- Waist = { Name = 'Penitent\'s Rope', Priority = -100 },
+       -- Feet = 'Rostrum Pumps',
     },
     YellowHNM = {
         Neck = 'Star Necklace',
@@ -477,6 +497,38 @@ local sets = {
     },
     LockSet2 = {},
     LockSet3 = {},
+    ['fiftythree'] = {
+        Main = 'Dark Staff',
+        Ammo = 'Fortune Egg',
+        Head = 'Wizard\'s Petasos',
+        Neck = 'Black Neckerchief',
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Morion Earring',
+        Body = 'Seer\'s Tunic',
+        Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Zircon Ring',
+        Back = 'Black Cape',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Baron\'s Slops',
+        Feet = 'Wizard\'s Sabots',
+    },
+    ['eco'] = {
+        Main = 'Ice Staff',
+        Ammo = 'Morion Tathlum',
+        Head = 'Wizard\'s Petasos',
+        Neck = 'Philomath Stole',
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Moldavite Earring',
+        Body = 'Justaucorps +1',
+        Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Genius Ring',
+        Back = 'Red Cape +1',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Seer\'s Slacks',
+        Feet = 'Custom F Boots',
+    },
 
 }
 profile.Sets = sets
@@ -484,7 +536,15 @@ profile.Sets = sets
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10')
-
+    --AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ma \"Firaga2\" <bt>");
+	--AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ma \"Fire2\" <bt>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ma \"Blizzard3\" <bt>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ma \"Blizzard\" <bt>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /ma \"Blizzard2\" <bt>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 3 down /ma \"Utsusemi:Ichi\" <me>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 5 down /ja \"Elemental Seal\" <me>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 6 down /ma \"Sleep\" <t>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 7 down /ma \"Sleep II\" <t>");
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 //stun')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 //dia')
 end
