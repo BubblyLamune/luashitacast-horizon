@@ -322,3 +322,16 @@
 
 ### v1.4.13
 - SMN - Only use carbuncle's mitts on spirits if both era+ items are owned
+
+### v1.4.14
+- RDM/WHM/SMN/BRD - Updates how TP commands and mechanics works. See README or notes.
+
+### v1.4.15
+- Fixes broken /lock and /locktp logic in v1.4.14
+
+### v1.4.16
+- Adds obi usage to divine magic and fixes weather vs day checking for healing magic
+
+### v1.5.0
+- Renames or moves some of the core common files: gcdisplayrag.lua, gcincluderag.lua, actionpacket.lua, changelog.
+- Shortens timers between forceEquips for Cure Cheats on RDM, PLD, and Yellow set equip on BLM. 

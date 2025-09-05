@@ -224,7 +224,7 @@ local sets = {
         Neck = 'Willpower Torque', -- 5
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Magnetic Earring', -- 8
-        Waist = 'Druid\'s Rope', -- 10
+        Waist = 'Silver Obi +1', -- 8
         Feet = 'Wizard\'s Sabots', -- 20
     },
     Yellow = { -- This will override Precast if /lag is turned on or the spell casting time is too short. e.g. Tier 1: "Stone"
@@ -240,7 +240,9 @@ local sets = {
        -- Feet = 'Rostrum Pumps',
     },
     YellowHNM = {
+        Ammo = 'Tiphia Sting',
         Neck = 'Star Necklace',
+        Body = { Name = 'Src. Coat +1', Priority = 100 },
     },
     Haste = { -- Used only on Haste, Refresh, Blink and Utsusemi casts
         Head = 'Nashira Turban', -- 2
@@ -479,21 +481,40 @@ local sets = {
         -- Back = 'Maledictor\'s Shawl',
     },
 
-    LockSet1 = { -- 40 Cap
-        Main = 'Solid Wand',
-        Ammo = 'Morion Tathlum',
-        Head = 'Seer\'s Crown +1',
+    LockSet1 = {},
+    LockSet2 = {},
+    LockSet3 = {},
+    ['fiftythree'] = {
+        Main = 'Dark Staff',
+        Ammo = 'Fortune Egg',
+        Head = 'Wizard\'s Petasos',
         Neck = 'Black Neckerchief',
-        Ear1 = 'Moldavite Earring',
+        Ear1 = 'Morion Earring',
         Ear2 = 'Morion Earring',
-        Body = 'Ryl.Sqr. Robe',
-        Hands = 'Seer\'s Mitts +1',
-        Ring1 = 'Wisdom Ring +1',
-        Ring2 = 'Wisdom Ring +1',
-        Back = 'Black Cape +1',
-        Waist = 'Druid\'s Rope',
+        Body = 'Seer\'s Tunic',
+        Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Zircon Ring',
+        Back = 'Black Cape',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Baron\'s Slops',
+        Feet = 'Wizard\'s Sabots',
+    },
+    ['eco'] = {
+        Main = 'Ice Staff',
+        Ammo = 'Morion Tathlum',
+        Head = 'Wizard\'s Petasos',
+        Neck = 'Philomath Stole',
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Moldavite Earring',
+        Body = 'Justaucorps +1',
+        Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Genius Ring',
+        Back = 'Red Cape +1',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Seer\'s Slacks',
-        Feet = 'Mannequin Pumps',
+        Feet = 'Custom F Boots',
     },
     LockSet2 = {},
     LockSet3 = {},

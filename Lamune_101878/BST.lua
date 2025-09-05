@@ -68,9 +68,6 @@ local sets = {
 profile.Sets = sets
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 5')
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 2')
-
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Dancing Edge" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
