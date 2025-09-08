@@ -4,7 +4,7 @@ local fastCastValue = 0 -- 4% from gear listed in Precast set
 
 local ninSJMaxMP = 640 -- The Max MP you have when /nin in your idle set
 local whmSJMaxMP = 718 -- The Max MP you have when /whm in your idle set
-local rdmSJMaxMP = 699 -- The Max MP you have when /rdm in your idle set
+local rdmSJMaxMP = 734 -- The Max MP you have when /rdm in your idle set
 
 local nukeExtraThreshold = 850 -- The minimum MP for which NukeExtra and StoneskinExtra set will be used instead of regular sets (to allow additional nukes using max mp sets)
 
@@ -17,48 +17,30 @@ local opuntia_hoop_slot = 'Ring1'
 local displayheadOnAbility = true
 
 local sets = {
-    ['Idle2'] = {
-        Main = 'Ice Staff',
+    ['Idle'] = {
+        Main = 'Earth Staff',
         Ammo = 'Morion Tathlum',
-        Head = 'Wizard\'s Petasos',
+        Head = 'Igqira Tiara',
         Neck = 'Philomath Stole',
         Ear1 = 'Morion Earring',
         Ear2 = 'Moldavite Earring',
-        Body = 'Errant Hpl.',
+        Body = 'Igqira Weskit',
         Hands = 'Wizard\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Genius Ring',
-        Back = 'Red Cape +1',
+        Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Sorcerer\'s Tonban',
         Feet = 'Sorcerer\'s Sabots',
     },
-        ['Idle'] = {
-        Main = 'Ice Staff',
-       -- Sub = 'Casting Wand',
-        Ammo = 'Morion Tathlum',
-        Head = 'Wizard\'s Petasos',
-        Neck = 'Philomath Stole',
-        Ear1 = 'Morion Earring',
-        Ear2 = 'Moldavite Earring',
-        Body = 'Justaucorps +1',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Genius Ring',
-        Back = 'Red Cape +1',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Seer\'s Slacks',
-        Feet = 'Custom F Boots',
-    },
-    Resting = {
-        Main = 'Dark Staff',
+	Resting = {
+		Main = "Dark Staff",
+		Sub = "",
+		Body = "Errant Hpl.",
         Neck = 'Checkered Scarf',
-        Head = '',
-        Body = 'Vermillion Cloak',
-        --Waist = 'Hierarch belt',
-        --Body = 'Errant Hpl.',
-        Legs = 'Baron\'s Slops'
-    },
+        Waist = 'Hierarch belt',
+		Legs = "Baron's Slops"
+	},
     Town = {
         -- Main = 'Dark Staff',
     },
@@ -74,7 +56,7 @@ local sets = {
 
     DT = {
         Main = 'Earth Staff',
-        Head = 'Genie Tiara',
+        Head = 'Igqira Tiara',
         Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
@@ -89,7 +71,7 @@ local sets = {
     },
     DTNight = {
         Main = 'Earth Staff',
-        Head = 'Genie Tiara',
+        Head = 'Igqira Tiara',
         Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
@@ -258,7 +240,7 @@ local sets = {
         Ear2 = 'Magnetic Earring',
         Body = 'Igqira Weskit',
         Back = 'Maledictor\'s Shawl',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
 
     Cure = {
@@ -342,11 +324,11 @@ local sets = {
         Back = 'Merciful Cape',
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Errant Slops',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
 
     Enfeebling = {
-        Head = 'Genie Tiara',
+        Head = 'Igqira Tiara',
         Neck = 'Enfeebling Torque',
         Body = 'Wzd. Coat +1',
         Legs = 'Igqira Lappas',
@@ -369,7 +351,7 @@ local sets = {
         Ring1 = 'Snow Ring',
         Ring2 = 'Omniscient Ring',
         Waist = 'Sorcerer\'s Belt',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
     EnfeeblingACC = {
         Ear2 = 'Enfeebling Earring',
@@ -379,18 +361,18 @@ local sets = {
     Divine = {},
     Dark = {
         Ammo = 'Phtm. Tathlum',
-        Head = 'Nashira Turban',
-        Neck = 'Dark Torque',
-        Ear1 = 'Abyssal Earring',
-        Ear2 = 'Dark Earring',
-        Body = 'Nashira Manteel',
-        Hands = 'Src. Gloves +1',
-        Ring1 = 'Snow Ring',
-        Ring2 = 'Omniscient Ring',
-        Back = 'Merciful Cape',
-        Waist = 'Swift Belt',
-        Legs = 'Wzd. Tonban +1',
-        Feet = 'Igqira Huaraches',
+       -- Head = 'Nashira Turban',
+        -- Neck = 'Dark Torque',
+       -- Ear1 = 'Abyssal Earring',
+       -- Ear2 = 'Dark Earring',
+       -- Body = 'Nashira Manteel',
+        Hands = 'Sorcerer\'s Gloves',
+       -- Ring1 = 'Snow Ring',
+       -- Ring2 = 'Omniscient Ring',
+       -- Back = 'Merciful Cape',
+       -- Waist = 'Swift Belt',
+        Legs = 'Wizard\'s Tonban',
+       -- Feet = 'Igqira Huaraches',
     },
     Stun = {
         Ammo = 'Phtm. Tathlum',
@@ -409,7 +391,7 @@ local sets = {
 
     Nuke = {
         Ammo = 'Phtm. Tathlum',
-        Head = 'Demon Helm +1',
+        Head = 'Wizard\'s Petasos',
         Neck = 'Prudence Torque',
         Ear1 = 'Novio Earring',
         Ear2 = 'Moldavite Earring',
@@ -417,10 +399,10 @@ local sets = {
         Hands = { Name = 'Zenith Mitts +1', Priority = -100 },
         Ring1 = 'Snow Ring',
         Ring2 = 'Omniscient Ring',
-        Back = 'Rainbow Cape',
+        Back = 'Prism Cape',
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Errant Slops',
-        Feet = { Name = 'Src. Sabots +1', Priority = 1 },
+        Feet = { Name = 'Sorcerer\'s Sabots', Priority = 1 },
     },
     NukeHNM = {
         Ammo = 'Phtm. Tathlum',
@@ -435,7 +417,7 @@ local sets = {
         Back = 'Errant Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Errant Slops',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
     NukeACC = {
         Head = 'Src. Petasos +1',
@@ -455,10 +437,10 @@ local sets = {
         Hands = 'Wzd. Gloves +1',
         Ring1 = 'Snow Ring',
         Ring2 = 'Omniscient Ring',
-        Back = 'Rainbow Cape',
+        Back = 'Prism Cape',
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Errant Slops',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
     NukeExtra = {
         Ammo = 'Phtm. Tathlum',
@@ -473,11 +455,11 @@ local sets = {
         Back = { Name = 'Merciful Cape', Priority = 100 },
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Errant Slops',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
     MB = {
         Ammo = 'Dream Sand',
-        -- Hands = 'Src. Gloves +1',
+        Hands = 'Sorcerer\'s Gloves',
         -- Back = 'Maledictor\'s Shawl',
     },
 
@@ -502,6 +484,23 @@ local sets = {
     },
     ['eco'] = {
         Main = 'Ice Staff',
+        Ammo = 'Morion Tathlum',
+        Head = 'Wizard\'s Petasos',
+        Neck = 'Philomath Stole',
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Moldavite Earring',
+        Body = 'Justaucorps +1',
+        Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Genius Ring',
+        Back = 'Red Cape +1',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Seer\'s Slacks',
+        Feet = 'Custom F Boots',
+    },
+    ['merit'] = {
+        Main = 'Ice Staff',
+       -- Sub = 'Casting Wand',
         Ammo = 'Morion Tathlum',
         Head = 'Wizard\'s Petasos',
         Neck = 'Philomath Stole',

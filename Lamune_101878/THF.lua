@@ -7,36 +7,22 @@ local player = gData.GetPlayer()
 
 local sets = {
     Idle = {		
-    Main = "Corsair\'s knife",
-    Sub = "Hornetneedle",
-    Body = "Rapparee Harness",
-    Hands = "Custom F gloves",
-    Legs = "Rogue\'s Culottes",
-    Head = "Emperor Hairpin",
-    Feet = "Leaping Boots",
-    Neck = "Spike necklace",
-    Waist = "Life belt",
-    Ear1 = "Drone earring",
-    Ear2 = "Drone earring",
-    Ring1 = "Balance ring",
-    Ring2 = "Balance ring",
-    Back = "Nomad\'s mantle"
-    },
-    IdleALT = {
-        Main = "Bone knife +1",
-        Sub = "Light Buckler",
-        Body = "Brigandine",
+        Main = "Cermet Kukri +1",
+        Sub = "Garuda\'s Dagger",
+        Body = "Rapparee Harness",
         Hands = "Custom F gloves",
-        Legs = "Rogue's Culottes",
-        Head = "Rogue's Bonnet",
+        Legs = "Rogue\'s Culottes",
+        Head = "Emperor Hairpin",
         Feet = "Leaping Boots",
         Neck = "Spike necklace",
         Waist = "Life belt",
-        Ear1 = "Drone earring",
+        Ear1 = 'Merman\'s Earring',
         Ear2 = "Drone earring",
-        Ring1 = "Balance ring",
+        Ring1 = 'Toreador\'s Ring',
         Ring2 = "Balance ring",
         Back = "Nomad\'s mantle"
+    },
+    IdleALT = {
     },
     Resting = {
        -- Main = "Dark Staff",
@@ -128,7 +114,7 @@ local sets = {
 }
 
 if player.SubJob == 'NIN' then
-    sets.Idle.Sub = "Hornetneedle"
+    sets.Idle.Sub = "Garuda\'s Dagger"
 end
 profile.Sets = sets
 

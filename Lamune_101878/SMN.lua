@@ -252,7 +252,7 @@ local sets = {
     },
     Stoneskin = {
         Neck = 'Stone Gorget',
-        Back = 'Rainbow Cape',
+        Back = 'Prism Cape',
     },
     Spikes = {},
 

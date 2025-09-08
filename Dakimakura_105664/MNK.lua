@@ -6,7 +6,7 @@ local fastCastValue = 0.02 -- 2% from gear
 -- Replace these with '' if you do not have them
 local temple_gaiters = 'Temple Gaiters'
 local temple_gloves = 'Temple Gloves'
-local temple_cyclas = ''
+local temple_cyclas = 'Temple Cyclas'
 local temple_crown = 'Temple Crown'
 
 local melee_gaiters = ''
@@ -17,20 +17,20 @@ local garden_bangles = 'Garden Bangles'
 local presidential_hairpin = false
 local dream_ribbon = false
 
-local kampfer_ring = true
+local kampfer_ring = false
 local kampfer_ring_slot = 'Ring2'
-local kampfer_earring = true
+local kampfer_earring = false
 local kampfer_earring_slot = 'Ear2'
 
 local sets = {
     ['Idle'] = {
         Main = 'Spartan Cesti',
         Ammo = 'Crossbow Bolt',
-        Head = 'Temple Crown',
+        Head = 'Emperor Hairpin',
         Neck = 'Spike Necklace',
         Ear1 = 'Beetle Earring +1',
         Ear2 = 'Beetle Earring +1',
-        Body = 'Temple Cyclas',
+        Body = 'Scorpion Harness',
         Hands = 'Temple Gloves',
         Ring1 = 'Sun Ring',
         Ring2 = 'Sun Ring',
@@ -157,20 +157,21 @@ local sets = {
     LockSet2 = {},
     LockSet3 = {},
 
-    TP_LowAcc = {
-        Head = 'Panther Mask +1',
-        Neck = 'Faith Torque',
-        Ear1 = 'Brutal Earring',
-        Ear2 = 'Merman\'s Earring',
-        Body = 'Kirin\'s Osode',
-        Hands = 'Mel. Gloves +1',
-        -- Ring1 = 'Toreador\'s Ring',
-        Ring1 = 'Begrudging Ring',
-        Ring2 = 'Toreador\'s Ring',
-        Back = 'Forager\'s Mantle',
-        Waist = 'Black Belt',
-        Legs = 'Byakko\'s Haidate',
-        Feet = 'Fuma Sune-Ate',
+    ['TP_LowAcc'] = {
+        Main = 'Spartan Cesti',
+        Ammo = 'Crossbow Bolt',
+        Head = 'Emperor Hairpin',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Beetle Earring +1',
+        Ear2 = 'Beetle Earring +1',
+        Body = 'Scorpion Harness',
+        Hands = 'Temple Gloves',
+        Ring1 = 'Sun Ring',
+        Ring2 = 'Sun Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Purple Belt',
+        Legs = 'Temple Hose',
+        Feet = 'Temple Gaiters',
     },
     TP_HighAcc = {
         Head = 'Shr.Znr.Kabuto',
@@ -304,8 +305,16 @@ local sets = {
 profile.Sets = sets
 
 profile.SetMacroBook = function()
-    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
-    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Boost" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ws "Howling Fist" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Bully" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 0 down /ja "Hide" <me>')
 end
 
 --[[

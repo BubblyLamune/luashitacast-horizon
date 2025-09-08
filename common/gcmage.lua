@@ -66,7 +66,7 @@ local conjurers_ring_slot = 'Ring1'
 
 -- WHM Specific
 local cure_clogs = false
-local ruckes_rung = false
+local ruckes_rung = true
 local medicine_ring = false
 local medicine_ring_slot = 'Ring1'
 local mjollnir = false

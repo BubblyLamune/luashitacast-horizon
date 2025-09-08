@@ -25,7 +25,7 @@ local sets = {
         Ear2 = 'Geist Earring',
 		Ring1 = "Ether Ring",
 		Ring2 = "Tamas Ring",
-		Back = "Rainbow Cape"
+		Back = "Prism Cape"
 	},
 	IdleALT = {
 		Main = "Purgatory Mace",
