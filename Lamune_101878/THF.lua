@@ -12,7 +12,7 @@ local sets = {
         Body = "Rapparee Harness",
         Hands = "Custom F gloves",
         Legs = "Rogue\'s Culottes",
-        Head = "Emperor Hairpin",
+        Head = "Rogue's Bonnet",
         Feet = "Leaping Boots",
         Neck = "Spike necklace",
         Waist = "Life belt",
@@ -85,11 +85,18 @@ local sets = {
     Steal = {
         Legs = "Rogue's Culottes",
         Head = "Rogue's Bonnet",
-        Hands= "Rogue's Armlets"
+        Hands = "Rogue's Armlets"
     },
     Mug = {},
 
     TH = {},
+    Charm = {
+        Head = "Noble\'s Ribbon",
+        Ring1 = 'Hope Ring',
+        Ring2 = "Hope Ring",
+        Neck = 'Flower Necklace',
+
+    },
 
     Ranged = {
         
@@ -122,7 +129,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Dancing Edge" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Shark Bite" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
@@ -146,7 +153,9 @@ actionpacket = gFunc.LoadFile('common\\actionpacket.lua')
 
 profile.HandleAbility = function()
     local action = gData.GetAction()
-    if (action.Name == 'Flee') then
+    if (action.Name == 'Charm') then
+        gFunc.EquipSet(sets.Charm)
+    elseif (action.Name == 'Flee') then
         gFunc.EquipSet(sets.Flee)
     elseif (action.Name == 'Hide') then
         gFunc.EquipSet(sets.Hide)

@@ -6,16 +6,16 @@ local profile = {}
 
 local fastCastValue = 0.00 -- 0% from gear
 
-local shinobi_ring = true
+local shinobi_ring = false
 local shinobi_ring_slot = 'Ring2'
 
 local koga_tekko = false
-local koga_tekko_plus_one = true
+local koga_tekko_plus_one = false
 
-local uggalepih_pendant = true
+local uggalepih_pendant = false
 local warlocks_mantle = false -- Don't add 2% to fastCastValue to this as it is SJ dependant
 
-local fenrirs_stone = true -- Used for Evasion at night
+local fenrirs_stone = false -- Used for Evasion at night
 
 -- Fill this out for which evasion pants to use at night / dusk to dawn
 local night_time_eva_pants = ''
@@ -32,32 +32,30 @@ local light_staff = 'Apollo\'s Staff'
 local dark_staff = 'Pluto\'s Staff'
 
 -- Set to true if you have the obi
-local karin_obi = true
+local karin_obi = false
 local dorin_obi = false
 local suirin_obi = false
 local furin_obi = false
-local hyorin_obi = true
-local rairin_obi = true
-local korin_obi = true
-local anrin_obi = true
+local hyorin_obi = false
+local rairin_obi = false
+local korin_obi = false
+local anrin_obi = false
 
 local sets = {
-    Idle = {
+    ['Idle'] = {
         Main = 'Kodachi +1',
         Sub = 'Nikkariaoe',
-        Ammo = 'Happy Egg',
+        Range = 'Halcyon Rod',
         Head = 'Emperor Hairpin',
-        Neck = 'Peacock Amulet',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Power Gi',
-        Hands = 'Custom M Gloves',
-        Ring1 = 'Puissance Ring',
-        Ring2 = 'Venerer Ring',
+        Neck = 'Spike Necklace',
+        Body = 'Jujitsu Gi',
+        Hands = 'Custom F Gloves',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Balance Ring',
         Back = 'Nomad\'s Mantle',
         Waist = 'Warrior\'s Belt +1',
         Legs = 'Republic Subligar',
-        Feet = 'Fed. Kyahan',
+        Feet = 'Leaping Boots',
     },
     IdleALT = {},
     IdleDT = {
@@ -68,10 +66,10 @@ local sets = {
         Neck = 'Peacock Amulet',
         Ear1 = 'Beetle Earring +1',
         Ear2 = 'Beetle Earring +1',
-        Body = 'Federation Gi',
-        Hands = 'Custom M Gloves',
-        Ring1 = 'Sattva Ring',
-        Ring2 = 'Venerer Ring',
+        Body = 'Jujitsu Gi',
+        Hands = 'Custom F Gloves',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Balance Ring',
         Back = 'Nomad\'s Mantle',
         Waist = 'Warrior\'s Belt +1',
         Legs = 'Republic Subligar',
@@ -148,6 +146,9 @@ profile.Sets = sets
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+        AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Provoke" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 end
 
 --[[

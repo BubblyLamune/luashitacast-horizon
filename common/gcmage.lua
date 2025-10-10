@@ -55,12 +55,12 @@ local sorcerers_ring_slot = '' -- This is Ring1 instead of Ring2 to allow Ice Ri
 local sorcerers_tonban = ''
 
 -- SMN Specific
-local carbuncle_mitts = false
+local carbuncle_mitts = true
 local yinyang_robe = false
 local bahamuts_staff = false
 -- Leave as '' if you do not have them.
-local summoners_doublet = 'Smn. Doublet +1'
-local summoners_horn = 'Summoner\'s Horn'
+local summoners_doublet = ''
+local summoners_horn = ''
 local conjurers_ring = false
 local conjurers_ring_slot = 'Ring1'
 

@@ -14,17 +14,17 @@ local minstrels_ring = true;
 local minstrels_ring_slot = "Ring1";
 local sets = {
 	Idle = {
-		Main = 'Paper Knife',
-		Head = "Bard\'s roundlet",
+		Main = 'Earth Staff',
+		Head = "Brd. Roundlet +1",
 		Range = "Angel Lyre",
-		Neck = "Justice Badge",
+        Neck = 'Jeweled Collar',
 		Waist = "Gleeman\'s Belt",
-        Body = 'Errant Hpl.',
+		Body = 'Darksteel Harness',
 		Hands = "Bard\'s Cuffs",
 		Ring1 = "Minstrel\'s Ring",
         Ring2 = 'Tamas Ring',
 		--Ring2 = "Ether Ring",
-		Back = "Jester\'s cape +1",
+		Back = 'Cheviot Cape',
 		Legs = "Errant Slops",
 		Feet = "Rostrum pumps"
 	},
@@ -56,10 +56,10 @@ local sets = {
 	Sing_Default = {},
 	Sing_Buff = {},
 	Sing_Debuff = {
-		Head = "Noble's Ribbon",
-		Ring1 = "Hope Ring",
-		Ring2 = "Hope Ring",
-		Neck = "Flower Necklace"
+		Body = 'Errant Hpl.',
+		Back = "Jester\'s cape +1",
+		Legs = "Errant Slops",
+		Waist = "Gleeman\'s Belt",
 	},
 	Sing_Ballad_Large = {
 		Range = "Harp +1"
@@ -110,9 +110,11 @@ local sets = {
 	Cure = {
 		Neck = "Justice Badge",
 		Hands = "Devotee's Mitts",
-		Back = "White Cape",
+		Body = 'Errant Hpl.',
 		Ear1 = "Geist Earring",
 		Ear2 = "Geist Earring",
+		Back = 'Prism Cape',
+        Waist = 'Penitent\'s Rope',
 	},
 	Cursna = {},
 	Enhancing = {},
@@ -157,12 +159,12 @@ profile.SetMacroBook = function()
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 7 down /ma \"Mage's Ballad\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Mage's Ballad II\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Carnage Elegy\" <t>");
-
-
 end;
+
 profile.LoadJobAddons = function()
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/addon load songcast");
 end;
+
 profile.UnloadJobAddons = function()
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/addon unload songcast");
 end;
