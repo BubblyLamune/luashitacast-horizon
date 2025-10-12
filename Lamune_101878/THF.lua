@@ -12,14 +12,15 @@ local sets = {
         Body = "Rapparee Harness",
         Hands = "Custom F gloves",
         Legs = "Rogue\'s Culottes",
-        Head = "Rogue's Bonnet",
+        --Head = "Rogue's Bonnet",
+        Head = "Emperor Hairpin",
         Feet = "Leaping Boots",
         Neck = "Spike necklace",
         Waist = "Life belt",
         Ear1 = 'Merman\'s Earring',
-        Ear2 = "Drone earring",
+        Ear2 = "Coral earring",
         Ring1 = 'Toreador\'s Ring',
-        Ring2 = "Balance ring",
+        Ring2 = 'Toreador\'s Ring',
         Back = "Nomad\'s mantle"
     },
     IdleALT = {
@@ -81,7 +82,10 @@ local sets = {
     Flee = {
         Feet = "Rogue\'s Poulaines",
     },
-    Hide = {},
+    Hide = {
+        Body = "Rogue's Vest",
+
+    },
     Steal = {
         Legs = "Rogue's Culottes",
         Head = "Rogue's Bonnet",
@@ -129,7 +133,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Shark Bite" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Evisceration" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')

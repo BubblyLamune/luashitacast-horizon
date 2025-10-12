@@ -25,7 +25,7 @@ local kampfer_earring_slot = 'Ear2'
 local sets = {
     ['Idle'] = {
         Main = 'T.M. Hooks +1',
-        Head = 'Emperor Hairpin',
+        Head = 'Crow Beret',
         Neck = 'Spike Necklace',
         Ear1 = 'Coral Earring',
         Ear2 = 'Coral Earring',
@@ -242,7 +242,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ` down /ja "Focus" <me>;/wait 0.7;/ja "Dodge" <me>;/wait 0.7;/ja "Berserk" <me>;')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Boost" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ws "Howling Fist" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ws "Dragon Kick" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>') 
