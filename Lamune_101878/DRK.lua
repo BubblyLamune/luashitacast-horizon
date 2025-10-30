@@ -112,7 +112,7 @@ local sets = {
         Hands = 'Coral Fng. Gnt. +1', -- 2
         Ring1 = 'Shadow Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
-        Back = 'Shadow Mantle',
+        Back = 'Resentment Cape',
         Waist = 'Warwolf Belt',
         Legs = 'Coral Cuisses +1', -- 3
         Feet = 'Coral Greaves +1', -- 2
@@ -256,7 +256,7 @@ local sets = {
         Feet = 'Mountain Gaiters', -- 5
     },
     Haste = { -- Used for Utsusemi and Stun cooldown
-        Head = { Name = 'Homam Zucchetto', Priority = -1 },
+        Head = { Name = 'Ace\'s Helm', Priority = -1 },
         Body = 'Dst. Harness +1',
         Hands = { Name = 'Dusk Gloves +1', Priority = 100 },
         Waist = 'Sonic Belt',
@@ -287,11 +287,11 @@ local sets = {
 
     TP_LowAcc = {
         Ammo = 'Bomb Core',
-        Head = 'Homam Zucchetto',
+        Head = 'Ace\'s Helm',
         Neck = 'Justice Torque',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Abyssal Earring',
-        Body = 'Haubergeon',
+        Body = 'Haubergeon +1',
         Hands = 'Dusk Gloves +1',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
@@ -300,30 +300,20 @@ local sets = {
         Legs = 'Homam Cosciales',
         Feet = 'Homam Gambieras',
     },
-    TP_HighAcc = {
-        Ammo = 'Bomb Core',
-        Head = 'Homam Zucchetto',
-        Neck = 'Peacock Amulet',
-        Ear1 = 'Brutal Earring',
-        Ear2 = 'Abyssal Earring',
-        Body = 'Haubergeon',
-        Hands = 'Dusk Gloves +1',
-        Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Toreador\'s Ring',
-        Back = 'Abyss Cape',
-        Waist = 'Sonic Belt',
-        Legs = 'Homam Cosciales',
-        Feet = 'Homam Gambieras',
-    },
+    TP_Aftermath = {},
     TP_Mjollnir_Haste = {},
+    TP_HighAcc = {
+        Neck = 'Peacock Amulet',
+        Back = 'Abyss Cape',
+    },
 
     WS = {
         Ammo = 'Bomb Core',
-        Head = 'Chs. Burgeonet +1',
+        Head = 'Maat\'s Cap',
         Neck = 'Snow Gorget',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Abyssal Earring',
-        Body = 'Haubergeon',
+        Body = 'Haubergeon +1',
         Hands = 'Chs. Gauntlets +1',
         Ring1 = 'Triumph Ring',
         Ring2 = 'Toreador\'s Ring',

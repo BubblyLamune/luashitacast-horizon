@@ -174,7 +174,9 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     LightningRes = { -- 138
-        Sub = 'Nms. Shield +1', -- 15
+        Main = 'Terra\'s Staff', -- 20
+        Sub = '',
+        -- Sub = 'Nms. Shield +1', -- 15
         Range = 'Lightning Bow +1', -- 7
         Ammo = '',
         Head = 'Black Ribbon', -- 12
@@ -305,7 +307,7 @@ local sets = {
         Legs = { Name = 'Hydra Brayettes', Priority = -100 },
         Feet = 'Vlr. Leggings +1',
     },
-    Hate_Flash = { -- Optional, provided here only if you wish to mix in haste or other stats over max +enmity
+    Hate_Flash = { -- Technically optional since Hate and Haste gear will be equipped by default
         Main = { Name = 'Capricorn Staff', Priority = -1 },
         Sub = 'remove',
         Head = 'Homam Zucchetto',
@@ -401,13 +403,13 @@ local sets = {
     TP_LowAcc = {
         Main = 'Joyeuse',
         Sub = 'Aegis',
-        Range = '',
-        Ammo = 'Tiphia Sting',
+        Range = 'Lightning Bow +1',
+        Ammo = '',
         Head = 'Homam Zucchetto',
         Neck = 'Fortitude Torque',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
-        Body = 'Haubergeon',
+        Body = 'Haubergeon +1',
         Hands = 'Dusk Gloves +1',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
@@ -416,21 +418,22 @@ local sets = {
         Legs = 'Homam Cosciales',
         Feet = 'Homam Gambieras',
     },
-    TP_HighAcc = {},
+    TP_Aftermath = {},
     TP_Mjollnir_Haste = {},
+    TP_HighAcc = {},
 
     WS = {
         Head = 'Optical Hat',
         Neck = 'Soil Gorget',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
-        Body = 'Haubergeon',
+        Body = 'Haubergeon +1',
         -- Hands = 'Alkyoneus\'s Brc.',
         Hands = 'Tarasque Mitts +1',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
-        Waist = 'Sonic Belt',
+        Waist = 'Warwolf Belt',
         Legs = 'Vlr. Breeches +1',
         Feet = 'Rutter Sabatons',
     },
@@ -446,7 +449,20 @@ local sets = {
         Main = 'Apollo\'s Staff',
         Ear1 = 'Hospitaler Earring',
     },
-    Divine = {},
+    Divine = {
+        Head = 'Homam Zucchetto',
+        Neck = 'Faith Torque',
+        Ear1 = 'Novio Earring',
+        Ear2 = 'Moldavite Earring',
+        Body = 'Glt. Surcoat +1',
+        Hands = 'Dvt. Mitts +1',
+        Ring1 = 'Aqua Ring',
+        Ring2 = 'Communion Ring',
+        Back = 'Altruistic Cape',
+        Waist = 'Warwolf Belt',
+        Legs = { Name = 'Homam Cosciales', Priority = 120 },
+        Feet = 'Vlr. Leggings +1',
+    },
     Rampart = { -- Rampart gives VIT x2 damage shield in era
         Main = { Name = 'Durandal', Priority = -1 },
         Sub = 'Koenig Shield',
@@ -456,7 +472,7 @@ local sets = {
         Neck = 'Fortitude Torque',
         Ear1 = { Name = 'Robust Earring', Priority = -1 },
         Ear2 = { Name = 'Robust Earring', Priority = -1 },
-        Body = 'Gallant Surcoat',
+        Body = 'Glt. Surcoat +1',
         Hands = 'Kng. Handschuhs',
         Ring1 = 'Robust Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
@@ -470,7 +486,21 @@ local sets = {
         Ear1 = 'Knightly Earring',
         Hands = 'Vlr. Gauntlets +1',
     },
-    Enhancing = {},
+    Enhancing = {
+        Main = 'Kirin\'s Pole',
+        Head = 'Maat\'s Cap',
+        Neck = 'Stone Gorget',
+        Ear1 = 'Cmn. Earring',
+        Ear2 = 'Cmn. Earring',
+        Body = 'Vlr. Surcoat +1',
+        Hands = 'Dvt. Mitts +1',
+        Ring1 = 'Aqua Ring',
+        Ring2 = 'Communion Ring',
+        Back = 'Merciful Cape',
+        Waist = 'Warwolf Belt',
+        Legs = 'Glt. Breeches +1',
+        Feet = 'Vlr. Leggings +1',
+    },
 }
 profile.Sets = sets
 
@@ -623,13 +653,9 @@ profile.HandleMidcast = function()
         gFunc.EquipSet(sets.Cure)
     elseif (action.Skill == 'Divine Magic') then
         if (action.Name == 'Flash') then
-            local sentinel = gData.GetBuffCount('Sentinel')
-            if (sentinel >= 1) then
-                gFunc.EquipSet(sets.Haste)
-            else
-                gFunc.EquipSet(sets.Hate)
-                gFunc.EquipSet(sets.Hate_Flash)
-            end
+            gFunc.EquipSet(sets.Hate)
+            gFunc.EquipSet(sets.Haste)
+            gFunc.EquipSet(sets.Hate_Flash)
         else
             gFunc.EquipSet(sets.Divine)
         end

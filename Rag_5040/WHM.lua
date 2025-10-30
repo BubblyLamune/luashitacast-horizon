@@ -71,9 +71,10 @@ local sets = {
     LockSet3 = {},
 
     TP = {},
+    TP_Mjollnir_Haste = {},
     TP_HighAcc = {},
     TP_NIN = {},
-    TP_Mjollnir_Haste = {},
+
     WS = {},
     WS_HighAcc = {},
     WS_Randgrith = {},
@@ -133,7 +134,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcmage.DoCommands(args)
+    gcmage.DoCommands(args, sets)
 
     if (args[1] == 'horizonmode') then
         profile.HandleDefault()

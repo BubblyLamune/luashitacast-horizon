@@ -109,7 +109,7 @@ local sets = {
         Head = 'Green Ribbon +1', -- 10
         Neck = 'Jeweled Collar', -- 10
         Hands = 'Merman\'s Bangles',
-        Back = 'Aurora Mantle', -- 7
+        Back = 'Aurora Mantle +1', -- 8
         Waist = 'Fire Belt', -- 20
         Ring1 = 'Omniscient Ring', -- 10
         Ring2 = 'Malfrost Ring', -- 10
@@ -239,7 +239,7 @@ local sets = {
     Enhancing = {
         Main = 'Kirin\'s Pole',
         Ammo = 'Hedgehog Bomb',
-        Head = 'Evk. Horn +1',
+        Head = 'Maat\'s Cap',
         Neck = 'Enhancing Torque',
         Ear1 = 'Cmn. Earring',
         Ear2 = 'Cmn. Earring',
@@ -324,11 +324,11 @@ local sets = {
     TP = {
         Ring1 = 'Jelly Ring',
     },
+    TP_Mjollnir_Haste = {},
     TP_HighAcc = {
         Ring1 = { Name = 'Bomb Queen Ring', Priority = 100 },
     },
-    TP_NIN = {},
-    TP_Mjollnir_Haste = {},
+
     WS = {},
     WS_HighAcc = {},
     ['eco'] = {
@@ -405,7 +405,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcmage.DoCommands(args)
+    gcmage.DoCommands(args, sets)
 
     if (args[1] == 'horizonmode') then
         profile.HandleDefault()

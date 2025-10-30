@@ -42,41 +42,9 @@ local korin_obi = false
 local anrin_obi = false
 
 local sets = {
-    Idle = {
-        Main = 'Kodachi +1',
-        Sub = 'Nikkariaoe',
-        Ammo = 'Happy Egg',
-        Head = 'Emperor Hairpin',
-        Neck = 'Peacock Amulet',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Power Gi',
-        Hands = 'Custom M Gloves',
-        Ring1 = 'Puissance Ring',
-        Ring2 = 'Venerer Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Warrior\'s Belt +1',
-        Legs = 'Republic Subligar',
-        Feet = 'Fed. Kyahan',
-    },
+    Idle = {},
     IdleALT = {},
-    IdleDT = {
-        Main = 'Kodachi +1',
-        Sub = 'Nikkariaoe',
-        Ammo = 'Happy Egg',
-        Head = 'Emperor Hairpin',
-        Neck = 'Peacock Amulet',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Federation Gi',
-        Hands = 'Custom M Gloves',
-        Ring1 = 'Sattva Ring',
-        Ring2 = 'Venerer Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Warrior\'s Belt +1',
-        Legs = 'Republic Subligar',
-        Feet = 'Fed. Kyahan',
-    },
+    IdleDT = {},
     IdleALTDT = {},
     Resting = {},
     Town = {},
@@ -99,10 +67,7 @@ local sets = {
     Haste = { -- Used for Utsusemi cooldown
     },
 
-    Hate = {
-        Back = 'Mercen. Mantle',
-        Ring1 = 'Sattva Ring',
-    },
+    Hate = {},
     NinDebuff = {},
     NinElemental = {},
     NinElemental_Accuracy = {},
@@ -110,30 +75,16 @@ local sets = {
 
     Enhancing = {},
     Cure = {},
+    Flash = {}, -- Technically optional since Hate and Haste gear will be equipped by default
 
     LockSet1 = {},
     LockSet2 = {},
     LockSet3 = {},
 
-    TP_LowAcc = {
-        Main = 'Kodachi +1',
-        Sub = 'Nikkariaoe',
-        Ammo = 'Happy Egg',
-        Head = 'Emperor Hairpin',
-        Neck = 'Peacock Amulet',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Power Gi',
-        Hands = 'Custom M Gloves',
-        Ring1 = 'Puissance Ring',
-        Ring2 = 'Venerer Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Warrior\'s Belt +1',
-        Legs = 'Republic Subligar',
-        Feet = 'Fed. Kyahan',
-    },
-    TP_HighAcc = {},
+    TP_LowAcc = {},
+    TP_Aftermath = {},
     TP_Mjollnir_Haste = {},
+    TP_HighAcc = {},
 
     WS = {},
     WS_HighAcc = {},
@@ -160,7 +111,7 @@ Everything below can be ignored.
 ]]
 
 local NinDebuffs = T{ 'Kurayami: Ni', 'Hojo: Ni', 'Jubaku: Ichi', 'Dokumori: Ichi', 'Kurayami: Ichi', 'Hojo: Ichi' }
-local DrkDebuffs = T{ 'Bind', 'Sleep', 'Poison' }
+local HateDebuffs = T{ 'Bind', 'Sleep', 'Poison', 'Blind' }
 local DrkDarkMagic = T{ 'Stun', 'Aspir', 'Drain', 'Absorb-AGI', 'Absorb-VIT' }
 local NinElemental = T{
     'Hyoton: Ni', 'Katon: Ni', 'Huton: Ni', 'Doton: Ni', 'Raiton: Ni', 'Suiton: Ni',
@@ -347,7 +298,7 @@ profile.HandleMidcast = function()
             EquipStaffAndObi(action)
         end
     elseif (action.Skill == 'Enfeebling Magic') then
-        if (DrkDebuffs:contains(action.Name)) then
+        if (HateDebuffs:contains(action.Name)) then
             gFunc.EquipSet(sets.Hate)
         end
         local staff = ElementalStaffTable[action.Element]
@@ -363,6 +314,10 @@ profile.HandleMidcast = function()
         gFunc.EquipSet(sets.Enhancing)
     elseif (action.Skill == 'Healing Magic') then
         gFunc.EquipSet(sets.Cure)
+    elseif (action.Skill == 'Divine Magic') then
+        gFunc.EquipSet(sets.Hate)
+        gFunc.EquipSet(sets.Haste)
+        gFunc.EquipSet(sets.Flash)
     end
 end
 

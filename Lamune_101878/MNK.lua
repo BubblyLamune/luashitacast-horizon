@@ -74,16 +74,20 @@ local sets = {
     },
 
     DT = {
-        -- Main = 'Cross-Counters', -- 5
-        -- Head = 'Arh. Jinpachi +1',
-        Neck = 'Evasion Torque',
-        -- Neck = 'Peacock Amulet',
+        Main = 'Cross-Counters', -- 5
+        Ammo = 'Fenrir\'s Stone',
+        Head = 'Optical Hat',
+        Neck = 'Faith Torque',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Merman\'s Earring',
         -- Ear1 = 'Avenger\'s Earring', -- 1
         -- Ear2 = 'Avenger\'s Earring', -- 1
-        -- Body = 'Arhat\'s Gi +1',
+        Body = 'Scp. Harness +1',
+        Hands = 'Mel. Gloves +1',
         -- Hands = 'Rasetsu Tekko +1', -- 1
         -- Hands = 'Noritsune Kote',
-        Ring2 = 'Sattva Ring',
+        Ring1 = 'Sattva Ring',
+        Ring2 = 'Toreador\'s Ring',
         Back = 'Shadow Mantle',
         Legs = 'Tpl. Hose +1', -- 3
         Feet = 'Melee Gaiters',
@@ -94,6 +98,7 @@ local sets = {
         Ear2 = 'Merman\'s Earring',
         Ring1 = 'Shadow Ring',
         Ring2 = 'Sattva Ring',
+        Back = 'Resentment Cape',
     },
     FireRes = {},
     IceRes = {},
@@ -102,7 +107,7 @@ local sets = {
     WindRes = {},
     WaterRes = {},
     Evasion = { -- Currently using this as an override for BV2 Zergs
-        Head = 'Shr.Znr.Kabuto',
+        Head = 'Maat\'s Cap',
         Neck = 'Faith Torque',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
@@ -157,13 +162,14 @@ local sets = {
         Legs = 'Byakko\'s Haidate',
         Feet = 'Fuma Sune-Ate',
     },
+    TP_Aftermath = {},
+    TP_Mjollnir_Haste = {},
     TP_HighAcc = {
         Head = 'Shr.Znr.Kabuto',
         Neck = 'Peacock Amulet',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Shura Togi',
-        Hands = 'Mel. Gloves +1',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
@@ -171,8 +177,6 @@ local sets = {
         Legs = 'Byakko\'s Haidate',
         Feet = 'Fuma Sune-Ate',
     },
-    TP_Mjollnir_Haste = {},
-
     TP_Focus = {
         Ring1 = 'Flame Ring',
         Ring2 = 'Triumph Ring',
@@ -187,7 +191,7 @@ local sets = {
     },
 
     WS = {
-        Head = 'Shr.Znr.Kabuto',
+        Head = 'Maat\'s Cap',
         Neck = 'Thunder Gorget',
         Ear2 = 'Merman\'s Earring',
         Ring1 = 'Flame Ring',
@@ -209,7 +213,6 @@ local sets = {
         Feet = 'Dune Boots',
     },
     WS_HowlingFist = {
-        Head = 'Genbu\'s Kabuto',
     },
 
     Jump = {
@@ -252,7 +255,7 @@ local sets = {
     },
 
     HundredFists = {
-        Head = 'Shr.Znr.Kabuto',
+        Head = 'Maat\'s Cap',
         Neck = 'Faith Torque',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',

@@ -6,7 +6,7 @@ local ninSJMaxMP = 640 -- The Max MP you have when /nin in your idle set
 local whmSJMaxMP = 718 -- The Max MP you have when /whm in your idle set
 local rdmSJMaxMP = 734 -- The Max MP you have when /rdm in your idle set
 
-local nukeExtraThreshold = 850 -- The minimum MP for which NukeExtra and StoneskinExtra set will be used instead of regular sets (to allow additional nukes using max mp sets)
+local nukeExtraThreshold = 850 -- The minimum MP for which NukeExtra StoneskinExtra, and PhalanxExtra set will be used instead of regular sets (to allow additional nukes using max mp sets)
 
 local warlocks_mantle = false -- Don't add 2% to fastCastValue to this as it is SJ dependant
 local republic_circlet = false
@@ -122,7 +122,7 @@ local sets = {
         Hands = 'Merman\'s Bangles',
         Ring1 = 'Omniscient Ring', -- 10
         Ring2 = 'Malfrost Ring', -- 10
-        Back = 'Aurora Mantle', -- 7
+        Back = 'Aurora Mantle +1', -- 8
         Waist = 'Fire Belt', -- 20
         Legs = 'Igqira Lappas',
         Feet = 'Mountain Gaiters',
@@ -164,7 +164,7 @@ local sets = {
         Hands = 'Mage\'s Cuffs', -- 5
         Ring1 = 'Emerald Ring', -- 9
         Ring2 = 'Malgust Ring', -- 10
-        Back = 'Aurora Mantle', -- 7
+        Back = 'Aurora Mantle +1', -- 8
         Waist = 'Ice Belt', -- 20
         Legs = 'Igqira Lappas',
         Feet = 'Mountain Gaiters',
@@ -208,6 +208,8 @@ local sets = {
         Ear2 = 'Magnetic Earring', -- 8
         Waist = 'Silver Obi +1', -- 8
         Feet = 'Wizard\'s Sabots', -- 20
+        Ammo = 'Tiphia Sting',
+        Back = 'Umbra Cape',
     },
     Yellow = { -- This will override Precast if /lag is turned on or the spell casting time is too short. e.g. Tier 1: "Stone"
      --   Head = 'Zenith Crown +1',
@@ -223,8 +225,6 @@ local sets = {
     },
     YellowHNM = {
         Ammo = 'Tiphia Sting',
-        Neck = 'Star Necklace',
-        Body = { Name = 'Src. Coat +1', Priority = 100 },
     },
     Haste = { -- Used only on Haste, Refresh, Blink and Utsusemi casts
         Head = 'Nashira Turban', -- 2
@@ -305,7 +305,7 @@ local sets = {
         Hands = 'Dvt. Mitts +1',
         Ring1 = 'Aqua Ring',
         Ring2 = 'Communion Ring',
-        Back = 'Errant Cape',
+        Back = 'Merciful Cape',
         Waist = 'Hierarch Belt',
         Legs = 'Errant Slops',
         Feet = 'Errant Pigaches',
@@ -313,7 +313,7 @@ local sets = {
     Spikes = {
         Main = 'Kirin\'s Pole',
         Ammo = 'Phtm. Tathlum',
-        Head = 'Demon Helm +1',
+        Head = 'Maat\'s Cap',
         Neck = 'Enhancing Torque',
         Ear1 = 'Novio Earring',
         Ear2 = 'Moldavite Earring',
@@ -332,6 +332,8 @@ local sets = {
         Neck = 'Enfeebling Torque',
         Body = 'Wzd. Coat +1',
         Legs = 'Igqira Lappas',
+        Hands = 'Nashira Gages',
+        Feet = 'Nashira Crackows',
     },
     EnfeeblingMND = {
         Ammo = 'Hedgehog Bomb',
@@ -391,6 +393,7 @@ local sets = {
 
     Nuke = {
         Ammo = 'Phtm. Tathlum',
+        Head = 'Maat\'s Cap',
         Head = 'Wizard\'s Petasos',
         Neck = 'Prudence Torque',
         Ear1 = 'Novio Earring',
@@ -406,7 +409,7 @@ local sets = {
     },
     NukeHNM = {
         Ammo = 'Phtm. Tathlum',
-        Head = 'Wzd. Petasos +1',
+        Head = 'Wzd. Petasos +1', -- 4
         Neck = 'Prudence Torque',
         Ear1 = 'Novio Earring',
         Ear2 = 'Novia Earring',
@@ -429,7 +432,7 @@ local sets = {
     NukeDOT = {
         Main = 'Kirin\'s Pole',
         Ammo = 'Phtm. Tathlum',
-        Head = 'Demon Helm +1',
+        Head = 'Maat\'s Cap',
         Neck = 'Prudence Torque',
         Ear1 = 'Abyssal Earring',
         Ear2 = 'Omn. Earring',
@@ -579,7 +582,7 @@ profile.HandleCommand = function(args)
         gcdisplay.AdvanceToggle('Extra')
         gcinclude.Message('Extra', gcdisplay.GetToggle('Extra'))
     else
-        gcmage.DoCommands(args)
+        gcmage.DoCommands(args, sets)
     end
 
     if (args[1] == 'horizonmode') then

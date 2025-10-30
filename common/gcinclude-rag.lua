@@ -17,7 +17,7 @@ local LockableEquipment = {
     ['Sub'] = T{'Warp Cudgel'},
     ['Range'] = T{},
     ['Ammo'] = T{},
-    ['Head'] = T{'Reraise Hairpin', 'Dream Hat +1'},
+    ['Head'] = T{'Reraise Hairpin', 'Dream Hat +1', 'Tinfoil Hat'},
     ['Neck'] = T{'Opo-opo Necklace'},
     ['Ear1'] = T{'Reraise Earring', 'Republic Earring', 'Kingdom Earring', 'Federation Earring'},
     ['Ear2'] = T{'Reraise Earring', 'Republic Earring', 'Kingdom Earring', 'Federation Earring'},
@@ -349,6 +349,8 @@ function gcinclude.DoDefaultOverride(isMelee)
             or gcdisplay.IdleSet == 'Alternate'
             or gcdisplay.IdleSet == 'DT'
             or gcdisplay.IdleSet == 'Evasion'
+            or gcdisplay.IdleSet == 'LowAcc'
+            or gcdisplay.IdleSet == 'HighAcc'
         )
     ) then
         if (isMageJobs:contains(player.MainJob) and (gcdisplay.GetCycle('TP') == 'LowAcc' or gcdisplay.GetCycle('TP') == 'HighAcc')) then
