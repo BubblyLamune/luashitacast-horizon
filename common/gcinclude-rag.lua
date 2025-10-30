@@ -110,6 +110,8 @@ local OverrideNameTable = {
 }
 
 local isMageJobs = T{ 'RDM','BLM','WHM','SMN','BRD' }
+local isParadeGorgJob = T{'DRK', 'PLD'}
+local parade_gorget = true
 
 local lastIdleSet = 'Normal'
 
@@ -328,6 +330,9 @@ function gcinclude.DoDefaultOverride(isMelee)
     if (gcdisplay.IdleSet == 'DT') then
         if (isMelee) then
             gFunc.EquipSet('DT')
+            if isParadeGorgJob:contains(player.MainJob) and parade_gorget and player.HPP >= 85 then
+                gFunc.Equip('Neck', 'Parade Gorget')
+            end
         else
             if (environment.Time >= 6 and environment.Time < 18) then
                 gFunc.EquipSet('DT')

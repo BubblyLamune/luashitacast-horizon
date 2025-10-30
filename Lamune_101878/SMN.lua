@@ -332,19 +332,15 @@ local sets = {
     WS = {},
     WS_HighAcc = {},
     ['eco'] = {
-        Main = 'Earth Staff',
-        Head = 'Evoker\'s Horn',
-        Neck = 'Ajari Necklace',
-        Ear1 = 'Geist Earring',
-        Ear2 = 'Geist Earring',
-        Body = 'Evoker\'s Doublet',
-        Hands = 'Evoker\'s Bracers',
-        Ring1 = 'Ether Ring',
-        Ring2 = 'Tamas Ring',
-        Back = 'Red Cape +1',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Evoker\'s Spats',
-        Feet = 'Evoker\'s Pigaches',
+        Main = 'Yew Wand +1',
+        Sub = 'Hatchling Shield',
+        Ammo = 'Fortune Egg',
+        Head = 'Dream Hat +1',
+        Neck = 'Justice Badge',
+        Body = 'Baron\'s Saio',
+        Hands = 'Carbuncle Mitts',
+        Legs = 'Baron\'s Slops',
+        Feet = 'Dream Boots +1',
     },
 }
 profile.Sets = sets
@@ -358,7 +354,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ja \"Assault\" <t>");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ja \"Retreat\" <me>");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 3 down /ja \"Release\" <me>");
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /party Crescent Fang >> <t> <call21>;/pet \"Crescent Fang\" <t>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /party Shock Strike >> <t> <call21>;/pet \"Shock Strike\" <t>");
 
 end
 

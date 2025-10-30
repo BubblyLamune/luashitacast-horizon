@@ -3,7 +3,22 @@ local profile = {}
 local fastCastValue = 0.00 -- 0% from gear
 
 local sets = {
-    Idle = {},
+    ['Idle'] = {
+        Main = 'Gigant Axe',
+        Range = 'Power Crossbow',
+        Head = 'Emperor Hairpin',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Beetle Earring +1',
+        Ear2 = 'Beetle Earring +1',
+        Body = 'Brigandine',
+        Hands = 'Custom F Gloves',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Balance Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Tilt Belt',
+        Legs = 'Ryl.Sqr. Breeches',
+        Feet = 'Leaping Boots',
+    },
     IdleALT = {},
     Resting = {},
     Town = {},
@@ -46,13 +61,34 @@ local sets = {
     },
     SAM = {
         Ear1 = 'Attila\'s Earring',
+    },    
+    ['thirty'] = {
+        Main = 'Centurion\'s Axe',
+        Range = 'Power Crossbow',
+        Ammo = 'Crossbow Bolt',
+        Head = 'Emperor Hairpin',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Beetle Earring +1',
+        Ear2 = 'Beetle Earring +1',
+        Body = 'Ctr. Scale Mail',
+        Hands = 'Savage Gauntlets',
+        Ring1 = 'Courage Ring',
+        Ring2 = 'Balance Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Brave Belt',
+        Legs = 'Republic Subligar',
+        Feet = 'Leaping Boots',
     },
 }
 profile.Sets = sets
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Provoke" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
 end
 
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')

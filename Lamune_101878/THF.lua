@@ -16,12 +16,12 @@ local sets = {
         Head = "Emperor Hairpin",
         Feet = "Leaping Boots",
         Neck = "Spike necklace",
-        Waist = "Life belt",
+        Waist = "Swift belt",
         Ear1 = 'Merman\'s Earring',
         Ear2 = "Coral earring",
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
-        Back = "Nomad\'s mantle"
+        Back = "Amemet mantle"
     },
     IdleALT = {
     },
@@ -105,7 +105,16 @@ local sets = {
     Ranged = {
         
     },
-    Ranged_INT = {},
+    Ranged_INT = {
+        Head = "Rogue's Bonnet",
+        Neck = 'Checkered Scarf',
+        Ear1 = 'Morion Earring',
+        Ear2 = 'Moldavite Earring',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Genius Ring',
+        Feet = 'Custom F Boots'
+
+    },
     ['bcnmfourty'] = {
         Main = 'Marauder\'s Knife',
         Sub = 'Kingdom Dagger',
