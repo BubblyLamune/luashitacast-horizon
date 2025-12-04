@@ -4,20 +4,20 @@ local fastCastValue = 0.00 -- 0% from gear
 
 local sets = {
     ['Idle'] = {
-        Main = 'Gigant Axe',
-        Range = 'Power Crossbow',
+        Main = 'Darksteel Axe',
+        Range = 'Cmb.Cst.Bmrng +1',
         Head = 'Emperor Hairpin',
-        Neck = 'Spike Necklace',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Brigandine',
+        Neck = 'Ryl.Grd. Collar',
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Coral Earring',
+        Body = 'Haubergeon',
         Hands = 'Custom F Gloves',
-        Ring1 = 'Balance Ring',
-        Ring2 = 'Balance Ring',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
         Back = 'Nomad\'s Mantle',
-        Waist = 'Tilt Belt',
-        Legs = 'Ryl.Sqr. Breeches',
-        Feet = 'Leaping Boots',
+        Waist = 'Swift Belt',
+        Legs = 'Fighter\'s Cuisses',
+        Feet = 'Fighter\'s Calligae',
     },
     IdleALT = {},
     Resting = {},
@@ -50,14 +50,18 @@ local sets = {
 
     TP_Aggressor = {},
 
-    WS = {},
+    WS = {
+        Legs = 'Republic Subligar',
+        Feet = 'Leaping Boots',
+    },
     WS_HighAcc = {},
 
     Warcry = {},
     Provoke = {},
 
     DW = {
-        Ear1 = 'Stealth Earring',
+        Sub = 'Viking Axe',
+        --Ear1 = 'Stealth Earring',
     },
     SAM = {
         Ear1 = 'Attila\'s Earring',

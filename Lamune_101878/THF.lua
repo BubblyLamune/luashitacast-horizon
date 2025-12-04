@@ -131,6 +131,21 @@ local sets = {
         Legs = 'Republic Subligar',
         Feet = 'Leaping Boots',
     },
+    Acid = {
+        Ammo = 'Acid Bolt',
+    },
+    Sleep = {
+        Ammo = 'Sleep Bolt',
+    },
+    Bloody = {
+        Ammo = 'Bloody Bolt',
+    },
+    Blind = {
+        Ammo = 'Blind Bolt',
+    },
+    Venom = {
+        Ammo = 'Venom Bolt',
+    },
 }
 
 if player.SubJob == 'NIN' then
@@ -156,6 +171,22 @@ end
 Everything below can be ignored.
 --------------------------------
 ]]
+local ammo = T{'aacid','asleep','abloody','ablind','avenom'}
+
+local AmmoTable1 = {
+    [1] = 'Acid',
+    [2] = 'Sleep',
+    [3] = 'Bloody',
+    [4] = 'Blind',
+    [5] = 'Venom',
+}
+local AmmoTable2 = {
+    ['acid'] = 1,
+    ['sleep'] = 2,
+    ['bloody'] = 3,
+    ['blind'] = 4,
+    ['venom'] = 5,
+}
 
 local saOverride = 0
 local taOverride = 0
@@ -163,6 +194,8 @@ local taggedMobs = {}
 
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 actionpacket = gFunc.LoadFile('common\\actionpacket.lua')
+
+
 
 profile.HandleAbility = function()
     local action = gData.GetAction()
@@ -192,6 +225,7 @@ profile.HandleItem = function()
 end
 
 profile.HandlePreshot = function()
+	gFunc.EquipSet(sets[gcdisplay.GetCycle('Ammo')]);
 end
 
 profile.HandleMidshot = function()
@@ -235,8 +269,11 @@ profile.HandleWeaponskill = function()
 end
 
 profile.OnLoad = function()
+    gcinclude.SetAlias(ammo)
+    gcdisplay.CreateCycle('Ammo', AmmoTable1)
+    gcinclude.SetAlias(T{'ammo'})
     gcinclude.SetAlias(T{'th'})
-    gcdisplay.CreateCycle('TH', {[1] = 'auto', [2] = 'on', [3] = 'off'})
+    gcdisplay.CreateCycle('TH', {[1] = 'Auto', [2] = 'On', [3] = 'Off'})
     gcmelee.Load()
     profile.SetMacroBook()
     profile.WatchTreasureHunter()

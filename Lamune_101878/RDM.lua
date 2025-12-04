@@ -17,18 +17,19 @@ local displayheadOnAbility = true
 local sets = {
    ['Idle'] = {
         Main = 'Earth Staff',
+        Ammo = 'Fortune Egg',
         Head = 'Warlock\'s Chapeau',
         Neck = 'Jeweled Collar',
         Ear1 = 'Geist Earring',
         Ear2 = 'Geist Earring',
-        Body = 'Darksteel Harness',
-        Hands = 'Errant Cuffs',
+        Body = 'Duelist\'s Tabard',
+        Hands = 'Duelist\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Ether Ring',
         Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Errant Slops',
-        Feet = 'Errant Pigaches',
+        Legs = 'Nashira Seraweels',
+        Feet = 'Duelist\'s Boots',
     },
    ['IdleALT'] = {
         Main = 'Earth Staff',
@@ -281,7 +282,7 @@ local sets = {
   --      Body = 'Dls. Tabard +1',
  --       Hands = 'Dusk Gloves +1',
 --        Waist = 'Sonic Belt',
---        Legs = 'Nashira Seraweels',
+          Legs = 'Nashira Seraweels',
 --        Feet = 'Dusk Ledelsens +1',
     },
     ConserveMP = {
@@ -452,7 +453,7 @@ local sets = {
     --    Body = 'Wlk. Tabard +1',
     --    Ear2 = 'Enfeebling Earring',
    --     Back = 'Altruistic Cape',
-   --     Legs = 'Nashira Seraweels',
+          Legs = 'Nashira Seraweels',
     },
 
     Divine = { -- Just using my Hate set here for Flash
@@ -467,7 +468,7 @@ local sets = {
     --    Ring2 = 'Sattva Ring', -- 5
     --    Back = 'Toreador\'s Cape', -- 4
     --    Waist = 'Warwolf Belt', -- 3
-    --    Legs = 'Nashira Seraweels',
+          Legs = 'Nashira Seraweels',
     --    Feet = 'Heroic Boots', -- 1
     },
     Dark = {
@@ -561,7 +562,7 @@ local sets = {
     --    Ring2 = 'Omniscient Ring',
     --    Back = 'Merciful Cape',
     --    Waist = 'Sonic Belt',
-    --    Legs = 'Nashira Seraweels',
+          Legs = 'Nashira Seraweels',
     --    Feet = 'Dusk Ledelsens +1',
     },
     StunACC = { -- You can also type /csstun to equip this set and /lock your gear at the same time if you have a tinfoil hat.
@@ -594,7 +595,7 @@ local sets = {
         Ring2 = 'Toreador\'s Ring',
         Back = 'Cheviot Cape',
         Waist = 'Life Belt',
-        Legs = 'Duelist\'s Tights',
+        Legs = 'Nashira Seraweels',
         Feet = 'Duelist\'s Boots',
     },
     ['TP_HighAcc'] = {
@@ -612,7 +613,7 @@ local sets = {
         Ring2 = 'Toreador\'s Ring',
         Back = 'Cheviot Cape',
         Waist = 'Life Belt',
-        Legs = 'Duelist\'s Tights',
+        Legs = 'Nashira Seraweels',
         Feet = 'Duelist\'s Boots',
     },
     TP_NIN = {
@@ -791,7 +792,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcmage.DoCommands(args)
+    gcmage.DoCommands(args, sets)
 
     if (args[1] == 'horizonmode') then
         profile.HandleDefault()

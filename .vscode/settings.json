@@ -1,0 +1,14 @@
+{
+    "Lua.diagnostics.globals": [
+        "gcinclude",
+        "gFunc",
+        "gData",
+        "AshitaCore",
+        "chat",
+        "bit",
+        "ashita",
+        "struct",
+        "T",
+        "once"
+    ]
+}

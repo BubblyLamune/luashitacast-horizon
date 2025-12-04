@@ -24,8 +24,8 @@ local kampfer_earring_slot = 'Ear2'
 
 local sets = {
     ['Idle'] = {
-        Main = 'T.M. Hooks +1',
-        Head = 'Emperor Hairpin',
+        Main = 'Destroyers',
+        Head = 'Panther Mask',
         Neck = 'Spike Necklace',
         Ear1 = 'Coral Earring',
         Ear2 = 'Coral Earring',
@@ -35,7 +35,7 @@ local sets = {
         Ring2 = 'Toreador\'s Ring',
         Back = 'Amemet Mantle',
         Waist = 'Brown Belt',
-        Legs = 'Republic Subligar',
+        Legs = 'Temple Hose',
         Feet = 'Kung Fu Shoes',
     },
     IdleALT = {
@@ -76,7 +76,7 @@ local sets = {
     5% Melee Gaiters
     ]]
     DT = {
-        Main = 'T.M. Hooks +1', -- 5
+        Main = 'Destroyers', -- 5
         Ammo = 'Fenrir\'s Stone',
         Head = 'Optical Hat',
         -- Head = 'Arh. Jinpachi +1',
@@ -153,7 +153,7 @@ local sets = {
     LockSet3 = {},
 
     ['TP_LowAcc'] = {
-        Main = 'T.M. Hooks +1',
+        --Main = 'T.M. Hooks +1',
         Ammo = '',
         Head = 'Emperor Hairpin',
         Neck = 'Spike Necklace',
@@ -161,8 +161,8 @@ local sets = {
         Ear2 = 'Coral Earring',
         Body = 'Scorpion Harness',
         Hands = 'Temple Gloves',
-        Ring1 = 'Sun Ring',
-        Ring2 = 'Sun Ring',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
         Back = 'Amemet Mantle',
         Waist = 'Brown Belt',
         Legs = 'Republic Subligar',
@@ -243,9 +243,10 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ` down /ja "Focus" <me>;/wait 0.7;/ja "Dodge" <me>;/wait 0.7;/ja "Berserk" <me>;')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Boost" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ws "Howling Fist" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi:Ichi" <me>')
 	--AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ws "Dragon Kick" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>') 
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Bully" <t>')
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 0 down /ja "Hide" <me>')
 end
