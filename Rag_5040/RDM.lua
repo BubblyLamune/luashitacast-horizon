@@ -12,8 +12,6 @@ local blue_cotehardie_plus_one = true
 local dilation_ring = true
 local dilation_ring_slot = 'Ring2'
 
-local displayheadOnAbility = true
-
 local sets = {
     Idle = {
         Main = 'Terra\'s Staff',
@@ -61,7 +59,7 @@ local sets = {
         Ear2 = 'Magnetic Earring',
         Body = 'Mahatma Hpl.',
         Hands = 'Hydra Gloves',
-        Back = 'Errant Cape',
+        Back = 'Mahatma Cape',
         Waist = 'Duelist\'s Belt',
         Legs = 'Hydra Brais',
         Feet = 'Hydra Gaiters',
@@ -360,7 +358,7 @@ local sets = {
         Hands = 'Hydra Gloves', -- 5
         Ring1 = 'Aqua Ring',
         Ring2 = 'Communion Ring',
-        Back = { Name = 'Errant Cape', Priority = 100 }, -- 5
+        Back = { Name = 'Mahatma Cape', Priority = 100 }, -- 5
         Waist = 'Penitent\'s Rope', -- 3
         Legs = 'Hydra Brais', -- 6
         Feet = 'Hydra Gaiters', -- 5
@@ -521,7 +519,7 @@ local sets = {
         Hands = 'Zenith Mitts +1',
         Ring1 = 'Ether Ring',
         Ring2 = 'Serket Ring',
-        Back = 'Errant Cape',
+        Back = 'Mahatma Cape',
         Waist = 'Hierarch Belt',
         Legs = 'Blood Cuisses',
         Feet = 'Blood Greaves',
@@ -537,7 +535,7 @@ local sets = {
         Hands = 'Zenith Mitts +1',
         Ring1 = 'Ether Ring',
         Ring2 = 'Serket Ring',
-        Back = 'Errant Cape',
+        Back = 'Mahatma Cape',
         Waist = 'Hierarch Belt',
         Legs = 'Blood Cuisses',
         Feet = 'Blood Greaves',
@@ -675,9 +673,7 @@ Everything below can be ignored.
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
-    if (displayheadOnAbility) then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
-    end
+    gcmage.DoAbility()
 end
 
 profile.HandleItem = function()
@@ -705,7 +701,7 @@ profile.HandleWeaponskill = function()
 
     if (action.Name == 'Evisceration') then
         gFunc.EquipSet(sets.WS_Soil)
-        gFunc.EquipSet(sets.Evisceration)
+        gFunc.EquipSet(sets.WS_Evisceration)
     end
 
     if (action.Name == 'Energy Drain') or (action.Name == 'Energy Steal') then

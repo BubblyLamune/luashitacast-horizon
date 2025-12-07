@@ -381,3 +381,17 @@
 
 ### v1.5.12
 - BST - Change /pet command to /nextpet
+
+### v1.5.13
+- Conquest - Adds missing Boyahda Tree entry to region map
+
+### v1.5.14
+- BLM/SMN - Adds Claustrum to gcmage
+- All Jobs - Adds a var to gcinclude-rag to /displayhead on every job ability use
+
+### v1.5.15
+- WHM - Use Banish set when casting Cures on Mobs or Holy
+- WHM - Adds Republic Circlet
+
+### v1.5.16
+- RDM - Fix Evisceration set name typo

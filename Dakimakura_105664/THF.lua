@@ -115,9 +115,13 @@ local sets = {
 		Waist = 'Life Belt',
     },
 
-    WS_Evisceration = {},
+    WS_Evisceration = {
+		Feet = { Name = 'Asn. Poulaines +1', Priority = 1 },
+    },
+    WS_DancingEdge = {
+		Feet = { Name = 'Asn. Poulaines +1', Priority = 1 },
+    },
     WS_SharkBite = {},
-    WS_DancingEdge = {},
     WS_MercyStroke = {
 		Ear1 = 'Tmph. Earring +1',
 		Body = { Name = 'Hct. Harness +1', Priority = 2 },
@@ -125,10 +129,16 @@ local sets = {
 		Waist = 'Warwolf Belt',
     },
 
-    -- Applied only on TA WS and not SATA WS
+    -- Applied on SA WS and SATA WS
+    WS_SA = {
+		Feet = { Name = 'Hct. Leggings +1', Priority = 1 },
+    },
+
+    -- Applied only on TA WS but NOT SATA WS
     WS_TA = {
 		Ear1 = 'Drone Earring',
         Hands = 'Rogue\'s Armlets +1',
+        Legs = 'Drn. Leggings +1',
     },
     WS_TA_SharkBite = {
 		Ring2 = 'Breeze Ring',
@@ -219,6 +229,8 @@ gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 actionpacket = gFunc.LoadFile('common\\actionpacket.lua')
 
 profile.HandleAbility = function()
+    gcmelee.DoAbility()
+
     local action = gData.GetAction()
     if (action.Name == 'Flee') then
         gFunc.EquipSet(sets.Flee)
@@ -281,6 +293,10 @@ profile.HandleWeaponskill = function()
 
     local sa = gData.GetBuffCount('Sneak Attack')
     local ta = gData.GetBuffCount('Trick Attack')
+
+    if (sa == 1) or (os.clock() < saOverride) then
+        gFunc.EquipSet(sets.WS_SA)
+    end
 
     if (sa == 1 and ta == 1) or (os.clock() < saOverride and os.clock() < taOverride) then
         if (action.Name == 'Shark Bite') then

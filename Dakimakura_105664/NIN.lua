@@ -166,6 +166,8 @@ local WeakElementTable = {
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 
 profile.HandleAbility = function()
+    gcmelee.DoAbility()
+
     gFunc.EquipSet(sets.Hate)
 end
 

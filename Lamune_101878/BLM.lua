@@ -14,8 +14,6 @@ local republic_circlet = false
 local opuntia_hoop = false
 local opuntia_hoop_slot = 'Ring1'
 
-local displayheadOnAbility = true
-
 local sets = {
     ['Idle'] = {
         Main = 'Earth Staff',
@@ -224,7 +222,7 @@ local sets = {
        -- Feet = 'Rostrum Pumps',
     },
     YellowHNM = {
-        Ammo = 'Tiphia Sting',
+        Back = 'Umbra Cape',
     },
     Haste = { -- Used only on Haste, Refresh, Blink and Utsusemi casts
         Head = 'Nashira Turban', -- 2
@@ -253,7 +251,7 @@ local sets = {
         Hands = 'Hydra Gloves', -- 5
         Ring1 = 'Aqua Ring',
         Ring2 = 'Communion Ring',
-        Back = 'Errant Cape', -- 5
+        Back = 'Mahatma Cape', -- 5
         Waist = 'Penitent\'s Rope', -- 3
         Legs = 'Hydra Brais', -- 6
         Feet = 'Hydra Gaiters', -- 5
@@ -296,6 +294,23 @@ local sets = {
     },
     StoneskinExtra = {
         Main = 'Kirin\'s Pole',
+        Ammo = { Name = 'Hedgehog Bomb', Priority = 100 },
+        Head = { Name = 'Zenith Crown +1', Priority = 100 },
+        Neck = 'Stone Gorget',
+        Ear1 = { Name = 'Loquac. Earring', Priority = 100 },
+        Ear2 = 'Cmn. Earring',
+        Body = 'Mahatma Hpl.',
+        Hands = 'Dvt. Mitts +1',
+        Ring1 = { Name = 'Serket Ring', Priority = 100 },
+        Ring2 = 'Communion Ring',
+        Back = { Name = 'Mahatma Cape', Priority = 100 },
+        Waist = { Name = 'Hierarch Belt', Priority = 100 },
+        Legs = 'Mahatma Slops',
+        Feet = { Name = 'Mahatma Pigaches', Priority = 100 },
+    },
+    PhalanxExtra = {
+        Main = 'Eremite\'s Wand',
+        Sub = 'Genbu\'s Shield',
         Ammo = 'Hedgehog Bomb',
         Head = 'Zenith Crown +1',
         Neck = 'Stone Gorget',
@@ -547,9 +562,7 @@ Everything below can be ignored.
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
-    if (displayheadOnAbility) then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
-    end
+    gcmage.DoAbility()
 end
 
 profile.HandleItem = function()
@@ -626,7 +639,7 @@ profile.HandleMidcast = function()
             end
             if (not ElementalDebuffs:contains(action.Name)) then
                 if (conquest:GetInsideControl()) then
-                    print(chat.header('GCMage'):append(chat.message('In Region - Using Republic Circlet')))
+                    print(chat.header('LAC - BLM'):append(chat.message('In Region - Using Republic Circlet')))
                     gFunc.Equip('Head', 'Republic Circlet')
                 end
             end

@@ -140,6 +140,7 @@ local sets = {
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
         Ring1 = 'Shadow Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
+        Back = 'Resentment Cape',
     },
     FireRes = { -- 137
         Range = 'Rosenbogen',
@@ -518,6 +519,8 @@ Everything below can be ignored.
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 
 profile.HandleAbility = function()
+    gcmelee.DoAbility()
+
     local action = gData.GetAction()
 
     if (action.Name == 'Chivalry') then
