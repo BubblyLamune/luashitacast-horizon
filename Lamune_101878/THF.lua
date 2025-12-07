@@ -166,11 +166,13 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 0 down /ja "Hide" <me>')
 end
 
+
 --[[
 --------------------------------
 Everything below can be ignored.
 --------------------------------
 ]]
+
 local ammo = T{'aacid','asleep','abloody','ablind','avenom'}
 
 local AmmoTable1 = {
@@ -195,13 +197,11 @@ local taggedMobs = {}
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 actionpacket = gFunc.LoadFile('common\\actionpacket.lua')
 
-
-
 profile.HandleAbility = function()
+    gcmelee.DoAbility()
+
     local action = gData.GetAction()
-    if (action.Name == 'Charm') then
-        gFunc.EquipSet(sets.Charm)
-    elseif (action.Name == 'Flee') then
+    if (action.Name == 'Flee') then
         gFunc.EquipSet(sets.Flee)
     elseif (action.Name == 'Hide') then
         gFunc.EquipSet(sets.Hide)
@@ -230,14 +230,9 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Ranged)
-    local equipment = gData.GetEquipment()
-    local ammo = 'None'
 
-    if (equipment.Ammo ~= nil ) then
-        ammo = equipment.Ammo.Name
-    end
-
-    if (ammo == 'Bloody Bolt') then
+    local ammo = gData.GetEquipment().Ammo
+    if (ammo ~= nil and ammo.Name == 'Bloody Bolt') then
         gFunc.EquipSet(sets.Ranged_INT)
     end
 
@@ -254,12 +249,29 @@ profile.HandleWeaponskill = function()
         gFunc.EquipSet(sets.WS_Evisceration)
     elseif (action.Name == 'Shark Bite') then
         gFunc.EquipSet(sets.WS_SharkBite)
+    elseif (action.Name == 'Dancing Edge') then
+        gFunc.EquipSet(sets.WS_DancingEdge)
+    elseif (action.Name == 'Mercy Stroke') then
+        gFunc.EquipSet(sets.WS_MercyStroke)
     end
 
+    local sa = gData.GetBuffCount('Sneak Attack')
     local ta = gData.GetBuffCount('Trick Attack')
-    if (ta > 0) or (os.clock() < taOverride) then
-        if (ta_rogue_armlets) then
-            gFunc.Equip('Hands', 'Rogue\'s Armlets +1')
+
+    if (sa == 1) or (os.clock() < saOverride) then
+        gFunc.EquipSet(sets.WS_SA)
+    end
+
+    if (sa == 1 and ta == 1) or (os.clock() < saOverride and os.clock() < taOverride) then
+        if (action.Name == 'Shark Bite') then
+            gFunc.EquipSet(sets.WS_SATA_SharkBite)
+        end
+    elseif (ta == 1) or (os.clock() < taOverride) then
+        gFunc.EquipSet(sets.WS_TA)
+        if (action.Name == 'Shark Bite') then
+            gFunc.EquipSet(sets.WS_TA_SharkBite)
+        elseif (action.Name == 'Mercy Stroke') then
+            gFunc.EquipSet(sets.WS_TA_MercyStroke)
         end
     end
 
@@ -281,6 +293,8 @@ end
 
 profile.OnUnload = function()
     gcmelee.Unload()
+    gcinclude.ClearAlias(ammo)
+    gcinclude.ClearAlias(T{'ammo'})
     gcinclude.ClearAlias(T{'th'})
     ashita.events.unregister('packet_in', 'watch_treasure_hunter');
 end
@@ -289,6 +303,12 @@ profile.HandleCommand = function(args)
     if (args[1] == 'th') then
         gcdisplay.AdvanceCycle('TH')
         gcinclude.Message('TH', gcdisplay.GetCycle('TH'))
+    elseif (args[1] == 'ammo') then
+        gcdisplay.AdvanceCycle('Ammo')
+        gcinclude.Message('Ammo', gcdisplay.GetCycle('Ammo'))
+    elseif (ammo:contains(args[1])) then
+        gcdisplay.SetCycleIndex('Ammo', AmmoTable2[args[1]:sub(2)])
+        gcinclude.Message('Ammo', gcdisplay.GetCycle('Ammo'))
     else
         gcmelee.DoCommands(args)
     end
@@ -307,6 +327,10 @@ profile.HandleDefault = function()
     end
 
     gcmelee.DoDefaultOverride()
+
+    if (conquest:GetOutsideControl() and evasion_master_casters_mitts and gcdisplay.IdleSet == 'Evasion') then
+        gFunc.Equip('Hands', 'Mst.Cst. Mitts')
+    end
 
     local sa = gData.GetBuffCount('Sneak Attack')
     local ta = gData.GetBuffCount('Trick Attack')
@@ -328,6 +352,7 @@ end
 
 profile.HandlePrecast = function()
     gcmelee.DoPrecast(fastCastValue)
+	gFunc.EquipSet(sets[gcdisplay.GetCycle('Ammo')]);
 end
 
 profile.HandleMidcast = function()
@@ -340,14 +365,29 @@ profile.HandleMidcast = function()
 end
 
 profile.NeedTH = function()
-    if (gcdisplay.GetCycle('TH') == 'auto') then
-        local targetManager = AshitaCore:GetMemoryManager():GetTarget();
-        local isSubTargetActive = targetManager:GetIsSubTargetActive();
-        local targetId = targetManager:GetServerId(isSubTargetActive == 1 and 1 or 0);
-        return taggedMobs[targetId] == nil;
+    if (gcdisplay.GetCycle('TH') == 'Auto') then
+        local targetId
+        local actionTarget = gData.GetActionTarget()
+
+        if (actionTarget ~= nil) then
+            targetId = actionTarget.Id
+        else
+            local targetIndex = gData.GetTargetIndex()
+            if (targetIndex == 0) then
+                return false
+            end
+
+            targetId = AshitaCore:GetMemoryManager():GetEntity():GetServerId(targetIndex)
+        end
+
+        if bit.band(targetId, 0xFF000000) ~= 0 then  --isMob
+            return taggedMobs[targetId] == nil
+        end
+
+        return false
     end
 
-    return gcdisplay.GetCycle('TH') == 'on'
+    return gcdisplay.GetCycle('TH') == 'On'
 end
 
 profile.WatchTreasureHunter = function()
