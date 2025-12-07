@@ -176,9 +176,7 @@ Everything below can be ignored.
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
-    if (displayheadOnAbility) then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
-    end
+    gcmage.DoAbility()
 end
 
 profile.HandleItem = function()
@@ -215,7 +213,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcmage.DoCommands(args)
+    gcmage.DoCommands(args, sets)
 
     if (args[1] == 'horizonmode') then
         profile.HandleDefault()
@@ -242,8 +240,15 @@ profile.HandleMidcast = function()
         elseif (string.match(action.Name, 'Bar')) then
             gFunc.EquipSet('Barspell')
         end
-    elseif (string.match(action.Name, 'Banish')) then
+    elseif (string.match(action.Name, 'Banish')
+        or string.match(action.Name, 'Holy')
+        or (string.match(action.Name, 'Cure') and gData.GetActionTarget().Type == 'Monster')
+    ) then
         gFunc.EquipSet('Banish')
+        if (republic_circlet == true and conquest:GetInsideControl()) then
+            print(chat.header('LAC - WHM'):append(chat.message('In Region - Using Republic Circlet')))
+            gFunc.Equip('Head', 'Republic Circlet')
+        end
     elseif virology_ring and (string.match(action.Name, '.*na$') or (action.Name == 'Erase')) then
         gFunc.Equip(virology_ring_slot, 'Virology Ring')
     end

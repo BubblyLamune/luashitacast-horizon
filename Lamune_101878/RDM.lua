@@ -739,10 +739,7 @@ Everything below can be ignored.
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
 
 profile.HandleAbility = function()
-
-    if (displayheadOnAbility) then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/displayhead')
-    end
+    gcmage.DoAbility()
 end
 
 profile.HandleItem = function()
@@ -770,7 +767,7 @@ profile.HandleWeaponskill = function()
 
     if (action.Name == 'Evisceration') then
         gFunc.EquipSet(sets.WS_Soil)
-        gFunc.EquipSet(sets.Evisceration)
+        gFunc.EquipSet(sets.WS_Evisceration)
     end
 
     if (action.Name == 'Energy Drain') or (action.Name == 'Energy Steal') then
@@ -809,6 +806,7 @@ profile.HandleDefault = function()
     if (blue_cotehardie_plus_one and player.MP <= 50) then
         gFunc.Equip('Body', 'Blue Cotehard. +1')
     end
+    
     if (verm_cloak and player.MP <= 75) then
         gFunc.Equip('Head', '')
         gFunc.Equip('Body', 'Vermillion Cloak')

@@ -98,6 +98,8 @@ end
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 
 profile.HandleAbility = function()
+    gcmelee.DoAbility()
+
     local action = gData.GetAction()
     if (action.Name == 'Warcry') then
         gFunc.EquipSet(sets.Warcry)
@@ -148,17 +150,17 @@ end
 profile.HandleDefault = function()
     gcmelee.DoDefault()
 
+    local aggressor = gData.GetBuffCount('Aggressor')
+    if (aggressor == 1 and gcdisplay.IdleSet == 'LowAcc') then
+        gFunc.EquipSet(sets.TP_Aggressor)
+    end
+
     local player = gData.GetPlayer()
     if (player.SubJob == 'SAM') then
         gFunc.EquipSet(sets.SAM)
     end
     if (gcdisplay.GetToggle('DW') and player.Status == 'Engaged') then
         gFunc.EquipSet(sets.DW)
-    end
-
-    local aggressor = gData.GetBuffCount('Aggressor')
-    if (aggressor == 1 and gcdisplay.IdleSet == 'LowAcc') then
-        gFunc.EquipSet(sets.TP_Aggressor)
     end
 
     gcmelee.DoDefaultOverride()
