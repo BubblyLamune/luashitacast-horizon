@@ -469,6 +469,12 @@ profile.HandleDefault = function()
 
     local player = gData.GetPlayer()
     local souleater = gData.GetBuffCount('Souleater')
+    local lastresort = gData.GetBuffCount('Last Resort')
+
+    if lastresort > 0 and player.Status == 'Engaged' and gcinclude.CheckAbilityRecast('Last Resort') ~= 0 then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Last Resort"')
+    end
+
     if (souleater > 0 and player.Status == 'Engaged' and use_chaos_burgeonet_for_tp_during_souleater) then
         gFunc.EquipSet(sets.SoulEater)
     end

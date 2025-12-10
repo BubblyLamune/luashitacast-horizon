@@ -18,7 +18,7 @@ local sets = {
    ['Idle'] = {
         Main = 'Earth Staff',
         Ammo = 'Fortune Egg',
-        Head = 'Warlock\'s Chapeau',
+        Head = { Name = 'Duelist\'s Chapeau', Priority = 100 },
         Neck = 'Jeweled Collar',
         Ear1 = 'Geist Earring',
         Ear2 = 'Geist Earring',
@@ -47,14 +47,14 @@ local sets = {
         Feet = 'Errant Pigaches',
     },
     IdleMaxMP = {
-     -- Main = 'Earth Staff',
+        Main = 'Earth Staff',
      --   Range = '',
      --   Ammo = 'Hedgehog Bomb',
-     --   Head = 'Dls. Chapeau +1',
+        Head = 'Duelist\'s Chapeau',
      --   Neck = 'Uggalepih Pendant',
      --   Ear1 = 'Loquac. Earring',
      --   Ear2 = 'Magnetic Earring',
-     --   Body = 'Dls. Tabard +1',
+        Body = 'Duelist\'s Tabard',
      --   Hands = 'Blood Fng. Gnt.',
      --   Ring1 = 'Serket Ring',
      --   Ring2 = 'Sattva Ring',
@@ -75,7 +75,7 @@ local sets = {
 	},
     Town = {},
     Movement = {
-        Head = 'Dls. Chapeau +1',
+        Head = 'Duelist\'s Chapeau',
         Legs = 'Blood Cuisses',
     },
 
@@ -83,7 +83,7 @@ local sets = {
 --        Main = 'Terra\'s Staff', -- 20
  --       Range = 'Arco de Velocidad',
   --      Ammo = '',
- --      Head = 'Dls. Chapeau +1',
+        Head = 'Duelist\'s Chapeau',
  --       Neck = 'Jeweled Collar',
   --      Ear1 = 'Merman\'s Earring',
   --      Ear2 = 'Merman\'s Earring',
@@ -302,7 +302,7 @@ local sets = {
  --       Ring1 = 'Mermaid Ring', -- 2
 --        Ring2 = 'Sattva Ring', -- 5
  --       Back = 'Toreador\'s Cape', -- 4
- --       Waist = 'Warwolf Belt', -- 3
+ --       Waist = 'Warwolf Belt', -- 3 
 --        Legs = 'Nashira Seraweels',
 --        Feet = 'Heroic Boots', -- 1
     },
@@ -422,7 +422,7 @@ local sets = {
     },
 
     Enfeebling = {
-    --    Head = 'Dls. Chapeau +1',
+        Head = 'Duelst\'s Chapeau',
         Body = 'Warlock\'s Tabard',
         Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
