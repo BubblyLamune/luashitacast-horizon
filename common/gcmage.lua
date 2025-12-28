@@ -98,9 +98,6 @@ local tp_diabolos_earring = {
     -- Ear2 = 'Diabolos\'s Earring',
 }
 
--- Set this to true to confirm that actually read the README.md and set up the equipment listed above correctly
-local i_can_read_and_follow_instructions_test = false
-
 --[[
 --------------------------------
 Everything below can be ignored.
@@ -455,10 +452,6 @@ function gcmage.DoDefault(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP
 end
 
 function gcmage.DoPrecast(sets, fastCastValue)
-    if (not i_can_read_and_follow_instructions_test) then
-        print(chat.header('GCMage'):append(chat.message('Failed to follow instructions. Read the README.md')))
-    end
-
     local chainspell = gData.GetBuffCount('Chainspell')
     local action = gData.GetAction()
     local player = gData.GetPlayer()
@@ -1067,10 +1060,6 @@ function ObiCheck(action)
 end
 
 function gcmage.DoAbility()
-    if (not i_can_read_and_follow_instructions_test) then
-        print(chat.header('GCMage'):append(chat.message('Failed to follow instructions. Read the README.md')))
-    end
-
     gcinclude.DoAbility()
     local action = gData.GetAction()
     

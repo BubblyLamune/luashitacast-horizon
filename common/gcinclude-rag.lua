@@ -29,8 +29,7 @@ local skulkers_cape = {
     -- Back = 'Skulker\'s Cape',
 }
 
--- Set this to true to confirm that actually read the README.md and set up the equipment listed above correctly
-local i_can_read_and_follow_instructions_test = false
+
 
 -- Add additional equipment here that you want to automatically lock when equipping
 local LockableEquipment = {
@@ -353,10 +352,6 @@ function gcinclude.DoDefaultOverride(isMelee)
 end
 
 function gcinclude.DoItem()
-    if (not i_can_read_and_follow_instructions_test) then
-        print(chat.header('GCInclude'):append(chat.message('Failed to follow instructions. Read the README.md')))
-    end
-
     local item = gData.GetAction()
     gcinclude.CheckCancels()
     if (item.Name == 'Silent Oil') then

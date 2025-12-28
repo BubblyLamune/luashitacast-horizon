@@ -5,15 +5,36 @@ local fastCastValue = 0.00 -- 0% from gear listed in Precast set. Note: Do NOT i
 local ninSJMaxMP = nil -- The Max MP you have when /nin in your idle set
 local rdmSJMaxMP = nil -- The Max MP you have when /rdm in your idle set
 local blmSJMaxMP = nil -- The Max MP you have when /blm in your idle set
+local drkSJMaxMP = nil -- The Max MP you have when /drk in your idle set
 
-local virology_ring = false
-local virology_ring_slot = 'Ring2'
-
-local displayheadOnAbility = false
+-- Comment out the equipment within these sets if you do not have them or do not wish to use them
+local warlocks_mantle = { -- Don't add 2% to fastCastValue for this as it is SJ dependant
+    Back = 'Warlock\'s Mantle',
+}
+local virology_ring = {
+    Ring2 = 'Virology Ring',
+}
+local republic_circlet = {
+    -- Head = 'Republic Circlet',
+}
+local cure_clogs = {
+    -- Feet = 'Cure Clogs',
+}
+local ruckes_rung = {
+    -- Main = 'Rucke\'s Rung',
+}
+local medicine_ring = {
+    -- Ring1 = 'Medicine Ring',
+}
+local mjollnir = {
+    -- Main = 'Mjollnir',
+}
+local asklepios = { -- Used for Cures with Mjollnir when /NIN
+    -- Sub = 'Asklepios',
+}
 
 local sets = {
-	Idle = {
-		Main = "Earth Staff",
+    Idle = {		Main = "Earth Staff",
 		Hands = "Blessed Mitts",
 		Head = "Cleric\'s Cap",
 		Body = "Noble's tunic",
@@ -25,133 +46,97 @@ local sets = {
         Ear2 = 'Geist Earring',
 		Ring1 = "Ether Ring",
 		Ring2 = "Tamas Ring",
-		Back = "Prism Cape"
-	},
-	IdleALT = {
-		Main = "Purgatory Mace",
-		Sub = "Numinous shield",
-		Hands = "Blessed Mitts",
-		Head = "Healer\'s Cap",
-		Body = "Noble's tunic",
-		Legs = "Blessed Trousers",
-		Feet = "Errant Pigaches",
-		Neck = "Ajari Necklace",
-		Waist = "Cleric\'s Belt",
-		
-		Ear1 = "Geist Earring",
-		Ear2 = "Geist Earring",
-		Ring1 = "Ether Ring",
-		Ring2 = "Tamas Ring",
-		Back = "White Cape"
-	},
-	IdleMaxMP = {},
-	Resting = {
-		Main = "Dark Staff",
+		Back = "Prism Cape"},
+    IdleALT = {},
+    IdleMaxMP = {},
+    Resting = {		
+        Main = "Dark Staff",
 		Sub = "",
 		Waist = "Cleric\'s Belt",
 		Body = "Errant Hpl.",
 		Neck = 'Checkered Scarf',
 		-- Body = "Noble's tunic",
 		-- Body = "Seer's tunic",
-		Legs = "Baron's Slops"
-	},
-	Town = {},
-	Movement = {},
-	DT = {},
-	DTNight = {},
-	MDT = {},
-	FireRes = {},
-	IceRes = {},
-	LightningRes = {},
-	EarthRes = {},
-	WindRes = {},
-	WaterRes = {},
-	Evasion = {},
-	Precast = {},
-	Casting = {},
-	SIRD = {},
-	Haste = {},
-	ConserveMP = {},
-	Cure = {
-		Main = "Light Staff",
-		Feet = "Errant Pigaches",
-	},
-	Cure5 = {
-		Main = "Light Staff",
-		Feet = "Errant Pigaches",
-	},
-	Regen = {
-		Sub = '',
-		Main = 'Rucke\'s Rung',
-		Body = "Cleric\'s Bliaut"
-	},
-	Cursna = {},
-	Enhancing = {
-		Feet = "Cleric\'s Duckbills",
+		Legs = "Baron's Slops"},
+    Town = {},
+    Movement = {},
 
-	},
-	Stoneskin = {},
-	Spikes = {},
-	Enfeebling = {},
-	EnfeeblingMND = {},
-	EnfeeblingINT = {},
-	EnfeeblingACC = {},
-	Divine = {	
-		Main = "Water Staff",
-		Hands = "Devotee\'s Mitts",
-		Feet = "Seer\'s pumps",
-	},
-	Banish = {},
-	Dark = {},
-	Nuke = {
+    DT = {},
+    DTNight = {},
+    MDT = {},
+    FireRes = {},
+    IceRes = {},
+    LightningRes = {},
+    EarthRes = {},
+    WindRes = {},
+    WaterRes = {},
+    Evasion = {},
 
-	},
-	NukeACC = {},
-	NukeDOT = {},
-	LockSet1 = {},
-	LockSet2 = {},
-	LockSet3 = {},
-	TP = {
-		Main = "Purgatory Mace",
-		Sub = "Numinous shield",
-	},
-	TP_NIN = {},
-	WS = {}
-,
-    ['tav'] = {
-        Main = 'Solid Wand',
-        Sub = 'Light Buckler',
-        Ammo = 'Fortune Egg',
-        Head = 'Seer\'s Crown',
-        Neck = 'Justice Badge',
-        Ear1 = 'Geist Earring',
-        Ear2 = 'Geist Earring',
-        Body = 'Seer\'s Tunic',
-        Hands = 'Devotee\'s Mitts',
-        Ring1 = 'Ether Ring',
-        Ring2 = 'Tamas Ring',
-        Back = 'White Cape',
-        Waist = 'Mrc.Cpt. Belt',
-        Legs = 'Custom Pants',
-        Feet = 'Custom F Boots',
+    Precast = {},
+    Casting = { -- Default SIRD used for Idle sets
     },
-    ['sixty'] = {
-        Main = 'Earth Staff',
-        Ammo = 'Fortune Egg',
-        Head = 'Healer\'s Cap',
-        Neck = 'Ajari Necklace',
-        Ear1 = 'Geist Earring',
-        Ear2 = 'Geist Earring',
-        Body = 'Healer\'s Bliaut',
-        Hands = 'Healer\'s Mitts',
-        Ring1 = 'Ether Ring',
-        Ring2 = 'Tamas Ring',
-        Back = 'Black Cape',
-        Waist = 'Mrc.Cpt. Belt',
-        Legs = 'Healer\'s Pantaln.',
-        Feet = 'Healer\'s Duckbills',
-    }};
-profile.Sets = sets
+    SIRD = { -- Used on Stoneskin, Blink, Aquaveil and Utsusemi casts regardless of Override set. If you wish to remain in FireRes etc. during casts, leave empty.
+    },
+    Haste = { -- Used only on Haste, Refresh, Blink and Utsusemi casts
+    },
+    ConserveMP = {},
+
+    Hate = { -- Switches to this set when casting Sleep, Blind, Dispel, Bind, Flash and Cures on other players if /hate is toggled on
+    },
+    Cheat_C3HPDown = {},
+    Cheat_C4HPDown = {},
+    Cheat_HPUp = {},
+
+    Yellow = {},
+    Cure = {		
+        Main = "Light Staff",
+		Feet = "Errant Pigaches",},
+    Cure5 = {		
+        Main = "Light Staff",
+		Feet = "Errant Pigaches",},
+    Regen = {
+		Main = 'Rucke\'s Rung',
+        Body = 'Cleric\'s Bliaut',
+    },
+    Barspell = {},
+    Cursna = {},
+
+    Enhancing = {
+        Feet = "Cleric\'s Duckbills",
+    },
+    Stoneskin = {},
+    Spikes = {},
+
+    Enfeebling = {},
+    EnfeeblingMND = {},
+    EnfeeblingINT = {},
+    EnfeeblingACC = {},
+
+    Divine = {},
+    Banish = {},
+    Dark = {},
+
+    Nuke = {},
+    NukeACC = {},
+    NukeDOT = {},
+
+    LockSet1 = {},
+    LockSet2 = {},
+    LockSet3 = {},
+
+    TP = {},
+    TP_Mjollnir_Haste = {},
+    TP_HighAcc = {},
+    TP_NIN = {},
+
+    WS = {},
+    WS_HighAcc = {},
+    WS_Randgrith = {},
+
+    Weapon_Loadout_1 = {},
+    Weapon_Loadout_2 = {},
+    Weapon_Loadout_3 = {},
+}
 
 profile.SetMacroBook = function()
 	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro book 1");
@@ -174,6 +159,16 @@ Everything below can be ignored.
 ]]
 
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
+
+sets.warlocks_mantle = warlocks_mantle
+sets.virology_ring = virology_ring
+sets.republic_circlet = republic_circlet
+sets.cure_clogs = cure_clogs
+sets.ruckes_rung = ruckes_rung
+sets.medicine_ring = medicine_ring
+sets.mjollnir = mjollnir
+sets.asklepios = asklepios
+profile.Sets = gcmage.AppendSets(sets)
 
 profile.HandleAbility = function()
     gcmage.DoAbility()
@@ -221,17 +216,23 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmage.DoDefault(ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP, nil)
+    gcmage.DoDefault(ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP, drkSJMaxMP)
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
 end
 
 profile.HandlePrecast = function()
-    gcmage.DoPrecast(fastCastValue)
+    local player = gData.GetPlayer()
+    if (player.SubJob == 'RDM' and warlocks_mantle.Back) then
+        gcmage.DoPrecast(sets, fastCastValue + 0.02)
+        gFunc.EquipSet('warlocks_mantle')
+    else
+        gcmage.DoPrecast(sets, fastCastValue)
+    end
 end
 
 profile.HandleMidcast = function()
-    gcmage.DoMidcast(sets, ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP, nil)
+    gcmage.DoMidcast(sets, ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP, drkSJMaxMP)
 
     local action = gData.GetAction()
     if (action.Skill == 'Enhancing Magic') then
@@ -244,13 +245,14 @@ profile.HandleMidcast = function()
         or string.match(action.Name, 'Holy')
         or (string.match(action.Name, 'Cure') and gData.GetActionTarget().Type == 'Monster')
     ) then
-        gFunc.EquipSet('Banish')
-        if (republic_circlet == true and conquest:GetInsideControl()) then
-            print(chat.header('LAC - WHM'):append(chat.message('In Region - Using Republic Circlet')))
-            gFunc.Equip('Head', 'Republic Circlet')
+        if (republic_circlet.Head) then
+            if (conquest:GetInsideControl()) then
+                print(chat.header('LAC - WHM'):append(chat.message('In Region - Using Republic Circlet')))
+                gFunc.EquipSet('republic_circlet')
+            end
         end
-    elseif virology_ring and (string.match(action.Name, '.*na$') or (action.Name == 'Erase')) then
-        gFunc.Equip(virology_ring_slot, 'Virology Ring')
+    elseif (string.match(action.Name, '.*na$') or (action.Name == 'Erase')) then
+        gFunc.EquipSet('virology_ring')
     end
 end
 
