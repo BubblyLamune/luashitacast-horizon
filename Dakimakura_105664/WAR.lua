@@ -1,6 +1,8 @@
 local profile = {}
 
-local fastCastValue = 0.00 -- 0% from gear
+local fastCastValue = 0.00 -- 0% from gear listed in Precast set
+
+local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
 
 local sets = {
     Idle = {},
@@ -10,8 +12,7 @@ local sets = {
     Movement = {},
 
     DT = {},
-    MDT = { -- Shell IV provides 23% MDT
-    },
+    MDT = {},
     FireRes = {},
     IceRes = {},
     LightningRes = {},
@@ -21,7 +22,7 @@ local sets = {
     Evasion = {},
 
     Precast = {},
-    SIRD = {
+    SIRD = { -- Only used for Idle sets and not while Override sets are active
     },
     Haste = { -- Used for Utsusemi cooldown
     },
@@ -65,8 +66,11 @@ local sets = {
         Legs = 'Republic Subligar',
         Feet = 'Leaping Boots',
     },
+
+    Weapon_Loadout_1 = {},
+    Weapon_Loadout_2 = {},
+    Weapon_Loadout_3 = {},
 }
-profile.Sets = sets
 
 profile.SetMacroBook = function()
     -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
@@ -77,7 +81,15 @@ profile.SetMacroBook = function()
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
 end
 
+--[[
+--------------------------------
+Everything below can be ignored.
+--------------------------------
+]]
+
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
+
+profile.Sets = gcmelee.AppendSets(sets)
 
 profile.HandleAbility = function()
     gcmelee.DoAbility()
@@ -130,7 +142,7 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmelee.DoDefault()
+    gcmelee.DoDefault(max_hp_in_idle_with_regen_gear_equipped)
 
     local aggressor = gData.GetBuffCount('Aggressor')
     if (aggressor == 1 and gcdisplay.IdleSet == 'LowAcc') then

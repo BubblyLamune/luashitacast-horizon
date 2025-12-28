@@ -1,10 +1,16 @@
 local profile = {}
 
-local fastCastValue = 0.00 -- 0% from gear
+local fastCastValue = 0.00 -- 0% from gear listed in Precast set
 
--- Replace these with '' if you do not have them
-local myochin_kabuto = 'Myochin Kabuto'
-local saotome_kote = 'Saotome Kote'
+local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
+
+-- Comment out the equipment within these sets if you do not have them or do not wish to use them
+local myochin_kabuto = {
+    Head = 'Myochin Kabuto',
+}
+local saotome_kote = {
+    Hands = 'Saotome Kote',
+}
 
 local sets = {
     Idle = {},
@@ -14,8 +20,7 @@ local sets = {
     Movement = {},
 
     DT = {},
-    MDT = { -- Shell IV provides 23% MDT
-    },
+    MDT = {},
     FireRes = {},
     IceRes = {},
     LightningRes = {},
@@ -25,7 +30,7 @@ local sets = {
     Evasion = {},
 
     Precast = {},
-    SIRD = {
+    SIRD = { -- Only used for Idle sets and not while Override sets are active
     },
     Haste = { -- Used for Utsusemi cooldown
     },
@@ -43,8 +48,11 @@ local sets = {
     WS_HighAcc = {},
 
     WS_Kaiten = {},
+
+    Weapon_Loadout_1 = {},
+    Weapon_Loadout_2 = {},
+    Weapon_Loadout_3 = {},
 }
-profile.Sets = sets
 
 profile.SetMacroBook = function()
     -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
@@ -59,17 +67,17 @@ Everything below can be ignored.
 
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 
+sets.myochin_kabuto = myochin_kabuto
+sets.saotome_kote = saotome_kote
+profile.Sets = gcmelee.AppendSets(sets)
+
 profile.HandleAbility = function()
     gcmelee.DoAbility()
 
     local action = gData.GetAction()
     if (action.Name == 'Meditate') then
-        if (myochin_kabuto ~= '') then
-            gFunc.Equip('Head', myochin_kabuto)
-        end
-        if (saotome_kote ~= '') then
-            gFunc.Equip('Hands', saotome_kote)
-        end
+        gFunc.EquipSet('myochin_kabuto')
+        gFunc.EquipSet('saotome_kote')
     end
 end
 
@@ -110,7 +118,7 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmelee.DoDefault()
+    gcmelee.DoDefault(max_hp_in_idle_with_regen_gear_equipped)
     gcmelee.DoDefaultOverride()
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
 end

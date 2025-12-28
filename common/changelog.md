@@ -395,3 +395,52 @@
 
 ### v1.5.16
 - RDM - Fix Evisceration set name typo
+- THF - Adds a WS_SA set
+- Updates / clarifies some set comments
+
+### v1.5.17
+- BLM - Add Magic Accuracy Mode and HNM checks to Republic Circlet usage
+- All Mages - Add Uggalepih Pendant usage for Banish / Holy / Cure Nukes
+- All Mages - Adds a Banish set for use with Banish or Cure Nukes
+- All Mages - Adds Warlock's Mantle to everything
+- BRD - Fixes equip ordering of BRD Precast vs Precast_Songs set
+
+### v2.0.0
+- MNK - Remove SJ_THF set usage from WS usage
+- DRK - Fix Obi usage
+- Melee - Adds Weapon Loadout functionality /weapon or /wl
+- NIN - Adds a toggle to prevent staff usage on spellcast /staff
+- Overhauls every single conditional item across all files to allow for easier Level Sync and Packer validate support
+
+### v2.0.1
+- Mages - Defaults SJ Idle Max MP values to /NIN for all other undefined jobs
+
+### v2.0.2
+- Mages - (Except for BLM) Implements Weapon Loadouts /weapon or /wl
+- All Jobs - Removes /locktp as this should no longer be required for any use case
+- WHM - Adds Hate toggle. C5 does not use Hate set
+
+### v2.0.3
+- DRK - Add TP_Aftermath_Mjollnir_Haste set to support scenarios where both haste buffs are active
+
+### v2.0.4
+- RNG - Add better support for Yoichi
+- RNG - Add better special ammo protection
+- WHM - Fix broken Cure Clogs / Ruckes Rungs from 2.0.0
+
+### v2.0.5
+- Melee - removes the None weapon loadout in favour of just always using these as if they are unpopulated, it works the same way anyway.
+
+### v2.0.6
+- SMN - Fixes broken bahamut's staff errors
+- SMN - Implements automatic Conjurer's Ring usage
+- RDM - Implements automatic Fencer's Ring usage
+- All Jobs - Implements a horizon_safe_mode setting to disable potentially contentious automation
+
+### v2.0.7
+- BLM - Implements far more optimal Yellow set usage by removing the SIRD vulnerability if HP is already below threshold and more accurately selecting exact HP decrement amounts
+- WHM - Fixes /lag TP set and Yellow set interaction
+
+### v2.0.8
+- Melee - Adds regen gear support to all melee jobs
+- All Jobs - Adds a i_can_read_and_follow_instructions_test boolean setting to gcmage.lua, gcmelee.lua, and gcinclude-rag.lua. Set these to true to disable message spam

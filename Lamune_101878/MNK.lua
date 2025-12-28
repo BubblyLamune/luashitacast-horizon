@@ -1,26 +1,34 @@
 local profile = {}
 
-local max_hp_in_idle_with_regen_gear_equipped = 1632
-local fastCastValue = 0.02 -- 2% from gear
+local fastCastValue = 0.02 -- 2% from gear listed in Precast set
 
--- Replace these with '' if you do not have them
-local temple_gaiters = 'Temple Gaiters'
-local temple_gloves = 'Temple Gloves'
-local temple_cyclas = 'Tpl. Cyclas +1'
-local temple_crown = 'Tpl. Crown +1'
+local max_hp_in_idle_with_regen_gear_equipped = 1632 -- You could set this to 0 if you do not wish to ever use regen gear
 
-local melee_gaiters = 'Melee Gaiters'
-local melee_gloves = 'Mel. Gloves +1'
-
-local muscle_belt = ''
-local garden_bangles = ''
-local presidential_hairpin = false
-local dream_ribbon = true
-
-local kampfer_ring = false
-local kampfer_ring_slot = 'Ring2'
-local kampfer_earring = false
-local kampfer_earring_slot = 'Ear2'
+-- Comment out the equipment within these sets if you do not have them or do not wish to use them
+local temple_gaiters = {
+    Feet = 'Temple Gaiters',
+}
+local temple_gloves = {
+    Hands = 'Temple Gloves',
+}
+local temple_cyclas = {
+    Body = 'Tpl. Cyclas +1',
+}
+local temple_crown = {
+    Head = 'Tpl. Crown +1',
+}
+local melee_gaiters = {
+    Feet = 'Melee Gaiters',
+}
+local melee_gloves = {
+    Hands = 'Mel. Gloves +1',
+}
+local kampfer_ring = {
+    Ring2 = 'Kampfer Ring',
+}
+local kampfer_earring = {
+    Ear2 = 'Kampfer Earring',
+}
 
 local sets = {
     ['Idle'] = {
@@ -89,8 +97,6 @@ local sets = {
         Ear2 = 'Avenger\'s Earring', -- 1
         Body = 'Scp. Harness +1',
         Hands = 'Mel. Gloves +1',
-        -- Hands = 'Rasetsu Tekko +1', -- 1
-        -- Hands = 'Noritsune Kote',
         Ring1 = 'Sattva Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Shadow Mantle',
@@ -98,7 +104,7 @@ local sets = {
         Feet = 'Melee Gaiters',
         -- Feet = 'Rasetsu Sune-Ate +1', -- 1
     },
-    MDT = { -- Shell IV provides 23% MDT
+    MDT = {
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Ring1 = 'Shadow Ring',
@@ -111,7 +117,7 @@ local sets = {
     EarthRes = {},
     WindRes = {},
     WaterRes = {},
-    Evasion = { -- Currently using this as an override for BV2 Zergs
+    Evasion = { -- Currently using this as an alternate HighAcc set for 2H Zergs. See README.md
         Head = 'Maat\'s Cap',
         Neck = 'Faith Torque',
         Ear1 = 'Brutal Earring',
@@ -129,7 +135,7 @@ local sets = {
     Precast = {
         Ear1 = 'Loquac. Earring',
     },
-    SIRD = { -- Combination of PDT and SIRD Gear equipped while casting Utsusemi
+    SIRD = { -- Only used for Idle sets and not while Override sets are active
         Neck = 'Willpower Torque', -- 5
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Magnetic Earring', -- 8
@@ -153,21 +159,20 @@ local sets = {
     LockSet2 = {},
     LockSet3 = {},
 
-    ['TP_LowAcc'] = {
-        Main = 'Impact Knuckles',
-        Ammo = 'Mille. Sachet',
-        Head = 'Emperor Hairpin',
-        Neck = 'Spike Necklace',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Mrc.Cpt. Doublet',
-        Hands = 'Horomusha Kote',
-        Ring1 = 'Balance Ring',
-        Ring2 = 'Balance Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Purple Belt',
-        Legs = 'Republic Subligar',
-        Feet = 'Win. Kyahan',
+    TP_LowAcc = {
+        Head = 'Panther Mask +1',
+        Neck = 'Faith Torque',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Merman\'s Earring',
+        Body = 'Kirin\'s Osode',
+        Hands = 'Mel. Gloves +1',
+        -- Ring1 = 'Toreador\'s Ring',
+        Ring1 = 'Begrudging Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Back = 'Forager\'s Mantle',
+        Waist = 'Black Belt',
+        Legs = 'Byakko\'s Haidate',
+        Feet = 'Fuma Sune-Ate',
     },
     TP_Aftermath = {},
     TP_Mjollnir_Haste = {},
@@ -190,8 +195,8 @@ local sets = {
     },
 
     SJ_DRG = {
+        Head = 'Maat\'s Cap',
         Ear2 = 'Wyvern Earring',
-        Feet = 'Dune Boots',
     },
     SJ_THF = {
         Ear2 = 'Pilferer\'s Earring',
@@ -217,7 +222,6 @@ local sets = {
     },
     WS_DragonKick = {
         Legs = 'Byakko\'s Haidate',
-        Feet = 'Dune Boots',
     },
     WS_HowlingFist = {
     },
@@ -275,8 +279,18 @@ local sets = {
         Legs = 'Shura Haidate',
         Feet = 'Dune Boots',
     },
+
+    Weapon_Loadout_1 = {
+        Main = 'Destroyers',
+    },
+    Weapon_Loadout_2 = {
+        Main = 'Cross-Counters',
+    },
+    Weapon_Loadout_3 = {
+        Main = 'Faith Baghnakhs',
+        Ammo = 'Virtue Stone',
+    },
 }
-profile.Sets = sets
 
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
@@ -300,6 +314,17 @@ Everything below can be ignored.
 
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 
+sets.temple_gaiters = temple_gaiters
+sets.temple_gloves = temple_gloves
+sets.temple_cyclas = temple_cyclas
+sets.temple_crown = temple_crown
+sets.melee_gaiters = melee_gaiters
+sets.melee_gloves = melee_gloves
+
+sets.kampfer_ring = kampfer_ring
+sets.kampfer_earring = kampfer_earring
+profile.Sets = gcmelee.AppendSets(sets)
+
 profile.HandleAbility = function()
     gcmelee.DoAbility()
 
@@ -311,28 +336,16 @@ profile.HandleAbility = function()
         gFunc.EquipSet(sets.ChiBlast)
     elseif (action.Name == 'Chakra') then
         gFunc.EquipSet(sets.Chakra)
-        if (temple_cyclas ~= '') then
-            gFunc.Equip('Body', temple_cyclas)
-        end
-        if (melee_gloves ~= '') then
-            gFunc.Equip('Hands', melee_gloves)
-        end
+        gFunc.EquipSet('temple_cyclas')
+        gFunc.EquipSet('melee_gloves')
     elseif (action.Name == 'Dodge') then
-        if (temple_gaiters ~= '') then
-            gFunc.Equip('Feet', temple_gaiters)
-        end
+        gFunc.EquipSet('temple_gaiters')
     elseif (action.Name == 'Boost') then
-        if (temple_gloves ~= '') then
-            gFunc.Equip('Hands', temple_gloves)
-        end
+        gFunc.EquipSet('temple_gloves')
     elseif (action.Name == 'Focus') then
-        if (temple_crown ~= '') then
-            gFunc.Equip('Head', temple_crown)
-        end
+        gFunc.EquipSet('temple_crown')
     elseif (action.Name == 'Counterstance') then
-        if (melee_gaiters ~= '') then
-            gFunc.Equip('Feet', melee_gaiters)
-        end
+        gFunc.EquipSet('melee_gaiters')
     end
 end
 
@@ -359,10 +372,6 @@ profile.HandleWeaponskill = function()
     elseif (action.Name == 'Howling Fist') then
         gFunc.EquipSet(sets.WS_HowlingFist)
     end
-
-    if (player.SubJob == 'THF') then
-        gFunc.EquipSet(sets.SJ_THF)
-    end
 end
 
 profile.OnLoad = function()
@@ -383,7 +392,7 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmelee.DoDefault()
+    gcmelee.DoDefault(max_hp_in_idle_with_regen_gear_equipped)
 
     local player = gData.GetPlayer()
     local focus = gData.GetBuffCount('Focus')
@@ -405,37 +414,14 @@ profile.HandleDefault = function()
         end
     end
 
-    if (player.Status == 'Idle') then
-        if (player.HPP < 50 and muscle_belt ~= '') then
-            gFunc.Equip('Waist', muscle_belt)
-        end
-        if (player.HP < max_hp_in_idle_with_regen_gear_equipped) then
-            local environment = gData.GetEnvironment()
-
-            if (garden_bangles ~= '' and environment.Time >= 6 and environment.Time < 18) then
-                gFunc.Equip('hands', garden_bangles)
-            end
-            if (presidential_hairpin and conquest:GetOutsideControl()) then
-                gFunc.Equip('Head', 'President. Hairpin')
-            end
-            if (dream_ribbon) then
-                gFunc.Equip('Head', 'Dream Ribbon')
-            end
-        end
-    end
-
     gcmelee.DoDefaultOverride()
 
     if (gcdisplay.IdleSet == 'DT') then
         if (player.HPP <= 75 and player.TP <= 1000) then
-            if (kampfer_ring) then
-                gFunc.Equip(kampfer_ring_slot, 'Kampfer Ring')
-            end
+            gFunc.EquipSet('kampfer_ring')
         end
         if (player.HPP <= 25 and player.TP <= 1000) then
-            if (kampfer_earring) then
-                gFunc.Equip(kampfer_earring_slot, 'Kampfer Earring')
-            end
+            gFunc.EquipSet('kampfer_earring')
         end
     end
 

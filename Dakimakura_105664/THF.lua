@@ -1,10 +1,14 @@
 local profile = {}
 
-local fastCastValue = 0.00 -- 0% from gear
+local fastCastValue = 0.00 -- 0% from gear listed in Precast set
 
-local ta_rogue_armlets = false
+local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
 local player = gData.GetPlayer()
-local evasion_master_casters_mitts = false
+
+-- Comment out the equipment within these sets if you do not have them or do not wish to use them
+local evasion_master_casters_mitts = {
+    -- Hands = 'Mst.Cst. Mitts',
+}
 
 local sets = {
     ['Idle'] = {
@@ -48,8 +52,7 @@ local sets = {
     Town = {},
     Movement = {},
     DT = {},
-    MDT = { -- Shell IV provides 23% MDT
-    },
+    MDT = {},
     FireRes = {},
     IceRes = {},
     LightningRes = {},
@@ -59,7 +62,7 @@ local sets = {
     Evasion = {},
 
     Precast = {},
-    SIRD = {
+    SIRD = { -- Only used for Idle sets and not while Override sets are active
     },
     Haste = { -- Used for Utsusemi cooldown
     },
@@ -182,8 +185,11 @@ local sets = {
     Venom = {
         Ammo = 'Venom Bolt',
     },
+
+    Weapon_Loadout_1 = {},
+    Weapon_Loadout_2 = {},
+    Weapon_Loadout_3 = {},
 }
-profile.Sets = sets
 
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
@@ -203,6 +209,11 @@ end
 Everything below can be ignored.
 --------------------------------
 ]]
+
+gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
+
+sets.evasion_master_casters_mitts = evasion_master_casters_mitts
+profile.Sets = gcmelee.AppendSets(sets)
 
 local ammo = T{'aacid','asleep','abloody','ablind','avenom'}
 
@@ -225,7 +236,6 @@ local saOverride = 0
 local taOverride = 0
 local taggedMobs = {}
 
-gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 actionpacket = gFunc.LoadFile('common\\actionpacket.lua')
 
 profile.HandleAbility = function()
@@ -350,7 +360,7 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmelee.DoDefault()
+    gcmelee.DoDefault(max_hp_in_idle_with_regen_gear_equipped)
 
     local player = gData.GetPlayer()
     if (player.SubJob == 'NIN' and player.Status == 'Engaged') then
@@ -359,8 +369,8 @@ profile.HandleDefault = function()
 
     gcmelee.DoDefaultOverride()
 
-    if (conquest:GetOutsideControl() and evasion_master_casters_mitts and gcdisplay.IdleSet == 'Evasion') then
-        gFunc.Equip('Hands', 'Mst.Cst. Mitts')
+    if (conquest:GetOutsideControl() and gcdisplay.IdleSet == 'Evasion') then
+        gFunc.EquipSet('evasion_master_casters_mitts')
     end
 
     local sa = gData.GetBuffCount('Sneak Attack')

@@ -1,11 +1,13 @@
 local profile = {}
 
-local fastCastValue = 0.00 -- 0% from gear
+local fastCastValue = 0.00 -- 0% from gear listed in Precast set
 
-local gaudy_harness = false
+local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
 
--- Replace these with '' if you do not have them
-local muscle_belt = ''
+-- Comment out the equipment within these sets if you do not have them or do not wish to use them
+local gaudy_harness = {
+    -- Body = 'Gaudy Harness',
+}
 
 local sets = {
     ['Idle'] = {
@@ -31,8 +33,7 @@ local sets = {
     Movement = {},
 
     DT = {},
-    MDT = { -- Shell IV provides 23% MDT
-    },
+    MDT = {},
     FireRes = {},
     IceRes = {},
     LightningRes = {},
@@ -42,7 +43,7 @@ local sets = {
     Evasion = {},
 
     Precast = {},
-    SIRD = {
+    SIRD = { -- Only used for Idle sets and not while Override sets are active
     },
     Haste = { -- Used for Utsusemi cooldown
     },
@@ -65,8 +66,11 @@ local sets = {
     Ready_Physical = {},
     Ready_Magic = {},
     Call_Beast = {},
+
+    Weapon_Loadout_1 = {},
+    Weapon_Loadout_2 = {},
+    Weapon_Loadout_3 = {},
 }
-profile.Sets = sets
 
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Dancing Edge" <t>')
@@ -81,6 +85,12 @@ Everything below can be ignored.
 ]]
 
 gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
+
+sets.gaudy_harness = gaudy_harness
+sets.muscle_belt = muscle_belt
+sets.presidential_hairpin = presidential_hairpin
+sets.dream_ribbon = dream_ribbon
+profile.Sets = gcmelee.AppendSets(sets)
 
 local pets = T{'sheep','lizard','crab','tiger','rabbit','mandy','flytrap'}
 
@@ -231,12 +241,9 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmelee.DoDefault()
+    gcmelee.DoDefault(max_hp_in_idle_with_regen_gear_equipped)
 
     local player = gData.GetPlayer()
-    if (player.Status == 'Idle' and player.HPP < 50 and muscle_belt ~= '') then
-        gFunc.Equip('Waist', muscle_belt)
-    end
     if (player.SubJob == 'NIN' and player.Status == 'Engaged') then
         gFunc.EquipSet('TP_NIN')
     end
@@ -244,9 +251,7 @@ profile.HandleDefault = function()
     gcmelee.DoDefaultOverride()
 
     if (player.MP < 50 and (player.SubJob == 'WHM' or player.SubJob == 'BLM' or player.SubJob == 'RDM')) then
-        if (gaudy_harness) then
-            gFunc.Equip('Body', 'Gaudy Harness')
-        end
+        gFunc.EquipSet('gaudy_harness')
     end
 
     local petAction = gData.GetPetAction()

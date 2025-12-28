@@ -2,17 +2,31 @@ local profile = {}
 
 local fastCastValue = 0 -- 4% from gear listed in Precast set
 
-local ninSJMaxMP = 640 -- The Max MP you have when /nin in your idle set
-local whmSJMaxMP = 718 -- The Max MP you have when /whm in your idle set
-local rdmSJMaxMP = 734 -- The Max MP you have when /rdm in your idle set
+local ninSJMaxMP = 650 -- The Max MP you have when /nin in your idle set
+local whmSJMaxMP = 728 -- The Max MP you have when /whm in your idle set
+local rdmSJMaxMP = 709 -- The Max MP you have when /rdm in your idle set
 
 local nukeExtraThreshold = 850 -- The minimum MP for which NukeExtra StoneskinExtra, and PhalanxExtra set will be used instead of regular sets (to allow additional nukes using max mp sets)
 
-local warlocks_mantle = false -- Don't add 2% to fastCastValue to this as it is SJ dependant
-local republic_circlet = false
-
-local opuntia_hoop = false
-local opuntia_hoop_slot = 'Ring1'
+-- Comment out the equipment within these sets if you do not have them or do not wish to use them
+local warlocks_mantle = { -- Don't add 2% to fastCastValue for this as it is SJ dependant
+    Back = 'Warlock\'s Mantle',
+}
+local republic_circlet = {
+    -- Head = 'Republic Circlet',
+}
+local opuntia_hoop = {
+    Ring1 = 'Opuntia Hoop',
+}
+local diabolos_pole = {
+    Main = 'Diabolos\'s Pole',
+}
+local sorcerers_ring = {
+    Ring1 = 'Sorcerer\'s Ring', -- This is Ring1 instead of Ring2 to allow Ice Ring to work as well in gcmage.lua
+}
+local sorcerers_tonban = {
+    Legs = 'Src. Tonban +1',
+}
 
 local sets = {
     ['Idle'] = {
@@ -183,17 +197,19 @@ local sets = {
         Ear1 = 'Loquac. Earring',
         Feet = 'Rostrum Pumps',
     },
-    Casting = {
-      --  Main = 'Solid Wand',
-      --  Sub = 'Casting Wand',
-       -- Head = 'Nashira Turban', -- 10
-        --Neck = 'Willpower Torque', -- 5
-       -- Ear1 = 'Merman\'s Earring',
-       -- Ear2 = 'Magnetic Earring', -- 8
-        --Waist = 'Druid\'s Rope', -- 10
-        -- Feet = 'Wizard\'s Sabots', -- 20
+    Casting = { -- Default SIRD used for Idle sets
+        Main = 'Eremite\'s Wand', -- 25
+        Sub = 'Genbu\'s Shield',
+        Head = 'Nashira Turban', -- 10
+        Neck = 'Willpower Torque', -- 5
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Magnetic Earring', -- 8
+        Waist = 'Silver Obi +1', -- 8
+        Feet = 'Wizard\'s Sabots', -- 20
+        Ammo = 'Tiphia Sting',
+        Back = 'Umbra Cape',
     },
-    SIRD = { -- Used on Stoneskin, Blink, Aquaveil and Utsusemi casts
+    SIRD = { -- Used on Stoneskin, Blink, Aquaveil and Utsusemi casts regardless of Override set. If you wish to remain in FireRes etc. during casts, leave empty.
         Main = 'Eremite\'s Wand', -- 25
        -- Sub = 'Eremite\'s Wand', -- 25
         Head = 'Nashira Turban', -- 10
@@ -206,16 +222,19 @@ local sets = {
         Back = 'Umbra Cape',
     },
     Yellow = { -- This will override Precast if /lag is turned on or the spell casting time is too short. e.g. Tier 1: "Stone"
-     --   Head = 'Zenith Crown +1',
-     --   Ammo = 'Tiphia Sting',
-     --   Ear1 = 'Loquac. Earring',
-     --   Ear2 = 'Magnetic Earring',
-     --   Body = { Name = 'Src. Coat +1', Priority = 100 },
-      --  Hands = 'Zenith Mitts +1',
-        -- Ring1 = 'Ether Ring',
-       -- Ring2 = 'Ether Ring',
-       -- Waist = { Name = 'Penitent\'s Rope', Priority = -100 },
-       -- Feet = 'Rostrum Pumps',
+        Ammo = 'Tiphia Sting', -- 25
+        Head = 'Zenith Crown +1', -- 55
+        Neck = 'Jeweled Collar +1',
+        Ear1 = 'Loquac. Earring', 
+        Ear2 = 'Magnetic Earring',
+        Body = 'Mahatma Hpl.',
+        Hands = 'Zenith Mitts +1', -- 55
+        Ring1 = 'Ether Ring', -- 30
+        Ring2 = 'Serket Ring', -- 50
+        Back = { Name = 'Prism Cape', Priority = 100 }, -- -10
+        Waist = { Name = 'Penitent\'s Rope', Priority = -100 }, -- 20
+        Legs = 'Igqira Lappas',
+        Feet = 'Rostrum Pumps', -- 30
     },
     YellowHNM = {
         Back = 'Umbra Cape',
@@ -372,6 +391,7 @@ local sets = {
     },
 
     Divine = {},
+    Banish = {},
     Dark = {
         Ammo = 'Phtm. Tathlum',
        -- Head = 'Nashira Turban',
@@ -481,55 +501,11 @@ local sets = {
     LockSet2 = {},
     LockSet3 = {},
     ['fiftythree'] = {
-        Main = 'Dark Staff',
-        Ammo = 'Fortune Egg',
-        Head = 'Wizard\'s Petasos',
-        Neck = 'Black Neckerchief',
-        Ear1 = 'Morion Earring',
-        Ear2 = 'Morion Earring',
-        Body = 'Seer\'s Tunic',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Zircon Ring',
-        Back = 'Black Cape',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Baron\'s Slops',
-        Feet = 'Wizard\'s Sabots',
     },
     ['eco'] = {
-        Main = 'Earth Staff',
-        Ammo = 'Morion Tathlum',
-        Head = 'Dream Hat +1',
-        Neck = 'Philomath Stole',
-        Ear1 = 'Morion Earring',
-        Ear2 = 'Moldavite Earring',
-        Body = 'Igqira Weskit',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Genius Ring',
-        Back = 'Prism Cape',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Sorcerer\'s Tonban',
-        Feet = 'Sorcerer\'s Sabots',
     },
     ['merit'] = {
-        Main = 'Ice Staff',
-       -- Sub = 'Casting Wand',
-        Ammo = 'Morion Tathlum',
-        Head = 'Wizard\'s Petasos',
-        Neck = 'Philomath Stole',
-        Ear1 = 'Morion Earring',
-        Ear2 = 'Moldavite Earring',
-        Body = 'Justaucorps +1',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Genius Ring',
-        Back = 'Red Cape +1',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Seer\'s Slacks',
-        Feet = 'Custom F Boots',
     },
-
 }
 profile.Sets = sets
 
@@ -556,6 +532,14 @@ Everything below can be ignored.
 ]]
 
 gcmage = gFunc.LoadFile('common\\gcmage.lua')
+
+sets.warlocks_mantle = warlocks_mantle
+sets.republic_circlet = republic_circlet
+sets.opuntia_hoop = opuntia_hoop
+sets.diabolos_pole = diabolos_pole
+sets.sorcerers_ring = sorcerers_ring
+sets.sorcerers_tonban = sorcerers_tonban
+profile.Sets = gcmage.AppendSets(sets)
 
 profile.HandleAbility = function()
     gcmage.DoAbility()
@@ -604,8 +588,8 @@ profile.HandleDefault = function()
 
     local spikes = gData.GetBuffCount('Blaze Spikes') + gData.GetBuffCount('Shock Spikes') + gData.GetBuffCount('Ice Spikes')
     local isPhysical = gcdisplay.IdleSet == 'Normal' or gcdisplay.IdleSet == 'Alternate' or gcdisplay.IdleSet == 'DT'
-    if (opuntia_hoop and spikes > 0 and isPhysical) then
-        gFunc.Equip(opuntia_hoop_slot, 'Opuntia Hoop')
+    if (spikes > 0 and isPhysical) then
+        gFunc.EquipSet('opuntia_hoop')
     end
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
@@ -613,11 +597,11 @@ end
 
 profile.HandlePrecast = function()
     local player = gData.GetPlayer()
-    if (player.SubJob == 'RDM' and warlocks_mantle) then
-        gcmage.DoPrecast(fastCastValue + 0.02)
-        gFunc.Equip('Back', 'Warlock\'s Mantle')
+    if (player.SubJob == 'RDM' and warlocks_mantle.Back) then
+        gcmage.DoPrecast(sets, fastCastValue + 0.02)
+        gFunc.EquipSet('warlocks_mantle')
     else
-        gcmage.DoPrecast(fastCastValue)
+        gcmage.DoPrecast(sets, fastCastValue)
     end
 end
 
@@ -628,15 +612,15 @@ profile.HandleMidcast = function()
 
     local player = gData.GetPlayer()
     local action = gData.GetAction()
-    if (republic_circlet == true) then
+    if (republic_circlet.Head) then
         if (action.Skill == 'Elemental Magic' and gcdisplay.GetCycle('Mode') == 'Potency') then
             if (gcdisplay.GetToggle('Extra') and player.MP >= nukeExtraThreshold) then
                 do return end
             end
             if (not ElementalDebuffs:contains(action.Name)) then
-                if (conquest:GetInsideControl()) then
+                if (conquest:GetInsideControl() and gcdisplay.GetToggle('HNM') == false and gcdisplay.GetCycle('Mode') ~= 'Accuracy') then
                     print(chat.header('LAC - BLM'):append(chat.message('In Region - Using Republic Circlet')))
-                    gFunc.Equip('Head', 'Republic Circlet')
+                    gFunc.EquipSet('republic_circlet')
                 end
             end
         end
