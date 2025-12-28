@@ -35,7 +35,7 @@ local sets = {
         Ammo = '',
         Head = '',
         Body = 'Royal Cloak',
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
         Hands = 'Heavy Gauntlets',
@@ -54,7 +54,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Darksteel Cap +1', -- 2
-        Body = 'Dst. Harness +1', -- 4
+        Body = 'Darksteel Harness', -- 4
         Neck = { Name = 'Shield Torque', Priority = 100 },
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
@@ -69,7 +69,7 @@ local sets = {
     IdleALTDT = {
     },
     Resting = {
-        Main = 'Pluto\'s Staff',
+        Main = 'Dark Staff',
         Sub = 'remove',
         Ear1 = 'Relaxing Earring',
         Ear2 = 'Magnetic Earring',
@@ -79,7 +79,7 @@ local sets = {
         Sub = 'Aegis',
         Range = 'Arco de Velocidad',
         Head = 'Bahamut\'s Mask',
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Knightly Earring',
         Ear2 = 'Cassie Earring',
         Body = 'Hydra Haubert',
@@ -87,7 +87,7 @@ local sets = {
         Ring1 = 'Shadow Ring',
         Ring2 = 'Sattva Ring',
         Back = 'Shadow Mantle',
-        Waist = 'Sonic Belt',
+        Waist = 'Swift Belt',
         Legs = 'Blood Cuisses',
         Feet = 'Homam Gambieras',
     },
@@ -101,7 +101,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Darksteel Cap +1', -- 2
-        Body = 'Dst. Harness +1', -- 4
+        Body = 'Darksteel Harness', -- 4
         Neck = { Name = 'Shield Torque', Priority = 100 },
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
@@ -114,7 +114,7 @@ local sets = {
         Feet = { Name = 'Glt. Leggings +1', Priority = 90 },
     },
     MDT = {
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
         Ring1 = 'Shadow Ring',
@@ -125,7 +125,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -141,7 +141,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -154,13 +154,13 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     LightningRes = { -- 138
-        Main = 'Terra\'s Staff', -- 20
+        Main = 'Earth Staff', -- 20
         Sub = '',
         -- Sub = 'Nms. Shield +1', -- 15
         Range = 'Lightning Bow +1', -- 7
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -176,7 +176,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -192,7 +192,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -208,7 +208,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -224,7 +224,7 @@ local sets = {
         Head = 'Bahamut\'s Mask',
         -- Hrotti
         -- Crimson Scale Mail
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Legs = 'Bahamut\'s Hose',
         Ring1 = 'Shadow Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
@@ -241,7 +241,7 @@ local sets = {
         Neck = 'Willpower Torque', -- 5
         Ear1 = { Name = 'Magnetic Earring', Priority = 120 }, -- 8
         Ear2 = { Name = 'Knightly Earring', Priority = -50 }, -- 9
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Hands = 'Heavy Gauntlets',
         Ring1 = 'Shadow Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
@@ -257,12 +257,12 @@ local sets = {
         Neck = 'Willpower Torque',
         Ear1 = 'Loquac. Earring', -- FC
         Ear2 = 'Magnetic Earring',
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Hands = { Name = 'Dusk Gloves +1', Priority = 22 }, -- 4
         Ring1 = 'Shadow Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
         Back = 'Shadow Mantle',
-        Waist = 'Sonic Belt', -- 6
+        Waist = 'Swift Belt', -- 6
         Legs = 'Homam Cosciales', -- 3
         Feet = 'Homam Gambieras', -- 3
     },
@@ -299,7 +299,7 @@ local sets = {
         Ring1 = 'Hercules\' Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
         Back = { Name = 'Valor Cape', Priority = 100 },
-        Waist = 'Sonic Belt',
+        Waist = 'Swift Belt',
         Legs = 'Homam Cosciales',
         Feet = 'Homam Gambieras',
     },
@@ -322,7 +322,7 @@ local sets = {
         Feet = 'Mountain Gaiters', -- 5
     },
     Cheat_C3HPUp = { -- 1430 (223)
-        Main = 'Apollo\'s Staff',
+        Main = 'Light Staff',
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -358,7 +358,7 @@ local sets = {
         Feet = 'Hydra Sollerets',
     },
     Cheat_C4HPUp = { -- 1514 (441 +1)
-        Main = 'Apollo\'s Staff',
+        Main = 'Light Staff',
         Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
@@ -390,7 +390,7 @@ local sets = {
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
-        Waist = 'Sonic Belt',
+        Waist = 'Swift Belt',
         Legs = 'Homam Cosciales',
         Feet = 'Homam Gambieras',
     },
@@ -421,7 +421,7 @@ local sets = {
         Body = 'Vlr. Surcoat +1',
     },
     Cure = {
-        Main = 'Apollo\'s Staff',
+        Main = 'Light Staff',
         Ear1 = 'Hospitaler Earring',
     },
     Divine = {

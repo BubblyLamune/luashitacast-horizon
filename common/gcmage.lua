@@ -5,7 +5,7 @@ local log_conquest = false
 local blm_advanced = false
 
 -- Set to true if you have both Dark Earring and Abyssal earring to turn off Diabolos's Earring override for Dark Magic sets
-local dark_and_abyssal_earrings = true
+local dark_and_abyssal_earrings = false
 
 -- Comment out the equipment within these sets if you do not have them or do not wish to use them
 local claustrum = {
@@ -13,32 +13,32 @@ local claustrum = {
 }
 
 local fire_staff = {
-    Main = 'Vulcan\'s Staff',
+    Main = 'Fire Staff',
 }
 local earth_staff = {
-    Main = 'Terra\'s Staff',
+    Main = 'Earth Staff',
 }
 local water_staff = {
-    Main = 'Neptune\'s Staff',
+    Main = 'Water Staff',
 }
 local wind_staff = {
-    Main = 'Auster\'s Staff',
+    Main = 'Wind Staff',
 }
 local ice_staff = {
-    Main = 'Aquilo\'s Staff',
+    Main = 'Ice Staff',
 }
 local thunder_staff = {
-    Main = 'Jupiter\'s Staff',
+    Main = 'Thunder Staff',
 }
 local light_staff = {
-    Main = 'Apollo\'s Staff',
+    Main = 'Light Staff',
 }
 local dark_staff = {
-    Main = 'Pluto\'s Staff',
+    Main = 'Dark Staff',
 }
 
 local karin_obi = {
-    Waist = 'Karin Obi',
+ --   Waist = 'Karin Obi',
 }
 local dorin_obi = {
     -- Waist = 'Dorin Obi',
@@ -50,35 +50,35 @@ local furin_obi = {
     -- Waist = 'Furin Obi',
 }
 local hyorin_obi = {
-    Waist = 'Hyorin Obi',
+ --   Waist = 'Hyorin Obi',
 }
 local rairin_obi = {
-    Waist = 'Rairin Obi',
+ --   Waist = 'Rairin Obi',
 }
 local korin_obi = {
-    Waist = 'Korin Obi',
+ --   Waist = 'Korin Obi',
 }
 local anrin_obi = {
-    Waist = 'Anrin obi',
+  --  Waist = 'Anrin obi',
 }
 
 local uggalepih_pendant = {
-    Neck = 'Uggalepih Pendant',
+  --  Neck = 'Uggalepih Pendant',
 }
 local master_casters_bracelets = {
-    Hands = 'Mst.Cst. Bracelets',
+   -- Hands = 'Mst.Cst. Bracelets',
 }
 local wizards_mantle = {
     -- Back = 'Wizard\'s Mantle',
 }
 local republic_gold_medal = { -- Note: Disabled for BRD
-    Neck = 'Rep.Gold Medal',
+   -- Neck = 'Rep.Gold Medal',
 }
 local diabolos_earring = { -- Forces usage of this for NukeACC, EnfeebleACC, and Dark Magic
     -- Ear2 = 'Diabolos\'s Earring',
 }
 local diabolos_ring = {
-    Ring2 = 'Diabolos\'s Ring',
+  --  Ring2 = 'Diabolos\'s Ring',
 }
 local ice_ring = {
     -- Ring2 = 'Ice Ring',
@@ -97,9 +97,6 @@ local tp_fenrirs_earring = {
 local tp_diabolos_earring = {
     -- Ear2 = 'Diabolos\'s Earring',
 }
-
--- Set this to true to confirm that actually read the README.md and set up the equipment listed above correctly
-local i_can_read_and_follow_instructions_test = false
 
 --[[
 --------------------------------
@@ -455,10 +452,6 @@ function gcmage.DoDefault(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP
 end
 
 function gcmage.DoPrecast(sets, fastCastValue)
-    if (not i_can_read_and_follow_instructions_test) then
-        print(chat.header('GCMage'):append(chat.message('Failed to follow instructions. Read the README.md')))
-    end
-
     local chainspell = gData.GetBuffCount('Chainspell')
     local action = gData.GetAction()
     local player = gData.GetPlayer()
@@ -753,6 +746,7 @@ function gcmage.EquipSneakInvisGear()
     local action = gData.GetAction()
     local target = gData.GetActionTarget()
     local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0)
+    gcinclude.CheckCancels(action, target, me)
 
     if (target.Name == me) then
         if (action.Name == 'Sneak' or string.match(action.Name, 'Monomi')) then
@@ -802,8 +796,11 @@ function gcmage.EquipEnhancing(blmNukeExtra)
 
     gFunc.EquipSet('Enhancing')
     if (action.Name == 'Stoneskin') then
+        local stoneskin = gData.GetBuffCount('Stoneskin');
         gFunc.EquipSet('Stoneskin')
-
+        if (stoneskin ~= 0) then
+		    AshitaCore:GetChatManager():QueueCommand(1, '/cancel Stoneskin');
+	    end
         if (player.MainJob == 'BLM' and gcdisplay.GetToggle('Extra') and player.MP >= blmNukeExtra) then
             gFunc.EquipSet('StoneskinExtra')
         end
@@ -1064,10 +1061,6 @@ function ObiCheck(action)
 end
 
 function gcmage.DoAbility()
-    if (not i_can_read_and_follow_instructions_test) then
-        print(chat.header('GCMage'):append(chat.message('Failed to follow instructions. Read the README.md')))
-    end
-
     gcinclude.DoAbility()
     local action = gData.GetAction()
     if (action.Name == 'Release') then

@@ -5,22 +5,7 @@ local fastCastValue = 0.00 -- 0% from gear listed in Precast set
 local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
 
 local sets = {
-    Idle = {
-        Main = 'Darksteel Axe',
-        Ammo = "Bomb Core",
-        Head = 'Emperor Hairpin',
-        Neck = 'Ryl.Grd. Collar',
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Coral Earring',
-        Body = 'Haubergeon',
-        Hands = 'Custom F Gloves',
-        Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Toreador\'s Ring',
-        Back = 'Amemet Mantle',
-        Waist = 'Swift Belt',
-        Legs = 'Ryl.Kgt. Breeches',
-        Feet = 'Fighter\'s Calligae',
-    },
+    Idle = {},
     IdleALT = {},
     Resting = {},
     Town = {},
@@ -49,19 +34,10 @@ local sets = {
     TP_LowAcc = {},
     TP_Aftermath = {},
     TP_Mjollnir_Haste = {},
-    TP_HighAcc = {
-        Head = 'Optical Hat',
-        Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Toreador\'s Ring',
-    },
+    TP_HighAcc = {},
     TP_Aggressor = {},
 
-    WS = {
-        Head = 'Emperor Hairpin',
-        Ring1 = 'Sun Ring',
-        Ring2 = 'Sun Ring',
-        Feet = 'Leaping Boots',
-    },
+    WS = {},
     WS_HighAcc = {},
 
     Warcry = {},
@@ -73,10 +49,6 @@ local sets = {
     SAM = {
         Ear1 = 'Attila\'s Earring',
     },
-
-    Weapon_Loadout_1 = {},
-    Weapon_Loadout_2 = {},
-    Weapon_Loadout_3 = {},
     ['thirty'] = {
         Main = 'Centurion\'s Axe',
         Range = 'Power Crossbow',
@@ -94,6 +66,10 @@ local sets = {
         Legs = 'Republic Subligar',
         Feet = 'Leaping Boots',
     },
+
+    Weapon_Loadout_1 = {},
+    Weapon_Loadout_2 = {},
+    Weapon_Loadout_3 = {},
 }
 
 profile.SetMacroBook = function()

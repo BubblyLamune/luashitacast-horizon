@@ -43,7 +43,7 @@ local sets = {
     Idle = {
         Main = 'Tredecim Scythe',
         Ammo = 'Bomb Core',
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Vampire Cloak',
@@ -56,13 +56,13 @@ local sets = {
         Feet = 'Dst. Leggings +1',
     },
     IdleALT = { -- 1365
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Sub = 'displaced',
         Range = 'Rosenbogen',
         Ammo = 'displaced',
         Head = 'displaced',
         Body = 'Vampire Cloak',
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
         Hands = 'Heavy Gauntlets',
@@ -78,7 +78,7 @@ local sets = {
         Neck = 'Evasion Torque',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
-        Body = 'Dst. Harness +1', -- 4
+        Body = 'Darksteel Harness', -- 4
         Hands = 'Heavy Gauntlets', -- 3
         Ring1 = 'Jelly Ring', -- 5
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
@@ -92,7 +92,7 @@ local sets = {
         Neck = 'Evasion Torque',
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
-        Body = 'Dst. Harness +1', -- 4
+        Body = 'Darksteel Harness', -- 4
         Hands = 'Heavy Gauntlets', -- 3
         Ring1 = 'Jelly Ring', -- 5
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
@@ -116,7 +116,7 @@ local sets = {
         Neck = 'Evasion Torque',
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
-        Body = 'Dst. Harness +1', -- 4
+        Body = 'Darksteel Harness', -- 4
         Hands = 'Heavy Gauntlets', -- 3
         Ring1 = 'Jelly Ring', -- 5
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
@@ -127,7 +127,7 @@ local sets = {
     },
     MDT = {
         Head = 'Darksteel Cap +1',
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = 'Merman\'s Earring', -- 2
         Body = 'Cor. Scale Mail +1', -- 4
@@ -140,12 +140,12 @@ local sets = {
         Feet = 'Coral Greaves +1', -- 2
     },
     FireRes = {
-        Main = 'Neptune\'s Staff', -- 20
+        Main = 'Water Staff', -- 20
         Sub = 'displaced',
         Range = 'Rosenbogen',
         Ammo = 'displaced',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -158,12 +158,12 @@ local sets = {
         Feet = 'Power Sandals', -- 7
     },
     IceRes = {
-        Main = 'Vulcan\'s Staff', -- 20
+        Main = 'Fire Staff', -- 20
         Sub = 'displaced',
         Range = 'Rosenbogen',
         Ammo = 'displaced',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -176,12 +176,12 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     LightningRes = {
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         Sub = 'displaced',
         Range = 'Lightning Bow +1', -- 7
         Ammo = 'displaced',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -194,12 +194,12 @@ local sets = {
         Feet = 'Dst. Leggings +1',
     },
     EarthRes = {
-        Main = 'Auster\'s Staff', -- 20
+        Main = 'Wind Staff', -- 20
         Sub = 'displaced',
         Range = 'Rosenbogen',
         Ammo = 'displaced',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -212,12 +212,12 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     WindRes = {
-        Main = 'Aquilo\'s Staff', -- 20
+        Main = 'Ice Staff', -- 20
         Sub = 'displaced',
         Range = 'Rosenbogen',
         Ammo = 'displaced',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -230,12 +230,12 @@ local sets = {
         Feet = 'Blood Greaves', -- 21
     },
     WaterRes = {
-        Main = 'Jupiter\'s Staff', -- 20
+        Main = 'Thunder Staff', -- 20
         Sub = 'displaced',
         Range = 'Rosenbogen',
         Ammo = 'displaced',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -260,7 +260,7 @@ local sets = {
         Ring1 = 'Bomb Queen Ring',
         Ring2 = 'Sattva Ring',
         Back = 'Gigant Mantle',
-        Waist = 'Sonic Belt',
+        Waist = 'Swift Belt',
         Legs = 'Homam Cosciales',
         Feet = 'Homam Gambieras',
     },
@@ -279,9 +279,9 @@ local sets = {
     },
     Haste = { -- Used for Utsusemi and Stun cooldown
         Head = { Name = 'Ace\'s Helm', Priority = -1 },
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Hands = { Name = 'Dusk Gloves +1', Priority = 100 },
-        Waist = 'Sonic Belt',
+        Waist = 'Swift Belt',
         Legs = { Name = 'Homam Cosciales', Priority = 100 },
         Feet = { Name = 'Homam Gambieras', Priority = 100 },
     },
@@ -317,7 +317,7 @@ local sets = {
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
-        Waist = 'Sonic Belt',
+        Waist = 'Swift Belt',
         Legs = 'Homam Cosciales',
         Feet = 'Homam Gambieras',
     },
@@ -366,12 +366,12 @@ local sets = {
         Neck = 'Dark Torque',
         Ear1 = 'Dark Earring',
         Ear2 = 'Abyssal Earring',
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Hands = { Name = 'Blood Fng. Gnt.', Priority = 100 },
         Ring1 = 'Omniscient Ring',
         Ring2 = 'Overlord\'s Ring',
         Back = 'Merciful Cape',
-        Waist = 'Sonic Belt',
+        Waist = 'Swift Belt',
         Legs = 'Abs. Flanchard +1',
         Feet = 'Mountain Gaiters',
     },

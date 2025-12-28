@@ -3,6 +3,7 @@ local profile = {}
 local fastCastValue = 0.00 -- 0% from gear listed in Precast set
 
 local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
+local player = gData.GetPlayer()
 
 -- Comment out the equipment within these sets if you do not have them or do not wish to use them
 local evasion_master_casters_mitts = {
@@ -10,28 +11,46 @@ local evasion_master_casters_mitts = {
 }
 
 local sets = {
-    Idle = {
-        Main = "Cermet Kukri +1",
-        Sub = "Garuda\'s Dagger",
-        Body = "Rapparee Harness",
+    ['Idle'] = {
+        Main = 'Mrc.Cpt. Kukri',
+        Sub = 'Archer\'s Knife',
+        Range = 'Power Crossbow',
+        Ammo = 'Crossbow Bolt',
+        Head = 'Emperor Hairpin',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Beetle Earring +1',
+        Ear2 = 'Beetle Earring +1',
+        Body = 'Mrc.Cpt. Doublet',
+        Hands = 'Savage Gauntlets',
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Courage Ring',
+        Back = 'Nomad\'s Mantle',
+        Waist = 'Warrior\'s Belt',
+        Legs = 'Republic Subligar',
+        Feet = 'Leaping Boots',
+    },
+    IdleALT = {
+        Main = "Bone knife +1",
+        Sub = "Light Buckler",
+        Body = "Brigandine",
         Hands = "Custom F gloves",
-        Legs = "Rogue\'s Culottes",
-        --Head = "Rogue's Bonnet",
-        Head = "Emperor Hairpin",
+        Legs = "Rogue's Culottes",
+        Head = "Rogue's Bonnet",
         Feet = "Leaping Boots",
         Neck = "Spike necklace",
-        Waist = "Swift belt",
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = "Coral earring",
-        Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Toreador\'s Ring',
-        Back = "Amemet mantle"
+        Waist = "Life belt",
+        Ear1 = "Drone earring",
+        Ear2 = "Drone earring",
+        Ring1 = "Balance ring",
+        Ring2 = "Balance ring",
+        Back = "Nomad\'s mantle"
     },
-    IdleALT = {},
-    Resting = {},
+    Resting = {
+       -- Main = "Dark Staff",
+        -- Sub = ""
+    },
     Town = {},
     Movement = {},
-
     DT = {},
     MDT = {},
     FireRes = {},
@@ -57,7 +76,7 @@ local sets = {
     TP_Mjollnir_Haste = {},
     TP_HighAcc = {},
     TP_NIN = {},
-
+    TP_Mjollnir_Haste = {},
     -- Note that these sets are for naked SA/TA/SATAs without WS
     SA = {
         Head = "Rogue's Bonnet",
@@ -74,6 +93,9 @@ local sets = {
         Body = "Brigandine",
         Legs = "Rogue's Culottes",
     },
+
+
+
 
     -- The following demonstrates layering of WS sets that should cover all debatable major WS combinations.
     WS = {
@@ -132,32 +154,21 @@ local sets = {
         Hands = 'Rogue\'s Armlets +1',
     },
 
-    Flee = {
-        Feet = "Rogue\'s Poulaines",
-    },
-    Hide = {
-        Body = "Rogue's Vest",
-
-    },
+    Flee = {},
+    Hide = {},
     Steal = {
         Legs = "Rogue's Culottes",
         Head = "Rogue's Bonnet",
-        Hands = "Rogue's Armlets"
+        Hands= "Rogue's Armlets"
     },
     Mug = {},
 
     TH = {},
 
-    Ranged = {},
-    Ranged_INT = {
-        Head = "Rogue's Bonnet",
-        Neck = 'Checkered Scarf',
-        Ear1 = 'Morion Earring',
-        Ear2 = 'Moldavite Earring',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Genius Ring',
-        Feet = 'Custom F Boots'
+    Ranged = {
+        
     },
+    Ranged_INT = {},
 
     Acid = {
         Ammo = 'Acid Bolt',
@@ -184,7 +195,7 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Evisceration" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Wasp Sting" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')

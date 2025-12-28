@@ -14,63 +14,35 @@ local warlocks_mantle = { -- Don't add 2% to fastCastValue for this as it is SJ 
 
 local sets = {
     Idle = {
-        Main = 'Terra\'s Staff',
-        -- Range = 'Mythic Harp +1',
-        Ammo = 'Pebble',
-        Head = 'displaced',
-        Neck = 'Jeweled Collar +1',
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Merman\'s Earring',
-        Body = 'Royal Cloak',
-        Hands = 'Merman\'s Bangles',
-        Ring1 = 'Shadow Ring',
-        Ring2 = 'Sattva Ring',
-        Back = 'Umbra Cape',
-        Waist = { Name = 'Ocean Rope', Priority = 100 },
-        Legs = 'Dst. Subligar +1',
-        Feet = 'Dst. Leggings +1',
+		Main = 'Earth Staff',
+		Head = "Brd. Roundlet +1",
+		Range = "Angel Lyre",
+        Neck = 'Jeweled Collar',
+		Waist = "Gleeman\'s Belt",
+		Body = 'Darksteel Harness',
+		Hands = "Bard\'s Cuffs",
+		Ring1 = "Minstrel\'s Ring",
+        Ring2 = 'Tamas Ring',
+		--Ring2 = "Ether Ring",
+		Back = 'Cheviot Cape',
+		Legs = "Errant Slops",
+		Feet = "Rostrum pumps"
     },
     IdleALT = {
-        Main = 'Terra\'s Staff',
-        -- Range = 'Mythic Harp +1',
-        Ammo = 'Pebble',
-        Head = 'Dream Ribbon',
-        Neck = 'Jeweled Collar +1',
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Merman\'s Earring',
-        Body = 'Dst. Harness +1',
-        Hands = 'Merman\'s Bangles',
-        Ring1 = 'Shadow Ring',
-        Ring2 = 'Sattva Ring',
-        Back = 'Umbra Cape',
-        Waist = { Name = 'Ocean Rope', Priority = 100 },
-        Legs = 'Dst. Subligar +1',
-        Feet = 'Dst. Leggings +1',
     },
     IdleMaxMP = {},
     Resting = {
-        Main = 'Pluto\'s Staff',
-        Ammo = 'Hedgehog Bomb',
-        Head = 'Hydra Beret',
-        Neck = 'Pch. Collar',
-        Ear1 = 'Relaxing Earring',
-        Ear2 = 'Magnetic Earring',
-        Body = 'Mahatma Hpl.',
-        Hands = 'Hydra Gloves',
-        Ring1 = 'Shadow Ring',
-        Ring2 = 'Merman\'s Ring',
-        Back = 'Mahatma Cape',
-        Waist = { Name = 'Ocean Rope', Priority = 100 },
-        Legs = 'Hydra Brais',
-        Feet = 'Hydra Gaiters',
+        Main = 'Dark Staff',
+        Body = 'Errant Hpl.',
+        Legs = "Baron's Slops"
     },
     Town = {},
     Movement = {},
 
     DT = {
-		Main = 'Terra\'s Staff',
+		Main = 'Earth Staff',
         Head = 'Darksteel Cap +1',
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Hands = 'Dst. Mittens +1',
         Back = 'Umbra Cape',
         Legs = 'Dst. Subligar +1',
@@ -78,27 +50,22 @@ local sets = {
     },
     DTNight = {},
     MDT = {
-        Main = 'Terra\'s Staff',
-        Head = 'Black Ribbon',
-        Neck = 'Jeweled Collar +1',
+        Main = 'Earth Staff',
+       -- Head = 'Black Ribbon',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = 'Merman\'s Earring', -- 2
-        Body = 'Mahatma Hpl.',
-        Hands = 'Merman\'s Bangles', -- 2
-        Ring1 = 'Shadow Ring',
-        Ring2 = 'Sattva Ring', -- 5
-        Back = 'Hexerei Cape', -- 3
-        Waist = { Name = 'Ocean Rope', Priority = 100 },
+        Body = 'Errant Hpl.',
         Legs = 'Byakko\'s Haidate',
         Feet = 'Suzaku\'s Sune-ate',
     },
     FireRes = {
-        Main = 'Neptune\'s Staff', -- 20
-        Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Main = 'Water Staff', -- 20
+      --  Head = 'Black Ribbon', -- 12
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
-        Body = 'Mahatma Hpl.',
+        Body = 'Errant Hpl.',
         Hands = 'Tarasque Mitts +1', -- 6
         Ring1 = 'Triumph Ring', -- 10
         Ring2 = 'Malflame Ring', -- 10
@@ -109,12 +76,12 @@ local sets = {
     },
     IceRes = {},
     LightningRes = {
-        Main = 'Terra\'s Staff', -- 20
+        Main = 'Earth Staff', -- 20
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar +1', -- 10
+        Neck = 'Jeweled Collar', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Hands = 'Merman\'s Bangles',
         Ring1 = 'Spinel Ring', -- 9
         Ring2 = 'Malflash Ring', -- 10
@@ -139,7 +106,7 @@ local sets = {
  		Sub = 'Genbu\'s Shield',
         Ammo = { Name = 'Hedgehog Bomb', Priority = 100 },
         Head = 'Genbu\'s Kabuto', -- 50
-        Neck = 'Pch. Collar', -- 10
+        Neck = 'Checkered Scarf', -- 10
         Ear1 = 'Loquac. Earring',
         Ear2 = { Name = 'Cassie Earring', Priority = -100 }, -- 50
         Body = 'Sha\'ir Manteel',
@@ -152,14 +119,14 @@ local sets = {
         Feet = 'Rostrum Pumps', -- -30
     },
     Casting = { -- Default SIRD used for Idle sets
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         -- Range = 'Mythic Harp +1',
         Ammo = { Name = 'Hedgehog Bomb', Priority = 100 },
         Head = 'Reraise Hairpin', -- +MP
         Neck = 'Willpower Torque', -- 5
         Ear1 = { Name = 'Loquac. Earring', Priority = 100 },
         Ear2 = { Name = 'Magnetic Earring', Priority = 100 }, -- 8
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Hands = 'Merman\'s Bangles',
         Ring1 = 'Shadow Ring',
         Ring2 = 'Sattva Ring',
@@ -169,14 +136,14 @@ local sets = {
         Feet = 'Mountain Gaiters', -- 5
     },
     SIRD = { -- Used on Stoneskin, Blink, Aquaveil and Utsusemi casts regardless of Override set. If you wish to remain in FireRes etc. during casts, leave empty.
-        Main = 'Terra\'s Staff',
+        Main = 'Earth Staff',
         -- Range = 'Mythic Harp +1',
         Ammo = { Name = 'Hedgehog Bomb', Priority = 100 },
         Head = 'Reraise Hairpin', -- +MP
         Neck = 'Willpower Torque', -- 5
         Ear1 = { Name = 'Loquac. Earring', Priority = 100 },
         Ear2 = { Name = 'Magnetic Earring', Priority = 100 }, -- 8
-        Body = 'Dst. Harness +1',
+        Body = 'Darksteel Harness',
         Hands = 'Merman\'s Bangles',
         Ring1 = 'Shadow Ring',
         Ring2 = 'Sattva Ring',
@@ -192,7 +159,7 @@ local sets = {
         Ear1 = { Name = 'Loquac. Earring', Priority = 100 },
         Ear2 = { Name = 'Magnetic Earring', Priority = 100 },
         Hands = 'Dusk Gloves +1', -- 4
-        Waist = 'Sonic Belt', -- 6
+        Waist = 'Swift Belt', -- 6
         Legs = 'Byakko\'s Haidate', -- 5
         Feet = 'Dusk Ledelsens +1', -- 3
     },
@@ -219,11 +186,10 @@ local sets = {
     Sing_Buff = {
         Main = 'Chanter\'s Staff',
         Body = 'Minstrel\'s Coat',
-        Waist = { Name = 'Ocean Rope', Priority = 100 },
         Feet = 'Dusk Ledelsens +1',
     },
     Sing_Debuff = {
-        Body = 'Mahatma Hpl.',
+        Body = 'Errant Hpl.',
     },
 
     Sing_Recast = {
@@ -259,13 +225,13 @@ local sets = {
         Range = 'Nursemaid\'s Harp',
         Neck = 'String Torque',
         Body = 'Chl. Jstcorps +1',
-        Legs = 'Mahatma Slops',
+        Legs = 'Errant Slops',
     },
     Sing_HordeLullaby_Large = {
         Range = 'Nursemaid\'s Harp',
         Neck = 'String Torque',
         Body = 'Chl. Jstcorps +1',
-        Legs = 'Mahatma Slops',
+        Legs = 'Errant Slops',
     },
     Sing_HordeLullaby_Small = {
         -- Range = 'Mary\'s Horn',
@@ -275,7 +241,7 @@ local sets = {
         Range = 'Military Harp',
         Neck = 'String Torque',
         Body = 'Chl. Jstcorps +1',
-        Legs = 'Mahatma Slops',
+        Legs = 'Errant Slops',
     },
     Sing_Requiem = {
         Range = 'Hamelin Flute',
@@ -293,7 +259,7 @@ local sets = {
         Range = 'Sorrowful Harp',
         Neck = 'String Torque',
         Body = 'Chl. Jstcorps +1',
-        Legs = 'Mahatma Slops',
+        Legs = 'Errant Slops',
     },
     Sing_Hymnus = {
         Range = 'Angel Lyre',
@@ -310,7 +276,7 @@ local sets = {
     },
 
     Cure = {
-        Main = 'Apollo\'s Staff',
+        Main = 'Light Staff',
         Ammo = { Name = 'Hedgehog Bomb', Priority = 100 },
         Head = 'Hydra Beret', -- 8
         Neck = 'Benign Necklace', -- 2
@@ -337,13 +303,13 @@ local sets = {
         Neck = 'Stone Gorget',
         Ear1 = 'Cmn. Earring',
         Ear2 = 'Cmn. Earring',
-        Body = 'Mahatma Hpl.',
+        Body = 'Errant Hpl.',
         Hands = { Name = 'Dvt. Mitts +1', Priority = 100 },
         Ring1 = 'Aqua Ring',
         Ring2 = 'Communion Ring',
         Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Mahatma Slops',
+        Legs = 'Errant Slops',
         Feet = 'Suzaku\'s Sune-ate',
     },
     Spikes = {},
@@ -387,9 +353,31 @@ local sets = {
 }
 
 profile.SetMacroBook = function()
-    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
-    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
+	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro book 1");
+	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro set 9");
+	-- Sleeps
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 0 down /ma \"Horde Lullaby\" <t>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 1 down /ma \"Foe Lullaby\" <t>");
+	-- Songs
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 2 down /ma \"Ice Threnody\" <t>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 3 down /ma \"Utsusemi: Ichi\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Blade Madrigal\" <me>");
+	--(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Advancing March\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Valor Minuet II\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Victory March\" <me>");
+--	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Valor Minuet IV\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 7 down /ma \"Mage's Ballad\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Mage's Ballad II\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Carnage Elegy\" <t>");
 end
+
+profile.LoadJobAddons = function()
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/addon load songcast");
+end;
+
+profile.UnloadJobAddons = function()
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/addon unload songcast");
+end;
 
 --[[
 --------------------------------
@@ -431,11 +419,13 @@ profile.OnLoad = function()
     gcdisplay.CreateToggle('SleepRecast', true)
     gcmage.Load()
     profile.SetMacroBook()
+    profile.LoadJobAddons();
 end
 
 profile.OnUnload = function()
     gcmage.Unload()
     gcinclude.ClearAlias(T{'sballad','shorde','srecast'})
+    profile.UnloadJobAddons();
 end
 
 profile.HandleCommand = function(args)

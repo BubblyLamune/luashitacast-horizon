@@ -1,5 +1,3 @@
-local horizon_safe_mode = true -- this disables some of the potentially more contentious automation to ensure LAC is not breaking Horizon server rules
-
 local display_messages = true -- set to true if you want chat log messages to appear on any /gc command used such as DT, or KITE gear toggles
 
 local load_stylist = true -- set to true to just load stylist on game start. this is purely for convenience since putting it in scripts doesn't work
@@ -17,7 +15,7 @@ local federation_aketon = {
     -- Body = 'Federation Aketon',
 }
 local ducal_aketon = {
-    -- Body = 'Ducal Aketon',
+    Body = 'Ducal Aketon',
 }
 local dream_boots = {
     Feet = 'Dream Boots +1',
@@ -28,9 +26,6 @@ local dream_mittens = {
 local skulkers_cape = {
     -- Back = 'Skulker\'s Cape',
 }
-
--- Set this to true to confirm that actually read the README.md and set up the equipment listed above correctly
-local i_can_read_and_follow_instructions_test = false
 
 -- Add additional equipment here that you want to automatically lock when equipping
 local LockableEquipment = {
@@ -52,6 +47,25 @@ local LockableEquipment = {
     ['Feet'] = T{'Powder Boots'}
 }
 
+local LockableCraftingEquipment = {
+    ['Main'] = T{'Caduceus'},
+    ['Sub'] = T{},
+    ['Range'] = T{},
+    ['Ammo'] = T{},
+    ['Head'] = T{'Protective Spectacles', 'Magnifying Spectacles', 'Chef\'s Hat', 'Shaded Spectacles'},
+    ['Neck'] = T{},
+    ['Ear1'] = T{},
+    ['Ear2'] = T{},
+    ['Body'] = T{'Fsh. Tunica', 'Angler\'s Tunica', 'Fisherman\'s Smock', 'Chocobo Jack Coat', 'Rider\'s Jack Coat', 'Alchemist\'s Apron', 'Boneworker\'s Apron', 'Weaver\'s Apron', 'Blacksmith\'s Apron', 'Carpenter\'s Apron', 'Culinarian\'s Apron', 'Goldsmith\'s Apron', 'Tanner\'s Apron'},
+    ['Hands'] = T{'Fsh. Gloves', 'Angler\'s Gloves', 'Tanner\'s Gloves', 'Smithy\'s Mitts', 'Carpenter\'s Gloves', 'Chocobo Gloves', 'Rider\'s Gloves'},
+    ['Ring1'] = T{},
+    ['Ring2'] = T{},
+    ['Back'] = T{},
+    ['Waist'] = T{'Alchemist\'s Belt', 'Boneworker\'s Belt', 'Weaver\'s Belt', 'Culinarian\'s Belt', 'Goldsmith\'s Belt', 'Tanner\'s Belt', 'Blacksmith\'s Belt', 'Carpenter\'s Belt'},
+    ['Legs'] = T{'Fisherman\'s Hose', 'Angler\'s Hose', 'Chocobo Hose', 'Rider\'s Hose'},
+    ['Feet'] = T{'Fisherman\'s Boots', 'Angler\'s Boots', 'Waders', 'Chocobo Boots', 'Rider\'s Boots'}
+}
+
 --[[
 --------------------------------
 Everything below can be ignored.
@@ -63,10 +77,8 @@ conquest = gFunc.LoadFile('common\\conquest.lua')
 
 local gcinclude = {}
 
-gcinclude.horizon_safe_mode = horizon_safe_mode
-
 local Overrides = T{ 'idle','dt','pdt','mdt','fireres','fres','iceres','ires','bres','lightningres','lres','tres','earthres','eres','sres','windres','wires','ares','waterres','wares','wres','evasion','eva' }
-local Commands = T{ 'kite','lock','lockset','warpme','horizonmode' }
+local Commands = T{ 'kite','lock','lockset','warpme','horizonmode', 'fishing', 'helm' }
 
 local Towns = T{
     'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau',
@@ -114,6 +126,21 @@ local isMageJobs = T{ 'RDM','BLM','WHM','SMN','BRD' }
 
 local lastIdleSet = 'Normal'
 
+local sharedSets = {
+    Fishing = { -- this set is meant as a default set for fishing, equip using /fishing
+        Body = 'Fsh. Tunica',
+        Hands = 'Fsh. Gloves',
+        Legs = 'Fisherman\'s Hose',
+        Feet = 'Fisherman\'s Boots',
+    },
+    Fieldcraft = { -- this set is meant as a default set for fieldcraft, equip using /helm
+        Body = 'Field Tunica',
+        Hands = 'Field Gloves',
+        Legs = 'Field Hose',
+        Feet = 'Field Boots',
+    }
+}
+
 function gcinclude.Load()
     gSettings.AllowAddSet = true
     gcinclude.SetAlias(Overrides)
@@ -121,6 +148,8 @@ function gcinclude.Load()
 
     gcdisplay.CreateToggle('Kite', false)
     gcdisplay.CreateToggle('Lock', false)
+    gcdisplay.CreateToggle('Fishing', false)
+    gcdisplay.CreateToggle('HELM', false)
 
     local function delayLoad()
         gcdisplay.Load()
@@ -182,6 +211,12 @@ function gcinclude.DoCommands(args)
             gcdisplay.CreateToggle('Lock', true)
             gcinclude.Message('Equip Lock', gcdisplay.GetToggle('Lock'))
         end
+    elseif (args[1] == 'helm') then
+        gcdisplay.AdvanceToggle('HELM')
+        gcinclude.Message('HELM', gcdisplay.GetToggle('HELM'))
+    elseif (args[1] == 'fishing') then
+        gcdisplay.AdvanceToggle('Fishing')
+        gcinclude.Message('Fishing', gcdisplay.GetToggle('Fishing'))
     elseif (args[1] == 'lock') then
         local player = gData.GetPlayer()
         gcdisplay.AdvanceToggle('Lock')
@@ -301,12 +336,9 @@ function gcinclude.DoDefaultOverride(isMelee)
 end
 
 function gcinclude.DoItem()
-    if (not i_can_read_and_follow_instructions_test) then
-        print(chat.header('GCInclude'):append(chat.message('Failed to follow instructions. Read the README.md')))
-    end
-
     local item = gData.GetAction()
-
+    print(chat.header('debug'):append( 'DoItem'))
+    gcinclude.CheckCancels()
     if (item.Name == 'Silent Oil') then
         gFunc.EquipSet('dream_boots')
         gFunc.EquipSet('skulkers_cape')
@@ -351,6 +383,34 @@ function gcinclude.BuildLockableSet(equipment)
 
     return lockableSet
 end
+
+--[[ Referenced / Copied from Avogadro-war on GHUB ]]
+function gcinclude.CheckCancels(action, target, me)
+	local action = action or gData.GetAction();
+	local sneak = gData.GetBuffCount('Sneak');
+	local stoneskin = gData.GetBuffCount('Stoneskin');
+	local target = target or gData.GetActionTarget();
+	local me = me or AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
+	print(chat.header('debug'):append(chat.message(tostring(action.Name) + ' is passed')))
+
+	local function do_jig()
+		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Spectral Jig" <me>');
+	end
+	local function do_sneak()
+		AshitaCore:GetChatManager():QueueCommand(1, '/ma "Sneak" <me>');
+	end
+
+	if (action.Name == 'Spectral Jig' and sneak ~=0) then
+		gFunc.CancelAction();
+		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
+		do_jig:once(2);
+	elseif (action.Name == 'Sneak' and sneak ~= 0 and target.Name == me) then
+		gFunc.CancelAction();
+		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
+		do_sneak:once(1);
+	end
+end
+
 
 function gcinclude.AppendSets(sets)
     sets.kingdom_aketon = kingdom_aketon

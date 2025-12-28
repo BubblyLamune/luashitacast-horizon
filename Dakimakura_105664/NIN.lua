@@ -6,28 +6,28 @@ local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if 
 
 -- Comment out the equipment within these sets if you do not have them or do not wish to use them
 local fire_staff = {
-    Main = 'Fire Staff',
+    Main = 'Vulcan\'s Staff',
 }
 local earth_staff = {
-    Main = 'Earth Staff',
+    Main = 'Terra\'s Staff',
 }
 local water_staff = {
-    Main = 'Water Staff',
+    Main = 'Neptune\'s Staff',
 }
 local wind_staff = {
-    Main = 'Wind Staff',
+    Main = 'Auster\'s Staff',
 }
 local ice_staff = {
-    Main = 'Ice Staff',
+    Main = 'Aquilo\'s Staff',
 }
 local thunder_staff = {
-    Main = 'Thunder Staff',
+    Main = 'Jupiter\'s Staff',
 }
 local light_staff = {
-    Main = 'Light Staff',
+    Main = 'Apollo\'s Staff',
 }
 local dark_staff = {
-    Main = 'Dark Staff',
+    Main = 'Pluto\'s Staff',
 }
 
 local karin_obi = {
@@ -81,21 +81,7 @@ local koga_hakama_plus_one = {
 }
 
 local sets = {
-    Idle = {
-        Main = 'Kodachi +1',
-        Sub = 'Nikkariaoe',
-        Range = 'Halcyon Rod',
-        Head = 'Emperor Hairpin',
-        Neck = 'Spike Necklace',
-        Body = 'Jujitsu Gi',
-        Hands = 'Custom F Gloves',
-        Ring1 = 'Balance Ring',
-        Ring2 = 'Balance Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Warrior\'s Belt +1',
-        Legs = 'Republic Subligar',
-        Feet = 'Leaping Boots',
-    },
+    Idle = {},
     IdleALT = {},
     IdleDT = {},
     IdleALTDT = {},
@@ -154,7 +140,7 @@ local sets = {
 profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Provoke" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Provoke" <t>;/party Provoke <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
 end

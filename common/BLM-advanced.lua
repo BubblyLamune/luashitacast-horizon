@@ -37,10 +37,10 @@ local Yellow_Advanced_Base = { -- 230
     set = {
         Ammo = 'Tiphia Sting',
         Head = 'Zenith Crown +1',
-        Neck = 'Jeweled Collar +1',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Loquac. Earring', 
         Ear2 = 'Magnetic Earring',
-        Body = 'Mahatma Hpl.',
+        Body = 'Errant Hpl.',
         Hands = 'Zenith Mitts +1',
         Ring1 = 'Merman\'s Ring',
         Ring2 = 'Serket Ring',
@@ -98,7 +98,7 @@ local Yellow_Advanced_Steps = {
     [7] = { -- 265
         val = 5,
         set = {
-            Neck = 'Jeweled Collar +1', -- -15
+            Neck = 'Jeweled Collar', -- -15
             Waist = 'Penitent\'s Rope', -- 20
         },
     },
