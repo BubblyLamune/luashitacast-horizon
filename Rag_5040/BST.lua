@@ -10,23 +10,7 @@ local gaudy_harness = {
 }
 
 local sets = {
-    ['Idle'] = {
-        Main = 'Mythril Pick',
-        Sub = 'Barbaroi Axe',
-        Ammo = 'S. Herbal Broth',
-        Head = 'Emperor Hairpin',
-        Neck = 'Spike Necklace',
-        Ear1 = 'Drone Earring',
-        Ear2 = 'Drone Earring',
-        Body = 'Brigandine',
-        Hands = 'Custom F Gloves',
-        Ring1 = 'Balance Ring',
-        Ring2 = 'Balance Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Life Belt',
-        Legs = 'Republic Subligar',
-        Feet = 'Leaping Boots',
-    },
+    Idle = {},
     IdleALT = {},
     Resting = {},
     Town = {},
@@ -73,9 +57,8 @@ local sets = {
 }
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Dancing Edge" <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 end
 
 --[[

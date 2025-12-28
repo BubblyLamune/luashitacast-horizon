@@ -15,6 +15,9 @@ local dream_ribbon = {
     Head = 'Dream Ribbon',
 }
 
+-- Set this to true to confirm that actually read the README.md and set up the equipment listed above correctly
+local i_can_read_and_follow_instructions_test = false
+
 --[[
 --------------------------------
 Everything below can be ignored.
@@ -224,6 +227,10 @@ function gcmelee.DoDefaultOverride()
 end
 
 function gcmelee.DoPrecast(fastCastValue)
+    if (not i_can_read_and_follow_instructions_test) then
+        print(chat.header('GCMelee'):append(chat.message('Failed to follow instructions. Read the README.md')))
+    end
+
     gFunc.EquipSet('Precast')
     if (not lag) then
         return gcmelee.SetupMidcastDelay(fastCastValue)
@@ -287,6 +294,10 @@ function gcmelee.SetupInterimEquipSet(sets)
 end
 
 function gcmelee.DoWS()
+    if (not i_can_read_and_follow_instructions_test) then
+        print(chat.header('GCMelee'):append(chat.message('Failed to follow instructions. Read the README.md')))
+    end
+
     gFunc.EquipSet('WS')
     if (TpVariantTable[tp_variant] == 'HighAcc') then
         gFunc.EquipSet('WS_HighAcc')
@@ -300,6 +311,10 @@ function gcmelee.GetAccuracyMode()
 end
 
 function gcmelee.DoAbility()
+    if (not i_can_read_and_follow_instructions_test) then
+        print(chat.header('GCMelee'):append(chat.message('Failed to follow instructions. Read the README.md')))
+    end
+
     gcinclude.DoAbility()
 end
 

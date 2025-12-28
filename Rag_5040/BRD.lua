@@ -14,7 +14,7 @@ local warlocks_mantle = { -- Don't add 2% to fastCastValue for this as it is SJ 
 
 local sets = {
     Idle = {
-        Main = 'Earth Staff',
+        Main = 'Terra\'s Staff',
         -- Range = 'Mythic Harp +1',
         Ammo = 'Pebble',
         Head = 'displaced',
@@ -49,7 +49,7 @@ local sets = {
     },
     IdleMaxMP = {},
     Resting = {
-        Main = 'Dark Staff',
+        Main = 'Pluto\'s Staff',
         Ammo = 'Hedgehog Bomb',
         Head = 'Hydra Beret',
         Neck = 'Pch. Collar',

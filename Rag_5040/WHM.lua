@@ -34,30 +34,10 @@ local asklepios = { -- Used for Cures with Mjollnir when /NIN
 }
 
 local sets = {
-    Idle = {		Main = "Earth Staff",
-		Hands = "Blessed Mitts",
-		Head = "Cleric\'s Cap",
-		Body = "Noble's tunic",
-		Legs = "Cleric\'s Pantaln.",
-		Feet = "Rostrum Pumps",
-		Neck = "Ajari Necklace",
-		Waist = "Cleric\'s Belt",
-        Ear1 = 'Geist Earring',
-        Ear2 = 'Geist Earring',
-		Ring1 = "Ether Ring",
-		Ring2 = "Tamas Ring",
-		Back = "Prism Cape"},
+    Idle = {},
     IdleALT = {},
     IdleMaxMP = {},
-    Resting = {		
-        Main = "Dark Staff",
-		Sub = "",
-		Waist = "Cleric\'s Belt",
-		Body = "Errant Hpl.",
-		Neck = 'Checkered Scarf',
-		-- Body = "Noble's tunic",
-		-- Body = "Seer's tunic",
-		Legs = "Baron's Slops"},
+    Resting = {},
     Town = {},
     Movement = {},
 
@@ -88,22 +68,15 @@ local sets = {
     Cheat_HPUp = {},
 
     Yellow = {},
-    Cure = {		
-        Main = "Light Staff",
-		Feet = "Errant Pigaches",},
-    Cure5 = {		
-        Main = "Light Staff",
-		Feet = "Errant Pigaches",},
+    Cure = {},
+    Cure5 = {},
     Regen = {
-		Main = 'Rucke\'s Rung',
         Body = 'Cleric\'s Bliaut',
     },
     Barspell = {},
     Cursna = {},
 
-    Enhancing = {
-        Feet = "Cleric\'s Duckbills",
-    },
+    Enhancing = {},
     Stoneskin = {},
     Spikes = {},
 
@@ -139,17 +112,8 @@ local sets = {
 }
 
 profile.SetMacroBook = function()
-	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro book 1");
-	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro set 1");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 1 down /ma \"Cure II\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 2 down /ma \"Cure III\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 3 down /ma \"Cure IV\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Regen\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Haste\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Regen II\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 7 down /ma \"Dia II\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Paralyze\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 9 down /ma \"Slow\" <t>");
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 end
 
 --[[

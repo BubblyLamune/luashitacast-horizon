@@ -27,45 +27,33 @@ local tp_fencers_ring = {
 
 local sets = {
     Idle = {
-        Main = 'Earth Staff',
-        Ammo = 'Fortune Egg',
-        Head = { Name = 'Duelist\'s Chapeau', Priority = 100 },
-        Neck = 'Jeweled Collar',
-        Ear1 = 'Geist Earring',
-        Ear2 = 'Geist Earring',
-        Body = 'Duelist\'s Tabard',
-        Hands = 'Duelist\'s Gloves',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Ether Ring',
-        Back = 'Prism Cape',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Nashira Seraweels',
-        Feet = 'Duelist\'s Boots',
+        Main = 'Terra\'s Staff',
+        Range = 'Arco de Velocidad',
+        Ammo = 'displaced',
+        Head = { Name = 'Dls. Chapeau +1', Priority = 100 },
+        Neck = 'Jeweled Collar +1',
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Merman\'s Earring',
+        Body = 'Dst. Harness +1',
+        Hands = 'Dst. Mittens +1',
+        Ring1 = 'Shadow Ring',
+        Ring2 = 'Sattva Ring',
+        Back = 'Umbra Cape',
+        Waist = { Name = 'Hierarch Belt', Priority = 100 },
+        Legs = { Name = 'Blood Cuisses', Priority = 100 },
+        Feet = 'Dst. Leggings +1',
     },
     IdleALT = {
-        Main = 'Earth Staff',
-        Head = '',
-        Neck = 'Jeweled Collar',
-        Ear1 = 'Geist Earring',
-        Ear2 = 'Geist Earring',
-        Body = 'Vermillion Cloak',
-        Hands = 'Errant Cuffs',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Ether Ring',
-        Back = 'Prism Cape',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Errant Slops',
-        Feet = 'Errant Pigaches',
     },
     IdleMaxMP = {
-        Main = 'Earth Staff',
+        Main = 'Terra\'s Staff',
         Range = 'displaced',
         Ammo = 'Hedgehog Bomb',
-        Head = 'Duelist Chapeau',
+        Head = 'Dls. Chapeau +1',
         Neck = 'Uggalepih Pendant',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Magnetic Earring',
-        Body = 'Duelist Tabard',
+        Body = 'Dls. Tabard +1',
         Hands = 'Blood Fng. Gnt.',
         Ring1 = 'Serket Ring',
         Ring2 = 'Sattva Ring',
@@ -75,59 +63,59 @@ local sets = {
         Feet = 'Blood Greaves',
     },
     Resting = {
-        Main = 'Dark Staff',
-        --Range = 'Arco de Velocidad',
+        Main = 'Pluto\'s Staff',
+        Range = 'Arco de Velocidad',
         Ammo = 'displaced',
-        Head = 'Duelist Chapeau',
-        Neck = 'Checkered Scarf',
+        Head = 'Dls. Chapeau +1',
+        Neck = 'Pch. Collar',
         Ear1 = 'Relaxing Earring',
         Ear2 = 'Magnetic Earring',
-        Body = 'Errant Hpl.',
+        Body = 'Mahatma Hpl.',
         Hands = 'Hydra Gloves',
         Back = 'Mahatma Cape',
         Waist = 'Duelist\'s Belt',
-        Legs = 'Baron\'s Slops',
+        Legs = 'Hydra Brais',
         Feet = 'Hydra Gaiters',
     },
     Town = {},
     Movement = {
-        Head = 'Duelist Chapeau',
+        Head = 'Dls. Chapeau +1',
         Legs = 'Blood Cuisses',
     },
 
     DT = {
-        Main = 'Earth Staff', -- 20
-        --Range = 'Arco de Velocidad',
-        --Ammo = 'displaced',
-        Head = { Name = 'Duelist Chapeau', Priority = 100 },
-        Neck = 'Jeweled Collar',
+        Main = 'Terra\'s Staff', -- 20
+        Range = 'Arco de Velocidad',
+        Ammo = 'displaced',
+        Head = { Name = 'Dls. Chapeau +1', Priority = 100 },
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
-        Body = 'Darksteel Harness', -- 4
-       -- Hands = 'Dst. Mittens +1', -- 2
-       -- Ring1 = 'Jelly Ring', -- 5
-       -- Ring2 = 'Sattva Ring', -- 5
-     --   Back = 'Umbra Cape', -- 6
-      --  Waist = { Name = 'Hierarch Belt', Priority = 100 },
-      --  Legs = 'Dst. Subligar +1', -- 3
-     --   Feet = 'Dst. Leggings +1', -- 2
+        Body = 'Dst. Harness +1', -- 4
+        Hands = 'Dst. Mittens +1', -- 2
+        Ring1 = 'Jelly Ring', -- 5
+        Ring2 = 'Sattva Ring', -- 5
+        Back = 'Umbra Cape', -- 6
+        Waist = { Name = 'Hierarch Belt', Priority = 100 },
+        Legs = 'Dst. Subligar +1', -- 3
+        Feet = 'Dst. Leggings +1', -- 2
     },
     DTNight = {
-        Main = 'Earth Staff', -- 20
-     --   Range = 'Arco de Velocidad',
-     --   Ammo = 'displaced',
-        Head = { Name = 'Duelist Chapeau', Priority = 100 },
-        Neck = 'Jeweled Collar',
+        Main = 'Terra\'s Staff', -- 20
+        Range = 'Arco de Velocidad',
+        Ammo = 'displaced',
+        Head = { Name = 'Dls. Chapeau +1', Priority = 100 },
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
-        Body = 'Darksteel Harness', -- 4
-      --  Hands = 'Dst. Mittens +1', -- 2
-      --  Ring1 = 'Jelly Ring', -- 5
-     --   Ring2 = 'Sattva Ring', -- 5
-     --   Back = 'Umbra Cape', -- 12
-    --    Waist = { Name = 'Hierarch Belt', Priority = 100 },
-     --   Legs = 'Blood Cuisses',
-    --    Feet = 'Dst. Leggings +1', -- 2
+        Body = 'Dst. Harness +1', -- 4
+        Hands = 'Dst. Mittens +1', -- 2
+        Ring1 = 'Jelly Ring', -- 5
+        Ring2 = 'Sattva Ring', -- 5
+        Back = 'Umbra Cape', -- 12
+        Waist = { Name = 'Hierarch Belt', Priority = 100 },
+        Legs = 'Blood Cuisses',
+        Feet = 'Dst. Leggings +1', -- 2
     },
     MDT = {
         Main = 'Terra\'s Staff',

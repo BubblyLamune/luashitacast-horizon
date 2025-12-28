@@ -28,60 +28,29 @@ local shadow_mantle = {
 }
 
 local sets = {
-	Idle = {
-		Main = "Earth Staff",
-		Hands = "Blessed Mitts",
-		Head = "Healer\'s Cap",
-		Body = "Noble's tunic",
-		Legs = "Blessed Trousers",
-		Feet = "Errant Pigaches",
-		Neck = "Ajari Necklace",
-		Waist = "Hierarch Belt",
-		Ear1 = "Geist Earring",
-		Ear2 = "Geist Earring",
-		Ring1 = "Ether Ring",
-		Ring2 = "Tamas Ring",
-		Back = "White Cape"
-	},
-	IdleALT = {
-		Main = "Purgatory Mace",
-		Sub = "Numinous shield",
-		Hands = "Blessed Mitts",
-		Head = "Healer\'s Cap",
-		Body = "Noble's tunic",
-		Legs = "Blessed Trousers",
-		Feet = "Errant Pigaches",
-		Neck = "Ajari Necklace",
-		Waist = "Hierarch Belt",
-		Ear1 = "Geist Earring",
-		Ear2 = "Geist Earring",
-		Ring1 = "Ether Ring",
-		Ring2 = "Tamas Ring",
-		Back = "White Cape"
-	},
-    IdleDT = { -- 1415
+    Idle = { -- 1415
         Main = 'Tutelary',
         Sub = 'Aegis',
-        Main = 'Earth Staff',
-        Sub = '',
         Range = 'Rosenbogen',
         Ammo = '',
         Head = '',
         Body = 'Royal Cloak',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Merman\'s Earring',
+        Ear2 = { Name = 'Cassie Earring', Priority = 100 },
         Hands = 'Heavy Gauntlets',
-        Ring1 = 'Merman\'s Ring',
+        Ring1 = 'Shadow Ring',
         Ring2 = { Name = 'Sattva Ring', Priority = 100 },
-        Back = { Name = 'Valor Cape', Priority = 100 },
+        Back = 'Shadow Mantle',
         Waist = 'Warwolf Belt',
         Legs = { Name = 'Dst. Subligar +1', Priority = 10 },
-        Feet = 'Dst. Leggings +1',
+        Feet = { Name = 'Glt. Leggings +1', Priority = 90 },
     },
-    IdleDT = {
-        Main = 'Durandal',
-        Sub = 'Palmerin\'s Shield',
+    IdleALT = {
+    },
+    IdleDT = { -- 1415
+        Main = 'Tutelary',
+        Sub = 'Aegis',
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Darksteel Cap +1', -- 2
@@ -99,18 +68,18 @@ local sets = {
     },
     IdleALTDT = {
     },
-	Resting = {
-		Main = "Dark Staff",
-		Sub = "remove",
-		Body = "Noble's tunic",
-		Legs = "Baron's Slops"
-	},
+    Resting = {
+        Main = 'Pluto\'s Staff',
+        Sub = 'remove',
+        Ear1 = 'Relaxing Earring',
+        Ear2 = 'Magnetic Earring',
+    },
     Town = {
         Main = 'Octave Club',
         Sub = 'Aegis',
         Range = 'Arco de Velocidad',
         Head = 'Bahamut\'s Mask',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Knightly Earring',
         Ear2 = 'Cassie Earring',
         Body = 'Hydra Haubert',
@@ -144,8 +113,8 @@ local sets = {
         Legs = { Name = 'Dst. Subligar +1', Priority = 10 }, -- 3
         Feet = { Name = 'Glt. Leggings +1', Priority = 90 },
     },
-    MDT = { -- Shell IV provides 23% MDT
-        Neck = 'Jeweled Collar',
+    MDT = {
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
         Ring1 = 'Shadow Ring',
@@ -156,7 +125,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -172,7 +141,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -191,7 +160,7 @@ local sets = {
         Range = 'Lightning Bow +1', -- 7
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -207,7 +176,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -223,7 +192,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15
@@ -239,7 +208,7 @@ local sets = {
         Range = 'Rosenbogen',
         Ammo = '',
         Head = 'Black Ribbon', -- 12
-        Neck = 'Jeweled Collar', -- 10
+        Neck = 'Jeweled Collar +1', -- 10
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
         Body = 'Assault Brstplate', -- 15

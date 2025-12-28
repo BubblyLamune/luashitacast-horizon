@@ -138,11 +138,8 @@ local sets = {
 }
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Provoke" <t>;/party Provoke <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 end
 
 --[[

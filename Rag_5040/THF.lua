@@ -1,39 +1,23 @@
 local profile = {}
 
-local fastCastValue = 0.00 -- 0% from gear
+local fastCastValue = 0.00 -- 0% from gear listed in Precast set
 
-local ta_rogue_armlets = false
-local player = gData.GetPlayer()
+local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
+
+-- Comment out the equipment within these sets if you do not have them or do not wish to use them
+local evasion_master_casters_mitts = {
+    -- Hands = 'Mst.Cst. Mitts',
+}
 
 local sets = {
-    Idle = {		
-        Main = "Cermet Kukri +1",
-        Sub = "Garuda\'s Dagger",
-        Body = "Rapparee Harness",
-        Hands = "Custom F gloves",
-        Legs = "Rogue\'s Culottes",
-        --Head = "Rogue's Bonnet",
-        Head = "Emperor Hairpin",
-        Feet = "Leaping Boots",
-        Neck = "Spike necklace",
-        Waist = "Swift belt",
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = "Coral earring",
-        Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Toreador\'s Ring',
-        Back = "Amemet mantle"
-    },
-    IdleALT = {
-    },
-    Resting = {
-       -- Main = "Dark Staff",
-        -- Sub = ""
-    },
+    Idle = {},
+    IdleALT = {},
+    Resting = {},
     Town = {},
     Movement = {},
+
     DT = {},
-    MDT = { -- Shell IV provides 23% MDT
-    },
+    MDT = {},
     FireRes = {},
     IceRes = {},
     LightningRes = {},
@@ -43,7 +27,7 @@ local sets = {
     Evasion = {},
 
     Precast = {},
-    SIRD = {
+    SIRD = { -- Only used for Idle sets and not while Override sets are active
     },
     Haste = { -- Used for Utsusemi cooldown
     },
@@ -53,84 +37,83 @@ local sets = {
     LockSet3 = {},
 
     TP_LowAcc = {},
+    TP_Aftermath = {},
+    TP_Mjollnir_Haste = {},
     TP_HighAcc = {},
     TP_NIN = {},
-    TP_Mjollnir_Haste = {},
 
-    WS = {},
-    WS_HighAcc = {},
+    -- Note that these sets are for naked SA/TA/SATAs without WS
+    SA = {},
+    TA = {},
+    SATA = {},
 
-    WS_Evisceration = {},
+    -- The following demonstrates layering of WS sets that should cover all debatable major WS combinations.
+    WS = {
+		Head = 'Maat\'s Cap',
+		Neck = 'Love Torque',
+		Ear1 = 'Suppanomimi',
+		Ear2 = 'Brutal Earring',
+		Body = 'Dragon Harness +1',
+		Hands = { Name = 'Hct. Mittens +1', Priority = 1 },
+		Ring1 = 'Rajas Ring',
+		Ring2 = 'Adroit Ring',
+		Back = 'Forager\'s Mantle',
+		Waist = 'Warwolf Belt',
+		Legs = { Name = 'Dusk Trousers +1', Priority = 2 },
+		Feet = { Name = 'Hct. Leggings +1', Priority = 1 },
+    },
+    WS_HighAcc = {
+		Body = { Name = 'Hct. Harness +1', Priority = 2 },
+		Ring2 = { Name = 'Toreador\'s Ring', Priority = 2 },
+		Waist = 'Life Belt',
+    },
+
+    WS_Evisceration = {
+		Feet = { Name = 'Asn. Poulaines +1', Priority = 1 },
+    },
+    WS_DancingEdge = {
+		Feet = { Name = 'Asn. Poulaines +1', Priority = 1 },
+    },
     WS_SharkBite = {},
-
-    SA = {
-        Head = "Rogue's Bonnet",
-        Body = "Brigandine",
-        Legs = "Rogue's Culottes",
-    },
-    TA = {
-        Head = "Rogue's Bonnet",
-        Body = "Brigandine",
-        Legs = "Rogue's Culottes",
-    },
-    SATA = {
-        Head = "Rogue's Bonnet",
-        Body = "Brigandine",
-        Legs = "Rogue's Culottes",
+    WS_MercyStroke = {
+		Ear1 = 'Tmph. Earring +1',
+		Body = { Name = 'Hct. Harness +1', Priority = 2 },
+		Ring2 = 'Triumph Ring',
+		Waist = 'Warwolf Belt',
     },
 
-    Flee = {
-        Feet = "Rogue\'s Poulaines",
+    -- Applied on SA WS and SATA WS
+    WS_SA = {
+		Feet = { Name = 'Hct. Leggings +1', Priority = 1 },
     },
-    Hide = {
-        Body = "Rogue's Vest",
 
+    -- Applied only on TA WS but NOT SATA WS
+    WS_TA = {
+		Ear1 = 'Drone Earring',
+        Hands = 'Rogue\'s Armlets +1',
+        Legs = 'Drn. Leggings +1',
     },
-    Steal = {
-        Legs = "Rogue's Culottes",
-        Head = "Rogue's Bonnet",
-        Hands = "Rogue's Armlets"
+    WS_TA_SharkBite = {
+		Ring2 = 'Breeze Ring',
     },
+    WS_TA_MercyStroke = {
+		Hands = { Name = 'Hct. Mittens +1', Priority = 1 },
+    },
+
+    WS_SATA_SharkBite = {
+        Hands = 'Rogue\'s Armlets +1',
+    },
+
+    Flee = {},
+    Hide = {},
+    Steal = {},
     Mug = {},
 
     TH = {},
-    Charm = {
-        Head = "Noble\'s Ribbon",
-        Ring1 = 'Hope Ring',
-        Ring2 = "Hope Ring",
-        Neck = 'Flower Necklace',
 
-    },
+    Ranged = {},
+    Ranged_INT = {},
 
-    Ranged = {
-        
-    },
-    Ranged_INT = {
-        Head = "Rogue's Bonnet",
-        Neck = 'Checkered Scarf',
-        Ear1 = 'Morion Earring',
-        Ear2 = 'Moldavite Earring',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Genius Ring',
-        Feet = 'Custom F Boots'
-
-    },
-    ['bcnmfourty'] = {
-        Main = 'Marauder\'s Knife',
-        Sub = 'Kingdom Dagger',
-        Head = 'Emperor Hairpin',
-        Neck = 'Spike Necklace',
-        Ear1 = 'Drone Earring',
-        Ear2 = 'Drone Earring',
-        Body = 'Mrc.Cpt. Doublet',
-        Hands = 'Custom F Gloves',
-        Ring1 = 'Balance Ring',
-        Ring2 = 'Balance Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Tilt Belt',
-        Legs = 'Republic Subligar',
-        Feet = 'Leaping Boots',
-    },
     Acid = {
         Ammo = 'Acid Bolt',
     },
@@ -146,32 +129,27 @@ local sets = {
     Venom = {
         Ammo = 'Venom Bolt',
     },
+
+    Weapon_Loadout_1 = {},
+    Weapon_Loadout_2 = {},
+    Weapon_Loadout_3 = {},
 }
 
-if player.SubJob == 'NIN' then
-    sets.Idle.Sub = "Garuda\'s Dagger"
-end
-profile.Sets = sets
-
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
-
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Evisceration" <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Bully" <t>')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 0 down /ja "Hide" <me>')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 end
-
 
 --[[
 --------------------------------
 Everything below can be ignored.
 --------------------------------
 ]]
+
+gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
+
+sets.evasion_master_casters_mitts = evasion_master_casters_mitts
+profile.Sets = gcmelee.AppendSets(sets)
 
 local ammo = T{'aacid','asleep','abloody','ablind','avenom'}
 
@@ -194,7 +172,6 @@ local saOverride = 0
 local taOverride = 0
 local taggedMobs = {}
 
-gcmelee = gFunc.LoadFile('common\\gcmelee.lua')
 actionpacket = gFunc.LoadFile('common\\actionpacket.lua')
 
 profile.HandleAbility = function()
@@ -319,7 +296,7 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmelee.DoDefault()
+    gcmelee.DoDefault(max_hp_in_idle_with_regen_gear_equipped)
 
     local player = gData.GetPlayer()
     if (player.SubJob == 'NIN' and player.Status == 'Engaged') then
@@ -328,8 +305,8 @@ profile.HandleDefault = function()
 
     gcmelee.DoDefaultOverride()
 
-    if (conquest:GetOutsideControl() and evasion_master_casters_mitts and gcdisplay.IdleSet == 'Evasion') then
-        gFunc.Equip('Hands', 'Mst.Cst. Mitts')
+    if (conquest:GetOutsideControl() and gcdisplay.IdleSet == 'Evasion') then
+        gFunc.EquipSet('evasion_master_casters_mitts')
     end
 
     local sa = gData.GetBuffCount('Sneak Attack')

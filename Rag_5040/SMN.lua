@@ -38,40 +38,31 @@ local bahamuts_staff = {
 }
 
 local sets = {
-    ['Idle'] = {
-        Main = 'Earth Staff',
-        Head = 'Evoker\'s Horn',
-        Neck = 'Ajari Necklace',
-        Ear1 = 'Geist Earring',
-        Ear2 = 'Geist Earring',
-        Body = 'Evoker\'s Doublet',
-        Hands = 'Summoner\'s Brcr.',
-		Ring1 = "Ether Ring",
-		Ring2 = "Tamas Ring",
-        Back = 'Prism Cape',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Summoner\'s Spats',
-        Feet = 'Summoner\'s Pgch.',
+    Idle = {
+        Main = 'Terra\'s Staff',
+        Ear1 = 'Loquac. Earring',
+        Ear2 = 'Magnetic Earring',
+        Ammo = 'Hedgehog Bomb',
+        Head = 'Summoner\'s Horn',
+        Neck = 'Jeweled Collar +1',
+        Body = 'Yinyang Robe',
+        Hands = 'Nashira Gages',
+        Ring1 = 'Sattva Ring',
+        Ring2 = 'Evoker\'s Ring',
+        Back = 'Umbra Cape',
+        Waist = 'Hierarch Belt',
+        Legs = 'Evk. Spats +1',
+        Feet = 'Evk. Pigaches +1',
     },
-    IdleALT = {
-        Head = '',
-        Body = 'Vermillion Cloak',
-    },
+    IdleALT = {},
     IdleMaxMP = {},
     Resting = {
-        Main = 'Dark Staff',
-		Body = "Errant Hpl.",
-        Waist = 'Hierarch belt',
-        Neck = 'Checkered Scarf',
-        Legs = 'Baron\'s Slops'
-    },
-    --[[ Resting = {
         Main = 'Pluto\'s Staff',
         Head = 'Hydra Beret',
         Neck = 'Pch. Collar',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Relaxing Earring',
-        Body = 'Errant Hpl.',
+        Body = 'Mahatma Hpl.',
         Hands = 'Hydra Gloves',
         Ring1 = 'Bomb Queen Ring',
         Ring2 = 'Ether Ring',
@@ -79,7 +70,7 @@ local sets = {
         Waist = 'Hierarch Belt',
         Legs = 'Hydra Brais',
         Feet = 'Hydra Gaiters',
-    },]]
+    },
     Town = {},
     Movement = {
         Feet = 'Herald\'s Gaiters',
@@ -89,8 +80,8 @@ local sets = {
     },
 
     DT = {
-        Main = 'Earth Staff',
-        Neck = 'Jeweled Collar',
+        Main = 'Terra\'s Staff',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Hands = 'Merman\'s Bangles',
@@ -99,8 +90,8 @@ local sets = {
         Back = 'Umbra Cape',
     },
     DTNight = {
-        Main = 'Earth Staff',
-        Neck = 'Jeweled Collar',
+        Main = 'Terra\'s Staff',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Hands = 'Merman\'s Bangles',
@@ -108,10 +99,10 @@ local sets = {
         Ring2 = 'Sattva Ring',
         Back = 'Umbra Cape',
     },
-    MDT = { -- Shell IV provides 23% MDT
-        Main = 'Earth Staff',
-        Head = 'Green Ribbon +1',
-        Neck = 'Jeweled Collar',
+    MDT = {
+        Main = 'Terra\'s Staff',
+        Head = 'Black Ribbon',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = 'Merman\'s Earring', -- 2
         Hands = 'Merman\'s Bangles', -- 3
@@ -120,11 +111,11 @@ local sets = {
         Back = 'Hexerei Cape', -- 3
     },
     FireRes = {
-        Main = 'Water Staff', -- 20
+        Main = 'Neptune\'s Staff', -- 20
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 12
+        Neck = 'Jeweled Collar +1', -- 10
         Hands = 'Merman\'s Bangles',
         Feet = 'Power Sandals', -- 7
         Back = 'Hexerei Cape',
@@ -133,11 +124,11 @@ local sets = {
         Ring2 = 'Malflame Ring', -- 10
     },
     IceRes = {
-        Main = 'Fire Staff', -- 20
+        Main = 'Vulcan\'s Staff', -- 20
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Head = 'Black Ribbon', -- 12
+        Neck = 'Jeweled Collar +1', -- 10
         Hands = 'Merman\'s Bangles',
         Back = 'Aurora Mantle +1', -- 8
         Waist = 'Fire Belt', -- 20
@@ -145,9 +136,9 @@ local sets = {
         Ring2 = 'Malfrost Ring', -- 10
     },
     LightningRes = {
-        Main = 'Earth Staff', -- 20
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Main = 'Terra\'s Staff', -- 20
+        Head = 'Black Ribbon', -- 12
+        Neck = 'Jeweled Collar +1', -- 10
         Back = 'Hexerei Cape',
         Ear1 = 'Robust Earring', -- 11
         Ear2 = 'Robust Earring', -- 11
@@ -158,9 +149,9 @@ local sets = {
     },
     EarthRes = {
         Ring2 = 'Maldust Ring', -- 10
-        Main = 'Wind Staff', -- 20
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Main = 'Auster\'s Staff', -- 20
+        Head = 'Black Ribbon', -- 12
+        Neck = 'Jeweled Collar +1', -- 10
         Hands = 'Merman\'s Bangles',
         Back = 'Hexerei Cape',
         Ear1 = 'Robust Earring', -- 11
@@ -170,10 +161,10 @@ local sets = {
     },
     WindRes = {
         Ring2 = 'Malgust Ring', -- 10
-        Main = 'Ice Staff', -- 20
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
-        Back = 'Aurora Mantle', -- 7
+        Main = 'Aquilo\'s Staff', -- 20
+        Head = 'Black Ribbon', -- 12
+        Neck = 'Jeweled Collar +1', -- 10
+        Back = 'Aurora Mantle +1', -- 8
         Hands = 'Mage\'s Cuffs', -- 5
         Ear1 = 'Diamond Earring', -- 10
         Ear2 = 'Omn. Earring', -- 11
@@ -181,9 +172,9 @@ local sets = {
         Ring1 = 'Emerald Ring', -- 9
     },
     WaterRes = {
-        Main = 'Thunder Staff', -- 20
-        Head = 'Green Ribbon +1', -- 10
-        Neck = 'Jeweled Collar', -- 10
+        Main = 'Jupiter\'s Staff', -- 20
+        Head = 'Black Ribbon', -- 12
+        Neck = 'Jeweled Collar +1', -- 10
         Hands = 'Merman\'s Bangles',
         Ear1 = 'Cmn. Earring', -- 11
         Ear2 = 'Cmn. Earring', -- 11
@@ -273,14 +264,14 @@ local sets = {
         Neck = 'Enhancing Torque',
         Ear1 = 'Cmn. Earring',
         Ear2 = 'Cmn. Earring',
-        Body = 'Errant Hpl.',
+        Body = 'Mahatma Hpl.',
         Hands = 'Dvt. Mitts +1',
         Ring1 = 'Aqua Ring',
         Ring2 = 'Communion Ring',
         Back = 'Merciful Cape',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Errant Slops',
-        Feet = 'Errant Pigaches',
+        Legs = 'Mahatma Slops',
+        Feet = 'Mahatma Pigaches',
     },
     Stoneskin = {
         Neck = 'Stone Gorget',
@@ -309,40 +300,35 @@ local sets = {
     },
 
     BP_Delay = {
-        Head = 'Austere Hat',
-        -- Head = 'Evk. Horn +1',
-        --Legs = 'Evk. Spats +1',
-        --Ring1 = { Name = 'Sattva Ring', Priority = 100 },
-       -- Ring2 = 'Evoker\'s Ring',
-       -- Ear1 = 'Loquac. Earring',
-       -- Ear2 = 'Magnetic Earring',
-       -- Back = 'Astute Cape',
-        Body = 'Austere Robe',
-        -- Body = 'Smn. Doublet +1',
-        Hands = 'Summoner\'s Brcr.',
-        --Hands = 'Austere Cuffs',
-      --  Feet = 'Nashira Crackows',
-      --  Ammo = 'Hedgehog Bomb',
-        Waist = { Name = 'Hierarch Belt', Priority = 100 },
-        -- Neck = 'Smn. Torque',
+        Head = 'Summoner\'s Horn',
+        Legs = 'Summoner\'s Spats',
+        Ring2 = 'Evoker\'s Ring',
+        Ear1 = 'Loquac. Earring',
+        Ear2 = 'Novia Earring',
+        Ring1 = { Name = 'Bomb Queen Ring', Priority = 100 },
+        Back = 'Mahatma Cape',
+        Body = 'Yinyang Robe',
+        Hands = { Name = 'Smn. Bracers +1', Priority = 100 },
+        Feet = 'Summoner\'s Pgch.',
+        Ammo = 'Hedgehog Bomb',
+        Waist = { Name = 'Penitent\'s Rope', Priority = -1 },
+        Neck = 'Smn. Torque',
     },
 
     BP = {
-        Head = 'Austere Hat',
-        -- Head = 'Evk. Horn +1',
-        --Legs = 'Evk. Spats +1',
-        --Ring1 = { Name = 'Sattva Ring', Priority = 100 },
-       -- Ring2 = 'Evoker\'s Ring',
-       -- Ear1 = 'Loquac. Earring',
-       -- Ear2 = 'Magnetic Earring',
-       -- Back = 'Astute Cape',
-        Body = 'Austere Robe',
-        -- Body = 'Smn. Doublet +1',
-        Hands = 'Summoner\'s Brcr.',
-        -- Hands = 'Austere Cuffs',
-      --  Ammo = 'Hedgehog Bomb',
+        Head = 'Evk. Horn +1',
+        Legs = 'Evk. Spats +1',
+        Ring1 = { Name = 'Sattva Ring', Priority = 100 },
+        Ring2 = 'Evoker\'s Ring',
+        Ear1 = 'Loquac. Earring',
+        Ear2 = 'Magnetic Earring',
+        Back = 'Astute Cape',
+        Body = 'Smn. Doublet +1',
+        Hands = 'Smn. Bracers +1',
+        Feet = 'Nashira Crackows',
+        Ammo = 'Hedgehog Bomb',
         Waist = { Name = 'Hierarch Belt', Priority = 100 },
-        -- Neck = 'Smn. Torque',
+        Neck = 'Smn. Torque',
     },
     BP_Magical = {
     },
@@ -361,17 +347,6 @@ local sets = {
 
     WS = {},
     WS_HighAcc = {},
-    ['eco'] = {
-        Main = 'Yew Wand +1',
-        Sub = 'Hatchling Shield',
-        Ammo = 'Fortune Egg',
-        Head = 'Dream Hat +1',
-        Neck = 'Justice Badge',
-        Body = 'Baron\'s Saio',
-        Hands = 'Carbuncle Mitts',
-        Legs = 'Baron\'s Slops',
-        Feet = 'Dream Boots +1',
-    },
 
     Weapon_Loadout_1 = {},
     Weapon_Loadout_2 = {},
@@ -397,16 +372,8 @@ local sets = {
 }
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 2')
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 2')
-
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 //dia')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 //dia')
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ja \"Assault\" <t>");
-	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ja \"Retreat\" <me>");
-	AshitaCore:GetChatManager():QueueCommand(-1, "/bind 3 down /ja \"Release\" <me>");
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /party Shock Strike >> <t> <call21>;/pet \"Shock Strike\" <t>");
-
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 end
 
 --[[

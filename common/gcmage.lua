@@ -98,6 +98,9 @@ local tp_diabolos_earring = {
     -- Ear2 = 'Diabolos\'s Earring',
 }
 
+-- Set this to true to confirm that actually read the README.md and set up the equipment listed above correctly
+local i_can_read_and_follow_instructions_test = false
+
 --[[
 --------------------------------
 Everything below can be ignored.
@@ -452,6 +455,10 @@ function gcmage.DoDefault(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP
 end
 
 function gcmage.DoPrecast(sets, fastCastValue)
+    if (not i_can_read_and_follow_instructions_test) then
+        print(chat.header('GCMage'):append(chat.message('Failed to follow instructions. Read the README.md')))
+    end
+
     local chainspell = gData.GetBuffCount('Chainspell')
     local action = gData.GetAction()
     local player = gData.GetPlayer()
@@ -746,7 +753,7 @@ function gcmage.EquipSneakInvisGear()
     local action = gData.GetAction()
     local target = gData.GetActionTarget()
     local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0)
-    gcinclude.CheckCancels(action, target, me)
+
     if (target.Name == me) then
         if (action.Name == 'Sneak' or string.match(action.Name, 'Monomi')) then
             gFunc.EquipSet('dream_boots')
@@ -792,13 +799,10 @@ end
 function gcmage.EquipEnhancing(blmNukeExtra)
     local player = gData.GetPlayer()
     local action = gData.GetAction()
+
     gFunc.EquipSet('Enhancing')
     if (action.Name == 'Stoneskin') then
-        local stoneskin = gData.GetBuffCount('Stoneskin');
         gFunc.EquipSet('Stoneskin')
-        if (stoneskin ~= 0) then
-		    AshitaCore:GetChatManager():QueueCommand(1, '/cancel Stoneskin');
-	    end
 
         if (player.MainJob == 'BLM' and gcdisplay.GetToggle('Extra') and player.MP >= blmNukeExtra) then
             gFunc.EquipSet('StoneskinExtra')
@@ -1060,9 +1064,12 @@ function ObiCheck(action)
 end
 
 function gcmage.DoAbility()
+    if (not i_can_read_and_follow_instructions_test) then
+        print(chat.header('GCMage'):append(chat.message('Failed to follow instructions. Read the README.md')))
+    end
+
     gcinclude.DoAbility()
     local action = gData.GetAction()
-    
     if (action.Name == 'Release') then
         lastSummoningElement = ''
     end

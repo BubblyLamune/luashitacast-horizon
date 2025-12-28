@@ -43,7 +43,7 @@ local sets = {
     Idle = {
         Main = 'Tredecim Scythe',
         Ammo = 'Bomb Core',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Body = 'Vampire Cloak',
@@ -62,7 +62,7 @@ local sets = {
         Ammo = 'displaced',
         Head = 'displaced',
         Body = 'Vampire Cloak',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring',
         Ear2 = { Name = 'Cassie Earring', Priority = 100 },
         Hands = 'Heavy Gauntlets',
@@ -127,7 +127,7 @@ local sets = {
     },
     MDT = {
         Head = 'Darksteel Cap +1',
-        Neck = 'Jeweled Collar',
+        Neck = 'Jeweled Collar +1',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = 'Merman\'s Earring', -- 2
         Body = 'Cor. Scale Mail +1', -- 4
@@ -508,12 +508,6 @@ profile.HandleDefault = function()
 
     local player = gData.GetPlayer()
     local souleater = gData.GetBuffCount('Souleater')
-    local lastresort = gData.GetBuffCount('Last Resort')
-
-    if lastresort > 0 and player.Status == 'Engaged' and gcinclude.CheckAbilityRecast('Last Resort') ~= 0 then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Last Resort"')
-    end
-
     if (souleater > 0 and player.Status == 'Engaged' and use_chaos_burgeonet_for_tp_during_souleater) then
         gFunc.EquipSet(sets.SoulEater)
     end

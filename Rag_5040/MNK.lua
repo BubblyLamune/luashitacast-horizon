@@ -31,38 +31,22 @@ local kampfer_earring = {
 }
 
 local sets = {
-    ['Idle'] = {
-        Main = 'Impact Knuckles',
-        Ammo = 'Mille. Sachet',
-        Head = 'Emperor Hairpin',
-        Neck = 'Spike Necklace',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Mrc.Cpt. Doublet',
-        Hands = 'Horomusha Kote',
-        Ring1 = 'Balance Ring',
-        Ring2 = 'Balance Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Purple Belt',
-        Legs = 'Republic Subligar',
-        Feet = 'Win. Kyahan',
-    },
-    IdleALT = {
-        Main = 'Destroyers',
+    Idle = {
         Ammo = 'Tiphia Sting',
-        Head = 'Dream Ribbon',
-        Neck = 'Jeweled Collar',
-        Ear1 = 'Brutal Earring',
-        Ear2 = 'Wyvern Earring',
-        Body = 'Kirin\'s Osode',
-        Hands = 'Mel. Gloves +1',
+        Head = 'Genbu\'s Kabuto',
+        Neck = 'Jeweled Collar +1',
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Merman\'s Earring',
+        Body = 'Mel. Cyclas +1',
+        Hands = 'Dst. Mittens +1',
         Ring1 = 'Shadow Ring',
-        Ring2 = 'Begrudging Ring',
+        Ring2 = 'Sattva Ring',
         Back = 'Shadow Mantle',
-        Waist = 'Brown Belt',
-        Legs = 'Byakko\'s Haidate',
-        Feet = 'Herald\'s Gaiters',
+        Waist = 'Warwolf Belt',
+        Legs = 'Dst. Subligar +1',
+        Feet = 'Dst. Leggings +1',
     },
+    IdleALT = {},
     Resting = {
         Neck = 'Paisley Scarf',
         Ear2 = 'Sanative Earring',
@@ -100,9 +84,9 @@ local sets = {
         Ring1 = 'Sattva Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Shadow Mantle',
+        Waist = 'Black Belt',
         Legs = 'Tpl. Hose +1', -- 3
-        Feet = 'Melee Gaiters',
-        -- Feet = 'Rasetsu Sune-Ate +1', -- 1
+        Feet = 'Rst. Sune-Ate +1', -- 1
     },
     MDT = {
         Ear1 = 'Merman\'s Earring',
@@ -127,7 +111,7 @@ local sets = {
         Ring1 = 'Flame Ring',
         Ring2 = 'Triumph Ring',
         Back = 'Forager\'s Mantle',
-        Waist = 'Brown Belt',
+        Waist = 'Black Belt',
         Legs = 'Shura Haidate',
         Feet = 'Dune Boots',
     },
@@ -149,8 +133,8 @@ local sets = {
         Feet = 'Mountain Gaiters', -- 5
     },
     Haste = { -- Used for Utsusemi cooldown
-        Head = 'Panther mask +1',
-        Waist = 'Brown Belt',
+        Head = 'Panther Mask +1',
+        Waist = 'Black Belt',
         Legs = 'Byakko\'s Haidate',
         Feet = 'Fuma Sune-Ate',
     },
@@ -175,19 +159,14 @@ local sets = {
         Feet = 'Fuma Sune-Ate',
     },
     TP_Aftermath = {},
-    TP_Mjollnir_Haste = {},
+    TP_Mjollnir_Haste = {
+        Head = 'Maat\'s Cap',
+    },
     TP_HighAcc = {
-        Head = 'Shr.Znr.Kabuto',
-        Neck = 'Peacock Amulet',
-        Ear1 = 'Brutal Earring',
-        Ear2 = 'Merman\'s Earring',
+        Head = 'Maat\'s Cap',
         Body = 'Shura Togi',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
-        Back = 'Forager\'s Mantle',
-        Waist = 'Brown Belt',
-        Legs = 'Byakko\'s Haidate',
-        Feet = 'Fuma Sune-Ate',
     },
     TP_Focus = {
         Ring1 = 'Flame Ring',
@@ -205,13 +184,18 @@ local sets = {
     WS = {
         Head = 'Maat\'s Cap',
         Neck = 'Thunder Gorget',
+        Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
         Ring1 = 'Flame Ring',
         Ring2 = 'Triumph Ring',
         Legs = 'Shura Haidate',
         Feet = 'Shura Sune-Ate',
+        Hands = 'Mel. Gloves +1',
+        Back = 'Forager\'s Mantle',
+        Waist = 'Black Belt',
     },
     WS_HighAcc = {
+        -- Ring1 = 'Toreador\'s Ring',
         Ring1 = 'Begrudging Ring',
         Ring2 = 'Toreador\'s Ring',
     },
@@ -275,7 +259,7 @@ local sets = {
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Forager\'s Mantle',
-        Waist = 'Brown Belt',
+        Waist = 'Black Belt',
         Legs = 'Shura Haidate',
         Feet = 'Dune Boots',
     },
@@ -293,17 +277,8 @@ local sets = {
 }
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ` down /ja "Focus" <me>;/wait 0.7;/ja "Dodge" <me>;/wait 0.7;/ja "Berserk" <me>;')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Boost" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ws "Howling Fist" <t>')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi:Ichi" <me>')
-	--AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ws "Dragon Kick" <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Trick Attack" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Bully" <t>')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 0 down /ja "Hide" <me>')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
+    -- AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1')
 end
 
 --[[
