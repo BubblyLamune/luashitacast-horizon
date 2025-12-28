@@ -3,7 +3,7 @@ local profile = {}
 local fastCastValue = 0.04 -- 4% from gear not including carbuncles cuffs or evokers boots
 
 local carbuncles_cuffs = false
-local evokers_boots = false
+local evokers_boots = true
 
 local cureMP = 895 -- Cure set max MP
 

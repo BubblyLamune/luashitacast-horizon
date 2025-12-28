@@ -5,7 +5,7 @@ local fastCastValue = 0.00 -- 0% from gear
 local sets = {
     ['Idle'] = {
         Main = 'Darksteel Axe',
-        Range = 'Cmb.Cst.Bmrng +1',
+        Ammo = "Bomb Core",
         Head = 'Emperor Hairpin',
         Neck = 'Ryl.Grd. Collar',
         Ear1 = 'Merman\'s Earring',
@@ -16,7 +16,7 @@ local sets = {
         Ring2 = 'Toreador\'s Ring',
         Back = 'Amemet Mantle',
         Waist = 'Swift Belt',
-        Legs = 'Fighter\'s Cuisses',
+        Legs = 'Ryl.Kgt. Breeches',
         Feet = 'Fighter\'s Calligae',
     },
     IdleALT = {},
@@ -46,13 +46,24 @@ local sets = {
     LockSet3 = {},
 
     TP_LowAcc = {},
-    TP_HighAcc = {},
+    TP_HighAcc = {
+        Head = 'Optical Hat',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Range = "Cmb.Cst.Bmrng +1",
+        Ammo = ""
+    },
 
     TP_Aggressor = {},
 
     WS = {
-        Legs = 'Republic Subligar',
+        Head = 'Emperor Hairpin',
+        Legs = 'Ryl.Kgt. Breeches',
+        Ring1 = 'Sun Ring',
+        Ring2 = 'Sun Ring',
         Feet = 'Leaping Boots',
+        Range = "",
+        Ammo = "Bomb Core"
     },
     WS_HighAcc = {},
 
