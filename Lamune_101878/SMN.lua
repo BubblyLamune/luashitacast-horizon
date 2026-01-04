@@ -1,27 +1,27 @@
 local profile = {};
 local fastCastValue = 0.04;
 local cureMP = 895;
-local conjurersRingForced = true;
+local conjurersRingForced = false;
 local conjurersRingMaxHP = 737;
 local carbuncles_cuffs = {};
 local evokers_boots = {};
 local warlocks_mantle = {
-	Back = "Warlock's Mantle"
+--	Back = "Warlock's Mantle"
 };
 local carbuncle_mitts = {
 	Hands = "Carbuncle Mitts"
 };
 local yinyang_robe = {
-	Body = "Yinyang Robe"
+--	Body = "Yinyang Robe"
 };
 local summoners_doublet = {
-	Body = "Summoner's Doublet"
+--	Body = "Summoner's Doublet"
 };
 local summoners_horn = {
-	Head = "Summoner's Horn"
+--	Head = "Summoner's Horn"
 };
 local conjurers_ring = {
-	Ring1 = "Conjurer's Ring"
+--	Ring1 = "Conjurer's Ring"
 };
 local bahamuts_staff = {};
 local sets = {
@@ -40,7 +40,15 @@ local sets = {
 		Legs = "Summoner's Spats",
 		Feet = "Summoner's Pgch."
 	},
-	IdleALT = {},
+	IdleALT = {
+		Head = "displaced",
+		Body = "Vermillion Cloak",
+		Hands = "Evoker\'s Bracers",
+		Legs = "Evoker\'s Spats",
+		Feet = "Evoker\'s pigaches",
+		Back = "Red Cape +1",
+
+	},
 	IdleMaxMP = {},
 	Resting = {
 		Main = "Dark Staff",

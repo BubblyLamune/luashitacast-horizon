@@ -391,7 +391,6 @@ function gcinclude.CheckCancels(action, target, me)
 	local stoneskin = gData.GetBuffCount('Stoneskin');
 	local target = target or gData.GetActionTarget();
 	local me = me or AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
-	print(chat.header('debug'):append(chat.message(tostring(action.Name) + ' is passed')))
 
 	local function do_jig()
 		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Spectral Jig" <me>');

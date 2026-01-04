@@ -6,20 +6,20 @@ local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if 
 
 local sets = {
     Idle = {
-        Main = 'Darksteel Axe',
+        Main = 'Axe of Trials',
         Ammo = "Bomb Core",
-        Head = 'Emperor Hairpin',
+        Head = 'Panther Mask',
         Neck = 'Ryl.Grd. Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Coral Earring',
         Body = 'Haubergeon',
-        Hands = 'Custom F Gloves',
+        Hands = 'Warrior\'s Mufflers',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Amemet Mantle',
         Waist = 'Swift Belt',
-        Legs = 'Ryl.Kgt. Breeches',
-        Feet = 'Fighter\'s Calligae',
+        Legs = 'Byakko\'s Haidate',
+        Feet = 'Suzaku\'s Sune-Ate',
     },
     IdleALT = {},
     Resting = {},
@@ -46,7 +46,9 @@ local sets = {
     LockSet2 = {},
     LockSet3 = {},
 
-    TP_LowAcc = {},
+    TP_LowAcc = {
+        Hands = 'Dusk Gloves',
+    },
     TP_Aftermath = {},
     TP_Mjollnir_Haste = {},
     TP_HighAcc = {

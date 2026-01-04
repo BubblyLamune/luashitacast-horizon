@@ -13,7 +13,7 @@ local dilation_ring = {
 	Ring2 = "Dilation Ring"
 };
 local tp_fencers_ring = {
-	Ring1 = "Fencer's Ring"
+--	Ring1 = "Fencer's Ring"
 };
 local sets = {
 	Idle = {
@@ -689,7 +689,7 @@ local sets = {
 		Neck = "Jeweled Collar",
 		Ear1 = "Knight's Earring",
 		Ear2 = "Merman's Earring",
-		Body = "Kirin's Osode",
+		Body = "Scorpion Harness",
 		Hands = "Dusk Gloves",
 		Ring1 = "Toreador's Ring",
 		Ring2 = "Toreador's Ring",
@@ -750,10 +750,8 @@ local sets = {
 	LockSet2 = {},
 	LockSet3 = {},
 	Weapon_Loadout_1 = {
-		Main = "Martial Knife",
-		Sub = "Octave Club",
-		Range = "Lightning Bow +1",
-		Ammo = "displaced"
+		Main = "Joyeuse",
+		Sub = "Numinous Shield",
 	},
 	Weapon_Loadout_2 = {
 		Main = "Joyeuse",
@@ -782,7 +780,40 @@ local sets = {
 		Legs = "Dst. Subligar +1",
 		Feet = "Mahatma Pigaches"
 	}
-};
+,
+    ['fourty'] = {
+        Main = 'Solid Wand',
+        Sub = 'Hatchling Shield',
+        Ammo = 'Fortune Egg',
+        Head = 'Emperor Hairpin',
+        Neck = 'Justice Badge',
+        Ear1 = 'Geist Earring',
+        Ear2 = 'Geist Earring',
+        Body = 'Custom Vest',
+        Hands = 'Custom F Gloves',
+        Ring1 = 'Ether Ring',
+        Ring2 = 'Tamas Ring',
+        Back = 'Red Cape +1',
+        Waist = 'Mrc.Cpt. Belt',
+        Legs = 'Custom Pants',
+        Feet = 'Custom F Boots',
+    },
+    ['sixty'] = {
+        Main = 'Earth Staff',
+        Ammo = 'Mille. Sachet',
+        Head = 'Warlock\'s Chapeau',
+        Neck = 'Checkered Scarf',
+        Ear1 = 'Geist Earring',
+        Ear2 = 'Geist Earring',
+        Body = 'Warlock\'s Tabard',
+        Hands = 'Warlock\'s Gloves',
+        Ring1 = 'Ether Ring',
+        Ring2 = 'Tamas Ring',
+        Back = 'Red Cape +1',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Warlock\'s Tights',
+        Feet = 'Warlock\'s Boots',
+    }};
 profile.SetMacroBook = function()
 	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro book 1");
 	(AshitaCore:GetChatManager()):QueueCommand(1, "/macro set 1");
