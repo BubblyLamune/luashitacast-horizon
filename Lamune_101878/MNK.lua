@@ -36,9 +36,9 @@ local sets = {
         Ammo = 'Mille. Sachet',
         Head = 'Emperor Hairpin',
         Neck = 'Spike Necklace',
-        Ear1 = 'Beetle Earring +1',
-        Ear2 = 'Beetle Earring +1',
-        Body = 'Jujitsu Gi',
+        Ear1 = 'Spike Earring',
+        Ear2 = 'Spike Earring',
+        Body = 'Scorpion Harness',
         Hands = 'Horomusha Kote',
         Ring1 = 'Woodsman Ring',
         Ring2 = 'Woodsman Ring',
@@ -183,6 +183,9 @@ local sets = {
     },
 
     WS = {
+        Ring1 = 'Balance Ring',
+        Ring2 = 'Garnet Ring',
+        Feet = 'Win. Kyahan',
         -- Head = 'Maat\'s Cap',
         -- Neck = 'Thunder Gorget',
         -- Ear1 = 'Brutal Earring',

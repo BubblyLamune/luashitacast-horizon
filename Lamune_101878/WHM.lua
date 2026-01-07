@@ -53,6 +53,7 @@ local sets = {
     IdleMaxMP = {},
     Resting = {
         Main = "Dark Staff",
+		Ear1 = "Relaxing Earring",
 		Sub = "",
 		Waist = "Cleric\'s Belt",
 		Body = "Errant Hpl.",
