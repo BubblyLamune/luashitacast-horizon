@@ -38,6 +38,7 @@ local sets = {
     },
     Town = {},
     Movement = {},
+    Movement_TP = {},
 
     DT = {
 		Main = 'Earth Staff',
@@ -447,7 +448,7 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmage.DoDefault(nil, whmSJMaxMP, blmSJMaxMP, rdmSJMaxMP, nil)
+    gcmage.DoDefault(sets, nil, whmSJMaxMP, blmSJMaxMP, rdmSJMaxMP, nil)
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
 end

@@ -61,6 +61,7 @@ local sets = {
 	Movement = {
 		Feet = "Herald's Gaiters"
 	},
+	Movement_TP = {},
 	Perpetuation = {},
 	DT = {
 		Main = "Earth Staff",

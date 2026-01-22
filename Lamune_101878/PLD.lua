@@ -94,6 +94,7 @@ local sets = {
     Movement = {
         Legs = 'Crimson Cuisses',
     },
+    Movement_TP = {},
 
     DT = { -- 1415
         Main = 'Tutelary',

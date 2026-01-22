@@ -110,6 +110,7 @@ local sets = {
         Hands = 'Homam Manopolas',
         Legs = 'Crimson Cuisses',
     },
+    Movement_TP = {},
 
     DT = {
         Head = 'Darksteel Cap +1', -- 2

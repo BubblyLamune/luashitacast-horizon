@@ -115,7 +115,7 @@ local AliasList = T{
     'mode', -- RDM / WHM / BLM
     'csstun','vert', -- RDM
     'hate', -- RDM / WHM
-    'tp', -- RDM / WHM / BRD / SMN
+    'tp','tptoggle', -- RDM / WHM / BRD / SMN
     'yellow', -- BLM / WHM
     'mb','hnm', -- BLM
     'lag',
@@ -180,6 +180,14 @@ local WeakElementTable = {
     ['Thunder'] = 'Earth',
     ['Light'] = 'Dark',
     ['Dark'] = 'Light'
+}
+
+local tpCycleToggleIndex = 2
+
+local tpCycleToggleIndexTable = {
+    ['Off'] = 2, -- Default into toggling into LowAcc
+    ['LowAcc'] = 2,
+    ['HighAcc'] = 3,
 }
 
 local setMP = 0
@@ -269,6 +277,14 @@ function gcmage.DoCommands(args, sets)
     elseif (args[1] == 'tp' and player.MainJob ~= 'BLM') then
         gcdisplay.AdvanceCycle('TP')
         gcinclude.Message('TP Mode', gcdisplay.GetCycle('TP'))
+        tpCycleToggleIndex = tpCycleToggleIndexTable[gcdisplay.GetCycle('TP')]
+    elseif (args[1] == 'tptoggle' and player.MainJob ~= 'BLM') then
+        if (gcdisplay.GetCycle('TP') == 'Off') then
+            gcdisplay.SetCycleIndex('TP', tpCycleToggleIndex)
+        else
+            gcdisplay.SetCycleIndex('TP', 1)
+        end
+        gcinclude.Message('TP Mode', gcdisplay.GetCycle('TP'))
     elseif (args[1] == 'lag') then
         lag =  not lag
         gcinclude.Message('[Note: Midcast Delays are disabled if Lag is true] Lag', lag)
@@ -333,10 +349,6 @@ function gcmage.DoFenrirsEarring()
     end
 end
 
-function gcmage.DoDefault(ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP)
-    gcmage.DoDefault(nil, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP)
-end
-
 function gcmage.DoDefault(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP)
     local player = gData.GetPlayer()
     local environment = gData.GetEnvironment()
@@ -349,14 +361,22 @@ function gcmage.DoDefault(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP
             if (player.MP >= setMP + addMP) then
                 equipMaxMP = true
             end
-        elseif (player.SubJob == 'WHM') and whmSJMMP ~= nil and player.MP >= whmSJMMP + addMP then
-            equipMaxMP = true
-        elseif (player.SubJob == 'BLM') and blmSJMMP ~= nil and player.MP >= blmSJMMP + addMP then
-            equipMaxMP = true
-        elseif (player.SubJob == 'RDM') and rdmSJMMP ~= nil and player.MP >= rdmSJMMP + addMP then
-            equipMaxMP = true
-        elseif (player.SubJob == 'DRK') and drkSJMMP ~= nil and player.MP >= drkSJMMP + addMP then
-            equipMaxMP = true
+        elseif (player.SubJob == 'WHM') then
+            if (whmSJMMP ~= nil and player.MP >= whmSJMMP + addMP) then
+                equipMaxMP = true
+            end
+        elseif (player.SubJob == 'BLM') then
+            if (blmSJMMP ~= nil and player.MP >= blmSJMMP + addMP) then
+                equipMaxMP = true
+            end
+        elseif (player.SubJob == 'RDM') then
+            if (rdmSJMMP ~= nil and player.MP >= rdmSJMMP + addMP) then
+                equipMaxMP = true
+            end
+        elseif (player.SubJob == 'DRK') then
+            if (drkSJMMP ~= nil and player.MP >= drkSJMMP + addMP) then
+                equipMaxMP = true
+            end
         elseif ninSJMMP ~= nil and player.MP >= ninSJMMP + addMP then
             equipMaxMP = true
         end
@@ -654,14 +674,22 @@ function gcmage.DoMidcast(sets, ninSJMMP, whmSJMMP, blmSJMMP, rdmSJMMP, drkSJMMP
     local maxMP = 0
     if (setMP > 0) then
         maxMP = setMP + addMP
-    elseif (player.SubJob == 'WHM' and whmSJMMP ~= nil) then
-        maxMP = whmSJMMP + addMP
-    elseif (player.SubJob == 'BLM' and blmSJMMP ~= nil) then
-        maxMP = blmSJMMP + addMP
-    elseif (player.SubJob == 'RDM' and rdmSJMMP ~= nil) then
-        maxMP = rdmSJMMP + addMP
-    elseif (player.SubJob == 'DRK' and drkSJMMP ~= nil) then
-        maxMP = drkSJMMP + addMP
+    elseif (player.SubJob == 'WHM') then
+        if (whmSJMMP ~= nil) then
+            maxMP = whmSJMMP + addMP
+        end
+    elseif (player.SubJob == 'BLM') then
+        if (blmSJMMP ~= nil) then
+            maxMP = blmSJMMP + addMP
+        end
+    elseif (player.SubJob == 'RDM') then
+        if (rdmSJMMP ~= nil) then
+            maxMP = rdmSJMMP + addMP
+        end
+    elseif (player.SubJob == 'DRK') then
+        if (drkSJMMP ~= nil) then
+            maxMP = drkSJMMP + addMP
+        end
     elseif (ninSJMMP ~= nil) then
         maxMP = ninSJMMP + addMP
     end
@@ -750,9 +778,11 @@ function gcmage.EquipSneakInvisGear()
 
     if (target.Name == me) then
         if (action.Name == 'Sneak' or string.match(action.Name, 'Monomi')) then
+            gFunc.EquipSet('Enhancing')
             gFunc.EquipSet('dream_boots')
             gFunc.EquipSet('skulkers_cape')
         elseif (action.Name == 'Invisible' or string.match(action.Name, 'Tonko')) then
+            gFunc.EquipSet('Enhancing')
             gFunc.EquipSet('dream_mittens')
             gFunc.EquipSet('skulkers_cape')
         end

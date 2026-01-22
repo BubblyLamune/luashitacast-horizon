@@ -64,6 +64,7 @@ local sets = {
     },
     Town = {},
     Movement = {},
+    Movement_TP = {},
 
     DT = {},
     DTNight = {},
@@ -220,7 +221,7 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    gcmage.DoDefault(ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP, drkSJMaxMP)
+    gcmage.DoDefault(sets, ninSJMaxMP, nil, blmSJMaxMP, rdmSJMaxMP, drkSJMaxMP)
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))
 end

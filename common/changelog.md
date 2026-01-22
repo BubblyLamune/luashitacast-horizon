@@ -444,3 +444,20 @@
 ### v2.0.8
 - Melee - Adds regen gear support to all melee jobs
 - All Jobs - Adds a i_can_read_and_follow_instructions_test boolean setting to gcmage.lua, gcmelee.lua, and gcinclude-rag.lua. Set these to true to disable message spam
+
+### v2.0.9
+- THF - Add HP Down set for steal
+
+### v2.0.10
+- Mages - Use Enhancing set for sneak / invisible
+
+### v2.0.11
+- BLM - Implements BLM sorceror's earring logic
+- All Jobs - Implements Movement_TP set to better differentiate movement sets when idle vs engaged
+- Mages - Implements /tptoggle command to allow single button toggling between last TP set and Off
+
+### v2.0.12
+- RNG - Implements fenrirs earring
+- RNG - Implements fire ring
+- RNG - Implements WS modifier sets for different accuracy levels on WS
+- RNG - Implements Sam SubJob set on WS for Store TP

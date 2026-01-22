@@ -70,6 +70,10 @@ local sets = {
 		Head = "Duelist's Chapeau",
 		Legs = "Crimson Cuisses"
 	},
+	Movement_TP = {
+        -- Hands = 'Dst. Mittens +1',
+        -- Feet = 'Dst. Leggings +1',
+    },
 	DT = {
 		Main = "Earth Staff",
 		Head = {
@@ -890,7 +894,7 @@ profile.HandleDefault = function()
 			gFunc.ForceEquipSet("TP");
 		end;
 	end;
-	gcmage.DoDefault(ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, nil, drkSJMaxMP);
+    gcmage.DoDefault(sets, ninSJMaxMP, whmSJMaxMP, blmSJMaxMP, nil, drkSJMaxMP)
 	if player.MP <= 40 then
 		gFunc.EquipSet("blue_cotehardie");
 	end;
