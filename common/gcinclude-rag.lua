@@ -321,7 +321,9 @@ function gcinclude.DoDefaultOverride(isMelee)
     if (gcdisplay.IdleSet == 'WindRes') then gFunc.EquipSet('WindRes') end
     if (gcdisplay.IdleSet == 'WaterRes') then gFunc.EquipSet('WaterRes') end
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet('Movement') end
-
+    if (gcdisplay.GetToggle('Fishing') == true) then gFunc.EquipSet(sharedSets.Fishing) end
+    if (gcdisplay.GetToggle('HELM') == true) then gFunc.EquipSet(sharedSets.Fieldcraft) end
+    
     if (player.Status == 'Resting') then
         if (not restTimestampRecorded) then
             restTimestamp = os.clock() + 16

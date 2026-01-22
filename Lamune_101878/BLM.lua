@@ -60,6 +60,7 @@ local sets = {
 		Main = "Dark Staff",
 		Sub = "",
 		Body = "Errant Hpl.",
+        Ear1 = "Relaxing Earring",
         Neck = 'Checkered Scarf',
         Waist = 'Hierarch belt',
 		Legs = "Baron's Slops"

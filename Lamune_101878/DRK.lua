@@ -108,7 +108,7 @@ local sets = {
     Town = {},
     Movement = {
         Hands = 'Homam Manopolas',
-        Legs = 'Blood Cuisses',
+        Legs = 'Crimson Cuisses',
     },
 
     DT = {
@@ -154,7 +154,7 @@ local sets = {
         Ring2 = 'Malflame Ring', -- 10
         Back = 'Dino Mantle', -- 4
         Waist = 'Water Belt', -- 20
-        Legs = 'Blood Cuisses', -- 21
+        Legs = 'Crimson Cuisses', -- 21
         Feet = 'Power Sandals', -- 7
     },
     IceRes = {
@@ -190,7 +190,7 @@ local sets = {
         Ring2 = 'Malflash Ring', -- 10
         Back = 'Gaia Mantle +1', -- 12
         Waist = 'Earth Belt', -- 20
-        Legs = 'Blood Cuisses', -- 21
+        Legs = 'Crimson Cuisses', -- 21
         Feet = 'Dst. Leggings +1',
     },
     EarthRes = {
@@ -244,7 +244,7 @@ local sets = {
         Ring2 = 'Malflood Ring', -- 10
         Back = 'Shadow Mantle',
         Waist = 'Lightning Belt', -- 20
-        Legs = 'Blood Cuisses', -- 21
+        Legs = 'Crimson Cuisses', -- 21
         Feet = 'Coral Greaves +1', -- 4
     },
     Evasion = { -- Currently using this as a set for 2H Zergs. See README.md

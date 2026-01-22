@@ -88,11 +88,11 @@ local sets = {
         Ring2 = 'Sattva Ring',
         Back = 'Shadow Mantle',
         Waist = 'Swift Belt',
-        Legs = 'Blood Cuisses',
+        Legs = 'Crimson Cuisses',
         Feet = 'Homam Gambieras',
     },
     Movement = {
-        Legs = 'Blood Cuisses',
+        Legs = 'Crimson Cuisses',
     },
 
     DT = { -- 1415
@@ -134,7 +134,7 @@ local sets = {
         Ring2 = 'Malflame Ring', -- 10
         Back = 'Dino Mantle', -- 4
         Waist = 'Water Belt', -- 20
-        Legs = 'Blood Cuisses', -- 21
+        Legs = 'Crimson Cuisses', -- 21
         Feet = 'Power Sandals', -- 7
     },
     IceRes = { -- 135
@@ -169,7 +169,7 @@ local sets = {
         Ring2 = 'Malflash Ring', -- 10
         Back = 'Gaia Mantle +1', -- 12
         Waist = 'Earth Belt', -- 20
-        Legs = 'Blood Cuisses', -- 21
+        Legs = 'Crimson Cuisses', -- 21
         Feet = 'Dst. Leggings +1',
     },
     EarthRes = { -- 143
@@ -217,7 +217,7 @@ local sets = {
         Ring2 = 'Malflood Ring', -- 10
         Back = { Name = 'Valor Cape', Priority = 100 },
         Waist = 'Lightning Belt', -- 20
-        Legs = 'Blood Cuisses', -- 21
+        Legs = 'Crimson Cuisses', -- 21
         Feet = 'Coral Greaves +1', -- 4
     },
     Evasion = { -- Breath Damage Taken set

@@ -43,56 +43,56 @@ local furin_obi = {
     -- Waist = 'Furin Obi',
 }
 local hyorin_obi = {
-    Waist = 'Hyorin Obi',
+    -- Waist = 'Hyorin Obi',
 }
 local rairin_obi = {
-    Waist = 'Rairin Obi',
+    -- Waist = 'Rairin Obi',
 }
 local korin_obi = {
-    Waist = 'Korin Obi',
+    -- Waist = 'Korin Obi',
 }
 local anrin_obi = {
-    Waist = 'Anrin obi',
+    -- Waist = 'Anrin obi',
 }
 
 local shinobi_ring = {
-    Ring2 = 'Shinobi Ring',
+    -- Ring2 = 'Shinobi Ring',
 }
 local koga_tekko = {
     -- Hands = 'Koga Tekko',
 }
 local koga_tekko_plus_one = {
-    Hands = 'Kog. Tekko +1',
+    -- Hands = 'Kog. Tekko +1',
 }
 local uggalepih_pendant = {
-    Neck = 'Uggalepih Pendant',
+    -- Neck = 'Uggalepih Pendant',
 }
 local warlocks_mantle = { -- Don't add 2% to fastCastValue for this as it is SJ dependant
-    Back = 'Warlock\'s Mantle',
+    -- Back = 'Warlock\'s Mantle',
 }
 local fenrirs_stone = { -- Used for Evasion at night
-    Ammo = 'Fenrir\'s Stone',
+    -- Ammo = 'Fenrir\'s Stone',
 }
 local koga_hakama = {
     -- Legs = 'Koga Hakama',
 }
 local koga_hakama_plus_one = {
-    Legs = 'Kog. Hakama +1',
+    -- Legs = 'Kog. Hakama +1',
 }
 
 local sets = {
     Idle = {
-        Main = 'Kodachi +1',
+        Main = 'Yoto +1',
         Sub = 'Nikkariaoe',
         Range = 'Halcyon Rod',
         Head = 'Emperor Hairpin',
         Neck = 'Spike Necklace',
         Body = 'Jujitsu Gi',
-        Hands = 'Custom F Gloves',
-        Ring1 = 'Balance Ring',
-        Ring2 = 'Balance Ring',
+        Hands = 'Horomusha Kote',
+        Ring1 = 'Woodsman Ring',
+        Ring2 = 'Woodsman Ring',
         Back = 'Nomad\'s Mantle',
-        Waist = 'Warrior\'s Belt +1',
+        Waist = 'Tilt Belt',
         Legs = 'Republic Subligar',
         Feet = 'Leaping Boots',
     },
@@ -157,6 +157,8 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Provoke" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ma "Utsusemi: Ni" <me>')
+
 end
 
 --[[

@@ -19,13 +19,13 @@ local sets = {
 		Range = "Angel Lyre",
         Neck = 'Jeweled Collar',
 		Waist = "Gleeman\'s Belt",
-		Body = 'Darksteel Harness',
+		Body = 'Kirin\'s Osode',
 		Hands = "Bard\'s Cuffs",
-		Ring1 = "Minstrel\'s Ring",
+		--Ring1 = "Minstrel\'s Ring",
         Ring2 = 'Tamas Ring',
-		--Ring2 = "Ether Ring",
+		Ring1 = "Ether Ring",
 		Back = 'Cheviot Cape',
-		Legs = "Errant Slops",
+		Legs = "Byakko\'s Haidate",
 		Feet = "Rostrum pumps"
     },
     IdleALT = {
@@ -200,7 +200,7 @@ local sets = {
         Range = 'Balladeer\'s Harp',
     },
     Sing_Ballad_Small = {
-        Range = 'Cornette +2',
+        Range = 'Harlequin\'s Horn',
     },
     Sing_Paeon = {
         Range = 'Ebony Harp +2',
@@ -360,11 +360,10 @@ profile.SetMacroBook = function()
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 1 down /ma \"Foe Lullaby\" <t>");
 	-- Songs
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 2 down /ma \"Ice Threnody\" <t>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 3 down /ma \"Utsusemi: Ichi\" <me>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Blade Madrigal\" <me>");
-	--(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Advancing March\" <me>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Valor Minuet II\" <me>");
-	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Victory March\" <me>");
+    (AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 3 down /ma \"Sword Madrigal\" <me>");
+    (AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Advancing March\" <me>");
+	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 5 down /ma \"Victory March\" <me>");
+	--(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 4 down /ma \"Blade Madrigal\" <me>");
 --	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 6 down /ma \"Valor Minuet IV\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 7 down /ma \"Mage's Ballad\" <me>");
 	(AshitaCore:GetChatManager()):QueueCommand(-1, "/bind 8 down /ma \"Mage's Ballad II\" <me>");

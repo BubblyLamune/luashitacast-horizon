@@ -5,9 +5,9 @@ local fastCastValue = 0.00 -- 0% from gear listed in Precast set
 local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
 
 local sets = {
-    Idle = {
-        Main = 'Axe of Trials',
-        Ammo = "Bomb Core",
+    ['Idle'] = {
+        Main = 'Byakko\'s Axe',
+        Ammo = 'Bomb Core',
         Head = 'Panther Mask',
         Neck = 'Ryl.Grd. Collar',
         Ear1 = 'Merman\'s Earring',
@@ -16,10 +16,10 @@ local sets = {
         Hands = 'Warrior\'s Mufflers',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
-        Back = 'Amemet Mantle',
+        Back = 'Amemet Mantle +1',
         Waist = 'Swift Belt',
         Legs = 'Byakko\'s Haidate',
-        Feet = 'Suzaku\'s Sune-Ate',
+        Feet = 'Warrior\'s Calligae',
     },
     IdleALT = {},
     Resting = {},

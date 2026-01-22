@@ -4,8 +4,8 @@ local ninSJMaxMP = 583;
 local whmSJMaxMP = 661;
 local blmSJMaxMP = 680;
 local drkSJMaxMP = 604;
-local verm_cloak = true;
-local fencersRingForced = true;
+local verm_cloak = false;
+local fencersRingForced = false;
 local fencersRingMaxHP = 907;
 local blue_cotehardie = {};
 local blue_cotehardie_plus_one = {};
@@ -49,7 +49,7 @@ local sets = {
 		Ring2 = "Sattva Ring",
 		Back = "Umbra Cape",
 		Waist = "Hierarch Belt",
-		Legs = "Blood Cuisses",
+		Legs = "Crimson Cuisses",
 		Feet = "Blood Greaves"
 	},
 	Resting = {
@@ -68,7 +68,7 @@ local sets = {
 	Town = {},
 	Movement = {
 		Head = "Duelist's Chapeau",
-		Legs = "Blood Cuisses"
+		Legs = "Crimson Cuisses"
 	},
 	DT = {
 		Main = "Earth Staff",
@@ -111,7 +111,7 @@ local sets = {
 			Name = "Hierarch Belt",
 			Priority = 100
 		},
-		Legs = "Blood Cuisses",
+		Legs = "Crimson Cuisses",
 		Feet = "Dst. Leggings +1"
 	},
 	MDT = {
@@ -151,7 +151,7 @@ local sets = {
 		Ring2 = "Malflame Ring",
 		Back = "Dino Mantle",
 		Waist = "Water Belt",
-		Legs = "Blood Cuisses",
+		Legs = "Crimson Cuisses",
 		Feet = "Power Sandals"
 	},
 	IceRes = {
@@ -185,7 +185,7 @@ local sets = {
 		Ring2 = "Malflash Ring",
 		Back = "Lightning Mantle",
 		Waist = "Earth Belt",
-		Legs = "Blood Cuisses",
+		Legs = "Crimson Cuisses",
 		Feet = "Dst. Leggings +1"
 	},
 	EarthRes = {
@@ -236,7 +236,7 @@ local sets = {
 		Ring2 = "Malflood Ring",
 		Back = "Hexerei Cape",
 		Waist = "Lightning Belt",
-		Legs = "Blood Cuisses",
+		Legs = "Crimson Cuisses",
 		Feet = "Coral Greaves +1"
 	},
 	Evasion = {},
@@ -385,7 +385,7 @@ local sets = {
 		Ring2 = "Sattva Ring",
 		Back = "Toreador's Cape",
 		Waist = "Warwolf Belt",
-		Legs = "Blood Cuisses",
+		Legs = "Crimson Cuisses",
 		Feet = "Heroic Boots"
 	},
 	Cure = {
@@ -633,7 +633,7 @@ local sets = {
 		Ring2 = "Serket Ring",
 		Back = "Mahatma Cape",
 		Waist = "Hierarch Belt",
-		Legs = "Blood Cuisses",
+		Legs = "Crimson Cuisses",
 		Feet = "Blood Greaves"
 	},
 	ConvertOOR = {
@@ -649,7 +649,7 @@ local sets = {
 		Ring2 = "Serket Ring",
 		Back = "Mahatma Cape",
 		Waist = "Hierarch Belt",
-		Legs = "Blood Cuisses",
+		Legs = "Crimson Cuisses",
 		Feet = "Blood Greaves"
 	},
 	Stun = {
@@ -689,7 +689,7 @@ local sets = {
 		Neck = "Jeweled Collar",
 		Ear1 = "Knight's Earring",
 		Ear2 = "Merman's Earring",
-		Body = "Scorpion Harness",
+		Body = "Scp. Harness +1",
 		Hands = "Dusk Gloves",
 		Ring1 = "Toreador's Ring",
 		Ring2 = "Toreador's Ring",
