@@ -18,10 +18,10 @@ local ducal_aketon = {
     Body = 'Ducal Aketon',
 }
 local dream_boots = {
-    Feet = 'Dream Boots +1',
+    Feet = {Name ='Dream Boots +1', Priority = 101},
 }
 local dream_mittens = {
-    Hands = 'Dream Mittens +1',
+    Hands = {Name ='Dream Mittens +1', Priority = 101},
 }
 local skulkers_cape = {
     -- Back = 'Skulker\'s Cape',

@@ -2,7 +2,7 @@ local profile = {}
 
 local fastCastValue = 0.02 -- 2% from gear listed in Precast set
 
-local max_hp_in_idle_with_regen_gear_equipped = 0 -- You could set this to 0 if you do not wish to ever use regen gear
+local max_hp_in_idle_with_regen_gear_equipped = 1606 -- You could set this to 0 if you do not wish to ever use regen gear
 
 -- Comment out the equipment within these sets if you do not have them or do not wish to use them
 local temple_gaiters = {
@@ -21,7 +21,7 @@ local melee_gaiters = {
     Feet = 'Melee Gaiters',
 }
 local melee_gloves = {
-    Hands = 'Mel. Gloves',
+    Hands = 'Melee Gloves',
 }
 local kampfer_ring = {
      Ring2 = 'Kampfer Ring',
@@ -40,15 +40,15 @@ local sets = {
         Head = 'Genbu\'s Kabuto',
         Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Coral Earring',
-        Body = 'Scp. Harness +1',
+        Ear2 = 'Brutal Earring',
+        Body = 'Mel. Cyclas +1',
         Hands = 'Melee Gloves',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Toreador\'s Ring',
         Back = 'Amemet Mantle +1',
         Waist = 'Warwolf Belt',
         Legs = 'Byakko\'s Haidate',
-        Feet = 'Rst. Sune-Ate +1',
+        Feet = 'Fuma Sune-Ate',
     },
     IdleALT = {
         Main = 'Retaliators',
@@ -67,9 +67,10 @@ local sets = {
         Feet = 'Marine F Boots',
     },
     Resting = {
+        Head = 'President. Hairpin',
         -- Neck = 'Paisley Scarf',
         -- Ear2 = 'Sanative Earring',
-        Body = 'Melee Cylas',
+        Body = 'Mel. Cyclas +1',
         -- Hands = 'Dst. Mittens +1',
         Back = 'Melee Cape',
         -- Feet = 'Dst. Leggings +1',
@@ -96,7 +97,7 @@ local sets = {
         -- Ammo = 'Fenrir\'s Stone',
         Head = 'Optical Hat',
         -- Neck = 'Faith Torque',
-        -- Ear1 = 'Brutal Earring',
+        Ear1 = 'Brutal Earring',
         -- Ear2 = 'Avenger\'s Earring', -- 1
         Body = 'Scp. Harness +1',
         Hands = 'Melee Gloves',
@@ -120,21 +121,21 @@ local sets = {
     EarthRes = {},
     WindRes = {},
     WaterRes = {},
-    Evasion = { -- Currently using this as an alternate HighAcc set for 2H Zergs. See README.md
-        Main = 'Retaliators',
+    ['Evasion'] = {
+        Main = 'Adargas',
         Ammo = 'Mille. Sachet',
         Head = 'Tiger Mask',
         Neck = 'Guarding Torque',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Coral Earring',
-        Body = 'Temple Cyclas',
-        Hands = 'Horomusha Kote',
-        Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Toreador\'s Ring',
+        Body = 'Mel. Cyclas +1',
+        Hands = 'Seiryu\'s Kote',
+        Ring1 = 'Woodsman Ring',
+        Ring2 = 'Woodsman Ring',
         Back = 'Amemet Mantle +1',
-        Waist = 'Muscle Belt',
+        Waist = 'Brown Belt',
         Legs = 'Temple Hose',
-        Feet = 'Marine F Boots',
+        Feet = 'Melee Gaiters',
     },
 
     Precast = {
@@ -154,13 +155,28 @@ local sets = {
         -- Feet = 'Mountain Gaiters', -- 5
     },
     Haste = { -- Used for Utsusemi cooldown
-        -- Head = 'Panther Mask +1',
-        -- Waist = 'Black Belt',
-        -- Legs = 'Byakko\'s Haidate',
-        -- Feet = 'Fuma Sune-Ate',
+        Head = 'Panther Mask',
+        Waist = 'Brown Belt',
+        Legs = 'Byakko\'s Haidate',
+        Feet = 'Fuma Sune-Ate',
     },
 
-    LockSet1 = {},
+    ['LockSet1'] = {
+        Main = 'Retaliators',
+        Ammo = 'Mille. Sachet',
+        Head = 'Korrigan Beret',
+        Neck = 'Jeweled Collar',
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Brutal Earring',
+        Body = 'Morbol Apron',
+        Hands = 'Melee Gloves',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Back = 'Amemet Mantle +1',
+        Waist = 'Warwolf Belt',
+        Legs = 'Byakko\'s Haidate',
+        Feet = 'Melee Gaiters',
+    },
     LockSet2 = {},
     LockSet3 = {},
 
@@ -183,10 +199,10 @@ local sets = {
         -- Head = 'Maat\'s Cap',
     },
     TP_HighAcc = {
-        -- Head = 'Maat\'s Cap',
-        -- Body = 'Shura Togi',
-        -- Ring1 = 'Toreador\'s Ring',
-        -- Ring2 = 'Toreador\'s Ring',
+        Head = 'Optical Hat',
+        Body = 'Scp. Harness +1',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
     },
     TP_Focus = {
         -- Ring1 = 'Flame Ring',
@@ -209,7 +225,7 @@ local sets = {
         Feet = 'Marine F Boots',
         -- Head = 'Maat\'s Cap',
         -- Neck = 'Thunder Gorget',
-        -- Ear1 = 'Brutal Earring',
+        Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
         -- Ring1 = 'Flame Ring',
         -- Ring2 = 'Triumph Ring',
@@ -231,6 +247,7 @@ local sets = {
     },
     WS_DragonKick = {
         Legs = 'Byakko\'s Haidate',
+        Feet = 'Kung fu Shoes',
     },
     WS_HowlingFist = {
     },
@@ -295,6 +312,22 @@ local sets = {
     Weapon_Loadout_3 = {
         Main = 'Faith Baghnakhs',
         Ammo = 'Virtue Stone',
+    },
+    ['sixty'] = {
+        Main = 'Retaliators',
+        Ammo = 'Mille. Sachet',
+        Head = 'Emperor Hairpin',
+        Neck = 'Spike Necklace',
+        Ear1 = 'Spike Earring',
+        Ear2 = 'Spike Earring',
+        Body = 'Scp. Harness +1',
+        Hands = 'Horomusha Kote',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Back = 'Amemet Mantle +1',
+        Waist = 'Brown Belt',
+        Legs = 'Temple Hose',
+        Feet = 'Marine F Boots',
     },
 }
 

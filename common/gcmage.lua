@@ -63,7 +63,7 @@ local anrin_obi = {
 }
 
 local uggalepih_pendant = {
-  --  Neck = 'Uggalepih Pendant',
+    Neck = 'Uggalepih Pendant',
 }
 local master_casters_bracelets = {
    -- Hands = 'Mst.Cst. Bracelets',
@@ -137,6 +137,8 @@ local NoMods = T{
     'Dia','Dia II','Dia III',
     'Utsusemi: Ichi','Utsusemi: Ni','Tonko: Ichi','Tonko: Ni','Monomi: Ichi'
 }
+
+local SneakInvisTable = T{ 'Sneak', 'Invisible', 'Tonko: Ichi','Tonko: Ni','Monomi: Ichi'}
 
 local ElementalDebuffs = T{ 'Burn','Rasp','Drown','Choke','Frost','Shock' }
 local EnfeebMNDSpells = T{ 'Paralyze','Slow','Paralyze II','Slow II' }
@@ -778,13 +780,13 @@ function gcmage.EquipSneakInvisGear()
 
     if (target.Name == me) then
         if (action.Name == 'Sneak' or string.match(action.Name, 'Monomi')) then
-            gFunc.EquipSet('Enhancing')
-            gFunc.EquipSet('dream_boots')
-            gFunc.EquipSet('skulkers_cape')
+            gFunc.ForceEquipSet('Enhancing')
+            gFunc.ForceEquipSet('dream_boots')
+            gFunc.ForceEquipSet('skulkers_cape')
         elseif (action.Name == 'Invisible' or string.match(action.Name, 'Tonko')) then
-            gFunc.EquipSet('Enhancing')
-            gFunc.EquipSet('dream_mittens')
-            gFunc.EquipSet('skulkers_cape')
+            gFunc.ForceEquipSet('Enhancing')
+            gFunc.ForceEquipSet('dream_mittens')
+            gFunc.ForceEquipSet('skulkers_cape')
         end
     end
 end
@@ -795,6 +797,9 @@ function gcmage.SetupInterimEquipSet(sets)
     local action = gData.GetAction()
 
     local interimSet = sets.Casting
+    local isSneakOrInvs = SneakInvisTable:contains(action.Name)
+    
+
 
     if (gcdisplay.IdleSet == 'DT') then
         if (environment.Time >= 6 and environment.Time < 18) then
@@ -816,8 +821,11 @@ function gcmage.SetupInterimEquipSet(sets)
     if (player.MainJob ~= 'BLM' and gcdisplay.GetCycle('TP') ~= 'Off' and (player.Status == 'Engaged' or player.TP > 0)) then
         interimSet = gFunc.Combine(interimSet, sets['Weapon_Loadout_' .. WeaponOverrideTable[weapon_override]])
     end
-
-    gFunc.InterimEquipSet(interimSet)
+    if(isSneakOrInvs) then
+        interimSet = nil
+    else
+        gFunc.InterimEquipSet(interimSet)
+    end
 end
 
 function gcmage.EquipEnhancing(blmNukeExtra)

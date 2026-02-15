@@ -13,20 +13,19 @@ local saotome_kote = {
 }
 
 local sets = {
-    Idle = {
-        Main = 'Ashura +1',
-        Range = 'Composite Bow +1',
-        Ammo = 'Horn Arrow',
+    ['Idle'] = {
+        Main = 'Soboro Sukehiro',
+        Ammo = 'Mille. Sachet',
         Head = 'Emperor Hairpin',
         Neck = 'Spike Necklace',
-        Ear1 = 'Drone Earring',
-        Ear2 = 'Drone Earring',
-        Body = 'Custom Vest',
-        Hands = 'Custom F Gloves',
-        Ring1 = 'Balance Ring',
-        Ring2 = 'Balance Ring',
+        Ear1 = 'Beetle Earring +1',
+        Ear2 = 'Beetle Earring +1',
+        Body = 'Ryl.Sqr. Chnml. +1',
+        Hands = 'Horomusha Kote',
+        Ring1 = 'Woodsman Ring',
+        Ring2 = 'Woodsman Ring',
         Back = 'Nomad\'s Mantle',
-        Waist = 'Wyvern Belt',
+        Waist = 'Swift Belt',      
         Legs = 'Republic Subligar',
         Feet = 'Leaping Boots',
     },
@@ -34,7 +33,7 @@ local sets = {
     Resting = {},
     Town = {},
     Movement = {},
-
+    Movement_TP = {},
     DT = {},
     MDT = {},
     FireRes = {},
@@ -55,12 +54,20 @@ local sets = {
     LockSet2 = {},
     LockSet3 = {},
 
-    TP_LowAcc = {},
+    ['TP_LowAcc'] = { 
+        Waist = 'Swift Belt',      
+        Legs = 'Shm. Haidate',
+    },
     TP_Aftermath = {},
     TP_Mjollnir_Haste = {},
     TP_HighAcc = {},
 
-    WS = {},
+    WS = {
+        Legs = 'Republic Subligar',
+        Hands = 'Horomusha Kote',
+
+
+    },
     WS_HighAcc = {},
 
     WS_Kaiten = {},
@@ -71,12 +78,13 @@ local sets = {
 }
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Tachi:Enpi" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Tachi:Jinpu" <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ja "Jump" <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ra <t>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Meditate" <me>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Third Eye" <me>')
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Hasso" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 5 down /ja "Sneak Attack" <me>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 6 down /ja "Third Eye" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 7 down /ja "Hasso" <me>')
 end
 
 --[[

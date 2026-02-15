@@ -11,7 +11,7 @@ local sets = {
         Head = 'Panther Mask',
         Neck = 'Ryl.Grd. Collar',
         Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Coral Earring',
+        Ear2 = 'Brutal Earring',
         Body = 'Haubergeon',
         Hands = 'Warrior\'s Mufflers',
         Ring1 = 'Toreador\'s Ring',
@@ -25,6 +25,7 @@ local sets = {
     Resting = {},
     Town = {},
     Movement = {},
+    Movement_TP = {},
 
     DT = {},
     MDT = {},

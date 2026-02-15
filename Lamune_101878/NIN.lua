@@ -31,7 +31,7 @@ local dark_staff = {
 }
 
 local karin_obi = {
-    Waist = 'Karin Obi',
+    -- Waist = 'Karin Obi',
 }
 local dorin_obi = {
     -- Waist = 'Dorin Obi',
@@ -58,6 +58,9 @@ local anrin_obi = {
 local shinobi_ring = {
     -- Ring2 = 'Shinobi Ring',
 }
+local ninja_kyahn = {
+     Feet = 'Ninja Kyahan',
+}
 local koga_tekko = {
     -- Hands = 'Koga Tekko',
 }
@@ -74,34 +77,39 @@ local fenrirs_stone = { -- Used for Evasion at night
     -- Ammo = 'Fenrir\'s Stone',
 }
 local koga_hakama = {
-    -- Legs = 'Koga Hakama',
+    Legs = 'Koga Hakama',
 }
 local koga_hakama_plus_one = {
     -- Legs = 'Kog. Hakama +1',
 }
 
 local sets = {
-    Idle = {
+    ['Idle'] = {
         Main = 'Yoto +1',
-        Sub = 'Nikkariaoe',
-        Range = 'Halcyon Rod',
-        Head = 'Emperor Hairpin',
-        Neck = 'Spike Necklace',
-        Body = 'Jujitsu Gi',
+        Sub = 'Yoto +1',
+        Ammo = 'Mille. Sachet',
+        Head = 'Arhat\'s Jinpachi',
+        Neck = 'Ryl.Grd. Collar',
+        Ear1 = "Merman's Earring",
+        Ear2 = 'Coral Earring',
+        Body = 'Arhat\'s Gi',
         Hands = 'Horomusha Kote',
-        Ring1 = 'Woodsman Ring',
-        Ring2 = 'Woodsman Ring',
-        Back = 'Nomad\'s Mantle',
-        Waist = 'Tilt Belt',
-        Legs = 'Republic Subligar',
-        Feet = 'Leaping Boots',
+        Ring1 = 'Vigor Ring',
+        Ring2 = 'Vigor Ring',
+        Back = 'Amemet Mantle +1',
+        Waist = 'Swift Belt',
+        Legs = 'Ninja Hakama',
+        Feet = 'Marine F Boots',
+
     },
     IdleALT = {},
     IdleDT = {},
     IdleALTDT = {},
     Resting = {},
     Town = {},
-    Movement = {},
+    Movement = {
+
+    },
     Movement_TP = {},
 
     DT = {},
@@ -121,8 +129,18 @@ local sets = {
     },
 
     Hate = {},
-    NinDebuff = {},
-    NinElemental = {},
+    NinDebuff = {
+        Ring1 = 'Tamas Ring',
+
+    },
+    NinElemental = {
+        Head = 'Ninja Hatsuburi',
+        Ear1 = 'Moldavite Earring',
+        Ear2 = 'Magnetic Earring', -- 8
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Genius Ring',
+        Feet = 'Ninja Kyahan',
+    },
     NinElemental_Accuracy = {},
     DrkDarkMagic = {},
 
@@ -130,16 +148,27 @@ local sets = {
     Cure = {},
     Flash = {}, -- Technically optional since Hate and Haste gear will be equipped by default
 
-    LockSet1 = {},
-    LockSet2 = {},
-    LockSet3 = {},
+
+    Charm = {
+        Back = 'Trimmer\'s Mantle',
+    },
 
     TP_LowAcc = {},
     TP_Aftermath = {},
     TP_Mjollnir_Haste = {},
-    TP_HighAcc = {},
+    TP_HighAcc = {
+        -- Body = 'Scp. Harness +1',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+    },
 
-    WS = {},
+    WS = {
+        Legs = 'Republic Subligar',
+        Body = 'Haubergeon',
+        Ring1 = 'Sun Ring',
+        Ring2 = 'Sun Ring',
+        Feet = 'Marine F Boots',
+    },
     WS_HighAcc = {},
 
     WS_BladeJin = {},
@@ -150,6 +179,26 @@ local sets = {
     Weapon_Loadout_1 = {},
     Weapon_Loadout_2 = {},
     Weapon_Loadout_3 = {},
+
+    ['LockSet1'] = {
+        Main = 'Yoto +1',
+        Sub = 'Yoto +1',
+        Ammo = 'Mille. Sachet',
+        Head = 'Korrigan Beret',
+        Neck = 'Ryl.Grd. Collar',
+        Ear1 = 'Spike Earring',
+        Ear2 = 'Spike Earring',
+        Body = 'Ninja Chainmail',
+        Hands = 'Ninja Tekko',
+        Ring1 = 'Vigor Ring',
+        Ring2 = 'Vigor Ring',
+        Back = 'Jaguar Mantle',
+        Waist = 'Swift Belt',
+        Legs = 'Ninja Hakama',
+        Feet = 'Ninja Kyahan',
+    },
+    LockSet2 = {},
+    LockSet3 = {},
 }
 
 profile.SetMacroBook = function()
@@ -188,6 +237,7 @@ sets.korin_obi = korin_obi
 sets.anrin_obi = anrin_obi
 sets.shinobi_ring = shinobi_ring
 sets.koga_tekko = koga_tekko
+sets.ninja_kyahn = ninja_kyahn
 sets.koga_tekko_plus_one = koga_tekko_plus_one
 sets.uggalepih_pendant = uggalepih_pendant
 sets.warlocks_mantle = warlocks_mantle
@@ -240,8 +290,13 @@ local WeakElementTable = {
 
 profile.HandleAbility = function()
     gcmelee.DoAbility()
+    local player = gData.GetPlayer()
+    local action = gData.GetAction()
 
     gFunc.EquipSet(sets.Hate)
+    if (action.Name == 'Charm') then
+        gFunc.EquipSet(sets.Charm)
+    end
 end
 
 profile.HandleItem = function()
@@ -311,6 +366,7 @@ profile.HandleDefault = function()
 
     local player = gData.GetPlayer()
     local environment = gData.GetEnvironment()
+    local isNightTime = (environment.Time < 6 or environment.Time >= 18)
 
     if (player.Status == 'Engaged') then
         if (player.HPP <= 75 and player.TP <= 1000) then
@@ -336,6 +392,9 @@ profile.HandleDefault = function()
         if (environment.Time < 7 or environment.Time >= 17) then
             gFunc.EquipSet('koga_hakama_plus_one')
         end
+    end
+    if (player.IsMoving == true and isNightTime) then
+        gFunc.EquipSet('ninja_kyahn')
     end
 
     gFunc.EquipSet(gcinclude.BuildLockableSet(gData.GetEquipment()))

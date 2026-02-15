@@ -1,49 +1,49 @@
 local profile = {}
 
-local fastCastValue = 0.04 -- 4% from gear listed in Precast set
+local fastCastValue = 0.02 -- 4% from gear listed in Precast set
 
 local ninSJMaxMP = 650 -- The Max MP you have when /nin in your idle set
 local whmSJMaxMP = 728 -- The Max MP you have when /whm in your idle set
-local rdmSJMaxMP = 709 -- The Max MP you have when /rdm in your idle set
+local rdmSJMaxMP = 892 -- The Max MP you have when /rdm in your idle set
 
 local nukeExtraThreshold = 850 -- The minimum MP for which NukeExtra StoneskinExtra, and PhalanxExtra set will be used instead of regular sets (to allow additional nukes using max mp sets)
 
 -- Comment out the equipment within these sets if you do not have them or do not wish to use them
 local warlocks_mantle = { -- Don't add 2% to fastCastValue for this as it is SJ dependant
-    Back = 'Warlock\'s Mantle',
+ --   Back = 'Warlock\'s Mantle',
 }
 local republic_circlet = {
     -- Head = 'Republic Circlet',
 }
 local opuntia_hoop = {
-    Ring1 = 'Opuntia Hoop',
+  --  Ring1 = 'Opuntia Hoop',
 }
 local diabolos_pole = {
-    Main = 'Diabolos\'s Pole',
+   -- Main = 'Diabolos\'s Pole',
 }
 local sorcerers_ring = {
-    Ring1 = 'Sorcerer\'s Ring', -- This is Ring1 instead of Ring2 to allow Ice Ring to work as well in gcmage.lua
+    --Ring1 = 'Sorcerer\'s Ring', -- This is Ring1 instead of Ring2 to allow Ice Ring to work as well in gcmage.lua
 }
 local sorcerers_tonban = {
-    Legs = 'Src. Tonban +1',
+    Legs = 'Sorcerer\'s Tonban',
 }
 
-local sorcerers_earring_hp_threshold = 360 -- HP at which Sorcerer's Earring set is equipped
+local sorcerers_earring_hp_threshold = 0 -- HP at which Sorcerer's Earring set is equipped
 local sorcerers_earring = { -- 1440
-    Main = 'Terra\'s Staff',
-    Ammo = 'Hedgehog Bomb',
-    Head = 'Genie Tiara',
-    Neck = 'Pch. Collar',
-    Ear1 = 'Cassie Earring',
-    Ear1 = 'Sorcerer\'s Earring',
-    Body = 'Src. Coat +1',
-    Hands = 'Garden Bangles',
-    Ring1 = 'Bomb Queen Ring',
-    Ring2 = 'Sattva Ring',
-    Back = 'Gigant Mantle',
-    Waist = 'Ocean Sash',
-    Legs = 'Igqira Lappas',
-    Feet = 'Marine M Boots',
+    -- Main = 'Terra\'s Staff',
+    -- Ammo = 'Hedgehog Bomb',
+    -- Head = 'Genie Tiara',
+    -- Neck = 'Pch. Collar',
+    -- Ear1 = 'Cassie Earring',
+    -- Ear2 = 'Sorcerer\'s Earring',
+    -- Body = 'Sorcerer\'s Coat',
+    -- Hands = 'Garden Bangles',
+    -- Ring1 = 'Bomb Queen Ring',
+    -- Ring2 = 'Sattva Ring',
+    -- Back = 'Gigant Mantle',
+    -- Waist = 'Ocean Sash',
+    -- Legs = 'Igqira Lappas',
+    -- Feet = 'Marine M Boots',
 }
 
 local sets = {
@@ -54,25 +54,25 @@ local sets = {
         Neck = 'Philomath Stole',
         Ear1 = 'Morion Earring',
         Ear2 = 'Moldavite Earring',
-        Body = 'Igqira Weskit',
+        Body = { Name = 'Sorcerer\'s Coat', Priority = 100 },
         Hands = 'Wizard\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Genius Ring',
         Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Sorcerer\'s Tonban',
+        Legs = 'Errant Slops',
         Feet = 'Sorcerer\'s Sabots',
     },
     IdleALT = {},
     IdleMaxMP = {
-        Ammo = { Name = 'Hedgehog Bomb', Priority = 100 },
+        -- Ammo = { Name = 'Hedgehog Bomb', Priority = 100 },
         Neck = { Name = 'Uggalepih Pendant', Priority = 100 },
-        Ear1 = { Name = 'Loquac. Earring', Priority = 100 },
+        -- Ear1 = { Name = 'Loquac. Earring', Priority = 100 },
         Ear2 = { Name = 'Magnetic Earring', Priority = 100 },
-        Hands = { Name = 'Zenith Mitts +1', Priority = 100 },
+        -- Hands = { Name = 'Zenith Mitts +1', Priority = 100 },
         Waist = { Name = 'Hierarch Belt', Priority = 100 },
-        Legs = { Name = 'Src. Tonban +1', Priority = 100 },
-        Back = { Name = 'Merciful Cape', Priority = 100 },
+        Legs = { Name = 'Sorcerer\'s Tonban', Priority = 100 },
+        -- Back = { Name = 'Merciful Cape', Priority = 100 },
     },
     Resting = {
 		Main = "Dark Staff",
@@ -97,7 +97,7 @@ local sets = {
         Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
-        Body = { Name = 'Src. Coat +1', Priority = 100 },
+        Body = { Name = 'Sorcerer\'s Coat', Priority = 100 },
         Hands = 'Merman\'s Bangles',
         Ring1 = 'Jelly Ring',
         Ring2 = 'Sattva Ring',
@@ -112,7 +112,7 @@ local sets = {
         Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
-        Body = { Name = 'Src. Coat +1', Priority = 100 },
+        Body = { Name = 'Sorcerer\'s Coat', Priority = 100 },
         Hands = 'Merman\'s Bangles',
         Ring1 = 'Jelly Ring',
         Ring2 = 'Sattva Ring',
@@ -127,7 +127,7 @@ local sets = {
         Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring', -- 2
         Ear2 = 'Merman\'s Earring', -- 2
-        Body = { Name = 'Src. Coat +1', Priority = 100 },
+        Body = { Name = 'Sorcerer\'s Coat', Priority = 100 },
         Hands = 'Merman\'s Bangles', -- 3
         Ring1 = 'Merman\'s Ring', -- 4 -- Using this over Shadow Ring for consistency
         Ring2 = { Name = 'Sattva Ring', Priority = 100 }, -- 5
@@ -282,7 +282,7 @@ local sets = {
         Ear2 = 'Magnetic Earring',
         Body = 'Igqira Weskit',
         Back = 'Maledictor\'s Shawl',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
 
     Cure = {
@@ -361,13 +361,13 @@ local sets = {
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Magnetic Earring',
         Body = 'Hydra Doublet',
-        Hands = 'Src. Gloves +1',
+        Hands = 'Sorcerer\'s Gloves',
         Ring1 = 'Aqua Ring',
         Ring2 = 'Communion Ring',
         Back = 'Merciful Cape',
         Waist = 'Hierarch Belt',
         Legs = 'Src. Tonban +1',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
     Spikes = {
         Main = 'Kirin\'s Pole',
@@ -383,7 +383,7 @@ local sets = {
         Back = 'Merciful Cape',
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Errant Slops',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
 
     Enfeebling = {
@@ -412,7 +412,7 @@ local sets = {
         Ring1 = 'Snow Ring',
         Ring2 = 'Omniscient Ring',
         Waist = 'Sorcerer\'s Belt',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
     EnfeeblingACC = {
         Ear2 = 'Enfeebling Earring',
@@ -428,7 +428,7 @@ local sets = {
         Ear1 = 'Abyssal Earring',
         Ear2 = 'Dark Earring',
         Body = 'Nashira Manteel',
-        Hands = 'Src. Gloves +1',
+        Hands = 'Sorcerer\'s Gloves',
         Ring1 = 'Snow Ring',
         Ring2 = 'Omniscient Ring',
         Back = 'Merciful Cape',
@@ -465,7 +465,7 @@ local sets = {
         Back = 'Prism Cape',
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Errant Slops',
-        Feet = { Name = 'Src. Sabots +1', Priority = 1 },
+        Feet = { Name = 'Sorcerer\'s Sabots', Priority = 1 },
     },
     NukeHNM = {
         Ammo = 'Phtm. Tathlum',
@@ -480,7 +480,7 @@ local sets = {
         Back = 'Mahatma Cape', -- 5
         Waist = 'Penitent\'s Rope', -- 3
         Legs = 'Errant Slops', -- 4
-        Feet = 'Src. Sabots +1', -- 3
+        Feet = 'Sorcerer\'s Sabots', -- 3
     },
     NukeACC = {
         Head = 'Src. Petasos +1',
@@ -503,7 +503,7 @@ local sets = {
         Back = 'Prism Cape',
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Errant Slops',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
     NukeExtra = {
         Ammo = 'Phtm. Tathlum',
@@ -518,11 +518,11 @@ local sets = {
         Back = { Name = 'Merciful Cape', Priority = 100 },
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Errant Slops',
-        Feet = 'Src. Sabots +1',
+        Feet = 'Sorcerer\'s Sabots',
     },
     MB = {
         Ammo = 'Dream Sand',
-        Hands = 'Src. Gloves +1',
+        Hands = 'Sorcerer\'s Gloves',
         Back = 'Maledictor\'s Shawl',
     },
     MBHNM = {
@@ -539,11 +539,12 @@ profile.SetMacroBook = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1')
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10')
     --AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ma \"Firaga2\" <bt>");
-	--AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ma \"Fire2\" <bt>");
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ma \"Blizzard3\" <bt>");
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ma \"Blizzard\" <bt>");
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /ma \"Blizzard2\" <bt>");
-    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 3 down /ma \"Utsusemi:Ichi\" <me>");
+	AshitaCore:GetChatManager():QueueCommand(-1, "/bind ` down /ma \"Drain\" <t>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 1 down /ma \"Blizzard3\" <t>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 2 down /ma \"Blizzard4\" <t>");
+     AshitaCore:GetChatManager():QueueCommand(-1, "/bind 3 down /ma \"Thunder3\" <t>");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind 4 down /ma \"Thunder4\" <t>");
+   
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind 5 down /ja \"Elemental Seal\" <me>");
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind 6 down /ma \"Sleep\" <t>");
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind 7 down /ma \"Sleep II\" <t>");

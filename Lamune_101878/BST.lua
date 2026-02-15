@@ -74,9 +74,10 @@ local sets = {
 }
 
 profile.SetMacroBook = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ws "Dancing Edge" <t>')
-	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ra <t>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 1 down /ja "Fight" <t>')
+	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 2 down /ja "Stay" <me>')
 	AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 down /ma "Utsusemi: Ichi" <me>')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 4 down /ja "Heel" <me>')
 end
 
 --[[

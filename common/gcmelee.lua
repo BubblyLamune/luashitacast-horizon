@@ -7,7 +7,9 @@ local muscle_belt = {
 local garden_bangles = {
 --	Hands = "Garden Bangles"
 };
-local presidential_hairpin = {};
+local presidential_hairpin = {
+	Head = "President. Hairpin"
+};
 local dream_ribbon = {
 --	Head = "Dream Ribbon"
 };
